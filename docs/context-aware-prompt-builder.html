@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context-aware prompt builder</title>
+  <meta name="description" content="A simple context-aware prompt builder." />
+  <meta name="author" content="Boni García">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #18181a;
+      --muted: #1c2127;
+      --accent: #6aa5ff;
+      --accent-2: #3ddc97;
+      --danger: #ff6b6b;
+      --shadow: 0 8px 24px rgba(0,0,0,.35);
+      --radius: 16px;
+      --gap: 16px;
+    }
+
+    * { box-sizing:border-box; }
+    html, body { height:100%; }
+    body {
+      margin:0;
+      color:var(--text); font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+    }
+    .container { max-width: 1100px; margin: 32px auto; padding: 0 20px 80px; }
+
+    header {
+      display:flex; align-items:center; gap:12px; justify-content:space-between; margin-bottom: 24px;
+    }
+    .brand { display:flex; gap:12px; align-items:center; }
+    .title { font-weight:800; letter-spacing:.3px; font-size: clamp(18px, 3vw, 22px); }
+    .subtitle { color:var(--muted); font-size:14px; }
+
+    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    button, .btn {
+      appearance:none; border:none; color:var(--text); background: #a1b9e4; padding:10px 14px; border-radius: 12px; cursor:pointer; box-shadow: var(--shadow);
+      font-weight:600; letter-spacing:.2px; transition: transform .08s ease, background .2s ease, opacity .2s ease, box-shadow .2s ease;
+    }
+    .btn-accent { background: linear-gradient(135deg, var(--accent) 0%, #85c1ff 100%); color:#08111f; }
+    .btn-ghost { background: transparent; border:1px solid #26364a; }
+    .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #ff8b8b 100%); color: #1a0b0b; }
+
+    .grid { display:grid; grid-template-columns: 1fr; gap: var(--gap); }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card { background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%); border:1px solid #1f2a38; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card h3 { margin:0; padding: 14px 16px; border-bottom:1px solid #1c2735; font-size: 14px; letter-spacing:.4px; color:#181818; }
+    .card .body { padding: 12px; }
+
+    label { display:block; font-size: 13px; color: var(--muted); }
+    .card1 {
+      background: #fad8ac;
+    }
+    .card3 {
+      background: #c0f6d0;
+    }
+    .card4 {
+      background: #a4f5e4;
+    }
+    .card5 {
+      background: #c3dafd;
+    }
+    .card6 {
+      background: #e8d5fe;
+    }
+    .card7 {
+      background: #e8d5fe;
+    }
+    .card8 {
+      background: #facbca;
+    }
+    .card9 {
+      background: #e5e7eb;
+    }
+
+    textarea, input[type="text"] {
+      width:100%; color: var(--text); border:1px solid #1f2a38; border-radius: 12px; padding: 12px; resize: vertical; min-height: 84px; outline:none;
+    }
+    input[type="text"] { min-height:auto; height: 44px; }
+
+    .hint { font-size: 12px; color:#8aa2ba; margin-top:4px; }
+    .pill {
+      display:inline-block; font-size:12px; color:#0e1623; background: linear-gradient(135deg, var(--accent-2), #b5f5d5); padding:4px 8px; border-radius:999px; font-weight:700;
+    }
+
+    .footerbar {
+      position: fixed; left:0; right:0; bottom:0; backdrop-filter: blur(6px); padding: 12px 16px; border-top:1px solid #1e2b3b; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; background: rgba(255, 255, 255, 0.6);
+    }
+
+    .row { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .toast { position: fixed; right:16px; bottom: 72px; background: #cad9eb; color: var(--text); padding: 10px 12px; border-radius: 10px; border:1px solid #213045; box-shadow: var(--shadow); opacity:0; transform: translateY(8px); transition: all .25s ease; pointer-events:none; }
+    .toast.show { opacity:1; transform: translateY(0); }
+
+    .stamp { font-size:12px; color:#90a7bf; margin-left:auto; }
+
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div>
+          <div class="title">Context-aware prompt builder</div>
+          <div class="subtitle">A template to create effective prompts for AI systems.</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="copyAll" class="btn-accent" title="Copy prompt">Copy prompt</button>
+        <button id="exportData" class="btn" title="Download all fields as JSON">Export</button>
+        <label class="btn btn-ghost" title="Import from a JSON file">Import<input id="importFile" type="file" accept="application/json" hidden></label>
+        <button id="clearAll" class="btn-danger" title="Clear all fields & local memory">Reset</button>
+      </div>
+    </header>
+
+    <main class="grid" id="fields">
+      <section class="card card1">
+        <h3>1. Task context</h3>
+        <div class="body">
+          <label for="role">Persona (role), domain, and the ultimate goal</label>
+          <textarea id="role" placeholder="E.g., You will be acting as an AI career coach named Joe created by the company AdAstra Careers. Your goal is to give career advice to users."></textarea>
+        </div>
+      </section>
+
+      <section class="card card1">
+        <h3>2. Tone context</h3>
+        <div class="body">
+          <label for="style">Desired communication style (e.g., factual, empathetic, professional)</label>
+          <textarea id="style" placeholder="E.g., You should maintain a friendly customer service tone. "></textarea>
+        </div>
+      </section>
+
+      <section class="card card3">
+        <h3>3. Background data, documents, and images</h3>
+        <div class="body">
+          <label for="background">Reusable information like documentation, schemas, or policies</label>
+          <textarea id="background" placeholder="E.g., Here is the career guidance document you should reference when answering the user: <guide>[DOCUMENT]</guide>"></textarea>
+        </div>
+      </section>
+
+      <section class="card card4">
+        <h3>4. Detailed task description & rules</h3>
+        <div class="body">
+          <label for="constraints">Step-by-step instructions and  operational constraints</label>
+          <textarea id="constraints" placeholder="E.g., Here are some important rules for the interaction: If you are unsure how to respond, say 'Sorry, I didn't understand that. Could you repeat the question?'"></textarea>
+        </div>
+      </section>
+
+      <section class="card card5">
+        <h3>5. Examples</h3>
+        <div class="body">
+          <label for="examples">Sample of how to respond in standard interactions</label>
+          <textarea id="examples" placeholder="E.g., Here is an example of how to respond in a standard interaction:..."></textarea>
+        </div>
+      </section>
+
+      <section class="card card6">
+        <h3>6. Conversation history</h3>
+        <div class="body">
+          <label for="history">Context of the current interaction</label>
+          <textarea id="history" placeholder="E.g., Here is the conversation history (between the user and you) prior to the question. It could be empty if there is no prior history: <history>[HISTORY]</history>"></textarea>
+        </div>
+      </section>
+
+      <section class="card card7">
+        <h3>7. Immediate task description or request</h3>
+        <div class="body">
+          <label for="request">User's most recent query</label>
+          <textarea id="request" placeholder="E.g., Here is the user's question: <question>[QUESTION]</question>"></textarea>
+        </div>
+      </section>
+
+      <section class="card card8">
+        <h3>8. Thinking step by step / take a deep breath</h3>
+        <div class="body">
+          <label for="reasoning">Reasoning guidance</label>
+          <textarea id="reasoning" placeholder="E.g., Think about your answer first before you respond."></textarea>
+        </div>
+      </section>
+
+      <section class="card card9">
+        <h3>9. Output formatting</h3>
+        <div class="body">
+          <label for="format">Required output structure, such as JSON, XML, etc.</label>
+          <textarea id="format" placeholder="E.g., Put your response in <response></response> tags."></textarea>
+        </div>
+      </section>
+
+      <section class="card card9">
+        <h3>10. Prefilled response (if any)</h3>
+        <div class="body">
+          <label for="response">Optional skeleton the model can complete</label>
+          <textarea id="response" placeholder="<response>"></textarea>
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h3>Composed prompt <span class="stamp" id="savedStamp" aria-live="polite"></span></h3>
+        <div class="body">
+          <label for="output">This read‑only field composes your prompt</label>
+          <textarea id="output" class="mono" style="min-height:200px" readonly></textarea>
+          <div class="hint">Tip: the composed prompt updates as you type. Use <strong>Copy prompt</strong> above to put it on your clipboard.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="footerbar" role="contentinfo">
+    <span class="subtitle">Your edits are saved automatically locally on this device.</span>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function() {
+      const FIELD_IDS = [
+        'role','style','background','constraints','examples','history','request','reasoning','format','response'
+      ];
+      const STORAGE_KEY = 'context-builder:v1';
+      const savedStamp = document.getElementById('savedStamp');
+      const toast = document.getElementById('toast');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+
+      // Compose the final output from sections
+      function compose(state) {
+        const lines = [];
+        if (state.role) lines.push(`${state.role}\n`);
+        if (state.style) lines.push(`${state.style}\n`);
+        if (state.background) lines.push(`${state.background}\n`);
+        if (state.constraints) lines.push(`${state.constraints}\n`);
+        if (state.examples) lines.push(`${state.examples}\n`);
+        if (state.history) lines.push(`${state.history}\n`);
+        if (state.request) lines.push(`${state.request}\n`);
+        if (state.reasoning) lines.push(`${state.reasoning}\n`);
+        if (state.format) lines.push(`${state.format}\n`);
+        if (state.response) lines.push(`${state.response}\n`);
+        return lines.join('\n');
+      }
+
+      function setSavedStamp() {
+        const ts = new Date().toLocaleString();
+        savedStamp.textContent = `Saved · ${ts}`;
+      }
+
+      function save(state) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          setSavedStamp();
+        } catch (e) {
+          console.error('Save failed', e);
+          showToast('⚠️ Could not save (storage full or blocked)');
+        }
+      }
+
+      function load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          console.error('Load failed', e);
+          return {};
+        }
+      }
+
+      function getStateFromFields() {
+        const s = {};
+        FIELD_IDS.forEach(id => s[id] = document.getElementById(id).value.trim());
+        return s;
+      }
+
+      function populateFields(state) {
+        FIELD_IDS.forEach(id => {
+          const el = document.getElementById(id);
+          el.value = state[id] || '';
+        });
+        document.getElementById('output').value = compose(state);
+      }
+
+      // Debounced autosave
+      let t;
+      function scheduleSave() {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          const state = getStateFromFields();
+          document.getElementById('output').value = compose(state);
+          save(state);
+        }, 250);
+      }
+
+      // Wire events
+      FIELD_IDS.forEach(id => {
+        document.getElementById(id).addEventListener('input', scheduleSave);
+      });
+
+      document.getElementById('copyAll').addEventListener('click', async () => {
+        const txt = document.getElementById('output').value;
+        try {
+          await navigator.clipboard.writeText(txt);
+          showToast('Copied composed output');
+        } catch (e) {
+          showToast('Press Ctrl/Cmd+C to copy');
+        }
+      });
+
+      document.getElementById('exportData').addEventListener('click', () => {
+        const data = JSON.stringify(getStateFromFields(), null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'context-builder.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('Exported to JSON');
+      });
+
+      document.getElementById('importFile').addEventListener('change', ev => {
+        const file = ev.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const obj = JSON.parse(String(reader.result || '{}'));
+            populateFields(obj);
+            save(obj);
+            showToast('Imported data');
+          } catch (e) {
+            showToast('Invalid JSON file');
+          }
+          ev.target.value = '';
+        };
+        reader.readAsText(file);
+      });
+
+      document.getElementById('clearAll').addEventListener('click', () => {
+        if (!confirm('Clear all fields and local memory?')) return;
+        const empty = {};
+        populateFields(empty);
+        save(empty);
+        showToast('Cleared');
+      });
+
+      // Deep‑linking via URL hash (? or #)
+      // `#share=base64` — quick share without servers.
+      function tryImportFromHash() {
+        const hash = location.hash || location.search;
+        const m = hash.match(/[?#].*share=([^&]+)/);
+        if (!m) return false;
+        try {
+          const decoded = JSON.parse(atob(decodeURIComponent(m[1])));
+          populateFields(decoded);
+          save(decoded);
+          showToast('Loaded from link');
+          return true;
+        } catch { return false; }
+      }
+
+      // Provide a shareable link helper (press "S")
+      document.addEventListener('keydown', async (e) => {
+        if ((e.key === 's' || e.key === 'S') && (e.ctrlKey || e.metaKey)) {
+          e.preventDefault();
+          const data = JSON.stringify(getStateFromFields());
+          const b64 = btoa(data);
+          const url = location.origin + location.pathname + '#share=' + encodeURIComponent(b64);
+          try {
+            await navigator.clipboard.writeText(url);
+            showToast('Share link copied');
+          } catch { showToast('Share link ready'); }
+          history.replaceState(null, '', url);
+        }
+      });
+
+      // Initialize
+      const state = load();
+      if (Object.keys(state).length) {
+        populateFields(state);
+        setSavedStamp();
+      } else if (!tryImportFromHash()) {
+        setSavedStamp();
+      }
+
+      // Respect prefers-reduced-motion for subtle button hover effects
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('button,.btn').forEach(b => b.style.transition = 'none');
+      }
+    })();
+  </script>
+</body>
+</html>
