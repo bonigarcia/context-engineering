@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context-aware prompt builder</title>
+  <meta name="description" content="A simple, serverless context-aware prompt builder." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #10161d;
+      --panel-2: #0f141a;
+      --text: #e6eef8;
+      --muted: #9bb1c7;
+      --accent: #6aa5ff;
+      --accent-2: #3ddc97;
+      --danger: #ff6b6b;
+      --shadow: 0 8px 24px rgba(0,0,0,.35);
+      --radius: 16px;
+      --gap: 16px;
+    }
+
+    * { box-sizing:border-box; }
+    html, body { height:100%; }
+    body {
+      margin:0; background:linear-gradient(180deg, #0b0f14 0%, #0c1420 100%);
+      color:var(--text); font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+    }
+    .container { max-width: 1100px; margin: 32px auto; padding: 0 20px 80px; }
+
+    header {
+      display:flex; align-items:center; gap:12px; justify-content:space-between; margin-bottom: 24px;
+    }
+    .brand { display:flex; gap:12px; align-items:center; }
+    .logo { width:36px; height:36px; border-radius:10px; background: radial-gradient(120% 120% at 0% 0%, var(--accent) 0%, #7af 35%, #aef 70%, #fff0 71%); box-shadow: var(--shadow); }
+    .title { font-weight:800; letter-spacing:.3px; font-size: clamp(18px, 3vw, 22px); }
+    .subtitle { color:var(--muted); font-size:14px; }
+
+    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    button, .btn {
+      appearance:none; border:none; color:var(--text); background: #1a2230; padding:10px 14px; border-radius: 12px; cursor:pointer; box-shadow: var(--shadow);
+      font-weight:600; letter-spacing:.2px; transition: transform .08s ease, background .2s ease, opacity .2s ease, box-shadow .2s ease;
+    }
+    button:hover { transform: translateY(-1px); background:#223043; }
+    button:active { transform: translateY(0); }
+    .btn-accent { background: linear-gradient(135deg, var(--accent) 0%, #85c1ff 100%); color:#08111f; }
+    .btn-ghost { background: transparent; border:1px solid #26364a; }
+    .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #ff8b8b 100%); color: #1a0b0b; }
+
+    .grid { display:grid; grid-template-columns: 1fr; gap: var(--gap); }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card { background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%); border:1px solid #1f2a38; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .card h3 { margin:0; padding: 14px 16px; border-bottom:1px solid #1c2735; font-size: 14px; letter-spacing:.4px; text-transform: uppercase; color:#c8dcf2; }
+    .card .body { padding: 12px; }
+
+    label { display:block; font-size: 13px; color: var(--muted); margin: 8px 0 6px; }
+    textarea, input[type="text"] {
+      width:100%; background: #0e141c; color: var(--text); border:1px solid #1f2a38; border-radius: 12px; padding: 12px; resize: vertical; min-height: 84px; outline:none;
+    }
+    input[type="text"] { min-height:auto; height: 44px; }
+
+    .hint { font-size: 12px; color:#8aa2ba; margin-top:4px; }
+    .pill {
+      display:inline-block; font-size:12px; color:#0e1623; background: linear-gradient(135deg, var(--accent-2), #b5f5d5); padding:4px 8px; border-radius:999px; font-weight:700;
+    }
+
+    .footerbar {
+      position: fixed; left:0; right:0; bottom:0; backdrop-filter: blur(6px); padding: 12px 16px; border-top:1px solid #1e2b3b; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; background: rgba(10,14,20,.6);
+    }
+
+    .row { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .toast { position: fixed; right:16px; bottom: 72px; background: #0f1823; color: var(--text); padding: 10px 12px; border-radius: 10px; border:1px solid #213045; box-shadow: var(--shadow); opacity:0; transform: translateY(8px); transition: all .25s ease; pointer-events:none; }
+    .toast.show { opacity:1; transform: translateY(0); }
+
+    .stamp { font-size:12px; color:#90a7bf; margin-left:auto; }
+
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="title">Context Builder</div>
+          <div class="subtitle">Serverless context-aware prompt builder. <span class="pill" title="Your inputs stay in this browser only">Local‑only</span></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="copyAll" class="btn-accent" title="Copy the composed output">Copy Output</button>
+        <button id="exportData" class="btn" title="Download all fields as JSON">Export</button>
+        <label class="btn btn-ghost" for="importFile" title="Import from a JSON file">Import<input id="importFile" type="file" accept="application/json" hidden></label>
+        <button id="clearAll" class="btn-danger" title="Clear all fields & local memory">Reset</button>
+      </div>
+    </header>
+
+    <main class="grid" id="fields">
+      <!-- Left column -->
+      <section class="card">
+        <h3>Goal</h3>
+        <div class="body">
+          <label for="goal">What are you trying to achieve?</label>
+          <textarea id="goal" placeholder="E.g., Summarize customer feedback into themes and propose next steps..."></textarea>
+          <div class="hint">Be explicit about success criteria.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Audience</h3>
+        <div class="body">
+          <label for="audience">Who is this for?</label>
+          <textarea id="audience" placeholder="E.g., PM leadership, non‑technical stakeholders, support agents..."></textarea>
+          <div class="hint">Include knowledge level & what's important to them.</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Style & Tone</h3>
+        <div class="body">
+          <label for="style">How should it read?</label>
+          <textarea id="style" placeholder="E.g., Concise, bullet‑points, evidence‑backed, friendly but direct..."></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Constraints</h3>
+        <div class="body">
+          <label for="constraints">Limits, rules, or must‑haves</label>
+          <textarea id="constraints" placeholder="E.g., 400 words max, cite sources, include edge‑cases, avoid jargon..."></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Inputs / Data</h3>
+        <div class="body">
+          <label for="data">Key facts or files summarized</label>
+          <textarea id="data" placeholder="E.g., 1) NPS dropped from 41→31 in Q3, 2) Top complaints: billing & Android crashes..."></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Examples</h3>
+        <div class="body">
+          <label for="examples">References or patterns to follow</label>
+          <textarea id="examples" placeholder="Paste a short exemplar or bullet points of what “great” looks like..."></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Steps / Plan</h3>
+        <div class="body">
+          <label for="steps">If useful, outline how to proceed</label>
+          <textarea id="steps" placeholder="E.g., 1) Gather data, 2) Analyze, 3) Draft, 4) Review..."></textarea>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Output Format</h3>
+        <div class="body">
+          <label for="format">What should the final output look like?</label>
+          <textarea id="format" placeholder="E.g., A markdown report with sections: Summary, Findings, Recommendations, Next Steps..."></textarea>
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h3>Composed Output <span class="stamp" id="savedStamp" aria-live="polite"></span></h3>
+        <div class="body">
+          <label for="output">This read‑only field composes your sections</label>
+          <textarea id="output" class="mono" style="min-height:200px" readonly></textarea>
+          <div class="hint">Tip: the composed output updates as you type. Use <strong>Copy Output</strong> above to put it on your clipboard.</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="footerbar" role="contentinfo">
+    <span class="subtitle">Your edits are saved automatically to <span class="mono">localStorage</span> on this device.</span>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function() {
+      const FIELD_IDS = [
+        'goal','audience','style','constraints','data','examples','steps','format'
+      ];
+      const STORAGE_KEY = 'context-builder:v1';
+      const savedStamp = document.getElementById('savedStamp');
+      const toast = document.getElementById('toast');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+
+      // Compose the final output from sections
+      function compose(state) {
+        const lines = [];
+        if (state.goal) lines.push(`GOAL\n${state.goal}`);
+        if (state.audience) lines.push(`\nAUDIENCE\n${state.audience}`);
+        if (state.style) lines.push(`\nSTYLE & TONE\n${state.style}`);
+        if (state.constraints) lines.push(`\nCONSTRAINTS\n${state.constraints}`);
+        if (state.data) lines.push(`\nINPUTS / DATA\n${state.data}`);
+        if (state.examples) lines.push(`\nEXAMPLES\n${state.examples}`);
+        if (state.steps) lines.push(`\nSTEPS / PLAN\n${state.steps}`);
+        if (state.format) lines.push(`\nOUTPUT FORMAT\n${state.format}`);
+        return lines.join('\n');
+      }
+
+      function setSavedStamp() {
+        const ts = new Date().toLocaleString();
+        savedStamp.textContent = `Saved · ${ts}`;
+      }
+
+      function save(state) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          setSavedStamp();
+        } catch (e) {
+          console.error('Save failed', e);
+          showToast('⚠️ Could not save (storage full or blocked)');
+        }
+      }
+
+      function load() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          console.error('Load failed', e);
+          return {};
+        }
+      }
+
+      function getStateFromFields() {
+        const s = {};
+        FIELD_IDS.forEach(id => s[id] = document.getElementById(id).value.trim());
+        return s;
+      }
+
+      function populateFields(state) {
+        FIELD_IDS.forEach(id => {
+          const el = document.getElementById(id);
+          el.value = state[id] || '';
+        });
+        document.getElementById('output').value = compose(state);
+      }
+
+      // Debounced autosave
+      let t;
+      function scheduleSave() {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          const state = getStateFromFields();
+          document.getElementById('output').value = compose(state);
+          save(state);
+        }, 250);
+      }
+
+      // Wire events
+      FIELD_IDS.forEach(id => {
+        document.getElementById(id).addEventListener('input', scheduleSave);
+      });
+
+      document.getElementById('copyAll').addEventListener('click', async () => {
+        const txt = document.getElementById('output').value;
+        try {
+          await navigator.clipboard.writeText(txt);
+          showToast('Copied composed output');
+        } catch (e) {
+          showToast('Press Ctrl/Cmd+C to copy');
+        }
+      });
+
+      document.getElementById('exportData').addEventListener('click', () => {
+        const data = JSON.stringify(getStateFromFields(), null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'context-builder.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('Exported to JSON');
+      });
+
+      document.getElementById('importFile').addEventListener('change', ev => {
+        const file = ev.target.files?.[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const obj = JSON.parse(String(reader.result || '{}'));
+            populateFields(obj);
+            save(obj);
+            showToast('Imported data');
+          } catch (e) {
+            showToast('Invalid JSON file');
+          }
+          ev.target.value = '';
+        };
+        reader.readAsText(file);
+      });
+
+      document.getElementById('clearAll').addEventListener('click', () => {
+        if (!confirm('Clear all fields and local memory?')) return;
+        const empty = {};
+        populateFields(empty);
+        save(empty);
+        showToast('Cleared');
+      });
+
+      // Deep‑linking via URL hash (? or #)
+      // `#share=base64` — quick share without servers.
+      function tryImportFromHash() {
+        const hash = location.hash || location.search;
+        const m = hash.match(/[?#].*share=([^&]+)/);
+        if (!m) return false;
+        try {
+          const decoded = JSON.parse(atob(decodeURIComponent(m[1])));
+          populateFields(decoded);
+          save(decoded);
+          showToast('Loaded from link');
+          return true;
+        } catch { return false; }
+      }
+
+      // Provide a shareable link helper (press "S")
+      document.addEventListener('keydown', async (e) => {
+        if ((e.key === 's' || e.key === 'S') && (e.ctrlKey || e.metaKey)) {
+          e.preventDefault();
+          const data = JSON.stringify(getStateFromFields());
+          const b64 = btoa(data);
+          const url = location.origin + location.pathname + '#share=' + encodeURIComponent(b64);
+          try {
+            await navigator.clipboard.writeText(url);
+            showToast('Share link copied');
+          } catch { showToast('Share link ready'); }
+          history.replaceState(null, '', url);
+        }
+      });
+
+      // Initialize
+      const state = load();
+      if (Object.keys(state).length) {
+        populateFields(state);
+        setSavedStamp();
+      } else if (!tryImportFromHash()) {
+        setSavedStamp();
+      }
+
+      // Respect prefers-reduced-motion for subtle button hover effects
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('button,.btn').forEach(b => b.style.transition = 'none');
+      }
+    })();
+  </script>
+</body>
+</html>
