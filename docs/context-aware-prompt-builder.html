@@ -23,24 +23,71 @@
     html, body { height:100%; }
     body {
       margin:0;
-      color:var(--text); font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      color:var(--text);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: var(--bg);
     }
     .container { max-width: 1100px; margin: 32px auto; padding: 0 20px 80px; }
 
     header {
-      display:flex; align-items:center; gap:12px; justify-content:space-between; margin-bottom: 24px;
+      display:flex; align-items:flex-start; gap:12px;
+      justify-content:space-between; margin-bottom: 24px; flex-wrap:wrap;
     }
-    .brand { display:flex; gap:12px; align-items:center; }
+    .brand { display:flex; gap:8px; flex-direction:column; }
     .title { font-weight:800; letter-spacing:.3px; font-size: clamp(18px, 3vw, 22px); }
     .subtitle { color:var(--muted); font-size:14px; }
 
-    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .header-right {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-end;
+    }
+
+    .selectors-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px 12px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+
+    .selector-block {
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+
+    .selector-label {
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    select {
+      border-radius: 10px;
+      padding: 6px 10px;
+      border:1px solid #1f2a38;
+      background:#ffffff;
+      color:var(--text);
+      font-size: 13px;
+      min-width: 190px;
+      cursor:pointer;
+    }
+    select:focus {
+      outline:none;
+      border-color:var(--accent);
+      box-shadow: 0 0 0 1px rgba(106,165,255,0.4);
+    }
+
+    .actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
     button, .btn {
       appearance:none; border:none; color:var(--text); background: #a1b9e4; padding:10px 14px; border-radius: 12px; cursor:pointer; box-shadow: var(--shadow);
       font-weight:600; letter-spacing:.2px; transition: transform .08s ease, background .2s ease, opacity .2s ease, box-shadow .2s ease;
     }
+    button:hover, .btn:hover { transform: translateY(-1px); }
+
     .btn-accent { background: linear-gradient(135deg, var(--accent) 0%, #85c1ff 100%); color:#08111f; }
-    .btn-ghost { background: transparent; border:1px solid #26364a; }
+    .btn-ghost { background: transparent; border:1px solid #26364a; box-shadow:none; }
     .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #ff8b8b 100%); color: #1a0b0b; }
 
     .grid { display:grid; grid-template-columns: 1fr; gap: var(--gap); }
@@ -53,35 +100,25 @@
     .card .body { padding: 12px; }
 
     label { display:block; font-size: 13px; color: var(--muted); }
-    .card1 {
-      background: #fad8ac;
-    }
-    .card3 {
-      background: #c0f6d0;
-    }
-    .card4 {
-      background: #a4f5e4;
-    }
-    .card5 {
-      background: #c3dafd;
-    }
-    .card6 {
-      background: #e8d5fe;
-    }
-    .card7 {
-      background: #e8d5fe;
-    }
-    .card8 {
-      background: #facbca;
-    }
-    .card9 {
-      background: #e5e7eb;
-    }
+    .card1 { background: #fad8ac; }
+    .card2 { background: #fef3c7; }
+    .card3 { background: #c0f6d0; }
+    .card4 { background: #a4f5e4; }
+    .card5 { background: #c3dafd; }
+    .card6 { background: #e8d5fe; }
+    .card7 { background: #e8d5fe; }
+    .card8 { background: #facbca; }
+    .card9 { background: #e5e7eb; }
 
     textarea, input[type="text"] {
       width:100%; color: var(--text); border:1px solid #1f2a38; border-radius: 12px; padding: 12px; resize: vertical; min-height: 84px; outline:none;
     }
     input[type="text"] { min-height:auto; height: 44px; }
+
+    textarea:focus, input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(106,165,255,.5);
+    }
 
     .hint { font-size: 12px; color:#8aa2ba; margin-top:4px; }
     .pill {
@@ -100,160 +137,418 @@
     .stamp { font-size:12px; color:#90a7bf; margin-left:auto; }
 
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    /* Context usage meter */
+    .usage-block {
+      margin-bottom: 8px;
+      font-size: 12px;
+      color:#4b5563;
+    }
+    .usage-header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+      margin-bottom:4px;
+      flex-wrap:wrap;
+    }
+    .usage-bar {
+      position:relative;
+      height: 8px;
+      border-radius:999px;
+      background:#d1d5db;
+      overflow:hidden;
+    }
+    .usage-bar-fill {
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:0%;
+      transition:width .2s ease;
+      border-radius:999px;
+    }
+    .usage-bar-fill.ok { background:#22c55e; }
+    .usage-bar-fill.warn { background:#f59e0b; }
+    .usage-bar-fill.danger { background:#ef4444; }
+
+    .usage-legend {
+      margin-top:4px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .usage-legend span {
+      display:flex;
+      align-items:center;
+      gap:4px;
+    }
+    .legend-dot {
+      width:8px; height:8px; border-radius:999px;
+    }
+    .legend-optimal { background:#22c55e; }
+    .legend-warning { background:#f59e0b; }
+    .legend-danger { background:#ef4444; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand">
-        <div>
-          <div class="title">Context-aware prompt builder</div>
-          <div class="subtitle">A template to create effective prompts for AI systems.</div>
-        </div>
+        <div class="title">Context-aware prompt builder</div>
+        <div class="subtitle">Design, compare, and reuse structured prompts across multiple frameworks and AI models.</div>
       </div>
-      <div class="actions">
-        <button id="copyAll" class="btn-accent" title="Copy prompt">Copy prompt</button>
-        <button id="exportData" class="btn" title="Download all fields as JSON">Export</button>
-        <label class="btn btn-ghost" title="Import from a JSON file">Import<input id="importFile" type="file" accept="application/json" hidden></label>
-        <button id="clearAll" class="btn-danger" title="Clear all fields & local memory">Reset</button>
+
+      <div class="header-right">
+        <div class="selectors-row">
+          <div class="selector-block">
+            <span class="selector-label">Framework</span>
+            <select id="frameworkSelect" aria-label="Prompt framework"></select>
+          </div>
+          <div class="selector-block">
+            <span class="selector-label">Target model</span>
+            <select id="modelSelect" aria-label="Target model"></select>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="copyAll" class="btn-accent" title="Copy prompt">Copy prompt</button>
+          <button id="exportData" class="btn" title="Download all fields as JSON">Export</button>
+          <label class="btn btn-ghost" title="Import from a JSON file">Import
+            <input id="importFile" type="file" accept="application/json" hidden>
+          </label>
+          <button id="clearAll" class="btn-danger" title="Clear all fields & local memory">Reset</button>
+        </div>
       </div>
     </header>
 
     <main class="grid" id="fields">
-      <section class="card card1">
-        <h3>1. Task context</h3>
-        <div class="body">
-          <label for="role">Persona (role), domain, and the ultimate goal</label>
-          <textarea id="role" placeholder="E.g., You will be acting as an AI career coach named Joe created by the company AdAstra Careers. Your goal is to give career advice to users."></textarea>
-        </div>
-      </section>
-
-      <section class="card card1">
-        <h3>2. Tone context</h3>
-        <div class="body">
-          <label for="style">Desired communication style (e.g., factual, empathetic, professional)</label>
-          <textarea id="style" placeholder="E.g., You should maintain a friendly customer service tone. "></textarea>
-        </div>
-      </section>
-
-      <section class="card card3">
-        <h3>3. Background data, documents, and images</h3>
-        <div class="body">
-          <label for="background">Reusable information like documentation, schemas, or policies</label>
-          <textarea id="background" placeholder="E.g., Here is the career guidance document you should reference when answering the user: <guide>[DOCUMENT]</guide>"></textarea>
-        </div>
-      </section>
-
-      <section class="card card4">
-        <h3>4. Detailed task description & rules</h3>
-        <div class="body">
-          <label for="constraints">Step-by-step instructions and  operational constraints</label>
-          <textarea id="constraints" placeholder="E.g., Here are some important rules for the interaction: If you are unsure how to respond, say 'Sorry, I didn't understand that. Could you repeat the question?'"></textarea>
-        </div>
-      </section>
-
-      <section class="card card5">
-        <h3>5. Examples</h3>
-        <div class="body">
-          <label for="examples">Sample of how to respond in standard interactions</label>
-          <textarea id="examples" placeholder="E.g., Here is an example of how to respond in a standard interaction:..."></textarea>
-        </div>
-      </section>
-
-      <section class="card card6">
-        <h3>6. Conversation history</h3>
-        <div class="body">
-          <label for="history">Context of the current interaction</label>
-          <textarea id="history" placeholder="E.g., Here is the conversation history (between the user and you) prior to the question. It could be empty if there is no prior history: <history>[HISTORY]</history>"></textarea>
-        </div>
-      </section>
-
-      <section class="card card7">
-        <h3>7. Immediate task description or request</h3>
-        <div class="body">
-          <label for="request">User's most recent query</label>
-          <textarea id="request" placeholder="E.g., Here is the user's question: <question>[QUESTION]</question>"></textarea>
-        </div>
-      </section>
-
-      <section class="card card8">
-        <h3>8. Thinking step by step / take a deep breath</h3>
-        <div class="body">
-          <label for="reasoning">Reasoning guidance</label>
-          <textarea id="reasoning" placeholder="E.g., Think about your answer first before you respond."></textarea>
-        </div>
-      </section>
-
-      <section class="card card9">
-        <h3>9. Output formatting</h3>
-        <div class="body">
-          <label for="format">Required output structure, such as JSON, XML, etc.</label>
-          <textarea id="format" placeholder="E.g., Put your response in <response></response> tags."></textarea>
-        </div>
-      </section>
-
-      <section class="card card9">
-        <h3>10. Prefilled response (if any)</h3>
-        <div class="body">
-          <label for="response">Optional skeleton the model can complete</label>
-          <textarea id="response" placeholder="<response>"></textarea>
-        </div>
-      </section>
-
-      <section class="card" style="grid-column: 1 / -1;">
-        <h3>Composed prompt <span class="stamp" id="savedStamp" aria-live="polite"></span></h3>
-        <div class="body">
-          <label for="output">This read‑only field composes your prompt</label>
-          <textarea id="output" class="mono" style="min-height:200px" readonly></textarea>
-          <div class="hint">Tip: the composed prompt updates as you type. Use <strong>Copy prompt</strong> above to put it on your clipboard.</div>
-        </div>
-      </section>
+      <!-- Cards will be injected by JS based on the selected framework -->
     </main>
   </div>
 
   <div class="footerbar" role="contentinfo">
-    <span class="subtitle">Your edits are saved automatically locally on this device.</span>
+    <span class="subtitle" style="font-size:12px;">Your edits are saved automatically locally on this device.</span>
+    <span class="stamp" id="savedStamp" aria-live="polite"></span>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script>
     (function() {
-      const FIELD_IDS = [
-        'role','style','background','constraints','examples','history','request','reasoning','format','response'
-      ];
-      const STORAGE_KEY = 'context-builder:v1';
+      // ---- Frameworks ------------------------------------------------------
+      const FRAMEWORKS = {
+        tenPart: {
+          id: 'tenPart',
+          name: "Anthropic's prompt structure",
+          cards: [
+            {
+              id: 'role',
+              title: '1. Task context',
+              label: 'Persona (role), domain, and the ultimate goal',
+              placeholder: 'E.g., You will be acting as an AI career coach named Joe created by the company AdAstra Careers. Your goal is to give career advice to users.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'style',
+              title: '2. Tone context',
+              label: 'Desired communication style (e.g., factual, empathetic, professional)',
+              placeholder: 'E.g., You should maintain a friendly customer service tone.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'background',
+              title: '3. Background data, documents, and images',
+              label: 'Reusable information like documentation, schemas, or policies',
+              placeholder: 'E.g., Here is the career guidance document you should reference when answering the user: <guide>[DOCUMENT]</guide>',
+              cardClass: 'card3'
+            },
+            {
+              id: 'constraints',
+              title: '4. Detailed task description & rules',
+              label: 'Step-by-step instructions and operational constraints',
+              placeholder: 'E.g., Here are some important rules for the interaction: If you are unsure how to respond, say "Sorry, I didn\'t understand that. Could you repeat the question?"',
+              cardClass: 'card4'
+            },
+            {
+              id: 'examples',
+              title: '5. Examples',
+              label: 'Sample of how to respond in standard interactions',
+              placeholder: 'E.g., Here is an example of how to respond in a standard interaction:...',
+              cardClass: 'card5'
+            },
+            {
+              id: 'history',
+              title: '6. Conversation history',
+              label: 'Context of the current interaction',
+              placeholder: 'E.g., Here is the conversation history (between the user and you) prior to the question. It could be empty if there is no prior history: <history>[HISTORY]</history>',
+              cardClass: 'card6'
+            },
+            {
+              id: 'request',
+              title: '7. Immediate task description or request',
+              label: 'User\'s most recent query',
+              placeholder: 'E.g., Here is the user\'s question: <question>[QUESTION]</question>',
+              cardClass: 'card7'
+            },
+            {
+              id: 'reasoning',
+              title: '8. Thinking step by step / take a deep breath',
+              label: 'Reasoning guidance',
+              placeholder: 'E.g., Think about your answer first before you respond.',
+              cardClass: 'card8'
+            },
+            {
+              id: 'format',
+              title: '9. Output formatting',
+              label: 'Required output structure, such as JSON, XML, etc.',
+              placeholder: 'E.g., Put your response in <response></response> tags.',
+              cardClass: 'card9'
+            },
+            {
+              id: 'response',
+              title: '10. Prefilled response (if any)',
+              label: 'Optional skeleton the model can complete',
+              placeholder: '<response>',
+              cardClass: 'card9'
+            }
+          ]
+        },
+
+        costar: {
+          id: 'costar',
+          name: 'CO-STAR',
+          cards: [
+            {
+              id: 'co_context',
+              title: '1. Context',
+              label: 'Background, situation, and constraints',
+              placeholder: 'Describe the situation, relevant background, and any key constraints.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'co_objective',
+              title: '2. Objective',
+              label: 'Goal of the interaction',
+              placeholder: 'Clearly state the outcome you want the model to achieve.',
+              cardClass: 'card3'
+            },
+            {
+              id: 'co_style',
+              title: '3. Style',
+              label: 'Communication style and level',
+              placeholder: 'E.g., concise, expert-level, friendly, formal, etc.',
+              cardClass: 'card4'
+            },
+            {
+              id: 'co_tone',
+              title: '4. Tone',
+              label: 'Tone and attitude',
+              placeholder: 'E.g., optimistic, neutral, direct, supportive.',
+              cardClass: 'card5'
+            },
+            {
+              id: 'co_audience',
+              title: '5. Audience',
+              label: 'Who will read the answer',
+              placeholder: 'Describe the target audience, their knowledge level, and needs.',
+              cardClass: 'card6'
+            },
+            {
+              id: 'co_response',
+              title: '6. Response',
+              label: 'How the model should respond',
+              placeholder: 'Specify output format, length, and any must-include or must-avoid items.',
+              cardClass: 'card9'
+            }
+          ]
+        },
+
+        crispe: {
+          id: 'crispe',
+          name: 'CRISPE',
+          cards: [
+            {
+              id: 'cr_capacity',
+              title: '1. Capacity & Role (C)',
+              label: 'Who the model is and what it can do',
+              placeholder: 'Define the model\'s role, expertise, and boundaries.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'cr_requirements',
+              title: '2. Requirements (R)',
+              label: 'Hard constraints and must-dos',
+              placeholder: 'List rules, required checks, and non-negotiables.',
+              cardClass: 'card3'
+            },
+            {
+              id: 'cr_insights',
+              title: '3. Insights (I)',
+              label: 'Important data, context, or references',
+              placeholder: 'Provide key facts, documents, or links the model should use.',
+              cardClass: 'card4'
+            },
+            {
+              id: 'cr_steps',
+              title: '4. Steps (S)',
+              label: 'Step-by-step reasoning and workflow',
+              placeholder: 'Describe how you want the model to think or work through the problem.',
+              cardClass: 'card5'
+            },
+            {
+              id: 'cr_personalization',
+              title: '5. Personalization (P)',
+              label: 'User-specific preferences',
+              placeholder: 'Note anything about the user, brand, or context that should shape the answer.',
+              cardClass: 'card6'
+            },
+            {
+              id: 'cr_examples',
+              title: '6. Examples (E)',
+              label: 'Positive and/or negative examples',
+              placeholder: 'Provide examples of good responses (and optionally bad ones to avoid).',
+              cardClass: 'card8'
+            }
+          ]
+        },
+
+        rtf: {
+          id: 'rtf',
+          name: 'RTF (Role–Task–Format)',
+          cards: [
+            {
+              id: 'rt_role',
+              title: '1. Role',
+              label: 'Who the model should be',
+              placeholder: 'E.g., You are a cybersecurity analyst specializing in web application security.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'rt_task',
+              title: '2. Task',
+              label: 'What you want the model to do',
+              placeholder: 'Describe the task in clear, specific language, including any constraints.',
+              cardClass: 'card3'
+            },
+            {
+              id: 'rt_format',
+              title: '3. Format',
+              label: 'How the output should be structured',
+              placeholder: 'E.g., Return a markdown table with columns: Risk, Impact, Mitigation.',
+              cardClass: 'card9'
+            }
+          ]
+        },
+
+        bab: {
+          id: 'bab',
+          name: 'BAB (Before–After–Bridge)',
+          cards: [
+            {
+              id: 'bab_before',
+              title: '1. Before',
+              label: 'Current situation',
+              placeholder: 'Describe the current state or problem in detail.',
+              cardClass: 'card1'
+            },
+            {
+              id: 'bab_after',
+              title: '2. After',
+              label: 'Desired outcome',
+              placeholder: 'Describe the ideal future state after the model\'s help.',
+              cardClass: 'card3'
+            },
+            {
+              id: 'bab_bridge',
+              title: '3. Bridge',
+              label: 'How the model should get from Before to After',
+              placeholder: 'Explain the transformation, steps, or messaging you want the model to provide.',
+              cardClass: 'card4'
+            }
+          ]
+        }
+      };
+
+      // ---- Target models (no dates in labels; add GPT-5.1) -----------------
+      const MODELS = {
+        gpt51: {
+          id: 'gpt51',
+          name: 'GPT-5.1',
+          display: 'GPT-5.1 · 400k tokens',
+          maxTokens: 400000
+        },
+        gpt5: {
+          id: 'gpt5',
+          name: 'GPT-5',
+          display: 'GPT-5 · 400k tokens',
+          maxTokens: 400000
+        },
+        gpt41: {
+          id: 'gpt41',
+          name: 'GPT-4.1',
+          display: 'GPT-4.1 · 1M tokens',
+          maxTokens: 1000000
+        },
+        claude45: {
+          id: 'claude45',
+          name: 'Claude Sonnet 4.5',
+          display: 'Claude Sonnet 4.5 · 1M tokens',
+          maxTokens: 1000000
+        },
+        claude35: {
+          id: 'claude35',
+          name: 'Claude 3.5 Sonnet',
+          display: 'Claude 3.5 Sonnet · 200k tokens',
+          maxTokens: 200000
+        },
+        gemini20pro: {
+          id: 'gemini20pro',
+          name: 'Gemini 2.0 Pro',
+          display: 'Gemini 2.0 Pro · 2M tokens',
+          maxTokens: 2000000
+        },
+        gemini25pro: {
+          id: 'gemini25pro',
+          name: 'Gemini 2.5 Pro',
+          display: 'Gemini 2.5 Pro · 2M tokens',
+          maxTokens: 2000000
+        }
+      };
+
+      const DEFAULT_FRAMEWORK_ID = 'tenPart';
+      const DEFAULT_MODEL_ID = 'gpt5';
+      const STORAGE_KEY = 'context-builder:v5';
+
       const savedStamp = document.getElementById('savedStamp');
       const toast = document.getElementById('toast');
+      const frameworkSelect = document.getElementById('frameworkSelect');
+      const modelSelect = document.getElementById('modelSelect');
+      const fieldsContainer = document.getElementById('fields');
 
+      let state = {
+        activeFrameworkId: DEFAULT_FRAMEWORK_ID,
+        activeModelId: DEFAULT_MODEL_ID,
+        data: {} // { frameworkId: { fieldId: value } }
+      };
+
+      // ---- Toast & stamp ----------------------------------------------------
       function showToast(msg) {
         toast.textContent = msg;
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 1800);
       }
 
-      // Compose the final output from sections
-      function compose(state) {
-        const lines = [];
-        if (state.role) lines.push(`${state.role}\n`);
-        if (state.style) lines.push(`${state.style}\n`);
-        if (state.background) lines.push(`${state.background}\n`);
-        if (state.constraints) lines.push(`${state.constraints}\n`);
-        if (state.examples) lines.push(`${state.examples}\n`);
-        if (state.history) lines.push(`${state.history}\n`);
-        if (state.request) lines.push(`${state.request}\n`);
-        if (state.reasoning) lines.push(`${state.reasoning}\n`);
-        if (state.format) lines.push(`${state.format}\n`);
-        if (state.response) lines.push(`${state.response}\n`);
-        return lines.join('\n');
-      }
-
       function setSavedStamp() {
+        const fw = FRAMEWORKS[state.activeFrameworkId];
+        const model = MODELS[state.activeModelId];
         const ts = new Date().toLocaleString();
-        savedStamp.textContent = `Saved · ${ts}`;
+        const bits = [];
+        if (fw) bits.push(fw.name);
+        if (model) bits.push(model.name);
+        savedStamp.textContent = `${bits.join(' · ')} · Saved ${ts}`;
       }
 
-      function save(state) {
+      // ---- Storage ---------------------------------------------------------
+      function save() {
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
           setSavedStamp();
@@ -266,59 +561,313 @@
       function load() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          return raw ? JSON.parse(raw) : {};
+          if (!raw) return null;
+          const parsed = JSON.parse(raw);
+          if (!parsed || typeof parsed !== 'object') return null;
+          return parsed;
         } catch (e) {
           console.error('Load failed', e);
-          return {};
+          return null;
         }
       }
 
-      function getStateFromFields() {
-        const s = {};
-        FIELD_IDS.forEach(id => s[id] = document.getElementById(id).value.trim());
-        return s;
+      function tryMigrateFromOlder() {
+        // v4
+        try {
+          const v4Raw = localStorage.getItem('context-builder:v4');
+          if (v4Raw) {
+            const v4 = JSON.parse(v4Raw);
+            if (v4 && typeof v4 === 'object' && v4.data) {
+              state.activeFrameworkId = v4.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
+              state.activeModelId = v4.activeModelId || DEFAULT_MODEL_ID;
+              state.data = v4.data || {};
+              save();
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('v4 migration failed', e);
+        }
+
+        // v3
+        try {
+          const v3Raw = localStorage.getItem('context-builder:v3');
+          if (v3Raw) {
+            const v3 = JSON.parse(v3Raw);
+            if (v3 && typeof v3 === 'object' && v3.data) {
+              state.activeFrameworkId = v3.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
+              state.data = v3.data || {};
+              save();
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('v3 migration failed', e);
+        }
+
+        // v2
+        try {
+          const v2Raw = localStorage.getItem('context-builder:v2');
+          if (v2Raw) {
+            const v2 = JSON.parse(v2Raw);
+            if (v2 && typeof v2 === 'object' && v2.data) {
+              state.activeFrameworkId = v2.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
+              state.data = v2.data || {};
+              save();
+              return;
+            }
+          }
+        } catch (e) {
+          console.warn('v2 migration failed', e);
+        }
+
+        // v1
+        try {
+          const v1Raw = localStorage.getItem('context-builder:v1');
+          if (v1Raw) {
+            const legacy = JSON.parse(v1Raw);
+            if (legacy && typeof legacy === 'object') {
+              state.data[DEFAULT_FRAMEWORK_ID] = legacy;
+              state.activeFrameworkId = DEFAULT_FRAMEWORK_ID;
+              save();
+              localStorage.removeItem('context-builder:v1');
+              showToast('Migrated data from previous version');
+            }
+          }
+        } catch (e) {
+          console.warn('v1 migration failed', e);
+        }
       }
 
-      function populateFields(state) {
-        FIELD_IDS.forEach(id => {
-          const el = document.getElementById(id);
-          el.value = state[id] || '';
+      // ---- Helpers: framework/model ----------------------------------------
+      function getActiveFramework() {
+        return FRAMEWORKS[state.activeFrameworkId] || FRAMEWORKS[DEFAULT_FRAMEWORK_ID];
+      }
+
+      function getFrameworkData(id) {
+        if (!state.data[id]) state.data[id] = {};
+        return state.data[id];
+      }
+
+      function renderFrameworkOptions() {
+        frameworkSelect.innerHTML = '';
+        Object.values(FRAMEWORKS).forEach(fw => {
+          const opt = document.createElement('option');
+          opt.value = fw.id;
+          opt.textContent = fw.name;
+          frameworkSelect.appendChild(opt);
         });
-        document.getElementById('output').value = compose(state);
+        frameworkSelect.value = state.activeFrameworkId;
       }
 
-      // Debounced autosave
-      let t;
+      function renderModelOptions() {
+        modelSelect.innerHTML = '';
+        Object.values(MODELS).forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m.id;
+          opt.textContent = m.display;
+          modelSelect.appendChild(opt);
+        });
+        modelSelect.value = state.activeModelId;
+      }
+
+      // ---- Fields rendering -------------------------------------------------
+      function renderFields() {
+        const fw = getActiveFramework();
+        const data = getFrameworkData(fw.id);
+
+        fieldsContainer.innerHTML = '';
+
+        fw.cards.forEach((card, index) => {
+          const section = document.createElement('section');
+          section.className = `card ${card.cardClass || ''}`;
+
+          const h3 = document.createElement('h3');
+          h3.textContent = card.title || `Field ${index + 1}`;
+          section.appendChild(h3);
+
+          const body = document.createElement('div');
+          body.className = 'body';
+
+          const label = document.createElement('label');
+          const fieldId = `field-${card.id}`;
+          label.setAttribute('for', fieldId);
+          label.textContent = card.label || card.title || card.id;
+          body.appendChild(label);
+
+          const textarea = document.createElement('textarea');
+          textarea.id = fieldId;
+          textarea.placeholder = card.placeholder || '';
+          textarea.value = data[card.id] || '';
+          body.appendChild(textarea);
+
+          section.appendChild(body);
+          fieldsContainer.appendChild(section);
+        });
+
+        const composedSection = document.createElement('section');
+        composedSection.className = 'card';
+        composedSection.style.gridColumn = '1 / -1';
+        composedSection.style.background = '#ffffff';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = 'Composed prompt';
+        composedSection.appendChild(h3);
+
+        const body = document.createElement('div');
+        body.className = 'body';
+
+        const usageBlock = document.createElement('div');
+        usageBlock.className = 'usage-block';
+        usageBlock.innerHTML = `
+          <div class="usage-header">
+            <span>Context usage (approximate)</span>
+            <span id="usageNumbers">0 / 0 tokens (0%)</span>
+          </div>
+          <div class="usage-bar">
+            <div id="usageBarFill" class="usage-bar-fill"></div>
+          </div>
+          <div class="usage-legend">
+            <span><span class="legend-dot legend-optimal"></span>Optimal (&lt; 50%)</span>
+            <span><span class="legend-dot legend-warning"></span>Warning (50–80%)</span>
+            <span><span class="legend-dot legend-danger"></span>Danger (&gt; 80%)</span>
+          </div>
+        `;
+        body.appendChild(usageBlock);
+
+        const label = document.createElement('label');
+        label.setAttribute('for', 'output');
+        label.textContent = 'This read-only field composes your prompt';
+        body.appendChild(label);
+
+        const output = document.createElement('textarea');
+        output.id = 'output';
+        output.className = 'mono';
+        output.style.minHeight = '200px';
+        output.readOnly = true;
+        body.appendChild(output);
+
+        const hint = document.createElement('div');
+        hint.className = 'hint';
+        hint.innerHTML = 'Tip: the composed prompt updates as you type. Use <strong>Copy prompt</strong> above to put it on your clipboard.';
+        body.appendChild(hint);
+
+        composedSection.appendChild(body);
+        fieldsContainer.appendChild(composedSection);
+
+        attachFieldListeners();
+        updateComposedFromState();
+        updateUsageMeter();
+      }
+
+      // ---- Compose logic (no comments in prompt) ---------------------------
+      function composeForFramework(fwId) {
+        const fw = FRAMEWORKS[fwId];
+        if (!fw) return '';
+        const data = getFrameworkData(fwId);
+        const lines = [];
+
+        fw.cards.forEach(card => {
+          const value = (data[card.id] || '').trim();
+          if (!value) return;
+          lines.push(value + '\n');
+        });
+
+        return lines.join('\n');
+      }
+
+      function buildFinalPrompt() {
+        return composeForFramework(state.activeFrameworkId);
+      }
+
+      function updateComposedFromState() {
+        const output = document.getElementById('output');
+        if (!output) return;
+        output.value = buildFinalPrompt();
+      }
+
+      // ---- Usage meter ------------------------------------------------------
+      function estimateTokens(text) {
+        const length = (text || '').length;
+        return Math.ceil(length / 4); // rough heuristic
+      }
+
+      function updateUsageMeter() {
+        const usageNumbers = document.getElementById('usageNumbers');
+        const usageBarFill = document.getElementById('usageBarFill');
+        const output = document.getElementById('output');
+
+        if (!usageNumbers || !usageBarFill || !output) return;
+
+        const model = MODELS[state.activeModelId] || MODELS[DEFAULT_MODEL_ID];
+        const text = output.value || '';
+        const used = estimateTokens(text);
+        const max = model.maxTokens || 1;
+        const pct = Math.min(100, Math.round((used / max) * 100));
+
+        usageNumbers.textContent = `${used.toLocaleString()} / ${max.toLocaleString()} tokens (${pct}%)`;
+
+        usageBarFill.style.width = `${pct}%`;
+        usageBarFill.classList.remove('ok', 'warn', 'danger');
+        if (pct < 50) {
+          usageBarFill.classList.add('ok');
+        } else if (pct < 80) {
+          usageBarFill.classList.add('warn');
+        } else {
+          usageBarFill.classList.add('danger');
+        }
+      }
+
+      // ---- State from fields ------------------------------------------------
+      function readFieldsIntoState() {
+        const fw = getActiveFramework();
+        const data = getFrameworkData(fw.id);
+        fw.cards.forEach(card => {
+          const el = document.getElementById(`field-${card.id}`);
+          if (!el) return;
+          data[card.id] = el.value.trim();
+        });
+        state.data[fw.id] = data;
+      }
+
+      let saveTimer;
       function scheduleSave() {
-        clearTimeout(t);
-        t = setTimeout(() => {
-          const state = getStateFromFields();
-          document.getElementById('output').value = compose(state);
-          save(state);
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+          readFieldsIntoState();
+          updateComposedFromState();
+          updateUsageMeter();
+          save();
         }, 250);
       }
 
-      // Wire events
-      FIELD_IDS.forEach(id => {
-        document.getElementById(id).addEventListener('input', scheduleSave);
-      });
+      function attachFieldListeners() {
+        const fw = getActiveFramework();
+        fw.cards.forEach(card => {
+          const el = document.getElementById(`field-${card.id}`);
+          if (!el) return;
+          el.removeEventListener('input', scheduleSave);
+          el.addEventListener('input', scheduleSave);
+        });
+      }
 
+      // ---- Toolbar actions --------------------------------------------------
       document.getElementById('copyAll').addEventListener('click', async () => {
         const txt = document.getElementById('output').value;
         try {
           await navigator.clipboard.writeText(txt);
           showToast('Copied composed output');
-        } catch (e) {
+        } catch {
           showToast('Press Ctrl/Cmd+C to copy');
         }
       });
 
       document.getElementById('exportData').addEventListener('click', () => {
-        const data = JSON.stringify(getStateFromFields(), null, 2);
-        const blob = new Blob([data], { type: 'application/json' });
+        const dataToExport = JSON.stringify(state, null, 2);
+        const blob = new Blob([dataToExport], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url; a.download = 'context-builder.json';
+        a.href = url; a.download = 'context-builder-frameworks.json';
         a.click();
         URL.revokeObjectURL(url);
         showToast('Exported to JSON');
@@ -331,10 +880,26 @@
         reader.onload = () => {
           try {
             const obj = JSON.parse(String(reader.result || '{}'));
-            populateFields(obj);
-            save(obj);
+
+            if (obj && obj.data && obj.activeFrameworkId) {
+              state = {
+                activeFrameworkId: obj.activeFrameworkId || DEFAULT_FRAMEWORK_ID,
+                activeModelId: obj.activeModelId || DEFAULT_MODEL_ID,
+                data: obj.data || {}
+              };
+            } else if (obj && typeof obj === 'object') {
+              const fwId = state.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
+              if (!state.data[fwId]) state.data[fwId] = {};
+              state.data[fwId] = obj;
+            }
+
+            renderFrameworkOptions();
+            renderModelOptions();
+            renderFields();
+            save();
             showToast('Imported data');
           } catch (e) {
+            console.error(e);
             showToast('Invalid JSON file');
           }
           ev.target.value = '';
@@ -343,53 +908,108 @@
       });
 
       document.getElementById('clearAll').addEventListener('click', () => {
-        if (!confirm('Clear all fields and local memory?')) return;
-        const empty = {};
-        populateFields(empty);
-        save(empty);
-        showToast('Cleared');
+        if (!confirm('Clear all frameworks and local memory?')) return;
+        state = {
+          activeFrameworkId: DEFAULT_FRAMEWORK_ID,
+          activeModelId: DEFAULT_MODEL_ID,
+          data: {}
+        };
+        save();
+        renderFrameworkOptions();
+        renderModelOptions();
+        renderFields();
+        showToast('Cleared all data');
       });
 
-      // Deep‑linking via URL hash (? or #)
-      // `#share=base64` — quick share without servers.
+      // ---- Share via URL hash ----------------------------------------------
       function tryImportFromHash() {
         const hash = location.hash || location.search;
         const m = hash.match(/[?#].*share=([^&]+)/);
         if (!m) return false;
         try {
           const decoded = JSON.parse(atob(decodeURIComponent(m[1])));
-          populateFields(decoded);
-          save(decoded);
+          if (decoded && decoded.data && decoded.activeFrameworkId) {
+            state = {
+              activeFrameworkId: decoded.activeFrameworkId || DEFAULT_FRAMEWORK_ID,
+              activeModelId: decoded.activeModelId || DEFAULT_MODEL_ID,
+              data: decoded.data || {}
+            };
+          } else if (decoded && typeof decoded === 'object') {
+            const fwId = state.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
+            state.data[fwId] = decoded;
+          }
+          renderFrameworkOptions();
+          renderModelOptions();
+          renderFields();
+          save();
           showToast('Loaded from link');
           return true;
-        } catch { return false; }
+        } catch {
+          return false;
+        }
       }
 
-      // Provide a shareable link helper (press "S")
       document.addEventListener('keydown', async (e) => {
         if ((e.key === 's' || e.key === 'S') && (e.ctrlKey || e.metaKey)) {
           e.preventDefault();
-          const data = JSON.stringify(getStateFromFields());
-          const b64 = btoa(data);
+          readFieldsIntoState();
+          const dataStr = JSON.stringify(state);
+          const b64 = btoa(dataStr);
           const url = location.origin + location.pathname + '#share=' + encodeURIComponent(b64);
           try {
             await navigator.clipboard.writeText(url);
             showToast('Share link copied');
-          } catch { showToast('Share link ready'); }
+          } catch {
+            showToast('Share link ready');
+          }
           history.replaceState(null, '', url);
         }
       });
 
-      // Initialize
-      const state = load();
-      if (Object.keys(state).length) {
-        populateFields(state);
+      // ---- Dropdown handlers -----------------------------------------------
+      frameworkSelect.addEventListener('change', () => {
+        readFieldsIntoState();
+        save();
+        state.activeFrameworkId = frameworkSelect.value || DEFAULT_FRAMEWORK_ID;
+        renderFrameworkOptions();
+        renderFields();
         setSavedStamp();
-      } else if (!tryImportFromHash()) {
+      });
+
+      modelSelect.addEventListener('change', () => {
+        state.activeModelId = modelSelect.value || DEFAULT_MODEL_ID;
+        save();
+        updateUsageMeter();
+        setSavedStamp();
+      });
+
+      // ---- Init -------------------------------------------------------------
+      const loaded = load();
+      if (loaded) {
+        state = {
+          activeFrameworkId: loaded.activeFrameworkId || DEFAULT_FRAMEWORK_ID,
+          activeModelId: loaded.activeModelId || DEFAULT_MODEL_ID,
+          data: loaded.data || {}
+        };
+      } else {
+        tryMigrateFromOlder();
+      }
+
+      if (!FRAMEWORKS[state.activeFrameworkId]) {
+        state.activeFrameworkId = DEFAULT_FRAMEWORK_ID;
+      }
+      if (!MODELS[state.activeModelId]) {
+        state.activeModelId = DEFAULT_MODEL_ID;
+      }
+
+      renderFrameworkOptions();
+      renderModelOptions();
+
+      if (!tryImportFromHash()) {
+        renderFields();
         setSavedStamp();
       }
 
-      // Respect prefers-reduced-motion for subtle button hover effects
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.querySelectorAll('button,.btn').forEach(b => b.style.transition = 'none');
       }
