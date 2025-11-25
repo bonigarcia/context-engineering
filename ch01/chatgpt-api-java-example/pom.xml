@@ -20,7 +20,7 @@
         <dependency>
             <groupId>com.openai</groupId>
             <artifactId>openai-java</artifactId>
-            <version>4.7.1</version>
+            <version>4.8.0</version>
         </dependency>
     </dependencies>
 </project>
