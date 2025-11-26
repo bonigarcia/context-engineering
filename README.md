@@ -1,4 +1,4 @@
-# Context Engineering
+# Context engineering
 
 This repository contains the code examples of book **Context engineering: the art and science of shaping context-aware AI systems** authored by Boni García and published by Manning.
 
