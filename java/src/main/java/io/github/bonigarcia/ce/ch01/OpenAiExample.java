@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.openai;
+package io.github.bonigarcia.ce.ch01;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -22,7 +22,7 @@ import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
-public class ChatGptAPIExample {
+public class OpenAiExample {
 
     public static void main(String[] args) {
         // Ensure OPENAI_API_KEY is set in your environment
