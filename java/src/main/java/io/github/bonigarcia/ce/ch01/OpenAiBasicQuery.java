@@ -22,7 +22,7 @@ import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
-public class OpenAiExample {
+public class OpenAiBasicQuery {
 
     public static void main(String[] args) {
         // Ensure OPENAI_API_KEY is set in your environment
@@ -35,7 +35,8 @@ public class OpenAiExample {
         String output = response.output().get(0).asMessage().content().get(0)
                 .asOutputText().text();
 
-        System.out.println("User: " + prompt);
-        System.out.println("ChatGPT: " + output);
+        System.out.println("User query: " + prompt);
+        System.out.println("Response: " + output);
     }
+
 }
