@@ -19,7 +19,7 @@ package io.github.bonigarcia.ce.ch01;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentResponse;
 
-public class GeminiBasicQuery {
+public class GoogleGeminiBasic {
 
     public static void main(String[] args) {
         // Ensure GOOGLE_API_KEY is set in your environment
