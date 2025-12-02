@@ -30,21 +30,29 @@ docker pull qdrant/qdrant
 docker run -p 6333:6333 qdrant/qdrant
 ```
 
-3. Get the Python sources and install dependencies (using a virtual environment is recommended):
+3. Get the Python sources and go to the example directory:
 ```bash
 git clone https://github.com/bonigarcia/context-engineering
 cd context-engineering/python/ch03/local-rag
+```
+
+4. Create a virtual environment and activate it (optional, but recommended):
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
+```
+
+5.  Install the required Python dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-4. Run the RAG Agent. Check that the agent API interface is working at http://localhost:7777/
+6. Run the RAG Agent. Check that the agent API interface is working at http://localhost:7777/
 ```bash
 python local_rag.py
 ```
 
-5. Install a web interface. Open the UI interface and interact with the agent at http://localhost:3000/
+7. Install a web interface. Open the UI interface and interact with the agent at http://localhost:3000/
 ```bash
 npx create-agent-ui@latest
 cd agent-ui
