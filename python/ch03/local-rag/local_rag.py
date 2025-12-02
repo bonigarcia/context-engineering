@@ -39,4 +39,4 @@ if __name__ == "__main__":
     asyncio.run(init_knowledge())
 
     # Start the AgentOS app
-    agent_os.serve(app="local_rag_agent:app", reload=True)
+    agent_os.serve(app="local_rag:app", reload=True)

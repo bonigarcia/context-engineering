@@ -51,3 +51,5 @@ cd agent-ui
 npm install
 npm run dev
 ```
+
+![RAG UI interface](/docs/img/loca-rag-ui.png)
