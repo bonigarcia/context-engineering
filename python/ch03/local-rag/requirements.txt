@@ -1,0 +1,6 @@
+agno
+qdrant-client
+ollama
+pypdf
+fastapi
+uvicorn
