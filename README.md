@@ -17,7 +17,7 @@ This book is composed by 10 chapters and 1 appendix, namely:
 7. Context in AI frameworks
 8. Context engineering in real-world environments
 9. Context engineering through the software development lifecycle
-10. State of the art on context engineering
+10. State of the art on context engineering  
 Appendix A. The AI ecosystem
 
 ## References
