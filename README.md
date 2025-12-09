@@ -1,12 +1,16 @@
 # Context engineering
 
-This repository contains the code examples of book **Context engineering: the art and science of shaping context-aware AI systems** authored by Boni García and published by Manning.
+**Context engineering** is an emerging term in Artificial Intelligence (AI), and it can be defined as the practice of designing systems that provide a Large Language Model (LLM) with all the necessary information to complete a task effectively. It goes beyond prompt engineering since it focuses on building a comprehensive and structured context from various sources like system instructions, external knowledge, memory, tools, and state. The central idea is that the success of a complex LLM-based system depends more on the quality and completeness of the context provided than on the specific wording of the prompt itself.
 
-_Warning_: This repository is a work in progress — code and structure may change.
+Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging engineering discipline. Since then, I've been working on a book entitled **Context engineering: the art and science of shaping context-aware AI systems**, to be published by [Manning](https://www.manning.com/) in 2026.
+
+This GitHub repository is intended to be a companion resource for this book and a go-to reference for practitioners looking to understand and adopt context engineering.
+
+_Warning_: This repository is a work in progress — content and structure may change.
 
 ## Table of contents
 
-This book is composed by 10 chapters and 1 appendix, namely:
+This book aims to provide a strong, general-purpose theoretical foundation for context engineering, supported by hands-on examples. Its table of contents is the following:
 
 1. Introduction to context engineering
 2. System instructions and user prompts
@@ -20,21 +24,16 @@ This book is composed by 10 chapters and 1 appendix, namely:
 10. State of the art on context engineering  
 Appendix A. The AI ecosystem
 
-## References
+Each chapter of this book starts by explaining the underlying principles and patterns of each thematic block. Then, the final part of each chapter is devoted to presenting specific examples. This GitHub repository contains all these examples. Moreover, I will include new examples and maintain the existing ones even after the book is published. The goal is to provide an open, updated reference for everyone interested.
 
-### Blogs
 
-- [Awesome Neuron](https://awesomeneuron.substack.com/)
-- [The Context Layer](https://medium.com/the-context-layer)
+## Resources
 
-### Tools
+Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays there is more information than ever, and it is very easy to get lost with so many sources. The only solution I found for this problem is to select the best references I saw, read, and understood, and put them into practice with ready-to-execute examples. This section summarizes some of the most relevant references and sources I found during my journey to unravel the essence of context engineering.
 
-- [Open Source LLM Tools](https://huyenchip.com/llama-police)
-- [Gemini CLI Tips & Tricks](https://addyo.substack.com/p/gemini-cli-tips-and-tricks)
 
 ### GitHub repositories
 
-- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering)
 - [AI Engineering](https://github.com/chiphuyen/aie-book/)
 - [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)
 - [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps)
@@ -48,6 +47,7 @@ Appendix A. The AI ecosystem
 - [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners)
 - [Best AI and LLM Engineering Resources](https://github.com/javabuddy/best-ai-and-llm-engineering-resource)
 - [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers)
+- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering)
 
 ### Context Engineering
 
@@ -61,6 +61,7 @@ Appendix A. The AI ecosystem
 - [Context Engineering (by LangChain)](https://blog.langchain.com/context-engineering-for-agents/)
 - [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/)
 - [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/)
+- [Context Engineering - Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory)
 
 ### Prompt Engineering
 
@@ -69,17 +70,16 @@ Appendix A. The AI ecosystem
 - [The Prompt Engineering Playbook for Programmers](https://addyo.substack.com/p/the-prompt-engineering-playbook-for)
 - [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial)
 
-### AI Agents
+### AI Agents and Memory
 
 - [Introduction to Agents](https://www.kaggle.com/whitepaper-introduction-to-agents)
 - [Agents Companion]:(https://www.kaggle.com/whitepaper-agent-companion)
 - [What are AI Agents? Why do they matter?](https://addyo.substack.com/p/what-are-ai-agents-why-do-they-matter)
 - [AG-UI: Agents to users](https://github.com/ag-ui-protocol/ag-ui)
 - [The AI agents stack](https://www.letta.com/blog/ai-agents-stack)
-
-### Memory
-
-- [Context Engineering - Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory)
+- [Awesome Neuron](https://awesomeneuron.substack.com/)
+- [Open Source LLM Tools](https://huyenchip.com/llama-police)
+- [Gemini CLI Tips & Tricks](https://addyo.substack.com/p/gemini-cli-tips-and-tricks)
 - [Memory by LangGraph](https://langchain-ai.github.io/langgraph/concepts/memory/)
 - [Gemini with memory](https://www.philschmid.de/gemini-with-memory)
 
