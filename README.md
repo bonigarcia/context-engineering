@@ -36,22 +36,23 @@ Although the concept of _context engineering_ is new, the underlying technologie
 
 ### Context Engineering
 
-- [Context Engineering: Sessions & Memory](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory)
-- [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
-- [Context Engineering - Making Every Token Count](https://speakerdeck.com/addyosmani/context-engineering-making-every-token-count)
-- [From Vibe Coding to Context Engineering: A Blueprint for Production-Grade GenAI Systems](https://www.sundeepteki.org/blog/from-vibe-coding-to-context-engineering-a-blueprint-for-production-grade-genai-systems)
-- [Context Engineering: Bringing Engineering Discipline to Prompts](https://addyo.substack.com/p/context-engineering-bringing-engineering)
-- [Context Engineering Guide](https://www.promptingguide.ai/guides/context-engineering-guide)
-- [The rise of "context engineering"](https://blog.langchain.com/the-rise-of-context-engineering/)
-- [Context Engineering (by LangChain)](https://blog.langchain.com/context-engineering-for-agents/)
-- [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/)
-- [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/)
-- [Context Engineering - Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory)
+- [The rise of "context engineering"](https://blog.langchain.com/the-rise-of-context-engineering/) (LangChain, Jun 23, 2025) Overview of context engineering as an emerging essential skill for AI engineers building dynamic, tool-using systems.
+- [Context Engineering (by LangChain)](https://blog.langchain.com/context-engineering-for-agents/) (LangChain, Jul 02, 2025) Breakdown of strategies—write, select, compress, isolate—for filling an agent’s context window with only the most relevant information at each step.
+- [From Vibe Coding to Context Engineering: A Blueprint for Production-Grade GenAI Systems](https://www.sundeepteki.org/blog/from-vibe-coding-to-context-engineering-a-blueprint-for-production-grade-genai-systems) (Sundeep Teki, Jul 07, 2025) Introduction arguing that ad-hoc vibe coding doesn’t scale and proposing context engineering as a disciplined approach for production-grade GenAI systems.
+- [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/) (Apidog, Jul 09, 2025) Clear introduction to the components of context (instructions, history, tools, external data) and why high-quality context is often more important than model size.
+- [Context Engineering: Bringing Engineering Discipline to Prompts](https://addyo.substack.com/p/context-engineering-bringing-engineering) (Addy Osmani, Jul 13, 2025) Explanation of context engineering as providing models with structured, complete context—beyond prompt tweaking—to increase reliability.
+- [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/) (Block Research, Aug 18, 2025) Critical look at the limitations of LLM context windows and how context engineering mitigates overload, noise, and degradation.
+- [Context Engineering - Making Every Token Count](https://speakerdeck.com/addyosmani/context-engineering-making-every-token-count) (Addy Osmani, Sep 09, 2025) Talk about how to structure and manage context for AI systems to produce better, more reliable outputs.
+- [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (Anthropic, Sep 29, 2025) Introduction about context engineering, i.e., carefully curating and limiting what information an AI agent sees.
+- [Context Engineering Guide](https://www.promptingguide.ai/guides/context-engineering-guide) (PromptingGuide.ai, 2025) Guide defining context engineering as architecting and optimizing all information fed into an LLM to improve output quality and reduce errors.
+- [Context Engineering – Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory) (OpenAI, 2025) Practical demonstration of managing short-term memory using sessions, showing how structured context improves coherence in multi-step agent interactions.
+- [Context Engineering: Sessions, Memory](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory) (Kimberly Milam et al., 2025) Whitepaper describing how to engineer session and long-term memory to support reliable, stateful AI agents.
+
 
 ### Prompt Engineering
 
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
-- [Prompt Engineering (by Lee Boonstra)](https://www.kaggle.com/whitepaper-prompt-engineering)
+- [Prompt Engineering, by Lee Boonstra](https://www.kaggle.com/whitepaper-prompt-engineering)
 - [The Prompt Engineering Playbook for Programmers](https://addyo.substack.com/p/the-prompt-engineering-playbook-for)
 - [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial)
 - [Meta's prompt engineering guide](https://llama.meta.com/docs/how-to-guides/prompting/)
@@ -62,8 +63,8 @@ Although the concept of _context engineering_ is new, the underlying technologie
 
 ### AI Agents
 
-- [Introduction to Agents](https://www.kaggle.com/whitepaper-introduction-to-agents)
-- [Agents Companion](https://www.kaggle.com/whitepaper-agent-companion)
+- [Introduction to Agents, by Alan Blount et al.](https://www.kaggle.com/whitepaper-introduction-to-agents)
+- [Agents Companion, by Antonio Gulli et al.](https://www.kaggle.com/whitepaper-agent-companion)
 - [What are AI Agents? Why do they matter?](https://addyo.substack.com/p/what-are-ai-agents-why-do-they-matter)
 - [AG-UI: Agents to users](https://github.com/ag-ui-protocol/ag-ui)
 - [The AI agents stack](https://www.letta.com/blog/ai-agents-stack)
@@ -73,7 +74,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Gemini CLI Tips & Tricks](https://addyo.substack.com/p/gemini-cli-tips-and-tricks)
 - [Memory by LangGraph](https://langchain-ai.github.io/langgraph/concepts/memory/)
 - [Gemini with memory](https://www.philschmid.de/gemini-with-memory)
-
+- [Agent Quality, by Meltem Subasioglu, Turan Bulmus, and Wafae Bakkali](https://www.kaggle.com/whitepaper-agent-quality)
 
 ### MCP
 
@@ -83,6 +84,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Function calling & MCP for LLMs](https://blog.dailydoseofds.com/p/function-calling-and-mcp-for-llms)
 - [Find Awesome MCP Servers and Clients](https://mcp.so/)
 - [Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)
+- [Agent Tools & Interoperability with MCP, by Mike Styer, Kanchana Patlolla, Madhuranjan Mohan, and Sal Diaz](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)
 
 ### Retrieval RAG
 
