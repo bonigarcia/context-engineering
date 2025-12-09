@@ -23,30 +23,34 @@ Appendix A. The AI ecosystem
 ## References
 
 ### Blogs
+
 - [Awesome Neuron](https://awesomeneuron.substack.com/)
 - [The Context Layer](https://medium.com/the-context-layer)
 
-
 ### Tools
-- [Open Source LLM Tools](https://huyenchip.com/llama-police)
 
+- [Open Source LLM Tools](https://huyenchip.com/llama-police)
+- [Gemini CLI Tips & Tricks](https://addyo.substack.com/p/gemini-cli-tips-and-tricks)
 
 ### GitHub repositories
+
 - [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering)
 - [AI Engineering](https://github.com/chiphuyen/aie-book/)
 - [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide)
 - [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps)
 - [Context Engineering Template](https://github.com/coleam00/context-engineering-intro)
 - [Awesome-Context-Engineering](https://github.com/Meirtz/Awesome-Context-Engineering)
-- [Context Engineering by David Kim](https://github.com/davidkimai/Context-Engineering)
+- [Context Engineering (by David Kim)](https://github.com/davidkimai/Context-Engineering)
 - [AI Engineering Toolkit](https://github.com/Sumanth077/ai-engineering-toolkit)
 - [Context Engineering for Multi-Agent Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems)
 - [Agents Towards Production](https://github.com/NirDiamant/agents-towards-production)
 - [Awesome generative AI guide](https://github.com/aishwaryanr/awesome-generative-ai-guide)
 - [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners)
-
+- [Best AI and LLM Engineering Resources](https://github.com/javabuddy/best-ai-and-llm-engineering-resource)
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers)
 
 ### Context Engineering
+
 - [Context Engineering: Sessions & Memory](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory)
 - [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - [Context Engineering - Making Every Token Count](https://speakerdeck.com/addyosmani/context-engineering-making-every-token-count)
@@ -58,15 +62,41 @@ Appendix A. The AI ecosystem
 - [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/)
 - [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/)
 
+### Prompt Engineering
+
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+- [Prompt Engineering (by Lee Boonstra)](https://www.kaggle.com/whitepaper-prompt-engineering)
+- [The Prompt Engineering Playbook for Programmers](https://addyo.substack.com/p/the-prompt-engineering-playbook-for)
+- [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial)
 
 ### AI Agents
+
 - [Introduction to Agents](https://www.kaggle.com/whitepaper-introduction-to-agents)
 - [Agents Companion]:(https://www.kaggle.com/whitepaper-agent-companion)
 - [What are AI Agents? Why do they matter?](https://addyo.substack.com/p/what-are-ai-agents-why-do-they-matter)
+- [AG-UI: Agents to users](https://github.com/ag-ui-protocol/ag-ui)
+- [The AI agents stack](https://www.letta.com/blog/ai-agents-stack)
+
+### Memory
+
+- [Context Engineering - Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory)
+- [Memory by LangGraph](https://langchain-ai.github.io/langgraph/concepts/memory/)
+- [Gemini with memory](https://www.philschmid.de/gemini-with-memory)
 
 
 ### MCP
+
+- [Model Context Protocol](https://modelcontextprotocol.io/)
 - [Agent Tools & Interoperability with MCP](https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp)
+- [MCP: What It Is and Why It Matters](https://addyo.substack.com/p/mcp-what-it-is-and-why-it-matters)
+- [Function calling & MCP for LLMs](https://blog.dailydoseofds.com/p/function-calling-and-mcp-for-llms)
+- [Find Awesome MCP Servers and Clients](https://mcp.so/)
+- [Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)
+
+### RAG
+
+- [What is Agentic RAG](https://weaviate.io/blog/what-is-agentic-rag)
+- [RAG vs CAG vs Fine-Tuning](https://newsletter.rafapaez.com/p/rag-vs-cag-vs-fine-tuning)
 
 
 ### Books
@@ -81,6 +111,20 @@ Appendix A. The AI ecosystem
 - [Context Engineering for Multi-Agent Systems](https://www.packtpub.com/en-us/product/context-engineering-for-multi-agent-systems-9781806690046)
 - [AI Agents: The Definitive Guide](https://learning.oreilly.com/library/view/ai-agents-the/0642572247775/)
 
+### AI for software development
+
+- [Conductors to Orchestrators: The Future of Agentic Coding](https://addyo.substack.com/p/conductors-to-orchestrators-the-future)
+- [The reality of AI-Assisted software engineering productivity](https://addyo.substack.com/p/the-reality-of-ai-assisted-software)
+- [Vibe coding is not the same as AI-Assisted engineering](https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai)
+- [Coding for the Future Agentic World (by Addy Osmani)](https://addyo.substack.com/p/coding-for-the-future-agentic-world)
+- [The AI-Native Software Engineer](https://substack.com/home/post/p-165160941)
+- [The AI-Assisted Developer Workflow: Build Faster and Smarter Today, JSNation US 2024](https://www.youtube.com/watch?v=SpKtpW9TGF0)
+
+### Papers
+
+- Mei, Lingrui, Jiayu Yao, Yuyao Ge, Yiwei Wang, Baolong Bi, Yujun Cai, Jiazhi Liu et al. "[A Survey of Context Engineering for Large Language Models](https://arxiv.org/abs/2507.13334)." arXiv preprint arXiv:2507.13334 (2025).
+- Hua, Qishuo, Lyumanshan Ye, Dayuan Fu, Yang Xiao, Xiaojie Cai, Yunze Wu, Jifan Lin, Junfei Wang, and Pengfei Liu. "[Context Engineering 2.0: The Context of Context Engineering](https://arxiv.org/abs/2510.26493)." arXiv preprint arXiv:2510.26493 (2025).
+- Zhang, Qizheng, Changran Hu, Shubhangi Upasani, Boyuan Ma, Fenglu Hong, Vamsidhar Kamanuru, Jay Rainton et al. "[Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](https://arxiv.org/abs/2510.04618)." arXiv preprint arXiv:2510.04618 (2025).
 
 
 ## About
