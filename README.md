@@ -37,16 +37,17 @@ Although the concept of _context engineering_ is new, the underlying technologie
 ### Context Engineering
 
 - [The rise of "context engineering"](https://blog.langchain.com/the-rise-of-context-engineering/) (LangChain, Jun 23, 2025) Overview of context engineering as an emerging essential skill for AI engineers building dynamic, tool-using systems.
-- [Context Engineering (by LangChain)](https://blog.langchain.com/context-engineering-for-agents/) (LangChain, Jul 02, 2025) Breakdown of strategies (write, select, compress, isolate) for filling an agent's context window with only the most relevant information at each step.
+- [Context Engineering](https://blog.langchain.com/context-engineering-for-agents/) (LangChain, Jul 02, 2025) Breakdown of strategies (write, select, compress, isolate) for filling an agent's context window with only the most relevant information at each step.
 - [From Vibe Coding to Context Engineering: A Blueprint for Production-Grade GenAI Systems](https://www.sundeepteki.org/blog/from-vibe-coding-to-context-engineering-a-blueprint-for-production-grade-genai-systems) (Sundeep Teki, Jul 07, 2025) Ad-hoc vibe coding doesn't scale and proposing context engineering as a disciplined approach for production-grade GenAI systems.
-- [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/) (Apidog, Jul 09, 2025) Introduction of context components (instructions, history, tools, external data) and why high-quality context is often more important than model size.
+- [What is Context Engineering: Clearly Explained](https://apidog.com/blog/context-engineering/) (Ashley Goolam, Jul 09, 2025) Introduction of context components (instructions, history, tools, external data) and why high-quality context is often more important than model size.
 - [Context Engineering: Bringing Engineering Discipline to Prompts](https://addyo.substack.com/p/context-engineering-bringing-engineering) (Addy Osmani, Jul 13, 2025) Explanation of context engineering as providing models with structured, complete context-beyond prompt tweaking to increase reliability.
-- [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/) (Block Research, Aug 18, 2025) Critical look at the limitations of LLM context windows and how context engineering mitigates overload, noise, and degradation.
+- [The AI Skeptic's Guide to Context Windows](https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/) (Rizel Scarlett, Aug 18, 2025) Critical look at the limitations of LLM context windows and how context engineering mitigates overload, noise, and degradation.
 - [Context Engineering - Making Every Token Count](https://speakerdeck.com/addyosmani/context-engineering-making-every-token-count) (Addy Osmani, Sep 09, 2025) Talk about how to structure and manage context for AI systems to produce better, more reliable outputs.
 - [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents) (Anthropic, Sep 29, 2025) Introduction about context engineering, i.e., carefully curating and limiting what information an AI agent sees.
 - [Context Engineering Guide](https://www.promptingguide.ai/guides/context-engineering-guide) (PromptingGuide.ai, 2025) Guide defining context engineering as architecting and optimizing all information fed into an LLM to improve output quality and reduce errors.
 - [Context Engineering – Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory) (OpenAI, 2025) Practical demonstration of managing short-term memory using sessions, showing how structured context improves coherence in multi-step agent interactions.
 - [Context Engineering: Sessions, Memory](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory) (Kimberly Milam et al., 2025) Whitepaper describing how to engineer session and long-term memory to support reliable, stateful AI agents.
+- [The Context Engineering Guide](https://weaviate.io/ebooks/the-context-engineering-guide) (Weaviate, 2025) Guide explaining how to design, structure, and optimize context for LLM applications, including chunking, retrieval, memory, and agent workflows.
 
 
 ### Prompt Engineering
@@ -96,6 +97,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Chunking Strategies for LLM Applications, by Pinecone](https://www.pinecone.io/learn/chunking-strategies/) (Pinecone, 2025) Guide explaining how to break large texts into appropriately sized chunks before embedding, a critical step for effective retrieval and generation with LLM-based applications.
 - [Retrieval, by LangChain](https://docs.langchain.com/oss/javascript/langchain/retrieval) (LangChain, 2025) Reference documentation on retrieval functionality in LangChain, describing how to integrate vector-based retrieval into LLM workflows.
 - [What is Agentic RAG](https://weaviate.io/blog/what-is-agentic-rag) (Weaviate, 2025) Explanation of “Agentic RAG,” a paradigm that combines retrieval-augmented generation with autonomous agents, enabling multi-step reasoning, tool use, and dynamic retrieval for complex workflows.
+- [Thinking Beyond RAG: Why Context-Augmented Generation Is Changing the Game](https://www.helicone.ai/blog/implement-and-monitor-cag) (Yusuf Ishola, 2025) Explanation of Context-Augmented Generation and how it improves over traditional RAG.
 - [RAG vs CAG vs Fine-Tuning](https://newsletter.rafapaez.com/p/rag-vs-cag-vs-fine-tuning) (Rafa Paez, 2025) Comparative analysis of three approaches: Retrieval-Augmented Generation (RAG), Contextual Augmented Generation (CAG), and fine-tuning, discussing trade-offs in accuracy, adaptability, cost, and maintenance for each.
 
 
@@ -135,6 +137,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Context Engineering for Multi-Agent Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) (Denis2054, 2025) Repository exploring how to design and manage context flows within multi-agent architectures.
 - [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners) (Microsoft, 2025) Beginner-friendly curriculum teaching the fundamentals of generative AI, including notebooks, examples, and guided lessons.
 - [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (DAIR.AI, 2025) Extensive guide covering prompt engineering techniques, examples, patterns, and best practices for working with LLMs.
+- [RAG-Anything: All-in-One RAG Framework](https://github.com/HKUDS/RAG-Anything) (HKU Data Science Lab, 2025) Open-source framework providing an all-in-one pipeline for RAG.
 - [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering) (GitHub Topics, 2025) Automatically aggregated list of public repositories related to "context engineering," spanning tools, tutorials, and research.
 
 
