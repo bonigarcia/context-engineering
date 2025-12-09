@@ -132,13 +132,13 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Awesome-Context-Engineering](https://github.com/Meirtz/Awesome-Context-Engineering) (Meirtz, 2025) Curated list of papers, tools, articles, and examples focused on context engineering for LLMs and agents.
 - [Best AI and LLM Engineering Resources](https://github.com/javabuddy/best-ai-and-llm-engineering-resource) (javabuddy, 2025) Large curated repository of high-quality resources on AI engineering, LLM workflows, prompt design, and system patterns.
 - [Brex's prompt engineering guide](https://github.com/brexhq/prompt-engineering) (Brex, 2025) Practical prompt engineering guide from Brex, including patterns, examples, and structured instructions for improving LLM output quality.
-- [Context Engineering (by David Kim)](https://github.com/davidkimai/Context-Engineering) (David Kim, 2025) Open resource explaining the concepts, patterns, and techniques of context engineering for AI systems.
-- [Context Engineering Template](https://github.com/coleam00/context-engineering-intro) (coleam00, 2025) Starter template that introduces context engineering concepts and provides structure for building context-optimized LLM applications.
-- [Context Engineering for Multi-Agent Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) (Denis2054, 2025) Repository exploring how to design and manage context flows within multi-agent architectures.
+- [Context Engineering](https://github.com/davidkimai/Context-Engineering) (David Kim, 2025) Open resource explaining the concepts, patterns, and techniques of context engineering for AI systems.
+- [Context Engineering Template](https://github.com/coleam00/context-engineering-intro) (Cole Medin, 2025) Starter template that introduces context engineering concepts and provides structure for building context-optimized LLM applications.
+- [Context Engineering for Multi-Agent Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) (Denis Rothman, 2025) Repository exploring how to design and manage context flows within multi-agent architectures.
 - [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners) (Microsoft, 2025) Beginner-friendly curriculum teaching the fundamentals of generative AI, including notebooks, examples, and guided lessons.
 - [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (DAIR.AI, 2025) Extensive guide covering prompt engineering techniques, examples, patterns, and best practices for working with LLMs.
-- [RAG-Anything: All-in-One RAG Framework](https://github.com/HKUDS/RAG-Anything) (HKU Data Science Lab, 2025) Open-source framework providing an all-in-one pipeline for RAG.
-- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering) (GitHub Topics, 2025) Automatically aggregated list of public repositories related to "context engineering," spanning tools, tutorials, and research.
+- [RAG-Anything: All-in-One RAG Framework](https://github.com/HKUDS/RAG-Anything) (Data Intelligence Lab@HKU, 2025) Open-source framework providing an all-in-one pipeline for RAG.
+- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering) (GitHub, 2025) Automatically aggregated GitHub topics of public repositories related to "context engineering."
 
 
 ### Papers
