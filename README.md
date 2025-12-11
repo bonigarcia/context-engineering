@@ -31,8 +31,8 @@ Each chapter of this book starts by explaining the underlying principles and pat
 This repo also hosts the [context-aware prompt builder](https://bonigarcia.dev/context-engineering/context-aware-prompt-builder.html), an online tool presented in chapter 2 for designing, comparing, and reusing structured prompts across multiple frameworks and AI models.
 
 ## Resources
+Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays there is more information than ever, and it is very easy to get lost with so many sources. This section summarizes some of the most relevant references and resources I found during my journey to unravel the essence of context engineering.
 
-Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays there is more information than ever, and it is very easy to get lost with so many sources. The only solution I found for this problem is to select the best references I could find, read and understand them, and put them into practice with ready-to-execute practical examples. This section summarizes some of the most relevant references and sources I found during my journey to unravel the essence of context engineering.
 
 ### Context Engineering
 
@@ -52,8 +52,8 @@ Although the concept of _context engineering_ is new, the underlying technologie
 
 ### Prompt Engineering
 
+- [Prompt Engineering](https://www.kaggle.com/whitepaper-prompt-engineering) (Lee Boonstra, 2025) Overview of prompt engineering principles and methods aimed at helping developers construct effective prompts for LLMs.
 - [Prompt Engineering Guide](https://www.promptingguide.ai/) (PromptingGuide.ai, 2025) Guide that defines prompt engineering as a discipline for designing and optimizing prompts to make LLMs perform better on diverse tasks, offering techniques, references, and best practices.
-- [Prompt Engineering, by Lee Boonstra](https://www.kaggle.com/whitepaper-prompt-engineering) (Lee Boonstra, 2025) Overview of prompt engineering principles and methods aimed at helping developers construct effective prompts for LLMs.
 - [The Prompt Engineering Playbook for Programmers](https://addyo.substack.com/p/the-prompt-engineering-playbook-for) (Addy Osmani, 2025) Practical playbook targeting programmers, giving structured guidelines and patterns for writing prompts that yield consistent and reliable outputs from AI.
 - [Anthropic's Prompt Engineering Interactive Tutorial](https://github.com/anthropics/prompt-eng-interactive-tutorial) (Anthropic, 2025) Hands-on tutorial that walks users step-by-step through designing and refining prompts (with exercises and example-based practice) to get better results from their models.
 - [Meta's prompt engineering guide](https://llama.meta.com/docs/how-to-guides/prompting/) (Meta, 2025) Guide describing how to craft prompts for their models, covering best practices to structure instructions, context, and examples for improved performance.
