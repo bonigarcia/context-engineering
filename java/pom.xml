@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.google.genai</groupId>
             <artifactId>google-genai</artifactId>
-            <version>1.30.0</version>
+            <version>1.31.0</version>
         </dependency>
         <dependency>
             <groupId>com.anthropic</groupId>
