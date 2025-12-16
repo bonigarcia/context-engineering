@@ -95,4 +95,21 @@ public class BrowserTools {
                 }).build();
     }
 
+    public McpServerFeatures.AsyncToolSpecification readPageText() {
+        McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
+                Map.of(), List.of(), null, null, null);
+
+        Tool tool = McpSchema.Tool.builder().name("browser_read_page_text")
+                .description("Get the visible text of the entire page")
+                .inputSchema(inputSchema).build();
+
+        return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
+                .callHandler((exchange, args) -> {
+                    String result = browserService.readPageText();
+                    return Mono.just(McpSchema.CallToolResult.builder()
+                            .addTextContent(result)
+                            .isError(result.startsWith("Error")).build());
+                }).build();
+    }
+
 }

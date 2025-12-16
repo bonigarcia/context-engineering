@@ -36,7 +36,7 @@ public class McpSeleniumServer {
                 .capabilities(McpSchema.ServerCapabilities.builder().tools(true)
                         .logging().build())
                 .tools(tools.browserStart(), tools.browserNavigate(),
-                        tools.browserClose())
+                        tools.readPageText(), tools.browserClose())
                 .build();
 
         CountDownLatch keepAlive = new CountDownLatch(1);
