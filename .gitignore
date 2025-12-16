@@ -264,3 +264,6 @@ out/
 *.iws
 *.iml
 *.ipr
+
+# JavaScript
+node_modules
