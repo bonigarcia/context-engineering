@@ -74,7 +74,7 @@ public class PromptStuffing {
         System.out.println("1) Asking without stuffed article");
 
         String userPrompt = QUESTION;
-        String response = askChatGPT(client, userPrompt);
+        String response = askModel(client, userPrompt);
         System.out.println(response);
     }
 
@@ -93,11 +93,11 @@ public class PromptStuffing {
                 Question: %s
                 """.formatted(ARTICLE, QUESTION);
 
-        String response = askChatGPT(client, stuffedPrompt);
+        String response = askModel(client, stuffedPrompt);
         System.out.println(response);
     }
 
-    private static String askChatGPT(OpenAIClient client, String userMessage) {
+    private static String askModel(OpenAIClient client, String userMessage) {
         String systemMessage = """
                 You are a careful assistant. If you do not have enough information, say
                 'I don't know based on the context I have.'""";
