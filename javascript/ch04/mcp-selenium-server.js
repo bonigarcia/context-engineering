@@ -65,7 +65,7 @@ server.registerTool(
     try {
       const body = await driver.findElement(By.css('body'));
       const text = await body.getText();
-      return { text };
+      return { content: [{ type: 'text', text }] };
     } catch (error) {
       return { error: `Failed to read browser text: ${error.message}` };
     }
