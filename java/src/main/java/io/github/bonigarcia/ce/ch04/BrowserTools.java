@@ -33,13 +33,13 @@ public class BrowserTools {
     }
 
     public McpServerFeatures.AsyncToolSpecification browserStart() {
+        String browserStartArgument = "open_browser";
         String browserNameArgument = "browser_name";
-        String browserStartArgument = "browser_start";
 
         McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
                 Map.of(browserNameArgument, Map.of("type", "string",
                         "description",
-                        "Name of the browser to launch. Supported values: 'chrome', 'firefox'")),
+                        "The name of the browser to open. Supported values: 'chrome', 'firefox'")),
                 List.of(browserNameArgument), null, null, null);
         Tool tool = McpSchema.Tool.builder().name(browserStartArgument)
                 .description(
@@ -82,7 +82,7 @@ public class BrowserTools {
         McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
                 Map.of(), List.of(), null, null, null);
 
-        Tool tool = McpSchema.Tool.builder().name("browser_close")
+        Tool tool = McpSchema.Tool.builder().name("close_browser")
                 .description("Close the browser").inputSchema(inputSchema)
                 .build();
 

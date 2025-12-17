@@ -1,14 +1,15 @@
 {
-  "name": "mcp",
+  "name": "mcp-selenium-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basic implementation of Model Context Protocol (MCP) Server using Selenium",
   "main": "index.js",
   "scripts": {
+    "start": "node mcp-selenium-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [ "model", "context", "protocol", "mcp", "selenium", "automation" ],
+  "author": "Boni Garcia",
+  "license": "Apache-2.0",
   "type": "module",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.1",

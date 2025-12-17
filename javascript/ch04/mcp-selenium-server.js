@@ -13,18 +13,18 @@ const server = new McpServer({
 server.registerTool(
   'open_browser',
   {
-    description: 'Opens a browser window using Selenium.',
+    description: 'Launches a new browser instance.',
     inputSchema: z.object({
-      browser: z.string().describe('The name of the browser to open (e.g., "chrome", "firefox").'),
+      browser_name: z.string().describe('The name of the browser to open (e.g., "chrome", "firefox").'),
     }),
   },
-  async ({ browser }) => {
+  async ({ browser_name }) => {
     if (driver) {
       return { error: 'Browser is already open.' };
     }
     try {
-      driver = await new Builder().forBrowser(browser).build();
-      return { success: `Browser "${browser}" opened.` };
+      driver = await new Builder().forBrowser(browser_name).build();
+      return { success: `Browser "${browser_name}" started successfully.` };
     } catch (error) {
       return { error: `Failed to open browser: ${error.message}` };
     }
@@ -34,8 +34,8 @@ server.registerTool(
 server.registerTool(
   'close_browser',
   {
-    description: 'Closes the browser window.',
-    inputSchema: z.object({}), // No parameters for close_browser
+    description: 'Closes the browser.',
+    inputSchema: z.object({}),
   },
   async () => {
     if (!driver) {
@@ -51,6 +51,6 @@ server.registerTool(
   },
 );
 
-// Start the server
+// Start MCP server
 const transport = new StdioServerTransport();
 await server.connect(transport);

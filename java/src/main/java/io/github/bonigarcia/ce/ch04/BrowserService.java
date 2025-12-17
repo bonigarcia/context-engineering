@@ -32,7 +32,7 @@ public class BrowserService {
         String response;
         try {
             if (driver != null) {
-                response = "Browser is already running. Please close it first.";
+                response = "Browser is already open.";
             } else if (browserName.equalsIgnoreCase("chrome")) {
                 driver = new ChromeDriver();
                 response = BROWSER_STARTED;
