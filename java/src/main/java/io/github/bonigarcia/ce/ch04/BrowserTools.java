@@ -63,9 +63,8 @@ public class BrowserTools {
                         "The complete URL to navigate to (e.g., https://example.com)")),
                 List.of("url"), null, null, null);
 
-        Tool tool = McpSchema.Tool.builder().name("browser_navigate")
-                .description(
-                        "Navigate the browser to a specified URL. The browser must be started first")
+        Tool tool = McpSchema.Tool.builder().name("navigate_url").description(
+                "Navigate the browser to a specified URL. The browser must be started first")
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
@@ -99,7 +98,7 @@ public class BrowserTools {
         McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
                 Map.of(), List.of(), null, null, null);
 
-        Tool tool = McpSchema.Tool.builder().name("browser_read_page_text")
+        Tool tool = McpSchema.Tool.builder().name("read_browser_text")
                 .description("Get the visible text of the entire page")
                 .inputSchema(inputSchema).build();
 
