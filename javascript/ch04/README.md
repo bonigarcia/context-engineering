@@ -1,11 +1,20 @@
 # MCP Selenium Server in JavaScript
 
-This folder contains a JavaScript implementation of a Selenium server that follows the Model Context Protocol (MCP).
+This folder contains a JavaScript implementation of a basic [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. This server provides a set of tools to programmatically control a web browser using [Selenium](http://selenium.dev/).
+
+## Features
+
+The `mcp-selenium-server.js` exposes the following tools:
+
+- `open_browser`: Launches a new browser instance (e.g., Chrome, Firefox).
+- `navigate_url`: Navigates the open browser to a specified URL.
+- `read_browser_text`: Retrieves the visible text content of the current page.
+- `close_browser`: Closes the current browser instance.
 
 ## Prerequisites
 
-- Node.js installed
-- Google Chrome or Mozilla Firefox installed
+- [Node.js](https://nodejs.org/) installed.
+- A local browser (like Google Chrome or Mozilla Firefox) installed.
 
 ## Installation
 
@@ -25,3 +34,51 @@ npm start
 ```
 
 The server will start and listen for MCP requests on standard input.
+
+## Debugging with mcp-inspector
+
+The `mcp-inspector` is a powerful tool for debugging MCP servers. You can use it to interact with this `mcp-selenium-server` and test its functionality.
+
+1.  **Install `mcp-inspector`:**
+    If you haven't already, install `mcp-inspector` globally:
+    ```bash
+    npm install -g @modelcontextprotocol/inspector
+    ```
+
+2.  **Start the `mcp-selenium-server` with `mcp-inspector`:**
+    In your terminal, navigate to this `javascript/ch04` directory and start the server:
+    ```bash
+    mcp-inspector node mcp-selenium-server.js
+    ```
+    *This will open a web UI at http://localhost:6274/*
+
+3.  **Connect with `mcp-selenium-server`:**
+    Click on button "Connect" to start `mcp-selenium-server`.
+
+4.  **Interact with the server:**
+    Once connected, `mcp-inspector` will display the available tools. You can now send commands to the `mcp-selenium-server`.
+
+    **Example workflow in `mcp-inspector`:**
+
+    - **Open a browser:**
+      ```
+      call open_browser {"browser_name": "chrome"}
+      ```
+      (or "firefox")
+
+    - **Navigate to a URL:**
+      ```
+      call navigate_url {"url": "https://modelcontextprotocol.io/"}
+      ```
+
+    - **Read page text:**
+      ```
+      call read_browser_text {}
+      ```
+
+    - **Close the browser:**
+      ```
+      call close_browser {}
+      ```
+
+    `mcp-inspector` will display the responses from the `mcp-selenium-server`, allowing you to see the results of each tool call and debug any issues.
