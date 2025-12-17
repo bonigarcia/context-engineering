@@ -1,6 +1,6 @@
 # MCP Selenium Server in JavaScript
 
-This folder contains a JavaScript implementation of a basic [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. This server provides a set of tools to programmatically control a web browser using [Selenium](http://selenium.dev/).
+This folder contains a JavaScript implementation of a basic [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. This server provides a set of tools for an AI agent to control a web browser using [Selenium](http://selenium.dev/).
 
 ## Features
 
@@ -39,44 +39,42 @@ The server will start and listen for MCP requests on standard input.
 
 The `mcp-inspector` is a powerful tool for debugging MCP servers. You can use it to interact with this `mcp-selenium-server` and test its functionality.
 
-1.  **Install `mcp-inspector`:**
+1.  Install `mcp-inspector`:
     If you haven't already, install `mcp-inspector` globally:
     ```bash
     npm install -g @modelcontextprotocol/inspector
     ```
 
-2.  **Start the `mcp-selenium-server` with `mcp-inspector`:**
+2.  Start the `mcp-selenium-server` with `mcp-inspector`:
     In your terminal, navigate to this `javascript/ch04` directory and start the server:
     ```bash
     mcp-inspector node mcp-selenium-server.js
     ```
-    *This will open a web UI at http://localhost:6274/*
+    This will open a web UI at http://localhost:6274/
 
-3.  **Connect with `mcp-selenium-server`:**
+3.  Connect with `mcp-selenium-server`:
     Click on button "Connect" to start `mcp-selenium-server`.
 
-4.  **Interact with the server:**
-    Once connected, `mcp-inspector` will display the available tools. You can now send commands to the `mcp-selenium-server`.
+4.  Interact with the server:
+    Once connected, `mcp-inspector` will display the available tools. You can now send commands to the `mcp-selenium-server`. Example workflow in `mcp-inspector`:
 
-    **Example workflow in `mcp-inspector`:**
-
-    - **Open a browser:**
+    - Open a browser:
       ```
       call open_browser {"browser_name": "chrome"}
       ```
       (or "firefox")
 
-    - **Navigate to a URL:**
+    - Navigate to a URL:
       ```
       call navigate_url {"url": "https://modelcontextprotocol.io/"}
       ```
 
-    - **Read page text:**
+    - Read page text:
       ```
       call read_browser_text {}
       ```
 
-    - **Close the browser:**
+    - Close the browser:
       ```
       call close_browser {}
       ```
