@@ -53,9 +53,9 @@ server.registerTool(
 );
 
 server.registerTool(
-  'read_browser_text',
+  'get_browser_text',
   {
-    description: 'Get the visible text of the entire page',
+    description: 'Read the visible text of the entire page',
     inputSchema: z.object({}),
   },
   async () => {

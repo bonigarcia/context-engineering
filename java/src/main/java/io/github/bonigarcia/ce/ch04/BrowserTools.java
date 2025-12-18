@@ -98,8 +98,8 @@ public class BrowserTools {
         McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
                 Map.of(), List.of(), null, null, null);
 
-        Tool tool = McpSchema.Tool.builder().name("read_browser_text")
-                .description("Get the visible text of the entire page")
+        Tool tool = McpSchema.Tool.builder().name("get_browser_text")
+                .description("Read the visible text of the entire page")
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
