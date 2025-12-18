@@ -39,16 +39,15 @@ The server will start and listen for MCP requests on standard input.
 
 The `mcp-inspector` is a powerful tool for debugging MCP servers. You can use it to interact with this `mcp-selenium-server` and test its functionality.
 
-1.  Install `mcp-inspector`:
-    If you haven't already, install `mcp-inspector` globally:
+1.  Get the JavaScript sources and go to the proper directory:
     ```bash
-    npm install -g @modelcontextprotocol/inspector
+    git clone https://github.com/bonigarcia/context-engineering
+    cd context-engineering/javascript/ch04
     ```
 
 2.  Start the `mcp-selenium-server` with `mcp-inspector`:
-    In your terminal, navigate to this `javascript/ch04` directory and start the server:
     ```bash
-    mcp-inspector node mcp-selenium-server.js
+    npx @modelcontextprotocol/inspector node mcp-selenium-server.js
     ```
     This will open a web UI at http://localhost:6274/
 
@@ -80,3 +79,5 @@ The `mcp-inspector` is a powerful tool for debugging MCP servers. You can use it
       ```
 
     `mcp-inspector` will display the responses from the `mcp-selenium-server`, allowing you to see the results of each tool call and debug any issues.
+
+    ![MCP Inspector UI interface](/docs/img/mcp-inspector-ui.png)
