@@ -1,0 +1,4 @@
+openai>=1.99.0
+openai-agents>=0.3.0
+python-dotenv>=1.0.1
+rich>=13.7.1
