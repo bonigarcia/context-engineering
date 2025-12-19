@@ -1,4 +1,4 @@
-# ![](https://bonigarcia.dev/img/context-engineering-icon.png) Context engineering
+# Context engineering ![](https://bonigarcia.dev/img/context-engineering.png)
 
 **Context engineering** can be defined as the practice of designing systems that provide a Large Language Model (LLM) with all the necessary information to complete a task effectively. It goes beyond prompt engineering since it focuses on building a comprehensive and structured context from various sources like system instructions, external knowledge, memory, tools, and state. The central idea is that the success of a complex LLM-based system depends more on the quality and completeness of the context provided than on the specific wording of the prompt itself.
 
