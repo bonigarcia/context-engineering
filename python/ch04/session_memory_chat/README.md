@@ -1,6 +1,6 @@
 # Session Memory
 
-This example accompanies Chapter 4 of *Context Engineering* and demonstrates **short-term memory**
+This example accompanies Chapter 4 of *Context Engineering* and demonstrates short-term memory
 management using the OpenAI Agents SDK `Session` abstraction. It includes two strategies:
 
 - `TrimmingSession`: keeps only the last *N* user turns (deterministic, no extra model calls)
@@ -53,15 +53,50 @@ Inside the chat:
 - `/reset` – clear the session
 - `/exit` – quit
 
-## Suggested experiment
+## Suggested experiment: The Secret Code
 
-1. Start with `--strategy trim --max-turns 3`.
-2. Describe two separate issues (e.g., "Wi-Fi drops every hour" and "printer won't connect").
-3. Continue chatting until the first issue scrolls out of the last 3 user turns.
-4. Observe that the agent begins to lose the earlier constraint (expected with trimming).
-5. Repeat with `--strategy summarize` and note that older constraints survive in the running summary.
+This experiment will give the agent a secret code, distract it with unrelated conversation, and then see if it can recall the code with each strategy.
+
+### Part 1: The `trim` Strategy (The Forgetful Agent)
+
+1.  Start the chat with `trim` and a very short memory of only 2 turns:
+    ```bash
+    python session_memory_chat.py --strategy trim --max-turns 2
+    ```
+
+2.  Give it the secret. At the first prompt, type:
+    > `My name is Alex and the secret code is 'blue-banana-boat'. Please remember this.`
+
+3.  Distract the agent. Now, have a short, unrelated conversation to push the secret code out of its memory. Send these two messages, one after the other:
+    > `What is the capital of Spain?`
+
+    > `What is the most popular sport there?`
+
+4.  Test its memory. Ask for the code back:
+    > `What was the secret code I told you earlier?`
+
+Expected Outcome: The agent will fail. Because `max-turns` was 2, it only remembers the last two things you talked about (France and sports). The secret code is forgotten.
+
+### Part 2: The `summarize` Strategy (The Remembering Agent)
+
+1.  Restart the chat with the `summarize` strategy. We'll tell it to summarize after every 2 turns.
+    ```bash
+    python session_memory_chat.py --strategy summarize --max-turns 2 --refresh-every 2
+    ```
+
+2.  Repeat the process. Have the exact same conversation as before:
+    > `My name is Alex and the secret code is 'blue-banana-boat'. Please remember this.`
+
+    > `What is the capital of Spain?`
+
+    > `What is the most popular sport there?`
+
+3.  Test its memory again.
+    > `What was the secret code I told you earlier?`
+
+Expected Outcome: The agent will succeed. Even though the secret code was pushed out of the immediate 2-turn memory, the `summarize` strategy created a summary in the background (e.g., "User is Alex, secret code is blue-banana-boat"). This summary is included in the context, allowing the agent to recall the code correctly.
 
 ## Notes
 
-- This example demonstrates **session-scoped memory**, not cross-session persistence.
+- This example demonstrates session-scoped memory, not cross-session persistence.
 - For durable memory across sessions, combine Sessions with a long-term store (e.g., Mem0 + Qdrant).
