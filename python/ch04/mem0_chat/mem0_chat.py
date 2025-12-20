@@ -26,7 +26,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, UTC
 from typing import Any, Dict, List, Optional, Sequence
 
 from dotenv import load_dotenv
@@ -43,7 +43,7 @@ from mem0 import Memory  # provided by the mem0ai package
 # -----------------------------
 
 def now_iso() -> str:
-    return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    return datetime.now(UTC).replace(microsecond=0).isoformat() + "Z"
 
 
 def build_mem0_config() -> Dict[str, Any]:
