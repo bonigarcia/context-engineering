@@ -2,9 +2,9 @@
 
 This example accompanies Chapter 4 of *Context Engineering* and demonstrates a practical memory stack:
 
-- **OpenAI GPT-5** generates responses using the **Responses API**.
-- **Mem0** stores and retrieves long-term memories extracted from the conversation.
-- **Qdrant** is the vector database backend used by Mem0 for semantic retrieval.
+- OpenAI GPT-5 is used as LLM.
+- Mem0 stores and retrieves long-term memories extracted from the conversation.
+- Qdrant is the vector database backend used by Mem0 for semantic retrieval.
 
 The key takeaway is architectural: GPT-5 remains stateless between runs, while Mem0+Qdrant provides durable, searchable memory that can be injected back into the model’s context on each turn.
 
@@ -76,6 +76,5 @@ Inside the chat:
 
 ## Notes
 
-- This is a teaching example. Production systems should add explicit consent gates, PII filtering, and retention policies.
 - Mem0 performs extraction and conflict resolution when adding memories (default behavior).
 - The script keeps a small in-session transcript (`--window`) for local coherence; cross-session continuity comes from Mem0+Qdrant.
