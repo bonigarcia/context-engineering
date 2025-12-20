@@ -1,4 +1,5 @@
 langchain
 langchain-community
+langchain-classic
 faiss-cpu
 sentence-transformers

@@ -4,7 +4,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_classic.agents.agent import AgentExecutor
 from langchain_classic.agents.react.agent import create_react_agent
 from langchain_core.tools import create_retriever_tool
-from langchain import hub
+from langchain_classic import hub
 
 # 1. Set up the vector store
 documents = [
