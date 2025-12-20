@@ -9,7 +9,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 # 1. Set up the vector store
 documents = [
-    "The author of the book 'Context Engineering for Generative AI' is Boni Garcia.",
+    "The author of the book 'Fake Book: The New Age' is George Cauldron.",
     "The book discusses techniques for building robust and reliable AI systems.",
 ]
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
@@ -25,7 +25,7 @@ tool = create_retriever_tool(
 tools = [tool]
 
 # 3. Create the agent
-prompt = hub.pull("hwchase17/react")
+prompt = hub.pull("hwchase17/react") # A pre-built ReAct prompt
 llm = OllamaLLM(model="llama3.2:3b")
 agent = create_react_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools)
@@ -38,8 +38,6 @@ def run_agent(question):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-print("--- Question 1: Who is Boni Garcia? (Agent should use its own knowledge) ---")
-run_agent("Who is Boni Garcia?")
-
-print("\n--- Question 2: Who is the author of the book 'Context Engineering for Generative AI'? (Agent should use the RAG tool) ---")
-run_agent("Who is the author of the book 'Context Engineering for Generative AI'?")
+question = "Who is the author of the book 'Fake Book: The New Age'?"
+print(question)
+run_agent(question)

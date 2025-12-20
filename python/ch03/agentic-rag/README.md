@@ -2,7 +2,7 @@
 
 This sample application implements an agentic RAG system using the following stack:
 
-- LLM: [Llama 3.2 1B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
+- LLM: [Llama 3.2 3B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
 - Agent framework: [LangChain](https://www.langchain.com/)
 - Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
 - Vector database: [FAISS](https://faiss.ai/) (in-memory)
@@ -47,18 +47,10 @@ python3 agentic_rag.py
 
 ### Output
 
-After running the script, you will see the agent answering questions. For the first question, it will use its internal knowledge. For the second question, it will use the RAG tool to find the answer in the provided documents.
+After running the script, you will see the agent answering a question. It will use the RAG tool to find the answer in the provided documents.
 
 ```
-> Entering new AgentExecutor chain...
-I am not aware of a person named "Boni Garcia". I can provide information on well-known individuals if you can clarify the name.
+Who is the author of the book 'Fake Book: The New Age'?
 
-> Finished chain.
-
-> Entering new AgentExecutor chain...
-Invoking: `search_documents` with `{'query': 'Who is the author of the book "Context Engineering for Generative AI"?'}`
-Tool result: The author of the book "Context Engineering for Generative AI" is Boni Garcia.
-The author of the book "Context Engineering for Generative AI" is Boni Garcia.
-
-> Finished chain.
+The author of the book 'Fake Book: The New Age' is George Cauldron.
 ```

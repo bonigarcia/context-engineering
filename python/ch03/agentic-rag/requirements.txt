@@ -1,7 +1,7 @@
 langchain
 langchain-community
 langchain-classic
-faiss-cpu
-sentence-transformers
 langchain-ollama
 langchain-huggingface
+faiss-cpu
+sentence-transformers
