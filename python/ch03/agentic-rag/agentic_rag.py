@@ -26,9 +26,9 @@ tools = [tool]
 
 # 3. Create the agent
 prompt = hub.pull("hwchase17/react")
-llm = OllamaLLM(model="llama3.2:1b")
+llm = OllamaLLM(model="llama3.2:3b")
 agent = create_react_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools)
 
 # 4. Run the agent with some questions
 def run_agent(question):
