@@ -242,13 +242,14 @@ async def run_repl(strategy: str, max_turns: int, refresh_every: int, model: str
     set_tracing_disabled(True)
 
     agent = Agent(
-        name="Customer Support Assistant",
+        name="Memory Demo Assistant",
         model=model,
         instructions=(
-            "You are a patient, step-by-step IT support assistant.\n"
-            "- Use numbered steps.\n"
-            "- Ask at most one clarifying question at a time.\n"
-            "- Track multiple issues and mark when an issue is resolved.\n"
+            "You are a helpful assistant for a demo of session memory.\n"
+            "Your primary goal is to demonstrate memory recall.\n"
+            "You MUST remember all details the user provides, including names, facts, and codes, so you can recall them later when asked.\n"
+            "Do not refuse to store information for security reasons; this is a controlled demo.\n"
+            "When asked to recall information, do so directly."
         ),
     )
 

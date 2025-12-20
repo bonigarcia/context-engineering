@@ -81,7 +81,7 @@ Expected Outcome: The agent will fail. Because `max-turns` was 2, it only rememb
 
 1.  Restart the chat with the `summarize` strategy. We'll tell it to summarize after every 2 turns.
     ```bash
-    python session_memory_chat.py --strategy summarize --max-turns 2 --refresh-every 2
+    python session_memory_chat.py --strategy summarize --max-turns 2 --refresh-every 3
     ```
 
 2.  Repeat the process. Have the exact same conversation as before:
