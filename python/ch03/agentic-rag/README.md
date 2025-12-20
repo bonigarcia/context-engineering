@@ -18,9 +18,9 @@ To run this example, you need the following:
 
 ### Steps for running this example
 
-1. Pull Llama 3.2 1B with Ollama:
+1. Pull Llama 3.2 3B with Ollama:
 ```bash
-ollama pull llama3.2:1b
+ollama pull llama3.2:3b
 ```
 
 2. Get the Python sources and go to the example directory:

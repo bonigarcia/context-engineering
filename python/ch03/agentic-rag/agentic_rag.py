@@ -1,10 +1,11 @@
 from langchain_community.llms import Ollama
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_classic.agents.agent import AgentExecutor
 from langchain_classic.agents.react.agent import create_react_agent
 from langchain_core.tools import create_retriever_tool
 from langchain_classic import hub
+from langchain_ollama import OllamaLLM
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # 1. Set up the vector store
 documents = [
@@ -25,7 +26,7 @@ tools = [tool]
 
 # 3. Create the agent
 prompt = hub.pull("hwchase17/react")
-llm = Ollama(model="llama3.2:1b")
+llm = OllamaLLM(model="llama3.2:1b")
 agent = create_react_agent(llm, tools, prompt)
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
