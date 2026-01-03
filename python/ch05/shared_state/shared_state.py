@@ -51,7 +51,7 @@ def editor_agent(state, llm):
 
 def run_shared_state_collaboration():
     """
-    Demonstrates two agents collaborating via shared global state.
+    Demonstrates two agents collaborating via shared state in turns.
     """
     # Load environment variables and initialize the LLM
     load_dotenv()
@@ -60,28 +60,42 @@ def run_shared_state_collaboration():
         raise ValueError("OPENAI_API_KEY not found in .env file or environment.")
     llm = ChatOpenAI(api_key=api_key, model="gpt-4o", temperature=0.7)
 
+    # Use a local variable to manage the state throughout the run.
+    # It's initialized from the global state.
+    current_state = document_state.copy()
+
     print("--- Initial Global State ---")
-    print(document_state)
+    print(current_state)
     print("-" * 20)
 
-    # The orchestrator calls the agents in sequence.
-    # Each agent checks the global state to decide whether to act.
-    
-    # Call 1: Writer acts, Editor does nothing
-    global document_state
-    document_state = writer_agent(document_state, llm)
-    document_state = editor_agent(document_state, llm)
-    
-    print("--- State after first round ---")
-    print(document_state)
-    print("-" * 20)
+    agents = [writer_agent, editor_agent]
+    turn = 0
+    max_turns = 5 # A few turns to be safe
+    while current_state["status"] != "finished" and turn < max_turns:
+        turn += 1
+        print(f"\n--- Turn {turn} ---")
 
-    # Call 2: Writer does nothing, Editor acts
-    document_state = writer_agent(document_state, llm)
-    document_state = editor_agent(document_state, llm)
+        state_before_turn = current_state.copy()
 
-    print("--- Final Global State ---")
-    print(document_state)
+        # Poll each agent once per turn
+        for agent_func in agents:
+            # Pass the current state to the agent
+            current_state = agent_func(current_state, llm)
+            # If the agent acted and changed the state, end the turn
+            if current_state != state_before_turn:
+                break
+
+        # If state hasn't changed after polling all agents, stop.
+        if current_state == state_before_turn:
+            print("No agent acted this turn. Halting.")
+            break
+
+        print(f"--- State after Turn {turn} ---")
+        print(current_state)
+        print("-" * 20)
+
+    print("\n--- Final Global State ---")
+    print(current_state)
 
 if __name__ == "__main__":
     run_shared_state_collaboration()
