@@ -1,0 +1,118 @@
+{
+  "name": "Blog Post Generation",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "89e55383-3a32-4e7a-8b3d-3b3a6d2f3334",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "You are an expert in creating viral blog post ideas.\n\nGenerate a compelling and click-worthy blog post title about the following topic:\n\n{{ $json.topic }}",
+        "output": "string",
+        "options": {}
+      },
+      "id": "a9e6e58b-8c6c-4b5f-87d2-7c8d9e6c7c8d",
+      "name": "Generate Idea",
+      "type": "n8n-nodes-base.openAiChat",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "You are a senior content writer.\n\nWrite a 300-word blog post for the following title:\n\n{{ $json.output }}",
+        "output": "string",
+        "options": {}
+      },
+      "id": "f8d3d3b6-7c8d-4e7a-8b3d-3b3a6d2f3334",
+      "name": "Write Post",
+      "type": "n8n-nodes-base.openAiChat",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "prompt": "You are a social media expert.\n\nSummarize the following blog post into a single, engaging tweet:\n\n{{ $json.output }}",
+        "output": "string",
+        "options": {}
+      },
+      "id": "b7c8d9e6-c7c8-4b5f-87d2-7c8d9e6c7c8d",
+      "name": "Summarize Post",
+      "type": "n8n-nodes-base.openAiChat",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "OpenAI account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Generate Idea",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Idea": {
+      "main": [
+        [
+          {
+            "node": "Write Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Post": {
+      "main": [
+        [
+          {
+            "node": "Summarize Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {}
+}

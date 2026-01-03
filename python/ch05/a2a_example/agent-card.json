@@ -1,0 +1,29 @@
+{
+    "agentId": "weather-forecaster-001",
+    "name": "Nimbus Weather Bot",
+    "description": "An AI agent specialized in weather forecasts, for demonstration purposes.",
+    "capabilities": [
+      {
+        "name": "get_current_weather",
+        "description": "Retrieves current weather conditions for a location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g., 'San Francisco, CA'"
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    ],
+    "communicationEndpoints": {
+      "rest": "http://127.0.0.1:5000/tasks"
+    },
+    "supportedInteractionPatterns": [
+      "synchronous-request-response"
+    ],
+    "version": "1.0.0"
+  }
+  
