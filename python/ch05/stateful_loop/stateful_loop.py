@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 def run_stateful_loop():
     """
-    Demonstrates a simple, stateful agent loop.
+    Simple, stateful agent loop.
     """
     # Load environment variables and initialize the LLM
     load_dotenv()
@@ -34,9 +34,7 @@ def run_stateful_loop():
         else:
             # Subsequent iterations: Refine the summary
             prompt = f"""You are a research assistant. Your current summary is:
-            
             '{agent_state['research_summary']}'
-            
             Based on this, what is a key sub-topic or question worth exploring next to deepen the research?
             Please provide a single, concise sentence describing the next research direction."""
 
