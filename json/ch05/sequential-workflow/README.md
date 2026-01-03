@@ -10,7 +10,7 @@ This demonstrates how orchestration tools can manage state (the content being cr
 ## Steps for running this example
 
 1. Open n8n:
-Start your n8n instance (either self-hosted or on n8n.cloud).
+- Start your n8n instance (either self-hosted or on n8n.cloud).
 
 2. Import workflow:
 - Create a new, blank workflow.
