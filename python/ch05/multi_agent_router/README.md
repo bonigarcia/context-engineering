@@ -1,27 +1,28 @@
-# Multi-Agent Router Pattern
+# Multi-agent router pattern
 
-This example demonstrates the **router multi-agent pattern** using `langgraph`. It simulates a customer support system that intelligently routes user questions to specialized agents (Sales, Technical Support, or General) based on the query's intent.
+This example demonstrates the **router multi-agent pattern** using `langgraph`. It simulates a customer support system that intelligently routes user questions to specialized agents (sales, technical support, or general) based on the query's intent.
 
-## Setup
+## Steps for running this example
 
-1.  **Install dependencies**:
-    Navigate to the `python/ch05/multi_agent_router` directory and install the required packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
-2.  **Set environment variables**:
-    Ensure your OpenAI API key is set as an environment variable. You can do this by:
-    ```bash
-    export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-    ```
-    Alternatively, create a `.env` file in the `multi_agent_router` directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
+1.  Install dependencies:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+```
 
-## Run the example
+2. Set environment variables:
+Ensure your OpenAI API key is set as an environment variable. You can do this by:
+```
+OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+```
+Alternatively, create a `.env` file in the source directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
 
-Execute the Python script:
-
+3. Run the script:
 ```bash
 python multi_agent_router.py
 ```
+
+## Output
 
 The script will run three example questions, demonstrating how the system routes each query to the appropriate specialized agent and generates a response.

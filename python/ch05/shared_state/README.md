@@ -18,18 +18,18 @@ source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 ```
 
-2.  Set environment variables:
-Create a `.env` file in this directory with your OpenAI API key:
+2. Set environment variables:
+   Ensure your OpenAI API key is set as an environment variable. You can do this by:
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```
+Alternatively, create a `.env` file in the source directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
 
-3. Run the script, that will print the global state at each major step, showing how the `writer` and `editor` agents modify it in turn to complete the collaborative task.
-
+3. Run the script:
 ```bash
 python shared_state.py
 ```
 
 ## Output
 
-After running the script, you will see how a global state object enables coordination between agents.
+The script will print the global state at each major step, showing how the `writer` and `editor` agents modify it in turn to complete the collaborative task.

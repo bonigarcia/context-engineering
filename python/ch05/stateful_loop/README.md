@@ -20,37 +20,18 @@ source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 ```
 
-2.  Set environment variables:
-Create a `.env` file in this directory with your OpenAI API key:
+2. Set environment variables:
+   Ensure your OpenAI API key is set as an environment variable. You can do this by:
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```
+Alternatively, create a `.env` file in the source directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
 
-3. Run the script, that will print the state at each step of the loop, showing how the research summary is progressively built.
+3. Run the script:
 ```
 python stateful_loop.py
 ```
 
 ## Output
 
-After running the script, you will see the agent's output over a fixed number of iterations.
-
-```
---- Initial State ---
-{'topic': 'The role of context engineering in AI', 'research_summary': '', 'iteration_count': 0, 'max_iterations': 3}
-
---- Iteration 1 ---
-  Action: Generated initial summary.
-  New Summary: "Context engineering in AI refers to the deliberate design and manipulation of contextual information..."
-
---- Iteration 2 ---
-  Action: Identified next research step.
-  New Summary: "Context engineering in AI refers to the deliberate design and manipulation of contextual information..."
-
---- Iteration 3 ---
-  Action: Identified next research step.
-  New Summary: "Context engineering in AI refers to the deliberate design and manipulation of contextual information..."
-
---- Final State ---
-{'topic': 'The role of context engineering in AI', 'research_summary': "Context engineering in AI refers to the deliberate design and manipulation of contextual information to enhance the performance and relevance of artificial intelligence systems. This approach is crucial in enabling AI to understand and respond to human inputs more effectively by considering the situational, cultural, and environmental factors that influence meaning. By integrating context, AI systems can achieve more nuanced and accurate interpretations, leading to improved decision-making and user interactions. Context engineering is particularly significant in natural language processing, where understanding the subtleties of human language requires awareness of the surrounding context. As AI continues to evolve, the role of context engineering becomes increasingly important in developing systems that are not only technically proficient but also socially and culturally aware, thereby enhancing their applicability across diverse real-world scenarios.\n\nNext step: Investigate the methodologies and frameworks for effectively integrating cultural context into AI systems to enhance their cross-cultural understanding and interaction capabilities.\n\nNext step: Investigate the role of cultural ontologies and knowledge graphs in enhancing AI systems' ability to interpret and respond to diverse cultural contexts.", 'iteration_count': 3, 'max_iterations': 3}
-```
+The script will print the state at each step of the loop, showing how the research summary is progressively built.
