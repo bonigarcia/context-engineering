@@ -9,6 +9,15 @@ The scenario involves a "writer-editor" duo working on a document. Their collabo
 3. Editor agent: A function that checks if the `status` is `editing`. If it is, the agent reads the `draft_content`, generates feedback, updates the `feedback` field, and changes the `status` to `finished`.
 4. Orchestrator: A simple function sequentially calls both agents. The agents themselves decide whether to act based on the information they read from the shared global state. This demonstrates a very simple form of emergent, state-driven coordination.
 
+## Requirements
+
+This project requires [Python](https://www.python.org/) 3.6+ and the following libraries:
+
+* langchain-openai
+* python-dotenv
+
+All dependencies are listed in `requirements.txt` and can be installed from there.
+
 ## Steps for running this example
 
 1.  Install dependencies:

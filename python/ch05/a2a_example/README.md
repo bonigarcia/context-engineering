@@ -7,6 +7,15 @@ The demonstration covers the core concepts of A2A:
 2. Task-based communication: The client sends a structured request to the server's task endpoint to execute a skill.
 3. Client-server Interaction: A clear and simple showcase of two Python processes acting as distinct agents communicating over HTTP.
 
+## Requirements
+
+This project requires [Python](https://www.python.org/) 3.6+ and the following libraries:
+
+* Flask: A micro web framework for the server agent.
+* Requests: A library for making HTTP requests from the client agent.
+
+All dependencies are listed in `requirements.txt` and can be installed from there.
+
 ## Steps for running this example
 
 This example requires two separate terminal sessions.

@@ -11,6 +11,15 @@ The core concept illustrated is the explicit management of a **state object**. T
 
 This example uses a simple `while` loop and a dictionary to manage state, showing how agentic behavior can be orchestrated without complex frameworks.
 
+## Requirements
+
+This project requires [Python](https://www.python.org/) 3.6+ and the following libraries:
+
+* langchain-openai
+* python-dotenv
+
+All dependencies are listed in `requirements.txt` and can be installed from there.
+
 ## Steps for running this example
 
 1.  Install dependencies:

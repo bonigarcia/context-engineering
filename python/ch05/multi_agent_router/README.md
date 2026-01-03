@@ -2,6 +2,17 @@
 
 This example demonstrates the **router multi-agent pattern** using `langgraph`. It simulates a customer support system that intelligently routes user questions to specialized agents (sales, technical support, or general) based on the query's intent.
 
+## Requirements
+
+This project requires [Python](https://www.python.org/) 3.6+ and the following libraries:
+
+* langchain
+* langgraph
+* langchain-openai
+* python-dotenv
+
+All dependencies are listed in `requirements.txt` and can be installed from there.
+
 ## Steps for running this example
 
 1.  Install dependencies:
