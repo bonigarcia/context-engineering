@@ -10,7 +10,12 @@ This demonstrates how orchestration tools can manage state (the content being cr
 ## Steps for running this example
 
 1. Open n8n:
-- Start your n8n instance (either self-hosted or on n8n.cloud).
+- You can either sign up for a free account on n8n.cloud (https://n8n.cloud) or install it on your own computer.
+- The easiest way to run n8n locally is by using Docker:
+```bash
+docker run -it --rm -p 5678:5678 n8nio/n8n
+```
+Once the container is running, open your web browser and navigate to `http://localhost:5678`.
 
 2. Import workflow:
 - Create a new, blank workflow.
