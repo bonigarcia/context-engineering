@@ -1,0 +1,8 @@
+langfuse
+langchain
+langchain-openai
+langchain-classic
+langchain-community
+duckduckgo-search
+python-dotenv
+ddgs
