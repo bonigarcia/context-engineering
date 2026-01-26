@@ -1,0 +1,4 @@
+llmlingua
+transformers
+langchain-openai
+python-dotenv
