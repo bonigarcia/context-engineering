@@ -1,4 +1,17 @@
-llmlingua
-transformers
-langchain-openai
-python-dotenv
+# --- Core ML stack (CPU-safe, compatible) ---
+torch>=2.2,<2.4
+transformers>=4.39,<4.43
+accelerate>=0.29,<0.33
+huggingface_hub>=0.22,<0.24
+
+# --- Context compression ---
+llmlingua>=0.2.2
+
+# --- LangChain + OpenAI ---
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-openai>=0.1.7
+openai>=1.30.0
+
+# --- Utilities ---
+python-dotenv>=1.0.0

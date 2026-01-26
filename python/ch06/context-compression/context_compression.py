@@ -26,7 +26,7 @@ def build_sample_conversation() -> str:
         ("Assistant", "Thanks. I’ll open a missing item investigation. Do you want a replacement or a refund?"),
         ("User", "Replacement, please. Same model and color: black."),
         ("Assistant", "Noted. Also, do you want signature required for the replacement shipment?"),
-        ("User", "Yes, require signature. And please send updates to boni@example.com."),
+        ("User", "Yes, require signature. And please send updates to john@example.com."),
         ("Assistant", "Done. Anything else?"),
         ("User", "One more thing—if the headset can’t be shipped within 3 business days, switch to refund."),
         ("Assistant", "Confirmed: replacement preferred; refund if not shipped within 3 business days. Signature required."),
@@ -73,11 +73,11 @@ def main():
         device_map="cpu",
     )
 
-    # Rate is the retained fraction (e.g., 0.33 keeps ~33%).
+    # Rate is the retained fraction (e.g., 0.5 keeps 50%).
     # force_tokens helps preserve structure and question marks/newlines.
     compressed = compressor.compress_prompt(
         conversation,
-        rate=float(os.getenv("LLMLINGUA_RATE", "0.33")),
+        rate=float(os.getenv("LLMLINGUA_RATE", "0.5")),
         force_tokens=["\n", "?", "#", ":"],
     )
 
