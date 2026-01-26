@@ -1,0 +1,9 @@
+ragas
+langchain
+langchain-openai
+langchain-community
+langchain-huggingface
+faiss-cpu
+datasets
+python-dotenv
+sentence-transformers
