@@ -1,0 +1,253 @@
+{
+  "name": "HITL Content Approval",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ac882375-80a5-4f35-91d1-b51e6005c219",
+      "name": "Start",
+      "type": "n8n-nodes-base.start",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "temperature": 0.7,
+        "prompt": "You are a customer support agent. Draft a positive and helpful response to the following review. Keep it concise (2-3 sentences).\n\nReview: \"The product is fantastic, but the shipping was a bit slow.\"",
+        "options": {}
+      },
+      "id": "e2c3e1e6-b6b8-4e8a-a43b-5517173e96f1",
+      "name": "AI Draft Response",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "n8n-openai-account",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "approve-{{$json.executionId}}",
+        "options": {}
+      },
+      "id": "d03e9124-77a8-4c12-a740-410a5146c245",
+      "name": "Approve Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        200
+      ],
+      "webhookId": "approve-webhook-id"
+    },
+    {
+      "parameters": {
+        "path": "reject-{{$json.executionId}}",
+        "options": {}
+      },
+      "id": "1d331a99-52e6-42f2-89b5-f4812aa65b74",
+      "name": "Reject Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        400
+      ],
+      "webhookId": "reject-webhook-id"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $('Approve Webhook').exists() }}"
+            }
+          ]
+        }
+      },
+      "id": "18f8d38f-a78b-4b13-9f89-8d769c3a388b",
+      "name": "If Approved",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Customer response has been approved and sent!",
+        "options": {}
+      },
+      "id": "893d56f4-c2a4-4a4a-81a1-f3b14a2c53b3",
+      "name": "Send to Customer",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Response rejected. Escalating to senior manager.",
+        "options": {}
+      },
+      "id": "b37f44a3-764f-4a0b-8002-4fc46f901a75",
+      "name": "Escalate",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://webhook.site/#!/view/{{$json.uuid}}",
+        "jsonBody": "={{$json}}",
+        "options": {
+          "body": "={\"review\":\"The product is fantastic, but the shipping was a bit slow.\",\"draftResponse\":\"{{ $('AI Draft Response').json.choices[0].message.content }}\",\"approveUrl\":\"{{ $('Approve Webhook').item.url }}\",\"rejectUrl\":\"{{ $('Reject Webhook').item.url }}\"}"
+        }
+      },
+      "id": "d13be631-01f2-4e08-8e6d-62057790b8e2",
+      "name": "Send for Approval",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "resume",
+        "options": {}
+      },
+      "id": "33b6e8a4-0a37-4d8e-9d22-1d4285e6ddf7",
+      "name": "Wait for Human",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 2,
+      "position": [
+        880,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "AI Draft Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Draft Response": {
+      "main": [
+        [
+          {
+            "node": "Send for Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approve Webhook": {
+      "main": [
+        [
+          {
+            "node": "If Approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reject Webhook": {
+      "main": [
+        [
+          {
+            "node": "If Approved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Approved": {
+      "main": [
+        [
+          {
+            "node": "Send to Customer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Escalate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send for Approval": {
+      "main": [
+        [
+          {
+            "node": "Wait for Human",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Human": {
+      "main": [
+        [
+          {
+            "node": "Approve Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reject Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": [
+      "Start",
+      "AI Draft Response",
+      "Send for Approval",
+      "Wait for Human",
+      "Approve Webhook",
+      "Reject Webhook",
+      "If Approved",
+      "Send to Customer",
+      "Escalate"
+    ]
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
