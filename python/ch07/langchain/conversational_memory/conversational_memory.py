@@ -42,8 +42,7 @@ if __name__ == "__main__":
     memory.save_context({"input": input_text_1}, {"output": response_1})
     print(f"Current History: {memory.load_memory_variables({})['history']}")
 
-    print("
---- Conversation Turn 2 ---")
+    print("--- Conversation Turn 2 ---")
     input_text_2 = "What did I just ask you?"
     response_2 = chain.invoke({"input": input_text_2, "history": memory.load_memory_variables({})["history"]})
     print(f"User: {input_text_2}")
@@ -51,8 +50,7 @@ if __name__ == "__main__":
     memory.save_context({"input": input_text_2}, {"output": response_2})
     print(f"Current History: {memory.load_memory_variables({})['history']}")
 
-    print("
---- Conversation Turn 3 ---")
+    print("--- Conversation Turn 3 ---")
     input_text_3 = "And what is your name again?"
     response_3 = chain.invoke({"input": input_text_3, "history": memory.load_memory_variables({})["history"]})
     print(f"User: {input_text_3}")
