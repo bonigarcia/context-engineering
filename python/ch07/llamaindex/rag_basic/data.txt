@@ -1,0 +1,1 @@
+LlamaIndex is a data framework for LLM applications. It helps connect your custom data sources to large language models. This allows LLMs to reason over your data, providing more accurate and contextual responses. LlamaIndex offers various tools for data ingestion, indexing, and querying. It is primarily a Python library, but also has a TypeScript version.
