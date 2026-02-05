@@ -24,7 +24,7 @@ Alternatively, create a `.env` file in the source directory with the content `OP
 
 3. Run the script:
 ```bash
-python basic_agent.py
+python langgraph_basic_agent
 ```
 
 ## Output
