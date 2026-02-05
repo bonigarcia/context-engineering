@@ -1,19 +1,19 @@
 import os
-from dotenv import load_dotenv
+
 from datasets import Dataset
+from dotenv import load_dotenv
 
 from langchain_community.vectorstores import FAISS
+from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from ragas import evaluate
-
-from ragas.metrics._faithfulness import faithfulness
 from ragas.metrics._answer_relevance import answer_relevancy
-from ragas.metrics._context_recall import context_recall
 from ragas.metrics._context_precision import context_precision
+from ragas.metrics._context_recall import context_recall
+from ragas.metrics._faithfulness import faithfulness
 
 
 def main():
