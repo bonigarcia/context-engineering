@@ -8,27 +8,24 @@ This project requires [Python](https://www.python.org/) 3.6+ and the libraries l
 
 ## Steps for running this example
 
-1.  Create a directory named `rag_with_vectorstore` under `python/ch07/langchain/` in your `context-engineering` repository.
-2.  Save the `rag_with_vectorstore.py` file into this new directory.
-3.  Save the `requirements.txt` file into the `rag_with_vectorstore` directory.
-4.  Install dependencies:
-    ```bash
-    python -m venv .venv
-    source .venv/bin/activate  # Windows: .venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
+1.  Install dependencies:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+```
 
-5.  Set environment variables:
-    Ensure your OpenAI API key is set as an environment variable. You can do this by:
-    ```
-    OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-    ```
-    Alternatively, create a `.env` file in the source directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
+2. Set environment variables:
+Ensure your OpenAI API key is set as an environment variable. You can do this by:
+```
+OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+```
+Alternatively, create a `.env` file in the source directory with the content `OPENAI_API_KEY="YOUR_OPENAI_API_KEY"`.
 
-6.  Run the script:
-    ```bash
-    python rag_with_vectorstore.py
-    ```
+3. Run the script:
+```bash
+python rag_with_vectorstore.py
+```
 
 ## Output
 
