@@ -42,8 +42,7 @@ if __name__ == "__main__":
     print(f"Question: {question}")
     print(f"Answer: {response}")
 
-    print("
---- To view the trace, visit your LangSmith project dashboard ---")
+    print("--- To view the trace, visit your LangSmith project dashboard ---")
     print("Ensure LANGCHAIN_TRACING_V2=true and LANGCHAIN_API_KEY are set.")
     if os.getenv("LANGCHAIN_PROJECT"):
         print(f"Look for a run in project: {os.getenv('LANGCHAIN_PROJECT')}")
