@@ -1,0 +1,4 @@
+AutoGen is a framework that allows you to build LLM applications using multiple agents.
+These agents can converse with each other to solve tasks.
+AutoGen was developed by Microsoft.
+It simplifies orchestration, optimization, and automation of LLM workflows.
