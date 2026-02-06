@@ -29,4 +29,4 @@ python basic_llm_interaction.py
 
 ## Output
 
-When you run the script, it will sent a basic user prompt to the LLM as input (*What is the capital of France?*) and the model should provide a response (*The capital of France is Paris*).
+When you run the script, it will send a basic user prompt to the LLM as input (*What is the capital of France?*) and the model should provide a response (*The capital of France is Paris*).
