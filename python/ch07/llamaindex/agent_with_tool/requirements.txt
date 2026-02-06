@@ -1,2 +1,3 @@
 llama-index
+llama-index-core
 openai

@@ -1,7 +1,7 @@
 import os
-from llama_index.core.agent import AgentRunner
+from llama_index.core.agent.workflow import FunctionAgent
 from llama_index.core.tools import BaseTool, FunctionTool
-from llama_index.llms.openai import OpenAI # Import for LLM
+from llama_index.llms.openai import OpenAI
 
 # Set OpenAI API key
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
@@ -23,16 +23,22 @@ weather_tool = FunctionTool.from_defaults(fn=get_current_weather)
 llm = OpenAI(model="gpt-3.5-turbo", temperature=0.0)
 
 # Create an agent with the tool
-agent = AgentRunner(tools=[weather_tool], llm=llm)
+agent = FunctionAgent(tools=[weather_tool], llm=llm)
 
-# Interact with the agent
-print("Agent: Hello! I can tell you the weather. What city are you interested in?")
 
-response = agent.chat("What is the weather in London?")
-print(f"User: What is the weather in London?")
-print(f"Agent: {response}")
+async def main():
+    # Interact with the agent
+    print("Agent: Hello! I can tell you the weather. What city are you interested in?")
 
-response = agent.chat("How about Berlin?")
-print(f"User: How about Berlin?")
-print(f"Agent: {response}")
+    response = await agent.run("What is the weather in London?")
+    print(f"User: What is the weather in London?")
+    print(f"Agent: {response}")
+
+    response = await agent.run("How about Berlin?")
+    print(f"User: How about Berlin?")
+    print(f"Agent: {response}")
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(main())
 
