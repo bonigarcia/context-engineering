@@ -3,10 +3,11 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.output_parsers import StrOutputParser
-from langchain.chains import create_history_aware_retriever, create_retrieval_chain
+from langchain_classic.chains.retrieval import create_retrieval_chain
+from langchain_classic.chains.history_aware_retriever import create_history_aware_retriever
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.runnables import RunnableWithMessageHistory
-from langchain.memory import ConversationBufferMemory
+from langchain_classic.memory import ConversationBufferMemory
 
 # Load environment variables from .env file
 load_dotenv()
