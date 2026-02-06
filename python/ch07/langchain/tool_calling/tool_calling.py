@@ -4,8 +4,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage
-from langchain.agents import create_tool_calling_agent, AgentExecutor
-from langchain import hub
+from langchain_classic.agents import create_tool_calling_agent, AgentExecutor
+from langchain_classic import hub
 import datetime
 
 # Load environment variables from .env file
