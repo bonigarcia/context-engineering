@@ -23,7 +23,7 @@ All dependencies are listed in `requirements.txt` and can be installed from ther
 1.  Install dependencies:
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\\Scripts\\activate
+source .venv/bin/activate  # Windows: .venv\Scripts\activate # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
