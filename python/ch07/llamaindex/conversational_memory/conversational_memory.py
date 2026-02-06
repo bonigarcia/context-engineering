@@ -1,7 +1,7 @@
 import os
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.core.chat_engine import CondenseQuestionChatEngine
-from llama_index.llms.openai import OpenAI # Import for LLM
+from llama_index.llms.openai import OpenAI
 
 # Set OpenAI API key
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")

@@ -1,8 +1,8 @@
 import os
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.core.prompts import PromptTemplate
-from llama_index.llms.openai import OpenAI # Import for LLM
-from llama_index.embeddings.openai import OpenAIEmbedding # Import for embeddings
+from llama_index.llms.openai import OpenAI
+from llama_index.embeddings.openai import OpenAIEmbedding
 
 # Set OpenAI API key
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
@@ -53,7 +53,7 @@ response = query_engine.query("What is the capital of France?")
 
 # Print the response
 print(f"System Prompt: {custom_system_prompt}")
-print(f"Query Prompt: {custom_query_prompt.template}")
+print(f"Query Prompt Template: {custom_query_prompt.template}")
 print(f"Query: What is the capital of France?")
 print(f"Response: {response.response}")
 
