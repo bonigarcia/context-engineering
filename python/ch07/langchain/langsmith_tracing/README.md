@@ -20,10 +20,10 @@ Ensure your OpenAI API key is set as an environment variable. In addition, you m
 
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-LANGCHAIN_TRACING_V2="true"
-LANGCHAIN_API_KEY="YOUR_LANGSMITH_API_KEY"
+LANGSMITH_TRACING=true
 LANGCHAIN_PROJECT="Your LangChain Project Name"
+LANGCHAIN_API_KEY="YOUR_LANGSMITH_API_KEY"
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com
 ```
 
 3. Run the script:
@@ -33,21 +33,13 @@ python langsmith_tracing.py
 
 ## Output
 
-When you run the script, it will execute a simple LangChain sequence. The console output will show the question and answer. Crucially, in the background, a detailed trace of this execution will be sent to your LangSmith project. You will need to navigate to your LangSmith dashboard to view the trace, which will include:
+When you run the script, it will execute a simple LangChain sequence. The console output will show the question and answer. In the background, a detailed trace of this execution will be sent to your LangSmith project. You will need to navigate to your LangSmith dashboard to view the trace, which will include:
 
 *   The LLM call details.
 *   The prompt used.
 *   The LLM's response.
 *   Metadata about the run.
 
-Example console output:
+Example LangSmith dashboard:
 
-```
---- Invoking LangChain with LangSmith tracing enabled ---
-Question: What is the capital of Canada?
-Answer: The capital of Canada is Ottawa.
-
---- To view the trace, visit your LangSmith project dashboard ---
-Ensure LANGCHAIN_TRACING_V2=true and LANGCHAIN_API_KEY are set.
-Look for a run in project: Context Engineering
-```
+![MCP Inspector UI interface](/docs/img/langsmith-dashboard.png)

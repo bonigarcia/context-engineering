@@ -14,7 +14,7 @@ if not api_key:
 
 # LangSmith specific environment variables
 # Ensure these are set in your .env file or environment
-# LANGCHAIN_TRACING_V2=true
+# LANGCHAIN_TRACING=true
 # LANGCHAIN_API_KEY="YOUR_LANGSMITH_API_KEY"
 # LANGCHAIN_PROJECT="Your LangChain Project Name" # Optional, but good practice
 
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     print(f"Answer: {response}")
 
     print("--- To view the trace, visit your LangSmith project dashboard ---")
-    print("Ensure LANGCHAIN_TRACING_V2=true and LANGCHAIN_API_KEY are set.")
+    print("Ensure LANGCHAIN_TRACING=true and LANGCHAIN_API_KEY are set.")
     if os.getenv("LANGCHAIN_PROJECT"):
         print(f"Look for a run in project: {os.getenv('LANGCHAIN_PROJECT')}")
     else:
