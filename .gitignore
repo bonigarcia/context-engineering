@@ -267,3 +267,6 @@ out/
 
 # JavaScript
 node_modules
+
+# Google ADK
+.adk
