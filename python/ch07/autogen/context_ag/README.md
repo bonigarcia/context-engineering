@@ -1,6 +1,6 @@
-# Basic RAG with AutoGen
+# Context-augmented generation with AutoGen
 
-This example demonstrates a basic approach to Retrieval-Augmented Generation (RAG) using AutoGen. Instead of a full-fledged vector database integration, this example shows how to inject external knowledge as context into a conversation with an AutoGen agent. A `UserProxyAgent` reads a local `data.txt` file and provides its content to an `AssistantAgent` as part of the initial prompt. The `AssistantAgent` then answers questions based only on this provided context.
+This example demonstrates a basic approach to Context-augmented generation using AutoGen. This example shows how to inject external knowledge as context into a conversation with an AutoGen agent. A `UserProxyAgent` reads a local `data.txt` file and provides its content to an `AssistantAgent` as part of the initial prompt. The `AssistantAgent` then answers questions based only on this provided context.
 
 ## Requirements
 

@@ -12,14 +12,6 @@ config_list = [
     }
 ]
 
-# Create a RAG agent (AssistantAgent with RAG capabilities)
-# For simplicity, we will use a UserProxyAgent to simulate RAG by feeding the context
-# In a real scenario, you would integrate with a vector database and retrieval mechanism
-# using a tool or a custom agent.
-
-# For a simpler example focusing on how AutoGen handles external knowledge as context:
-# We'll use a UserProxyAgent to read the document and provide it as context to the AssistantAgent.
-
 # Define the data file
 DATA_FILE = "data.txt"
 
