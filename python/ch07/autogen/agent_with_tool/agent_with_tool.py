@@ -7,7 +7,7 @@ import os
 # Configuration for the models
 config_list = [
     {
-        "model": "gpt-4", # You can change this to gpt-3.5-turbo if you don't have GPT-4 access
+        "model": "gpt-4",
         "api_key": os.environ.get("OPENAI_API_KEY"),
     }
 ]
