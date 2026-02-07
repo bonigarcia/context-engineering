@@ -1,6 +1,6 @@
-# Basic RAG with AutoGen
+# Basic Retrieval-Augmented Generation (RAG) with AutoGen
 
-This example demonstrates a basic approach to Retrieval-Augmented Generation (RAG) using AutoGen. TODO.
+This example demonstrates a basic RAG setup using AutoGen's `RetrieveUserProxyAgent`. It showcases how to configure agents to answer questions by retrieving information from specified external URLs.
 
 ## Requirements
 
@@ -22,21 +22,11 @@ Ensure your OpenAI API key is set as an environment variable. You can do this by
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```
 
-3. Create the `data.txt` file:
-Ensure a file named `data.txt` exists in the same directory as `rag_with_autogen.py` with the following content:
-
-```
-AutoGen is a framework that allows you to build LLM applications using multiple agents.
-These agents can converse with each other to solve tasks.
-AutoGen was developed by Microsoft.
-It simplifies orchestration, optimization, and automation of LLM workflows.
-```
-
-4. Run the script:
+3. Run the script:
 ```bash
-python rag_with_autogen.py
+python basic_rag.py
 ```
 
 ## Expected Output
 
-TODO.
+Upon running the script, the `RetrieveUserProxyAgent` will embed the specified documents and then engage in a conversation with the `AssistantAgent`. The output will show the chat history, where the agents collaborate to answer the `code_problem` by retrieving relevant information about using FLAML with Spark for parallel training. The final message from the assistant should contain the answer to the problem, followed by 'TERMINATE'.
