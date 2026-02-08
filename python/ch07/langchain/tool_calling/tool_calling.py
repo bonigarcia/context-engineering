@@ -30,5 +30,5 @@ if __name__ == "__main__":
     # Invoke the agent with a query that requires tool use
     user_prompt = "What time is it right now?"
     print(f"User: {user_prompt}")
-    response = agent.invoke({"messages": [{"role": "user", "content": "What time is it right now?"}]})
+    response = agent.invoke({"messages": [{"role": "user", "content": user_prompt}]})
     print(f"Agent response: {response["messages"][-1].content}")
