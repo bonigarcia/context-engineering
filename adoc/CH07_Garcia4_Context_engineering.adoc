@@ -1,0 +1,559 @@
+= Context engineering
+:chapter: 7
+:sectnums:
+:figure-caption: Figure {chapter}
+:listing-caption: Listing {chapter}
+:table-caption: Table {chapter}
+:sectnumoffset: {chapter} - 1
+:leveloffset: 1
+:imagesdir: ../../images/ch07/
+:table-number:
+:figure-number:
+:listing-number:
+
+[#ch07, reftext={chapter}, caption='{chapter}']
+= Context in AI frameworks
+This chapter covers
+
+* LangChain
+* LlamaIndex
+* AutoGen
+* Agent Development Kit (ADK)
+
+[#ch07_langchain, reftext={chapter}.{section}, caption='{chapter}.{section}']
+== LangChain
+LangChain footnote:[https://docs.langchain.com/] is one of the most widely adopted frameworks for building LLM-based applications. Its popularity stems from an early emphasis on composability, a rich ecosystem, and a pragmatic abstraction layer for prompts, models, retrieval, tools, and memory. It supports both Python and JavaScript/TypeScript, making it accessible to a wide range of developers.
+
+From a context engineering perspective, LangChain is particularly relevant because it provides powerful abstractions for managing and orchestrating the various sources of context that influence an LLM's behavior. It allows practitioners to inject, maintain, and manipulate context across different stages of an application's lifecycle, from initial prompt construction to dynamic tool interactions and long-term memory retrieval.
+
+=== Context sources
+LangChain aligns naturally with the six-source context model introduced in this book: system instructions, user prompts, external knowledge, tools output, memory, and state.
+
+==== System instructions and user prompts
+In LangChain, both system instructions and user prompts are managed through a flexible messaging interface, primarily using `ChatPromptTemplate`. This allows developers to define structured conversations that guide the LLM's behavior and provide it with specific directives or information. Messages can be templated, enabling dynamic variable insertion and ensuring consistent formatting.
+
+A `ChatPromptTemplate` is constructed from a list of messages, where each message has a role (e.g., "system", "human", "ai") and content. The "system" role is typically used for high-level instructions, constraints, and guidelines that set the LLM's overall tone and behavior. The "human" role represents the user's input, which often contains the immediate intent and information. LangChain automatically serializes these messages to the format expected by the underlying LLM API. Consider the following example, which uses a `ChatPromptTemplate` to define a system instruction and a user prompt that includes a dynamic input.
+
+[source,python]
+----
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+llm = ChatOpenAI() <1>
+prompt = ChatPromptTemplate.from_messages([ <2>
+    ("system", "You are a helpful AI assistant. Your name is {name}."),
+    ("user", "{input}")
+])
+output_parser = StrOutputParser() <3>
+chain = prompt | llm | output_parser <4>
+response = chain.invoke({"name": "Bob", "input": "What is the capital of Spain?"}) <5>
+----
+
+<1> Initialize the LLM (using an OpenAI model in this example).
+<2> Define a prompt template with a system message and user input.
+<3> Define an output parser to get a string response.
+<4> Create a chain combining the prompt, LLM, and output parser.
+<5> Invoke the chain with specific inputs.
+
+==== External knowledge
+One of the most powerful context engineering features in LangChain is its extensive support for RAG. This is achieved by retrieving relevant documents or data chunks from an external knowledge base and injecting them into the LLM's context. In this way, LangChain provides modular components for each step of the RAG process:
+
+* _Document loaders_: These components are responsible for ingesting data from various sources (e.g., text files, PDFs, websites, databases) into a standardized `Document` format.
+* _Text splitters_: Large documents are often too big to fit within an LLM's context window. Text splitters divide documents into smaller, semantically meaningful chunks, ensuring that each piece can be processed effectively.
+* _Embedding models_: These models convert text chunks into numerical vector representations (embeddings), capturing their semantic meaning. These embeddings are crucial for efficient similarity search.
+* _Vector stores_: These databases store and index the document embeddings, allowing for fast retrieval of relevant chunks based on a query's embedding.
+* _Retrievers_: Retrievers abstract the process of querying a vector store and returning the most relevant document chunks.
+
+The following snippet illustrates a basic RAG implementation that loads a simple text file, splits it into chunks, embeds them, stores them in an in-memory vector store, and then uses a retriever to find relevant information for a given query. LangChain also supports more advanced RAG architectures, such as two-step RAG (retrieval before generation), agentic RAG (where an LLM agent decides when and how to retrieve information), and hybrid RAG (combining different retrieval methods with validation steps).
+
+[source,python]
+----
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_core.prompts import ChatPromptTemplate
+
+loader = TextLoader(external_knowledge_path) <1>
+docs = loader.load()
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200) <2>
+splits = text_splitter.split_documents(docs)
+embeddings = OpenAIEmbeddings(api_key=api_key) <3>
+vectorstore = FAISS.from_documents(splits, embeddings) <4>
+retriever = vectorstore.as_retriever() <5>
+rag_prompt = ChatPromptTemplate.from_template("""Answer the question based on the provided context: <6>
+<context>{context}</context>
+Question: {input}""")
+----
+
+<1> Load the document (from a collection of files, in the complete implementation available in the example repository).
+<2> Split the document into chunks (of 1000 tokens in this example).
+<3> Create embeddings, using an OpenAI model.
+<4> Create a vector store using a similarity search library called FAISS footnote:[https://github.com/facebookresearch/faiss] (Facebook AI Similarity Search).
+<5> Create a retriever from the vector store.
+<6> Define a prompt using a template that contains the retrieved context and the user query.
+
+==== Tools
+In LangChain, a "tool" is essentially a function that an agent can call. The framework provides mechanisms to define tools with descriptions that help the LLM understand their purpose and how to use them. Agents, specialized chains that use an LLM to decide on a sequence of actions, can leverage these tools. The output generated by these tools becomes a critical part of the context, informing the LLM's subsequent decisions or responses. Furthermore, LangChain agents can integrate with Model Context Protocol (MCP) servers to access a wider range of structured content, multimodal capabilities, and resources, further enriching the tool context.
+
+The following snippet demonstrates an LLM agent that uses a custom tool. This tool will perform a predefined operation, and the agent will decide when and how to invoke it.
+
+[source,python]
+----
+from langchain import hub
+from langchain.agents import create_tool_calling_agent, AgentExecutor
+
+tools = [get_current_time] <1>
+prompt = hub.pull("hwchase17/openai-functions-agent") <2>
+agent = create_tool_calling_agent(llm, tools, prompt) <3>
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) <4>
+----
+
+<1> Define the tools available to the agent (a custom Python function).
+<2> Get the agent prompt for tool-calling from the LangChain Hub (i.e., a community-driven platform for sharing LangChain-related artifacts).
+<3> Create the agent with an existing model (`llm`), user query (`prompt), and the previously defined `tools`.
+<4> Create an agent executor object used to run the agent.
+
+==== Memory
+Memory is a crucial context engineering component in LangChain, enabling LLM applications to retain information from previous interactions and use it to inform future responses. Memory typically stores the history of a conversation, which includes both user inputs and AI outputs. This history is then injected back into the prompt for subsequent turns, providing the LLM with the necessary conversational context. LangChain supports different types of memory, such as:
+
+* `ConversationBufferMemory`: Stores the raw chat messages.
+* `ConversationBufferWindowMemory`: Stores a fixed number of recent interactions, preventing the context from growing indefinitely.
+* `ConversationSummaryMemory`: Summarizes the conversation history as it grows, keeping the context concise while retaining key information.
+* `ConversationKnowledgeMemory`: Extracts and stores "facts" from the conversation.
+
+Beyond these built-in memory types, LangChain applications, especially those built with LangGraph, can leverage persistence mechanisms to achieve true long-term memory. By storing conversational states as JSON documents, agents can recall and utilize information across extended periods, maintaining user preferences, historical data, and extracted insights over multiple interactions.
+
+The following snippet example demonstrates the use of `ConversationBufferMemory` to maintain a persistent chat history, enabling the LLM to remember previous turns in a conversation.
+
+[source,python]
+----
+from langchain.memory import ConversationBufferMemory
+
+memory = ConversationBufferMemory(return_messages=True) <1>
+input_text_1 = "Hi there! What's your name?"
+response_1 = chain.invoke({"input": input_text_1, "history": memory.load_memory_variables({})["history"]}) <2>
+memory.save_context({"input": input_text_1}, {"output": response_1}) <3>
+----
+
+<1> Creates a memory object that stores the full conversation history in order.
+<2> Invoke the chain with the current input and prior history(empty on the first turn).
+<3> Saves both the user input and the model's response into the memory buffer so that future calls can include this exchange as conversational context.
+
+==== State
+While LangChain provides foundational building blocks, managing complex, multi-turn interactions or orchestrating multiple LLM agents with internal state transitions can become challenging. This is where LangGraph, an extension of LangChain, comes into play. LangGraph is explicitly designed for building stateful, multi-actor applications with LLMs, representing computations as a graph where nodes can be LLMs, tools, or other functions, and edges define the flow of execution.
+
+LangGraph introduces the concept of a "state graph," which enables developers to explicitly define and manage an application's internal state and its evolution over time in response to agent actions and LLM responses. This is particularly useful for building sophisticated agents that can execute sequences of actions, loop, make conditional decisions, and even hand off control to other agents. The state in a LangGraph application serves as a persistent context that is updated and accessible across different nodes in the graph, enabling complex workflows, multi-agent coordination, and human-in-the-loop interventions where the graph's execution can be paused for human review and feedback.
+
+The following snippet illustrates how state can be managed between different nodes in a multi-agent system. To that aim, this example implements a basic graph in which subsequent LLM calls or tool invocations modify a central state.
+
+[source,python]
+----
+from langgraph.graph import StateGraph, END
+
+workflow
+ = StateGraph(GraphState) <1>
+workflow.add_node("llm_node", call_llm)
+workflow.add_node("final_output", end_node)
+workflow.set_entry_point("llm_node")
+workflow.add_edge("llm_node", "final_output")
+workflow.add_edge("final_output", END)
+app = workflow.compile() <2>
+initial_state = {"input": "Hello, how are you today?", "output": ""} <3>
+final_state = app.invoke(initial_state)
+----
+
+<1> Define a stateful execution graph using a previously defined `GraphState` (which represents the state of our graph).
+<2> Compile the graph into an executable application.
+<3> Initialize and invoke the graph with the initial input state.
+
+=== Context management
+LangChain offers several strategies for managing context, with a particular focus on selection, compression, and isolation:
+
+* Context selection: LangChain's `Retrievers` are a prime example of context selection. By fetching only the most relevant document chunks from a vector store, retrievers prevent the LLM from being overwhelmed by extraneous information, allowing it to focus on highly pertinent data.
+* Context compression: When retrieved documents are still too large or contain redundant information, LangChain provides tools for contextual compression. For instance, `ContextualCompressionRetriever` uses an LLM to "compress" or filter the retrieved documents, keeping only the most salient parts before passing them to the final LLM chain. Memory components like `ConversationSummaryMemory` also compress by summarizing past conversations, reducing the token count while retaining key historical context.
+* Context isolation: The modularity of LangChain, especially with `Chains` and `Agents`, inherently supports context isolation. Each chain or agent can be designed to operate within its own specific context, preventing interference from unrelated information. In MAS built with LangGraph, individual nodes can be designed to process particular aspects of the state, ensuring that agents focus on their designated tasks without unnecessary contextual noise.
+
+To illustrate context compression, the following code example showcases how `ContextualCompressionRetriever` can refine retrieved documents for an LLM.
+
+[source,python]
+----
+from langchain.retrievers import ContextualCompressionRetriever
+from langchain.retrievers.document_compressors import LLMChainExtractor
+
+base_retriever = vectorstore.as_retriever(search_kwargs={"k": 2}) <1>
+compressor = LLMChainExtractor.from_llm(llm) <2>
+compression_retriever = ContextualCompressionRetriever( <3>
+    base_compressor=compressor,
+    base_retriever=base_retriever
+)
+----
+
+<1> Retrieve the top 2 documents from a vector store used as external knowledge.
+<2> Create a document compressor using an LLM to extract only the parts of each retrieved document that are relevant to the query.
+<3> Create a contextual compression retriever that first retrieves documents using the base retriever, then compresses them with the LLM before returning them.
+
+=== Context evaluation and observability
+LangChain, through its tight integration with LangSmith, provides comprehensive capabilities for context evaluation and observability. For context engineering, LangSmith offers invaluable features for understanding and improving how context is managed within LLM applications:
+
+*   **Tracing:** LangSmith provides detailed traces of the execution of LangChain chains and agents. These traces visualize the flow of context, intermediate steps, and individual LLM calls, offering deep insights into how context is passed, modified, and utilized throughout an application's lifecycle.
+*   **Debugging:** By examining these traces, developers can precisely pinpoint where context might be lost, corrupted, or misinterpreted. This greatly facilitates the debugging of context-related issues, allowing for rapid identification and resolution of problems.
+*   **Evaluation:** LangSmith supports various evaluation methodologies, including LLM-as-a-judge, human-in-the-loop (HITL) feedback, and custom metrics. These evaluators can assess critical aspects such as context relevance (how well retrieved context matches the query), faithfulness (how accurately the generated answer reflects the provided context), and overall answer relevance. Developers can create datasets, run evaluations on different versions of their applications, and compare performance, ensuring that context engineering efforts lead to desired outcomes and continuous improvement.
+*   **Monitoring:** For deployed applications, LangSmith offers dashboards and alerts to monitor key metrics related to context usage, token consumption, latency, and error rates. This proactive monitoring helps identify and address context-related performance regressions in production environments, ensuring the ongoing quality and reliability of LLM systems.
+
+=== Ecosystem
+The LangChain ecosystem is rich with tools and components that extend its core capabilities, significantly enhancing context engineering workflows:
+
+*   **LangChain Expression Language (LCEL):** LCEL is a declarative way to easily compose chains. It provides a flexible and powerful syntax for building complex LLM applications by combining various components (LLMs, prompts, parsers, tools) into custom chains. This allows for clear definition of how context flows and transforms through an application.
+*   **LangServe:** LangServe is a library for deploying LangChain chains as REST APIs. It simplifies the process of making LangChain applications accessible, enabling easy integration with other services and providing a standard interface for external systems to interact with the context-aware capabilities of a LangChain application.
+*   **LangGraph:** Built on top of LangChain, LangGraph is a library for constructing stateful multi-actor applications. It enables the explicit definition of computational graphs where different nodes (LLMs, tools, functions) interact and modify a shared state. This is crucial for managing dynamic context in recursive processes and human-in-the-loop interactions that require consistent, evolving context.
+*   **LangSmith:** LangSmith is an end-to-end development platform for debugging, testing, evaluating, and monitoring LLM applications built with LangChain. It provides the essential observability layer, allowing developers to inspect the flow of data and context through their chains and agents, ensuring that context is being handled correctly and efficiently.
+
+[#ch07_llamaindex, reftext={chapter}.{section}, caption='{chapter}.{section}']
+== LlamaIndex
+LlamaIndex footnote:[https://www.llamaindex.ai] (formerly GPT Index) is a data-centric open-source framework for connecting LLMs with external knowledge sources in a structured, scalable way. Created initially to simplify RAG, LlamaIndex focuses on turning raw data into usable, high-quality context rather than orchestrating entire agent lifecycles.
+
+LlamaIndex supports Python and TypeScript and is commonly adopted in applications where domain knowledge, documents, or structured data play a central role. Its abstractions are organized around ingestion, indexing, querying, and context augmentation, making it especially relevant for practitioners concerned with context quality and grounding.
+
+Getting started with LlamaIndex is straightforward, typically involving installation via pip:
+
+[source,bash]
+----
+pip install llama-index
+----
+
+=== Context sources
+LlamaIndex provides a suite of tools and abstractions to manage various context sources, making it a valuable framework for context engineering. These capabilities span system instructions, external knowledge, tools, memory, state, and user prompts.
+
+==== External knowledge
+The strength of LlamaIndex lies in its robust support for external knowledge, primarily through RAG. The framework's core components for RAG include `Documents`, `Nodes`, and `Indexes`, particularly the `VectorStoreIndex`.
+
+A `Document` in LlamaIndex represents a raw data container that can be anything from a PDF file to a web page to a database entry. These documents are then processed and broken down into smaller, manageable `Node` objects, often representing chunks of text. Each node can carry metadata, enriching the context during retrieval. These nodes are then indexed, typically in a `VectorStoreIndex` that uses embeddings to enable semantic search. When a query is made, the `VectorStoreIndex` efficiently retrieves the most semantically similar nodes, which are then passed to the LLM as external knowledge.
+
+To illustrate a basic RAG flow using LlamaIndex, consider the following example where we load a simple text document, create a vector store index from it, and then query the index.
+
+[source,python]
+----
+documents = SimpleDirectoryReader(".").load_data() <1>
+index = VectorStoreIndex.from_documents(documents) <2>
+query_engine = index.as_query_engine() <3>
+response = query_engine.query("What is LlamaIndex?") <4>
+----
+
+<1> Load documents from the 'data' directory
+<2> Create a `VectorStoreIndex` from the documents (external knowledge)
+<3> Create a query engine
+<4> Create a query engine
+
+==== System instructions and user prompts
+LlamaIndex offers ways to customize system instructions and user prompts, including specific templates that combine the user's query with retrieved information, as well as high-level instructions for the LLM. 
+
+The following example demonstrates how to set custom system instructions and query prompts within LlamaIndex.
+
+[source,python]
+----
+query_engine = index.as_query_engine( <1>
+    system_prompt=custom_system_prompt,
+    text_qa_template=custom_query_prompt,
+    llm=llm
+)
+response = query_engine.query("What is the capital of France?") <2>
+----
+<1> Create a query engine with custom prompts using an existing `VectorStoreIndex` (`index`) and LLM (`llm`)
+<2> Query the index with a specific question
+
+==== Tools
+LlamaIndex agents can leverage external tools to expand their capabilities beyond their inherent knowledge or the data retrieved via RAG. The framework supports the integration of custom tools, which are essentially Python functions or other callable objects wrapped in a `FunctionTool`. When an agent receives a query, it can decide to use one or more of its available tools to gather necessary information or perform actions before formulating a response. LlamaIndex also offers integration with MCP, providing a standardized way for models to interface with various tools and data sources.
+
+The following example illustrates how to define a simple custom tool and integrate it with a LlamaIndex agent.
+
+[source,python]
+----
+weather_tool = FunctionTool.from_defaults(fn=get_current_weather) <1>
+agent = FunctionAgent(tools=[weather_tool], llm=llm) <2>
+response = await agent.run("What is the weather in London?") <3>
+----
+
+<1> Convert a Python function to a LlamaIndex tool
+<2> Create an agent with a custom tool
+<3> Query the agent to use the registered tool
+
+==== Memory and state
+LlamaIndex provides robust features for managing both short-term conversational memory and more persistent forms of state. Conversational memory enables an LLM to recall previous turns in a dialogue, leading to more natural, contextually aware interactions. LlamaIndex's chat engines, such as `CondenseQuestionChatEngine`, are designed to handle this by condensing the current user input with the chat history to form a new, context-rich query.
+
+LlamaIndex also supports various forms of state management. This includes persistent indexes and document stores, allowing applications to "remember" vast amounts of information over time without re-ingesting and re-indexing data for every session. Agents, by their very nature, maintain an internal state as they execute chains of thought and use tools, making decisions based on accumulated observations and prior actions. Furthermore, LlamaIndex provides integrations with external memory solutions, allowing developers to choose the storage mechanism best suited to their application's state requirements.
+
+The following snippet illustrates how to build a conversational agent that leverages memory to maintain context across multiple turns, providing a more fluid and intelligent interaction.
+
+[source,python]
+----
+chat_engine = index.as_chat_engine( <1>
+    chat_mode="condense_question",
+    llm=llm,
+    verbose=True
+)
+----
+<1> Create a chat engine with memory using an existing `VectorStoreIndex` (`index`) and LLM (`llm`)
+
+
+=== Context management
+LlamaIndex provides several strategies and modules for selecting, writing, compressing, and isolating context, ensuring that the most relevant and concise information is fed to the LLM.
+
+The first step in context management involves loading raw data and transforming it into a format suitable for LLM consumption. LlamaIndex offers various data loaders and data connectors (LlamaHub) to ingest data from diverse sources, including local files, databases, and APIs. Once loaded, raw documents are processed into `Node` objects using node parsers. These parsers are responsible for chunking documents into smaller, semantically meaningful units. During this process, metadata extraction can enrich nodes with additional information, enhancing their discoverability and relevance during retrieval.
+
+Then, LlamaIndex excels in its diverse retrieval strategies, allowing developers to precisely control how relevant context is fetched for a given query. At its core, _vector stores_ are used to store vector embeddings of nodes, enabling semantic search. However, LlamaIndex extends beyond simple vector search with advanced techniques, including retrieval strategies. These include:
+
+* Keyword-based retrieval: Utilizing traditional search methods like BM25 to complement semantic search.
+* Hybrid retrieval: Combining vector and keyword search for more comprehensive results.
+* Auto-retrieval: Dynamically selecting the best retrieval approach based on the query.
+* Recursive retrieval: Decomposing complex queries into sub-queries and retrieving information iteratively.
+* Query transformations: Employing techniques like query expansion or rephrasing to improve retrieval quality.
+
+To further optimize the context provided to LLMs, LlamaIndex offers mechanisms for compressing and isolating context. Node postprocessors can be applied after retrieval to re-rank, filter, or shorten the retrieved nodes, ensuring that only the most valuable information is passed to the LLM. This is particularly useful for managing token limits and focusing the LLM's attention on critical details.
+
+For more sophisticated scenarios, LlamaIndex's router modules allow isolating context by directing queries to specific indexes or tools based on their intent. This enables the building of multimodal or multilingual RAG systems in which different types of information are managed and queried independently, providing a clean, focused context for the LLM.
+
+
+=== Context evaluation and observability
+LlamaIndex supports various approaches to evaluate the effectiveness of RAG pipelines and the overall performance of LLM applications, including qualitative and quantitative metrics for assessing faithfulness, answer relevance, and context relevance.
+
+LlamaIndex asupportscomponent-wise evaluation of the RAG pipeline, enabling developers to pinpoint areas for improvement. Furthermore, end-to-end evaluation helps understand the system's overall performance in real-world scenarios. LlamaIndex also integrates with external evaluation frameworks like TruLens and Tonic Validate, providing advanced analytical capabilities and benchmark comparisons. The concept of HITL evaluation can also be implemented to incorporate human feedback for continuous improvement.
+
+LlamaIndex provides native observability through a comprehensive callback system. This system allows developers to hook into various stages of the query engine or agent execution, capturing events such as LLM calls, retrieval operations, and tool executions. LlamaIndex's instrumentation capabilities further enhance this by providing detailed traces that can be integrated with monitoring platforms, allowing for real-time analysis and performance tuning.
+
+=== Ecosystem
+The LlamaIndex ecosystem extends beyond its core framework, offering a suite of complementary tools and platforms that enhance its context-engineering capabilities. These tools address various aspects of the LLM application lifecycle, from data ingestion and parsing to agent deployment and workflow orchestration:
+
+* LlamaCloud is a managed platform that provides powerful services for building and deploying LlamaIndex applications. It simplifies the infrastructure burden associated with scaling RAG pipelines and managing complex data workflows. 
+* LlamaParse is an advanced document parsing service, designed to intelligently extract text, tables, and other structured information from various document formats, significantly improving the quality of the initial data that feeds into LlamaIndex.
+* LlamaPacks are pre-built, production-ready modules that encapsulate common use cases and patterns in LlamaIndex. They provide ready-to-use solutions for tasks such as building chatbots, integrating with specific data sources, or implementing advanced retrieval techniques.
+* LlamaAgents represent the framework's approach to building autonomous LLM agents that can reason, plan, and execute actions using tools. They are designed to handle complex, multi-step tasks by breaking them down into smaller sub-problems and coordinating the use of various tools and knowledge sources.
+
+[#ch07_autogen, reftext={chapter}.{section}, caption='{chapter}.{section}']
+== AutoGen
+AutoGen footnote:[https://microsoft.github.io/autogen/], developed by Microsoft, is a framework that enables the development of LLM applications using multiple agents that can converse to solve tasks. It simplifies the orchestration, optimization, and automation of LLM workflows, allowing developers to build complex applications that leverage the power of collaborative AI agents. AutoGen is particularly known for its flexibility in defining agent behaviors and for facilitating seamless communication among agents with specialized roles.
+
+The framework's primary strength lies in its multi-agent conversation capabilities, where agents can autonomously or semi-autonomously interact, share information, and collectively work towards a common goal. This approach allows breaking intricate problems into smaller, manageable subtasks, with each agent contributing its expertise. AutoGen supports a wide range of applications, from complex code generation and problem-solving to automated data analysis and interactive simulations.
+
+AutoGen is primarily a Python-based framework, so getting started typically involves installing the `pyautogen` package:
+
+[source,bash]
+----
+pip install pyautogen
+----
+
+AutoGen's relevance to context engineering is profound, as it directly addresses the dynamic, distributed nature of context in MAS. It provides mechanisms for agents to exchange relevant pieces of information, adapt their strategies based on shared context, and collectively manage the flow of information to achieve robust problem-solving.
+
+=== Context sources
+AutoGen's multi-agent conversational framework inherently manages context through the interactions between agents. Each agent's system message, the flow of messages in a conversation, and the human input all contribute to shaping the overall context of a task.
+
+==== System instructions and user prompts
+In AutoGen, system instructions are primarily conveyed through the `system_message` parameter when initializing an `AssistantAgent`. On the other hand, `UserProxyAgent` is specifically designed to enable the human to provide tasks and review the agent's responses. The `human_input_mode` parameter of `UserProxyAgent` controls the level of human intervention, ranging from fully autonomous (`NEVER`) to requiring human approval for every turn (`ALWAYS`). The combination of a clear initial prompt and ongoing user (or agent) messages forms the dynamic conversational context that drives the multi-agent workflow.
+
+The `is_termination_msg` parameter further refines context management by enabling the system to identify when a task is complete based on specific keywords or patterns in agent messages (e.g., "TERMINATE"). This helps in managing the scope of the conversation and signals when the accumulated context is sufficient to conclude the task.
+
+The following example illustrates how system instructions and user prompts are used within a basic multi-agent conversation in AutoGen. 
+
+[source,python]
+----
+assistant = autogen.AssistantAgent( <1>
+    name="assistant",
+    llm_config={"config_list": config_list},
+    system_message="You are a helpful AI assistant.",
+)
+
+user_proxy = autogen.UserProxyAgent( <2>
+    name="user_proxy",
+    human_input_mode="NEVER",
+)
+
+user_proxy.initiate_chat( <3>
+    assistant,
+    message="What is the 10th Fibonacci number?",
+)
+----
+
+<1> Create an `AssistantAgent` using a `config_list` (configuration for the model)
+<2> Create a UserProxyAgent
+<3> Start the conversation, providing a user query
+
+==== Tools
+In AutoGen, agents can leverage external tools (functions) to perform specific actions or retrieve information that is not directly available to their LLM. The output generated by these tools becomes part of the conversational context, influencing subsequent agent interactions and responses.
+
+The `UserProxyAgent` plays a crucial role in enabling tool use. It can register functions (tools) using its `function_map` parameter. When another agent (e.g., an `AssistantAgent`) suggests calling a function, the `UserProxyAgent` intercepts this request, executes the actual Python function, and then relays the result (the "tools output") back into the conversation as a message.
+
+The following snippet showcases how an AutoGen agent utilizes a custom tool to perform a specific calculation. When an assistant agent recognizes the need for a given tool, the `UserProxyAgent` will execute it, feeding the result back as context for the assistant to formulate the final answer. 
+
+[source,python]
+----
+user_proxy = autogen.UserProxyAgent( <1>
+    name="user_proxy",
+    human_input_mode="NEVER",
+    function_map={"calculate_square": calculate_square} <2>
+)
+----
+
+<1> Create a proxy agent for the user
+<2> Register the tool (a Python function previously defined)
+
+==== External knowledge
+AutoGen's multi-agent framework provides flexible mechanisms for incorporating external knowledge. While AutoGen itself doesn't provide a built-in vector database or indexing solution, its strength lies in its ability to integrate with such components through agentic workflows and tool use.
+
+The most common approach for RAG in AutoGen involves defining a specialized agent or a tool that can access a knowledge base (e.g., a vector store, a database, or a document collection). When an agent requires external information, it can either call this tool or delegate the task to another agent designed explicitly for retrieval. The retrieved information then becomes part of the shared conversational context, enabling the LLM to generate more informed and grounded responses.
+
+AutoGen agents can process and synthesize information from various sources. For instance, the `RetrieveUserProxyAgent` is a specialized agent designed for RAG. In the example below, it is used to fetch documents from several sources (e.g., URLs) and creates a persistent vector database using ChromaDB.
+
+[source,python]
+----
+rag_proxy = RetrieveUserProxyAgent(
+    name="rag_proxy",
+    human_input_mode="NEVER",
+    retrieve_config={
+        "docs_path": [...] <1>
+        "chunk_token_size": 2000, <2>
+        "model": config_list[0]["model"], <3>
+        "client": chromadb.PersistentClient(path="/tmp/chromadb"), <4>
+        "embedding_model": "all-mpnet-base-v2", <5>
+    },
+    code_execution_config=False,
+)
+----
+
+<1> Lists the knowledge sources used for retrieval (e.g., URLs)
+<2> Large documents are split into chunks (~2000 tokens) before indexing
+<3> LLM used when generating answers from retrieved content
+<4> Creates a persistent vector database using ChromaDB
+<5> Embedding model used to convert text into vectors
+
+=== Context management
+At the heart of AutoGen's context management is the flow of messages between conversable agents. Every message exchanged in a chat is a piece of context. The agents (e.g., `AssistantAgent`, `UserProxyAgent`, or custom agents) are designed to process these messages, extract relevant information, and use it to inform their subsequent actions or responses. The `max_consecutive_auto_reply` helps manage the conversational depth, ensuring that conversations don't spiral indefinitely and that the focus remains on relevant context.
+
+AutoGen enables writing context by allowing agents to generate and share new information within the conversation. This includes code, code execution results, summaries, plans, or direct answers to queries. When an agent executes a tool and produces an output, that output is automatically added to the conversation history, enriching the context for all participating agents.
+
+=== Context evaluation and observability
+Evaluating context in AutoGen primarily involves assessing the quality and relevance of agent interactions and the final solution generated. This can be achieved through:
+
+* Direct inspection of conversation history: The chronological log of messages between agents provides a complete trace of how context evolved, how agents responded to each other's messages, and how tools were utilized. 
+* Task success metrics: For well-defined tasks, evaluating the outcome of a multi-agent conversation against specific success criteria can indirectly measure the effectiveness of context management.
+* HITL evaluation: AutoGen's `UserProxyAgent` can be configured with `human_input_mode=" ALWAYS"` to allow human intervention and feedback at various stages of the conversation. This enables qualitative evaluation of human experts' context understanding, reasoning, and response generation, providing direct insights into how well the agents manage and use context.
+
+Observability in AutoGen focuses on providing insights into the dynamic execution of multi-agent conversations. The framework's architecture inherently supports tracing the flow of messages and actions, which are fundamental for understanding context propagation:
+
+* Logging: AutoGen agents generate detailed logs of their internal states, messages sent and received, and tool calls. These logs serve as a primary mechanism for observing how context is being processed by individual agents and shared across the system. Developers can configure logging levels to capture more or less detail as needed.
+* Callback mechanisms: AutoGen allows for custom callbacks to be registered, enabling developers to hook into various events during a conversation. This can be used to capture specific contextual data, track agent decisions, or integrate with external observability platforms for real-time monitoring and visualization of conversation flows and context exchanges.
+* Interactive debugging: By setting `human_input_mode` appropriately, developers can interactively debug conversations, stepping through agent turns and inspecting the current context available to each agent.
+
+=== Ecosystem
+AutoGen Studio is a web-based interface that simplifies the building, management, and experimentation with AutoGen agents and workflows. It provides a visual environment for defining agent personas, configuring conversation flows, and testing different multi-agent setups.
+
+== Agent Development Kit
+The Agent Development Kit (ADK) footnote:[https://google.github.io/adk-docs/] is an open-source, code-first toolkit designed by Google to simplify the creation, evaluation, and deployment of sophisticated AI agents. ADK provides a robust and flexible environment that empowers developers to build both conversational and non-conversational agents capable of handling complex tasks and workflows. It emphasizes flexibility and control, allowing for deep customization of agent behavior, interaction patterns, and underlying models.
+
+ADK distinguishes itself by supporting multiple programming languages (Python, TypeScript, Go, Java). Its comprehensive suite of features includes tools for defining agent configurations, integrating various LLM providers (Gemini, Claude, Vertex AI, Ollama, vLLM, LiteLLM), leveraging powerful function-calling capabilities, and managing conversational state. The framework also provides components for advanced setup, visual building, and integration with numerous third-party tools and Google Cloud services. In Python, detting started with ADK involves installing the following package:
+
+[source,bash]
+----
+pip install google-adk
+----
+
+After installing this package, the command-line tool `adk` allows us to interact with the ADK agents as follows:
+
+* `adk run`:  to interact with the agent using the terminal.
+* `adk web`: to launch a browser-based interface for interacting with the agent.
+* `adk api_server`: to expose agents through a REST API.
+
+=== Context sources
+ADK provides explicit mechanisms for agents to manage, interpret, and act upon various forms of context. This makes it an ideal framework for building agents that are deeply aware of and responsive to the context in which they operate.
+
+==== System instructions and user prompts
+System instructions are provided via the `instruction` parameter in `Agent`. Then the user prompt is specified via one of the previously presented interfaces (terminal, web, or REST API).
+
+[source,python]
+----
+root_agent = Agent(
+ model='gemini-2.5-flash',
+ name='root_agent',
+ description='A helpful assistant for user questions.',
+ instruction='Answer user questions to the best of your knowledge',
+)
+----
+
+==== Tools
+ADK agents can significantly extend their capabilities and enrich their operational context by integrating with various tools. This mechanism, often referred to as function calling or tool use, allows agents to perform actions, access external information, or interact with real-world systems. The output generated by these tools becomes a vital part of the LLM's contextual information, enabling more accurate, dynamic, and informed responses.
+
+[source,python]
+----
+root_agent = Agent(
+ model='gemini-3-flash-preview',
+ name='root_agent',
+ description="Tells the current time in a specified city.",
+ instruction="You are a helpful assistant who tells the current time in cities.",
+ tools=[get_current_time],
+)
+----
+
+In addition, ADK heavily leverages the MCP to provide a standardized way for agents and tools to communicate and exchange context.
+
+==== Memory and state
+At the core of ADK's context management is the concept of a `Session`. A session encapsulates the entire conversational history, including all events, user inputs, agent responses, and tool outputs. This persistent record serves as the primary source of context for an agent's ongoing interactions.
+
+Within each session, ADK maintains a `State` object, which is a mutable, delta-aware map that allows agents to store and retrieve arbitrary key-value pairs. This state can represent facts learned during a conversation, user preferences, or intermediate results of complex computations. The `InvocationContext` provides read-only access to the current state, ensuring that agents can access relevant contextual information during their execution.
+
+For more generalized long-term recall, ADK includes `Memory` services. While the `InMemoryMemoryService` is suitable for prototyping, ADK's extensible design enables integration with external memory solutions, allowing agents to store and retrieve information beyond a single session. This is critical for agents that need to learn over time or maintain knowledge across multiple user interactions.
+
+=== Context management
+For managing large amounts of contextual data, ADK supports techniques like context compression. This involves various strategies to reduce the size of the context passed to the LLM without losing critical information, which is particularly important given LLM token limits. This might involve summarization, re-ranking, or filtering of less relevant information.
+
+[source,python]
+----
+summarization_llm = Gemini(model="gemini-2.5-flash") <1>
+my_summarizer = LlmEventSummarizer(llm=summarization_llm) <2>
+app = App( <3>
+ name='my_agent',
+ root_agent=root_agent,
+ events_compaction_config=EventsCompactionConfig(
+ compaction_interval=3,
+ overlap_size=1,
+ summarizer=my_summarizer,
+ ),
+)
+----
+<1> Define the AI model to be used for summarization
+<2> Create the summarizer with the custom model
+<3> Configure the app with the custom summarizer and compaction settings
+
+Context isolation is achieved through the modular design of agents and their ability to operate within defined scopes. Workflow agents, such as `SequentialAgent` and `ParallelAgent`, enable complex orchestrations in which different agents handle specific subtasks, thereby isolating their operational context. This prevents interference and ensures that each agent focuses on the most relevant information for its role. Additionally, the `branch` mechanism in events allows for managing distinct conversational branches, further enhancing context isolation in complex multi-turn interactions.
+
+=== Context evaluation and observability
+ADK offers a structured approach to agent evaluation, focusing on various aspects of context quality and task performance:
+
+* User simulation: The framework supports evaluating agents through user simulations, allowing for automated testing of conversational flows and agent responses under different contextual conditions.
+* Evaluation criteria: ADK guides defining criteria for evaluating agent performance, including metrics related to accuracy, relevance, and completeness of responses.
+* HITL: For qualitative evaluation, ADK's design inherently supports human oversight and intervention, especially during agent development and testing.
+
+ADK also integrates with external evaluation frameworks and tools (e.g., AgentOps, Arize AX, MLflow, Phoenix, W&B Weave, Freeplay, Monocle), providing comprehensive capabilities for benchmarking and analyzing agent behavior across diverse contextual challenges.
+
+Furthermore, observability in ADK is designed to provide deep insights into the internal workings of agents, particularly how context is processed and flowed throughout an agent's execution:
+
+* Logging: ADK features extensive logging capabilities, allowing developers to capture detailed information about agent execution, including LLM calls, tool invocations, state changes, and event flows.
+* Tracing: With integrations like OpenTelemetry and BigQuery Agent Analytics, ADK enables distributed tracing of agent interactions.
+* Events and callbacks: ADK's event-driven architecture and callbacks provide programmatic access to key moments in an agent's lifecycle. 
+
+=== Ecosystem
+ADK is built around several core components that facilitate agent development and deployment:
+
+* Agent Engine: The Agent Engine is a crucial part of the ADK ecosystem, providing a runtime environment for deploying and managing agents at scale. It offers features such as standard deployment and a Starter Pack to streamline deployment, particularly in cloud environments like Google Kubernetes Engine (GKE) and Cloud Run.
+* A2A: For multi-agent systems, ADK supports the A2A Protocol, facilitating structured communication and collaboration between independent agents.
+* Google Cloud Tools: ADK offers built-in tools for seamless interaction with various Google Cloud services, including Google Search, BigQuery, Spanner, Vertex AI Search, and Pub/Sub. These integrations empower agents with direct access to powerful data and processing capabilities, enriching their operational context.
+* ADK Visual Builder: For visual development and rapid prototyping, ADK provides a Visual Builder, which allows developers to design and configure agents and workflows using a graphical interface, generating code that can then be further customized.
+
+[#ch07_hands, reftext={chapter}.{section}, caption='{chapter}.{section}']
+== Hands-on
+To do.
+
+[#ch07_summary, reftext={chapter}.{counter:section}]
+[discrete]
+== Summary
+* To do.
+* To do.
