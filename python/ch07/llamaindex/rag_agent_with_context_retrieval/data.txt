@@ -1,0 +1,2 @@
+LlamaIndex is a data framework for LLM applications to ingest, structure, and access private or domain-specific data. It helps you connect your custom data sources to large language models. This allows LLMs to reason over your personal knowledge bases.
+A key component of LlamaIndex is its ability to build indexes over your data, making it searchable and retrievable for LLMs. It supports various types of indexes, such as VectorStoreIndex, KeywordTableIndex, and ListIndex.

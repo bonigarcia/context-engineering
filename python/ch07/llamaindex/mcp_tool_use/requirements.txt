@@ -1,0 +1,8 @@
+llama-index
+llama-index-core
+llama-index-tools-mcp
+llama-index-llms-openai
+llama-index-agent-openai
+openai
+python-dotenv
+flask
