@@ -16,14 +16,11 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-   Ensure your Google API key is set as an environment variable. You can do this by:
-```
-echo 'GOOGLE_API_KEY="YOUR_API_KEY"' > my_agent/.env
-```
+   Ensure your Google API key (`GOOGLE_API_KEY`) is set as an environment variable.
 
 3. Run the script:
 ```bash
-adk run my_agent
+python basic_agent.py
 ```
 
 ## Expected Output
@@ -31,8 +28,6 @@ adk run my_agent
 The agent will respond to user prompts, for example as follows:
 
 ```
---- Starting conversation with hello-agent ---
 User: Hello, agent!
-Agent: Hello there! How can I help you today?
---- Conversation ended ---
+Agent: Hello there! How can I assist you today?
 ```

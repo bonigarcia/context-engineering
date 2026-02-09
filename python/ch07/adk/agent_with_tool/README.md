@@ -16,21 +16,18 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-   Ensure your Google API key is set as an environment variable. You can do this by:
-```
-echo 'GOOGLE_API_KEY="YOUR_API_KEY"' > my_agent/.env
-```
+   Ensure your Google API key (`GOOGLE_API_KEY`) is set as an environment variable.
 
 3. Run the script:
 ```bash
-adk run my_agent
+python agent_with_tool.py
 ```
 
 ## Expected Output
 
-The agent will identify the need to use the `get_current_time` tool, execute it (the mock implementation), and then respond with the time information.  Example of a possible output:
+The agent will identify the need to use the `get_current_time` tool, execute it (the mock implementation), and then respond with the time information:
 
 ```
-[user]: What time it is in London?
-[root_agent]: The current time in London is 10:30 AM.
+User: What is the time in Madrid?
+Agent: The time in Madrid is 10:30 AM.
 ```
