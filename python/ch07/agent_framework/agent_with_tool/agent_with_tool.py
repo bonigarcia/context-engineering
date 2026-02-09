@@ -1,6 +1,6 @@
+import asyncio
 from agent_framework import ChatAgent, tool
 from agent_framework.openai import OpenAIChatClient
-import asyncio
 
 # Create simple tools for the example
 @tool
