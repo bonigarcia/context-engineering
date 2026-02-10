@@ -37,7 +37,7 @@ memory_recall_agent = Agent(
 session_service = InMemorySessionService()
 memory_service = InMemoryMemoryService() # Use in-memory for demo
 
-async def run_scenario():
+async def main():
     # --- Scenario ---
     # Turn 1: Capture some information in a session
     print("--- Turn 1: Capturing Information ---")
@@ -89,4 +89,4 @@ async def run_scenario():
 
 
 if __name__ == "__main__":
-    asyncio.run(run_scenario())
+    asyncio.run(main())
