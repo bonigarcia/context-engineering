@@ -11,12 +11,10 @@ from agent_framework.openai import OpenAIChatClient
 
 MODEL_ID = "gpt-4o-mini"
 
-
 try:
-    from agent_framework import Message  # type: ignore
+    from agent_framework import Message
 except Exception:
-    from agent_framework import ChatMessage as Message  # type: ignore
-
+    from agent_framework import ChatMessage as Message
 
 class UserInfo(BaseModel):
     name: str | None = None
@@ -139,9 +137,6 @@ async def main() -> None:
 
             # Robust debug memory display
             mem = _extract_userinfo_memory(getattr(thread, "context_provider", None))
-            #if mem is not None:
-            #    print(f"(memory) name={mem.user_info.name!r}, age={mem.user_info.age!r}\n")
-
 
 if __name__ == "__main__":
     asyncio.run(main())
