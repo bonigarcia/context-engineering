@@ -146,6 +146,8 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - Mei, Lingrui, Jiayu Yao, Yuyao Ge, Yiwei Wang, Baolong Bi, Yujun Cai, Jiazhi Liu et al. "[A Survey of Context Engineering for Large Language Models](https://arxiv.org/abs/2507.13334)." arXiv preprint arXiv:2507.13334 (2025).
 - Hua, Qishuo, Lyumanshan Ye, Dayuan Fu, Yang Xiao, Xiaojie Cai, Yunze Wu, Jifan Lin, Junfei Wang, and Pengfei Liu. "[Context Engineering 2.0: The Context of Context Engineering](https://arxiv.org/abs/2510.26493)." arXiv preprint arXiv:2510.26493 (2025).
 - Zhang, Qizheng, Changran Hu, Shubhangi Upasani, Boyuan Ma, Fenglu Hong, Vamsidhar Kamanuru, Jay Rainton et al. "[Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](https://arxiv.org/abs/2510.04618)." arXiv preprint arXiv:2510.04618 (2025).
+- Xu, Xiwei, Hans Weytjens, Dawen Zhang, Qinghua Lu, Ingo Weber, and Liming Zhu. "[RAGOps: Operating and Managing Retrieval-Augmented Generation Pipelines](https://arxiv.org/abs/2506.03401)." arXiv preprint arXiv:2506.03401 (2025).
+- Wang, Zexin, Jingjing Li, Quan Zhou, Haotian Si, Yuanhao Liu, Jianhui Li, Gaogang Xie, Fei Sun, Dan Pei, and Changhua Pei. "[A Survey on AgentOps: Categorization, Challenges, and Future Directions](https://arxiv.org/abs/2508.02121)." arXiv preprint arXiv:2508.02121 (2025).
 
 
 ## Contributing
