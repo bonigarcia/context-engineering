@@ -1,4 +1,4 @@
-# Fine-Tuning for Persona: Customizing Model Behavior
+# Fine-tuning: customizing model behavior
 
 This example demonstrates how to fine-tune a small language model ([DistilGPT2](https://huggingface.co/distilbert/distilgpt2)) to adopt a specific professional persona using a small, specialized dataset.
 
