@@ -270,3 +270,6 @@ node_modules
 
 # Google ADK
 .adk
+
+# Guardrails AI
+.guardrails
