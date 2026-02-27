@@ -25,8 +25,7 @@ python -m spacy download en_core_web_lg
 python presidio_example.py
 ```
 
-Output
-======
+## Output
 The script will identify sensitive entities and replace them with placeholders.
 
 ```text
