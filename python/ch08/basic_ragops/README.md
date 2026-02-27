@@ -1,6 +1,6 @@
 # Basic RAGOps example
 
-This example implements a minimal Retrieval Augmented Generation (ATG) pipeline with operational logging, deterministic indexing, enforced citation formatting, and automated regression checks to illustrate core RAGOps practices.
+This example implements a minimal Retrieval Augmented Generation (RAG) pipeline with operational logging, deterministic indexing, enforced citation formatting, and automated regression checks to illustrate core RAGOps practices.
 
 ## Requirements
 
