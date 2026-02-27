@@ -1,0 +1,3 @@
+presidio-analyzer
+presidio-anonymizer
+spacy
