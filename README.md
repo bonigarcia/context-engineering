@@ -156,4 +156,4 @@ Any comments or feedback are more than welcome. Also, if you think something can
 
 ## About
 
-context-engineering (Copyright &copy; 2025) is an open-source project created and maintained by [Boni Garcia](https://bonigarcia.dev/), licensed under the terms of [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+context-engineering (Copyright &copy; 2025-2026) is an open-source project created and maintained by [Boni Garcia](https://bonigarcia.dev/), licensed under the terms of [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
