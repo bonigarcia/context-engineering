@@ -31,7 +31,7 @@ class AnthropicClaudeBasic {
     }
 
     String queryModel(String prompt, Model model, double temperature) {
-        // ANTHROPIC_API_KEY should be set as a environment variable
+        // ANTHROPIC_API_KEY should be set as an environment variable
         AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
         MessageCreateParams params = MessageCreateParams.builder()

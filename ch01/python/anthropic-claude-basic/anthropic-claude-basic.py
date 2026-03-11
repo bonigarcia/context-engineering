@@ -10,20 +10,23 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from dotenv import load_dotenv
-from openai import OpenAI
+from anthropic import Anthropic
 
 
-def query_model(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
-    """Send a text prompt to an OpenAI model and return the text response."""
+def query_model(prompt: str, model: str = "claude-sonnet-4-20250514", temperature: float = 0) -> str:
+    """Send a text prompt to an Anthropic model and return the text response."""
 
-    client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
-    response = client.responses.create(
+    client = Anthropic()  # ANTHROPIC_API_KEY should be set as an environment variable
+
+    message = client.messages.create(
         model=model,
-        input=prompt,
+        max_tokens=1024,
         temperature=temperature,
+        messages=[
+            {"role": "user", "content": prompt}
+        ]
     )
-    return response.output_text
+    return message.content[0].text
 
 
 if __name__ == "__main__":

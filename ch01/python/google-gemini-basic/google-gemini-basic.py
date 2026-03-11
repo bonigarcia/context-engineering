@@ -10,20 +10,22 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from dotenv import load_dotenv
-from openai import OpenAI
+from google import genai
+from google.genai import types
 
 
-def query_model(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
-    """Send a text prompt to an OpenAI model and return the text response."""
+def query_model(prompt: str, model: str = "gemini-2.0-flash", temperature: float = 0) -> str:
+    """Send a text prompt to a Google Gemini model and return the text response."""
 
-    client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
-    response = client.responses.create(
+    client = genai.Client()  # GOOGLE_API_KEY should be set as an environment variable
+    response = client.models.generate_content(
         model=model,
-        input=prompt,
-        temperature=temperature,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=temperature,
+        ),
     )
-    return response.output_text
+    return response.text
 
 
 if __name__ == "__main__":

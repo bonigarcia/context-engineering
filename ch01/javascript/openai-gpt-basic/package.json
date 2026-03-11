@@ -1,0 +1,14 @@
+{
+  "name": "openai-gpt-basic",
+  "version": "1.0.0",
+  "description": "Basic interaction with OpenAI GPT models",
+  "main": "openai-gpt-basic.js",
+  "type": "module",
+  "scripts": {
+    "start": "node openai-gpt-basic.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "openai": "^4.86.1"
+  }
+}

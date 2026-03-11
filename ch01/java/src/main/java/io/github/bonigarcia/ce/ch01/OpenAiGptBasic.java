@@ -29,7 +29,7 @@ class OpenAiGptBasic {
     }
 
     String queryModel(String prompt, ChatModel model, double temperature) {
-        // OPENAI_API_KEY should be set as a environment variable
+        // OPENAI_API_KEY should be set as an environment variable
         OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
         ResponseCreateParams params = ResponseCreateParams.builder()

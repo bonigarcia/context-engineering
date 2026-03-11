@@ -27,7 +27,7 @@ class GoogleGeminiBasic {
     }
 
     String queryModel(String prompt, String model, float temperature) {
-        // GOOGLE_API_KEY should be set as a environment variable
+        // GOOGLE_API_KEY should be set as an environment variable
         try (Client client = new Client()) {
             GenerateContentConfig config = GenerateContentConfig.builder()
                     .temperature(temperature).build();
