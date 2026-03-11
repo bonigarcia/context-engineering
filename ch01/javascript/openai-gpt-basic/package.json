@@ -8,7 +8,6 @@
     "start": "node openai-gpt-basic.js"
   },
   "dependencies": {
-    "dotenv": "^17.3.1",
     "openai": "^6.27.0"
   }
 }

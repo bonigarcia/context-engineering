@@ -10,7 +10,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import 'dotenv/config';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 async function queryModel(userPrompt, modelName = "gemini-2.0-flash", temperature = 0) {

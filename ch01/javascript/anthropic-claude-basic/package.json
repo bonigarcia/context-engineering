@@ -8,7 +8,6 @@
     "start": "node anthropic-claude-basic.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.78.0",
-    "dotenv": "^17.3.1"
+    "@anthropic-ai/sdk": "^0.78.0"
   }
 }

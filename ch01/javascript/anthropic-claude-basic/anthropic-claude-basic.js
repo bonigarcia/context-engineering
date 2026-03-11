@@ -10,7 +10,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import 'dotenv/config';
 import Anthropic from '@anthropic-ai/sdk';
 
 async function queryModel(userPrompt, model = "claude-sonnet-4-20250514", temperature = 0) {
