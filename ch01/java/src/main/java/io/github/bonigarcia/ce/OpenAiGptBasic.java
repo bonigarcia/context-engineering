@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.ce.ch01;
+package io.github.bonigarcia.ce;
 
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -23,10 +23,6 @@ import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
 public class OpenAiGptBasic {
-
-    String queryModel(String prompt) {
-        return queryModel(prompt, ChatModel.GPT_4_1_MINI, 0);
-    }
 
     String queryModel(String prompt, ChatModel model, double temperature) {
         // OPENAI_API_KEY should be set as an environment variable
@@ -45,8 +41,10 @@ public class OpenAiGptBasic {
     }
 
     void main() {
+        ChatModel model = ChatModel.GPT_4_1_MINI;
+        double temperature = 0;
         String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt);
+        String response = queryModel(prompt, model, temperature);
 
         System.out.println("User query: " + prompt);
         System.out.println("Response: " + response);

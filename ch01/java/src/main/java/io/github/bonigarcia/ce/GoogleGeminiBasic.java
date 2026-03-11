@@ -14,17 +14,13 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.ce.ch01;
+package io.github.bonigarcia.ce;
 
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 
 public class GoogleGeminiBasic {
-
-    String queryModel(String prompt) {
-        return queryModel(prompt, "gemini-2.5-flash", 0);
-    }
 
     String queryModel(String prompt, String model, float temperature) {
         // GOOGLE_API_KEY should be set as an environment variable
@@ -38,8 +34,10 @@ public class GoogleGeminiBasic {
     }
 
     void main() {
+        String model = "gemini-2.5-flash";
+        float temperature = 0;
         String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt);
+        String response = queryModel(prompt, model, temperature);
 
         System.out.println("User query: " + prompt);
         System.out.println("Response: " + response);

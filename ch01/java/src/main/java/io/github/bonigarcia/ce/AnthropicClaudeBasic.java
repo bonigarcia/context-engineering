@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.ce.ch01;
+package io.github.bonigarcia.ce;
 
 import java.util.stream.Collectors;
 
@@ -25,10 +25,6 @@ import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
 
 public class AnthropicClaudeBasic {
-
-    String queryModel(String prompt) {
-        return queryModel(prompt, Model.CLAUDE_SONNET_4_20250514, 0);
-    }
 
     String queryModel(String prompt, Model model, double temperature) {
         // ANTHROPIC_API_KEY should be set as an environment variable
@@ -49,8 +45,10 @@ public class AnthropicClaudeBasic {
     }
 
     void main() {
+        Model model = Model.CLAUDE_SONNET_4_20250514;
+        double temperature = 0;
         String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt);
+        String response = queryModel(prompt, model, temperature);
 
         System.out.println("User query: " + prompt);
         System.out.println("Response: " + response);
