@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "dotenv": "^16.4.7"
+    "dotenv": "^17.3.1"
   }
 }
