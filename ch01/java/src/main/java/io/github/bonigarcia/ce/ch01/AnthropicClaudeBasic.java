@@ -24,7 +24,7 @@ import com.anthropic.models.messages.Message;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
 
-class AnthropicClaudeBasic {
+public class AnthropicClaudeBasic {
 
     String queryModel(String prompt) {
         return queryModel(prompt, Model.CLAUDE_SONNET_4_20250514, 0);
@@ -33,18 +33,19 @@ class AnthropicClaudeBasic {
     String queryModel(String prompt, Model model, double temperature) {
         // ANTHROPIC_API_KEY should be set as an environment variable
         AnthropicClient client = AnthropicOkHttpClient.fromEnv();
+        try {
+            MessageCreateParams params = MessageCreateParams.builder()
+                    .maxTokens(1024L).addUserMessage(prompt).model(model)
+                    .temperature(temperature).build();
+            Message response = client.messages().create(params);
 
-        MessageCreateParams params = MessageCreateParams.builder()
-                .maxTokens(1024L).addUserMessage(prompt).model(model)
-                .temperature(temperature).build();
-        Message response = client.messages().create(params);
-
-        client.close();
-
-        return response.content().stream()
-                .flatMap(contentBlock -> contentBlock.text().stream())
-                .map(textBlock -> textBlock.text())
-                .collect(Collectors.joining());
+            return response.content().stream()
+                    .flatMap(contentBlock -> contentBlock.text().stream())
+                    .map(textBlock -> textBlock.text())
+                    .collect(Collectors.joining());
+        } finally {
+            client.close();
+        }
     }
 
     void main() {

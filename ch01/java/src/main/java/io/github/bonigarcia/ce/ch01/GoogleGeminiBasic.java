@@ -20,7 +20,7 @@ import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 
-class GoogleGeminiBasic {
+public class GoogleGeminiBasic {
 
     String queryModel(String prompt) {
         return queryModel(prompt, "gemini-2.5-flash", 0);

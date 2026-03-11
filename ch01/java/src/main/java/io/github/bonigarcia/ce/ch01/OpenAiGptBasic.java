@@ -22,7 +22,7 @@ import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
-class OpenAiGptBasic {
+public class OpenAiGptBasic {
 
     String queryModel(String prompt) {
         return queryModel(prompt, ChatModel.GPT_4_1_MINI, 0);
@@ -31,12 +31,17 @@ class OpenAiGptBasic {
     String queryModel(String prompt, ChatModel model, double temperature) {
         // OPENAI_API_KEY should be set as an environment variable
         OpenAIClient client = OpenAIOkHttpClient.fromEnv();
+        try {
+            ResponseCreateParams params = ResponseCreateParams.builder()
+                    .model(model).input(prompt).temperature(temperature)
+                    .build();
+            Response response = client.responses().create(params);
 
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(model).input(prompt).temperature(temperature).build();
-        Response response = client.responses().create(params);
-        return response.output().get(0).asMessage().content().get(0)
-                .asOutputText().text();
+            return response.output().get(0).asMessage().content().get(0)
+                    .asOutputText().text();
+        } finally {
+            client.close();
+        }
     }
 
     void main() {
