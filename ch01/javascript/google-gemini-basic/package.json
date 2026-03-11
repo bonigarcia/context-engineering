@@ -8,7 +8,7 @@
     "start": "node google-gemini-basic.js"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.22.0",
+    "@google/generative-ai": "^0.24.1",
     "dotenv": "^16.4.7"
   }
 }
