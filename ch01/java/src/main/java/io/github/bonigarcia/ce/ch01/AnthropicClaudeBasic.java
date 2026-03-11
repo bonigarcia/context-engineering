@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  */
 package io.github.bonigarcia.ce.ch01;
 
-import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 import com.anthropic.client.AnthropicClient;
 import com.anthropic.client.okhttp.AnthropicOkHttpClient;
@@ -24,27 +24,35 @@ import com.anthropic.models.messages.Message;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
 
-public class AnthropicClaudeBasic {
+class AnthropicClaudeBasic {
 
-    public static void main(String[] args) {
-        // Ensure ANTHROPIC_API_KEY is set in your environment
+    String queryModel(String prompt) {
+        return queryModel(prompt, Model.CLAUDE_SONNET_4_20250514, 0);
+    }
+
+    String queryModel(String prompt, Model model, double temperature) {
+        // ANTHROPIC_API_KEY should be set as a environment variable
         AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
-        String prompt = "How many tokens is your context window?";
-
         MessageCreateParams params = MessageCreateParams.builder()
-                .maxTokens(1024L).addUserMessage(prompt)
-                .model(Model.CLAUDE_SONNET_4_20250514).build();
-        CompletableFuture<Message> future = client.async().messages()
-                .create(params);
-
-        future.thenAccept(response -> {
-            String output = response.content().get(0).asText().text();
-            System.out.println("User query: " + prompt);
-            System.out.println("Response: " + output);
-        }).join();
+                .maxTokens(1024L).addUserMessage(prompt).model(model)
+                .temperature(temperature).build();
+        Message response = client.messages().create(params);
 
         client.close();
+
+        return response.content().stream()
+                .flatMap(contentBlock -> contentBlock.text().stream())
+                .map(textBlock -> textBlock.text())
+                .collect(Collectors.joining());
+    }
+
+    void main() {
+        String prompt = "How many tokens is your context window?";
+        String response = queryModel(prompt);
+
+        System.out.println("User query: " + prompt);
+        System.out.println("Response: " + response);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,21 +22,29 @@ import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
-public class OpenAiGptBasic {
+class OpenAiGptBasic {
 
-    public static void main(String[] args) {
-        // Ensure OPENAI_API_KEY is set in your environment
+    String queryModel(String prompt) {
+        return queryModel(prompt, ChatModel.GPT_4_1_MINI, 0);
+    }
+
+    String queryModel(String prompt, ChatModel model, double temperature) {
+        // OPENAI_API_KEY should be set as a environment variable
         OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
-        String prompt = "How many tokens is your context window?";
         ResponseCreateParams params = ResponseCreateParams.builder()
-                .input(prompt).model(ChatModel.GPT_4_1).build();
+                .model(model).input(prompt).temperature(temperature).build();
         Response response = client.responses().create(params);
-        String output = response.output().get(0).asMessage().content().get(0)
+        return response.output().get(0).asMessage().content().get(0)
                 .asOutputText().text();
+    }
+
+    void main() {
+        String prompt = "How many tokens is your context window?";
+        String response = queryModel(prompt);
 
         System.out.println("User query: " + prompt);
-        System.out.println("Response: " + output);
+        System.out.println("Response: " + response);
     }
 
 }

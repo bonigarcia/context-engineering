@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,22 +17,32 @@
 package io.github.bonigarcia.ce.ch01;
 
 import com.google.genai.Client;
+import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 
-public class GoogleGeminiBasic {
+class GoogleGeminiBasic {
 
-    public static void main(String[] args) {
-        // Ensure GOOGLE_API_KEY is set in your environment
+    String queryModel(String prompt) {
+        return queryModel(prompt, "gemini-2.5-flash", 0);
+    }
+
+    String queryModel(String prompt, String model, float temperature) {
+        // GOOGLE_API_KEY should be set as a environment variable
         try (Client client = new Client()) {
-            String prompt = "How many tokens is your context window?";
-
+            GenerateContentConfig config = GenerateContentConfig.builder()
+                    .temperature(temperature).build();
             GenerateContentResponse response = client.models
-                    .generateContent("gemini-2.5-flash", prompt, null);
-            String output = response.text();
-
-            System.out.println("User query: " + prompt);
-            System.out.println("Response: " + output);
+                    .generateContent(model, prompt, config);
+            return response.text();
         }
+    }
+
+    void main() {
+        String prompt = "How many tokens is your context window?";
+        String response = queryModel(prompt);
+
+        System.out.println("User query: " + prompt);
+        System.out.println("Response: " + response);
     }
 
 }
