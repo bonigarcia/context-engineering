@@ -3,6 +3,7 @@ updates:
 - package-ecosystem: maven
   directories:
     - "/ch01/java"
+    - "/ch02/java"
   schedule:
     interval: daily
     time: '06:00'
@@ -13,6 +14,9 @@ updates:
     - "/ch01/javascript/anthropic-claude-basic"
     - "/ch01/javascript/google-gemini-basic"
     - "/ch01/javascript/openai-gpt-basic"
+    - "/ch02/javascript/anthropic-claude-system-prompt"
+    - "/ch02/javascript/google-gemini-system-prompt"
+    - "/ch02/javascript/openai-gpt-system-prompt"
   schedule:
     interval: daily
     time: '06:00'
