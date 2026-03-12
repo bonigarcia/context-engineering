@@ -1,0 +1,13 @@
+{
+  "name": "anthropic-claude-system-prompt",
+  "version": "1.0.0",
+  "description": "System prompt with Anthropic Claude models",
+  "main": "anthropic-claude-system-prompt.js",
+  "type": "module",
+  "scripts": {
+    "start": "node anthropic-claude-system-prompt.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0"
+  }
+}

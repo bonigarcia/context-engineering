@@ -1,0 +1,13 @@
+{
+  "name": "openai-gpt-system-prompt",
+  "version": "1.0.0",
+  "description": "System prompt with OpenAI GPT models",
+  "main": "openai-gpt-system-prompt.js",
+  "type": "module",
+  "scripts": {
+    "start": "node openai-gpt-system-prompt.js"
+  },
+  "dependencies": {
+    "openai": "^4.86.1"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "google-gemini-system-prompt",
+  "version": "1.0.0",
+  "description": "System prompt with Google Gemini models",
+  "main": "google-gemini-system-prompt.js",
+  "type": "module",
+  "scripts": {
+    "start": "node google-gemini-system-prompt.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1"
+  }
+}
