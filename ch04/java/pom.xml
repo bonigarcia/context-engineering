@@ -2,18 +2,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>io.github.bonigarcia</groupId>
-    <artifactId>context-engineering-java-examples</artifactId>
+    <artifactId>context-engineering-ch04</artifactId>
     <version>1.0.0</version>
 
     <properties>
-        <java.version>21</java.version>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <java.version>25</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <project.encondig>UTF-8</project.encondig>
-        <project.build.sourceEncoding>${project.encondig}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.encondig}</project.reporting.outputEncoding>
+        <project.encoding>UTF-8</project.encoding>
+        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
     </properties>
 
     <dependencyManagement>
@@ -30,27 +31,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.openai</groupId>
-            <artifactId>openai-java</artifactId>
-            <version>4.26.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.genai</groupId>
-            <artifactId>google-genai</artifactId>
-            <version>1.42.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anthropic</groupId>
-            <artifactId>anthropic-java</artifactId>
-            <version>2.16.0</version>
-        </dependency>
-        <dependency>
             <groupId>io.modelcontextprotocol.sdk</groupId>
             <artifactId>mcp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.modelcontextprotocol.sdk</groupId>
-            <artifactId>mcp-json</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -76,7 +58,7 @@
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>
-                                        io.github.bonigarcia.ce.ch04.McpSeleniumServer</mainClass>
+                                        io.github.bonigarcia.ce.McpSeleniumServer</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

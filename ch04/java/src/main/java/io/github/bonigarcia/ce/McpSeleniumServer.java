@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.ce.ch04;
+package io.github.bonigarcia.ce;
 
 import java.util.concurrent.CountDownLatch;
 
-import io.modelcontextprotocol.json.McpJsonMapper;
+import io.modelcontextprotocol.json.McpJsonDefaults;
 import io.modelcontextprotocol.server.McpAsyncServer;
 import io.modelcontextprotocol.server.McpServer;
 import io.modelcontextprotocol.server.transport.StdioServerTransportProvider;
@@ -26,10 +26,10 @@ import io.modelcontextprotocol.spec.McpSchema;
 
 public class McpSeleniumServer {
 
-    public static void main(String[] args) throws Exception {
+    void main() throws Exception {
         BrowserTools tools = new BrowserTools(new BrowserService());
         var transportProvider = new StdioServerTransportProvider(
-                McpJsonMapper.createDefault());
+                McpJsonDefaults.getMapper());
 
         McpAsyncServer server = McpServer.async(transportProvider)
                 .serverInfo("mcp-selenium-server", "1.0.0")

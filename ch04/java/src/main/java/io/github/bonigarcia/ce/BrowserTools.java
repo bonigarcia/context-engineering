@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2025 Boni Garcia (https://bonigarcia.github.io/)
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package io.github.bonigarcia.ce.ch04;
+package io.github.bonigarcia.ce;
 
 import java.util.List;
 import java.util.Map;
@@ -86,7 +86,7 @@ public class BrowserTools {
                 .build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
-                .callHandler((exchange, args) -> {
+                .callHandler((exchange, _) -> {
                     String result = browserService.closeBrowser();
                     return Mono.just(McpSchema.CallToolResult.builder()
                             .addTextContent(result)
