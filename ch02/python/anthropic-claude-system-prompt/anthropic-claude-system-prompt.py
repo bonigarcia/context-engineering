@@ -29,8 +29,8 @@ def query_model(instructions: str | None, prompt: str, model: str = "claude-sonn
     if instructions:
         params["system"] = instructions
 
-    message = client.messages.create(**params)
-    return message.content[0].text
+    response = client.messages.create(**params)
+    return response.content[0].text
 
 
 if __name__ == "__main__":
