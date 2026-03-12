@@ -11,9 +11,9 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
 
-        <project.encondig>UTF-8</project.encondig>
-        <project.build.sourceEncoding>${project.encondig}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.encondig}</project.reporting.outputEncoding>
+        <project.encoding>UTF-8</project.encoding>
+        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
     </properties>
 
     <dependencyManagement>
