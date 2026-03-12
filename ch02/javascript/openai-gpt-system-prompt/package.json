@@ -8,6 +8,6 @@
     "start": "node openai-gpt-system-prompt.js"
   },
   "dependencies": {
-    "openai": "^4.86.1"
+    "openai": "^6.27.0"
   }
 }
