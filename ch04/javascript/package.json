@@ -12,7 +12,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.25.1",
-    "selenium-webdriver": "^4.39.0"
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "selenium-webdriver": "^4.41.0"
   }
 }

@@ -1,6 +1,6 @@
-# MCP Selenium server in JavaScript
+# MCP Selenium server in Java
 
-This folder contains a JavaScript implementation of a basic [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. This server provides a set of tools for an AI agent to control a web browser using [Selenium](http://selenium.dev/).  This MCP server exposes the following tools:
+This folder contains a Java implementation of a basic [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server. This server provides a set of tools for an AI agent to control a web browser using [Selenium](http://selenium.dev/).  This MCP server exposes the following tools:
 
 - `open_browser`: Launches a new browser instance (e.g., Chrome, Firefox).
 - `navigate_url`: Navigates the open browser to a specified URL.
@@ -10,21 +10,21 @@ This folder contains a JavaScript implementation of a basic [Model Context Proto
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/)
-- A local browser (e.g., [Chrome](https://www.google.com/chrome/), [Firefox](https://www.firefox.com/), or [Edge](https://www.microsoft.com/edge/))
+- A local browser (e.g., [Chrome](https://www.google.com/chrome/), [Firefox](https://www.firefox.com/))
 
 1.  Install dependencies:
 ```bash
-npm install
+mvn clean package
 ```
 
 2. Run the server:
 ```bash
-npm start
+java -jar target/context-engineering-ch04-1.0.0.jar
 ```
 
 3. Alternatively, you can debug the MCP server using the MCP Inspector:
 ```bash
-npx @modelcontextprotocol/inspector node mcp-selenium-server.js
+npx @modelcontextprotocol/inspector java -jar target/context-engineering-ch04-1.0.0.jar
 ```
 
 ## Output
