@@ -24,34 +24,46 @@ import com.anthropic.models.messages.Message;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
 
-public class AnthropicClaudeBasic {
+public class AnthropicClaudeBasic implements AutoCloseable {
 
-    String queryModel(String prompt, Model model, double temperature) {
+    AnthropicClient client;
+    Model model;
+    double temperature;
+
+    public AnthropicClaudeBasic(Model model, double temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // ANTHROPIC_API_KEY should be set as an environment variable
-        AnthropicClient client = AnthropicOkHttpClient.fromEnv();
-        try {
-            MessageCreateParams params = MessageCreateParams.builder()
-                    .maxTokens(1024L).addUserMessage(prompt).model(model)
-                    .temperature(temperature).build();
-            Message response = client.messages().create(params);
-
-            return response.content().stream()
-                    .flatMap(contentBlock -> contentBlock.text().stream())
-                    .map(textBlock -> textBlock.text())
-                    .collect(Collectors.joining());
-        } finally {
-            client.close();
-        }
+        client = AnthropicOkHttpClient.fromEnv();
     }
 
-    void main() {
-        Model model = Model.CLAUDE_SONNET_4_20250514;
-        double temperature = 0;
-        String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt, model, temperature);
+    public String queryModel(String prompt) {
+        MessageCreateParams params = MessageCreateParams.builder()
+                .maxTokens(1024L).addUserMessage(prompt).model(model)
+                .temperature(temperature).build();
+        Message response = client.messages().create(params);
 
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+        return response.content().stream()
+                .flatMap(contentBlock -> contentBlock.text().stream())
+                .map(textBlock -> textBlock.text())
+                .collect(Collectors.joining());
+    }
+
+    @Override
+    public void close() {
+        client.close();
+    }
+
+    public static void main(String[] args) {
+        try (AnthropicClaudeBasic demo = new AnthropicClaudeBasic(
+                Model.CLAUDE_SONNET_4_20250514, 0)) {
+            String prompt = "How many tokens is your context window?";
+            String response = demo.queryModel(prompt);
+
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+        }
     }
 
 }

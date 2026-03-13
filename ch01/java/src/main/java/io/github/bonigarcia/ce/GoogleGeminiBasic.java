@@ -20,27 +20,42 @@ import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 
-public class GoogleGeminiBasic {
+public class GoogleGeminiBasic implements AutoCloseable {
 
-    String queryModel(String prompt, String model, float temperature) {
+    Client client;
+    String model;
+    float temperature;
+
+    public GoogleGeminiBasic(String model, float temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // GOOGLE_API_KEY should be set as an environment variable
-        try (Client client = new Client()) {
-            GenerateContentConfig config = GenerateContentConfig.builder()
-                    .temperature(temperature).build();
-            GenerateContentResponse response = client.models
-                    .generateContent(model, prompt, config);
-            return response.text();
-        }
+        client = new Client();
     }
 
-    void main() {
-        String model = "gemini-2.5-flash";
-        float temperature = 0;
-        String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt, model, temperature);
+    public String queryModel(String prompt) {
+        GenerateContentConfig config = GenerateContentConfig.builder()
+                .temperature(temperature).build();
+        GenerateContentResponse response = client.models.generateContent(model,
+                prompt, config);
+        return response.text();
+    }
 
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+    @Override
+    public void close() {
+        client.close();
+    }
+
+    public static void main(String[] args) {
+        try (GoogleGeminiBasic demo = new GoogleGeminiBasic("gemini-2.5-flash",
+                0)) {
+            String prompt = "How many tokens is your context window?";
+            String response = demo.queryModel(prompt);
+
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+        }
     }
 
 }

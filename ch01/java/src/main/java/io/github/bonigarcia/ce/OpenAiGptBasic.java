@@ -22,32 +22,43 @@ import com.openai.models.ChatModel;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
-public class OpenAiGptBasic {
+public class OpenAiGptBasic implements AutoCloseable {
 
-    String queryModel(String prompt, ChatModel model, double temperature) {
+    OpenAIClient client;
+    ChatModel model;
+    double temperature;
+
+    public OpenAiGptBasic(ChatModel model, float temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // OPENAI_API_KEY should be set as an environment variable
-        OpenAIClient client = OpenAIOkHttpClient.fromEnv();
-        try {
-            ResponseCreateParams params = ResponseCreateParams.builder()
-                    .model(model).input(prompt).temperature(temperature)
-                    .build();
-            Response response = client.responses().create(params);
-
-            return response.output().get(0).asMessage().content().get(0)
-                    .asOutputText().text();
-        } finally {
-            client.close();
-        }
+        client = OpenAIOkHttpClient.fromEnv();
     }
 
-    void main() {
-        ChatModel model = ChatModel.GPT_4_1_MINI;
-        double temperature = 0;
-        String prompt = "How many tokens is your context window?";
-        String response = queryModel(prompt, model, temperature);
+    public String queryModel(String prompt) {
+        ResponseCreateParams params = ResponseCreateParams.builder()
+                .model(model).input(prompt).temperature(temperature).build();
+        Response response = client.responses().create(params);
 
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+        return response.output().get(0).asMessage().content().get(0)
+                .asOutputText().text();
+    }
+
+    @Override
+    public void close() {
+        client.close();
+    }
+
+    public static void main(String[] args) {
+        try (OpenAiGptBasic demo = new OpenAiGptBasic(ChatModel.GPT_4_1_MINI,
+                0)) {
+            String prompt = "How many tokens is your context window?";
+            String response = demo.queryModel(prompt);
+
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+        }
     }
 
 }
