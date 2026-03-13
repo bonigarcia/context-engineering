@@ -25,44 +25,54 @@ import com.openai.models.chat.completions.ChatCompletion;
 import com.openai.models.chat.completions.ChatCompletionCreateParams;
 import com.openai.models.chat.completions.ChatCompletionCreateParams.Builder;
 
-public class OpenAiGptSystemPrompt {
+public class OpenAiGptSystemPrompt implements AutoCloseable {
 
-    String queryModel(Optional<String> instructions, String prompt,
-            ChatModel model, double temperature) {
+    OpenAIClient client;
+    ChatModel model;
+    double temperature;
+
+    public OpenAiGptSystemPrompt(ChatModel model, float temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // OPENAI_API_KEY should be set as an environment variable
-        OpenAIClient client = OpenAIOkHttpClient.fromEnv();
-        try {
-            Builder builder = ChatCompletionCreateParams.builder().model(model)
-                    .addUserMessage(prompt);
-            instructions.ifPresent(builder::addSystemMessage);
-            ChatCompletion chatCompletion = client.chat().completions()
-                    .create(builder.build());
-            return chatCompletion.choices().get(0).message().content().get();
-
-        } finally {
-            client.close();
-        }
+        client = OpenAIOkHttpClient.fromEnv();
     }
 
-    void main() {
-        String instructions = """
-                You are a strict grammar teacher.
-                Always respond in one sentence and correct any mistakes.
-                """;
-        String prompt = "Explain me what is context engineering in simple words";
-        ChatModel model = ChatModel.GPT_4_1_MINI;
-        double temperature = 0;
+    String queryModel(Optional<String> instructions, String prompt) {
+        Builder builder = ChatCompletionCreateParams.builder().model(model)
+                .addUserMessage(prompt);
+        instructions.ifPresent(builder::addSystemMessage);
+        ChatCompletion chatCompletion = client.chat().completions()
+                .create(builder.build());
+        return chatCompletion.choices().get(0).message().content().get();
+    }
 
-        String response = queryModel(Optional.of(instructions), prompt, model,
-                temperature);
-        System.out.println("=== With system instructions ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+    @Override
+    public void close() {
+        client.close();
+    }
 
-        response = queryModel(Optional.empty(), prompt, model, temperature);
-        System.out.println("=== With only user prompt ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+    public static void main(String[] args) {
+        try (OpenAiGptSystemPrompt demo = new OpenAiGptSystemPrompt(
+                ChatModel.GPT_4_1_MINI, 0)) {
+            String instructions = """
+                    You are a strict grammar teacher.
+                    Always respond in one sentence and correct any mistakes.
+                    """;
+            String prompt = "Explain me what is context engineering in simple words";
+
+            String response = demo.queryModel(Optional.of(instructions),
+                    prompt);
+            System.out.println("=== With system instructions ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+
+            response = demo.queryModel(Optional.empty(), prompt);
+            System.out.println("=== With only user prompt ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+        }
     }
 
 }

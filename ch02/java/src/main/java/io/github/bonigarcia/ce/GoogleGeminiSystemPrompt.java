@@ -24,41 +24,55 @@ import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
 
-public class GoogleGeminiSystemPrompt {
+public class GoogleGeminiSystemPrompt implements AutoCloseable {
 
-    String queryModel(Optional<String> instructions, String prompt,
-            String model, float temperature) {
+    Client client;
+    String model;
+    float temperature;
+
+    public GoogleGeminiSystemPrompt(String model, float temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // GOOGLE_API_KEY should be set as an environment variable
-        try (Client client = new Client()) {
-            GenerateContentConfig.Builder builder = GenerateContentConfig
-                    .builder().temperature(temperature);
-            instructions.ifPresent(i -> builder
-                    .systemInstruction(Content.fromParts(Part.fromText(i))));
-            GenerateContentResponse response = client.models
-                    .generateContent(model, prompt, builder.build());
-            return response.text();
-        }
+        client = new Client();
     }
 
-    void main() {
-        String instructions = """
-                You are a strict grammar teacher.
-                Always respond in one sentence and correct any mistakes.
-                """;
-        String prompt = "Explain me what is context engineering in simple words";
-        String model = "gemini-2.5-flash";
-        float temperature = 0;
+    String queryModel(Optional<String> instructions, String prompt) {
+        GenerateContentConfig.Builder builder = GenerateContentConfig.builder()
+                .temperature(temperature);
+        instructions.ifPresent(i -> builder
+                .systemInstruction(Content.fromParts(Part.fromText(i))));
+        GenerateContentResponse response = client.models.generateContent(model,
+                prompt, builder.build());
+        return response.text();
+    }
 
-        String response = queryModel(Optional.of(instructions), prompt, model,
-                temperature);
-        System.out.println("=== With system instructions ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+    @Override
+    public void close() {
+        client.close();
+    }
 
-        response = queryModel(Optional.empty(), prompt, model, temperature);
-        System.out.println("=== With only user prompt ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
+    public static void main(String[] args) {
+        try (GoogleGeminiSystemPrompt demo = new GoogleGeminiSystemPrompt(
+                "gemini-2.5-flash", 0)) {
+            String instructions = """
+                    You are a strict grammar teacher.
+                    Always respond in one sentence and correct any mistakes.
+                    """;
+            String prompt = "Explain me what is context engineering in simple words";
+
+            String response = demo.queryModel(Optional.of(instructions),
+                    prompt);
+            System.out.println("=== With system instructions ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+
+            response = demo.queryModel(Optional.empty(), prompt);
+            System.out.println("=== With only user prompt ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+        }
     }
 
 }

@@ -25,47 +25,57 @@ import com.anthropic.models.messages.Message;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
 
-public class AnthropicClaudeSystemPrompt {
+public class AnthropicClaudeSystemPrompt implements AutoCloseable {
 
-    String queryModel(Optional<String> instructions, String prompt, Model model,
-            double temperature) {
+    AnthropicClient client;
+    Model model;
+    double temperature;
+
+    public AnthropicClaudeSystemPrompt(Model model, double temperature) {
+        this.model = model;
+        this.temperature = temperature;
+
         // ANTHROPIC_API_KEY should be set as an environment variable
-        AnthropicClient client = AnthropicOkHttpClient.fromEnv();
-        try {
-            MessageCreateParams.Builder builder = MessageCreateParams.builder()
-                    .maxTokens(1024L).addUserMessage(prompt).model(model)
-                    .temperature(temperature);
-            instructions.ifPresent(builder::system);
-            Message response = client.messages().create(builder.build());
+        client = AnthropicOkHttpClient.fromEnv();
+    }
 
-            return response.content().stream()
-                    .flatMap(contentBlock -> contentBlock.text().stream())
-                    .map(textBlock -> textBlock.text())
-                    .collect(Collectors.joining());
-        } finally {
-            client.close();
+    String queryModel(Optional<String> instructions, String prompt) {
+        MessageCreateParams.Builder builder = MessageCreateParams.builder()
+                .maxTokens(1024L).addUserMessage(prompt).model(model)
+                .temperature(temperature);
+        instructions.ifPresent(builder::system);
+        Message response = client.messages().create(builder.build());
+
+        return response.content().stream()
+                .flatMap(contentBlock -> contentBlock.text().stream())
+                .map(textBlock -> textBlock.text())
+                .collect(Collectors.joining());
+    }
+
+    @Override
+    public void close() {
+        client.close();
+    }
+
+    public static void main(String[] args) {
+        try (AnthropicClaudeSystemPrompt demo = new AnthropicClaudeSystemPrompt(
+                Model.CLAUDE_SONNET_4_20250514, 0)) {
+            String instructions = """
+                    You are a strict grammar teacher.
+                    Always respond in one sentence and correct any mistakes.
+                    """;
+            String prompt = "Explain me what is context engineering in simple words";
+
+            String response = demo.queryModel(Optional.of(instructions),
+                    prompt);
+            System.out.println("=== With system instructions ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
+
+            response = demo.queryModel(Optional.empty(), prompt);
+            System.out.println("=== With only user prompt ===");
+            System.out.println("User query: " + prompt);
+            System.out.println("Response: " + response);
         }
     }
-
-    void main() {
-        String instructions = """
-                You are a strict grammar teacher.
-                Always respond in one sentence and correct any mistakes.
-                """;
-        String prompt = "Explain me what is context engineering in simple words";
-        Model model = Model.CLAUDE_SONNET_4_20250514;
-        double temperature = 0;
-
-        String response = queryModel(Optional.of(instructions), prompt, model,
-                temperature);
-        System.out.println("=== With system instructions ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
-
-        response = queryModel(Optional.empty(), prompt, model, temperature);
-        System.out.println("=== With only user prompt ===");
-        System.out.println("User query: " + prompt);
-        System.out.println("Response: " + response);
-    }
-
 }

@@ -4,7 +4,7 @@ This folder contains Java examples for interacting with OpenAI, Anthropic, and G
 
 ## Requirements
 
-- [Java](https://www.oracle.com/java/technologies/downloads/) 25+
+- [Java](https://www.oracle.com/java/technologies/downloads/) 21+
 - [Maven](https://maven.apache.org/) 3.9+
 - Corresponding API keys are set as environment variables (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, and `GOOGLE_API_KEY`) 
 
