@@ -4,7 +4,7 @@ This project implements a Model Context Protocol (MCP) server using Java, [Sprin
 
 ## Prerequisites
 
-- [Java](https://www.oracle.com/java/technologies/downloads/) 25+
+- [Java](https://www.oracle.com/java/technologies/downloads/) 21+
 - [Maven](https://maven.apache.org/) 3.9+
 - A local browser (e.g., [Chrome](https://www.google.com/chrome/), [Firefox](https://www.firefox.com/), or [Edge](https://www.microsoft.com/edge/))
 - [Node.js](https://nodejs.org/) (only for debugging with the [MCP Inspector](https://modelcontextprotocol.io/docs/tools/inspector))
@@ -21,12 +21,7 @@ mvn clean package
 java -jar target/context-engineering-ch04-spring-boot-1.0.0.jar
 ```
 
-Alternatively, you can run it using the Spring Boot Maven plugin:
-```bash
-mvn spring-boot:run
-```
-
-3. Debug the server with with the MCP Inspector:
+3. Alternatively, you can debug the MCP server using the MCP Inspector:
 ```bash
 npx @modelcontextprotocol/inspector java -jar /path/to/context-engineering-ch04-spring-boot-1.0.0.jar
 ```
