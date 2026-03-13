@@ -4,6 +4,8 @@ updates:
   directories:
     - "/ch01/java"
     - "/ch02/java"
+    - "/ch04/java"
+    - "/ch04/spring-boot"
   schedule:
     interval: daily
     time: '06:00'
@@ -17,6 +19,7 @@ updates:
     - "/ch02/javascript/anthropic-claude-system-prompt"
     - "/ch02/javascript/google-gemini-system-prompt"
     - "/ch02/javascript/openai-gpt-system-prompt"
+    - "/ch04/javascript/mcp_server"
   schedule:
     interval: daily
     time: '06:00'
