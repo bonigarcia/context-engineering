@@ -47,7 +47,7 @@ public class BrowserTools {
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
-                .callHandler((_, args) -> {
+                .callHandler((exchange, args) -> {
                     String browserName = (String) args.arguments()
                             .get(browserNameArgument);
                     String result = browserService.startBrowser(browserName);
@@ -68,7 +68,7 @@ public class BrowserTools {
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
-                .callHandler((_, args) -> {
+                .callHandler((exchange, args) -> {
                     String url = (String) args.arguments().get("url");
                     String result = browserService.navigate(url);
                     return Mono.just(McpSchema.CallToolResult.builder()
@@ -86,7 +86,7 @@ public class BrowserTools {
                 .build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
-                .callHandler((_, _) -> {
+                .callHandler((exchange, args) -> {
                     String result = browserService.closeBrowser();
                     return Mono.just(McpSchema.CallToolResult.builder()
                             .addTextContent(result)
@@ -103,7 +103,7 @@ public class BrowserTools {
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
-                .callHandler((_, _) -> {
+                .callHandler((exchange, args) -> {
                     String result = browserService.readPageText();
                     return Mono.just(McpSchema.CallToolResult.builder()
                             .addTextContent(result)
