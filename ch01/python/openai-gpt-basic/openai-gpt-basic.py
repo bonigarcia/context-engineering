@@ -10,24 +10,46 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from dotenv import load_dotenv
 from openai import OpenAI
 
+client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
 
-def query_model(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
-    """Send a text prompt to an OpenAI model and return the text response."""
 
-    client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
+def query_model(prompt: str,
+                model: str = "gpt-4o-mini",
+                max_tokens: int = 1024,
+                temperature: float = 0, ) -> str:
+    """Send a user prompt to a OpenAI model with temperature and max output tokens"""
     response = client.responses.create(
         model=model,
         input=prompt,
+        max_output_tokens=max_tokens,
         temperature=temperature,
+    )
+    return response.output_text
+
+
+def query_model_with_reasoning(prompt: str,
+                               model: str = "gpt-5",
+                               reasoning_effort: str = "low", ) -> str:
+    """Send a user prompt to a reasoning OpenAI model (GPT5 or above)"""
+    response = client.responses.create(
+        model=model,
+        input=prompt,
+        reasoning={"effort": reasoning_effort},
     )
     return response.output_text
 
 
 if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
-    response = query_model(prompt)
+
+    print("=== Basic model  ===")
     print("User:", prompt)
-    print("AI:", response)
+    response = query_model(prompt)
+    print("GPT4:", response)
+
+    print("=== Advanced model  ===")
+    print("User:", prompt)
+    response = query_model_with_reasoning(prompt)
+    print("GPT5:", response)

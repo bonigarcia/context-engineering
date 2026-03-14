@@ -16,20 +16,28 @@
  */
 package io.github.bonigarcia.ce;
 
+import java.util.stream.Collectors;
+
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.ChatModel;
+import com.openai.models.Reasoning;
+import com.openai.models.ReasoningEffort;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
+import com.openai.models.responses.ResponseCreateParams.Builder;
 
 public class OpenAiGptBasic implements AutoCloseable {
 
     OpenAIClient client;
     ChatModel model;
     double temperature;
+    ReasoningEffort reasoning;
 
-    public OpenAiGptBasic(ChatModel model, float temperature) {
+    public OpenAiGptBasic(ChatModel model, ReasoningEffort reasoning,
+            float temperature) {
         this.model = model;
+        this.reasoning = reasoning;
         this.temperature = temperature;
 
         // OPENAI_API_KEY should be set as an environment variable
@@ -37,12 +45,26 @@ public class OpenAiGptBasic implements AutoCloseable {
     }
 
     public String queryModel(String prompt) {
-        ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(model).input(prompt).temperature(temperature).build();
-        Response response = client.responses().create(params);
+        Builder modelBuilder = ResponseCreateParams.builder().model(model)
+                .input(prompt);
+        if (isGpt5OrAbove(model)) {
+            modelBuilder
+                    .reasoning(Reasoning.builder().effort(reasoning).build());
+        } else {
+            modelBuilder.temperature(temperature);
+        }
 
-        return response.output().get(0).asMessage().content().get(0)
-                .asOutputText().text();
+        Response response = client.responses().create(modelBuilder.build());
+        return response.output().stream()
+                .filter(item -> item.message().isPresent())
+                .flatMap(item -> item.message().get().content().stream())
+                .filter(content -> content.outputText().isPresent())
+                .map(content -> content.outputText().get().text())
+                .collect(Collectors.joining());
+    }
+
+    boolean isGpt5OrAbove(ChatModel model) {
+        return model.value().name().matches("GPT_[5-9].*");
     }
 
     @Override
@@ -51,10 +73,15 @@ public class OpenAiGptBasic implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        try (OpenAiGptBasic demo = new OpenAiGptBasic(ChatModel.GPT_4_1_MINI,
-                0)) {
+        // Model configuration
+        ChatModel model = ChatModel.GPT_5_1;
+        ReasoningEffort reasoning = ReasoningEffort.MEDIUM;
+        int temperature = 0;
+
+        try (OpenAiGptBasic gpt = new OpenAiGptBasic(model, reasoning,
+                temperature)) {
             String prompt = "How many tokens is your context window?";
-            String response = demo.queryModel(prompt);
+            String response = gpt.queryModel(prompt);
 
             System.out.println("User query: " + prompt);
             System.out.println("Response: " + response);

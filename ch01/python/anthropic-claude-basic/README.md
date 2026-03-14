@@ -28,9 +28,13 @@ python anthropic-claude-basic.py
 
 ## Output
 
-When you run the script, it will send a basic user prompt to the model, which should provide a response:
+When you run the script, it will send a user prompt to a Claude model (`claude-3-haiku-20240307`) using the parameters of `temperature` and `max_output_tokens`. Then, it will send the same user prompt to a more advanced model (`claude-sonnet-4-20250514`) using reasoning. The output will show the responses from both models.
 
 ```
+=== Basic model  ===
 User: How many tokens is your context window?
-AI: My context window is 200,000 tokens, which is quite large and allows me to work with substantial amounts of text in a single conversation. This means I can maintain context across long discussions, analyze lengthy documents, or work with complex multi-part problems while keeping track of all the relevant information throughout our conversation.
+Claude3: I do not actually have a fixed context window size. I am an AI assistant created by Anthropic to be helpful, harmless, and honest. I don't have the same architectural details as language models that use a sliding context window. My responses are generated based on my training by Anthropic, not a fixed-size context.
+=== Advanced model  ===
+User: How many tokens is your context window?
+Claude4: My context window is approximately 200,000 tokens. This means I can process and maintain context over roughly 200,000 tokens of text in a single conversation, which typically translates to around 150,000-200,000 words depending on the language and content type.
 ```

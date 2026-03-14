@@ -19,16 +19,20 @@ package io.github.bonigarcia.ce;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
+import com.google.genai.types.ThinkingConfig;
 
 public class GoogleGeminiBasic implements AutoCloseable {
 
     Client client;
     String model;
     float temperature;
+    int thinkingBudget;
 
-    public GoogleGeminiBasic(String model, float temperature) {
+    public GoogleGeminiBasic(String model, float temperature,
+            int thinkingBudget) {
         this.model = model;
         this.temperature = temperature;
+        this.thinkingBudget = thinkingBudget;
 
         // GOOGLE_API_KEY should be set as an environment variable
         client = new Client();
@@ -36,7 +40,10 @@ public class GoogleGeminiBasic implements AutoCloseable {
 
     public String queryModel(String prompt) {
         GenerateContentConfig config = GenerateContentConfig.builder()
-                .temperature(temperature).build();
+                .temperature(temperature).thinkingConfig(ThinkingConfig
+                        .builder().thinkingBudget(thinkingBudget).build())
+                .build();
+
         GenerateContentResponse response = client.models.generateContent(model,
                 prompt, config);
         return response.text();
@@ -48,14 +55,18 @@ public class GoogleGeminiBasic implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        try (GoogleGeminiBasic demo = new GoogleGeminiBasic("gemini-2.5-flash",
-                0)) {
+        // Model configuration
+        String model = "gemini-2.5-flash";
+        float temperature = 0;
+        int thinkingBudget = 1024;
+
+        try (GoogleGeminiBasic gemini = new GoogleGeminiBasic(model,
+                temperature, thinkingBudget)) {
             String prompt = "How many tokens is your context window?";
-            String response = demo.queryModel(prompt);
+            String response = gemini.queryModel(prompt);
 
             System.out.println("User query: " + prompt);
             System.out.println("Response: " + response);
         }
     }
-
 }

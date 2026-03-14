@@ -13,16 +13,25 @@ limitations under the License.
 from google import genai
 from google.genai import types
 
+client = genai.Client()  # GOOGLE_API_KEY should be set as an environment variable
 
-def query_model(prompt: str, model: str = "gemini-2.0-flash", temperature: float = 0) -> str:
+
+def query_model(prompt: str,
+                model: str = "gemini-2.5-flash",
+                temperature: float = 0,
+                max_tokens: int = 1024,
+                thinking_budget: int = 512,
+                ) -> str:
     """Send a text prompt to a Google Gemini model and return the text response."""
-
-    client = genai.Client()  # GOOGLE_API_KEY should be set as an environment variable
     response = client.models.generate_content(
         model=model,
         contents=prompt,
         config=types.GenerateContentConfig(
             temperature=temperature,
+            max_output_tokens=max_tokens,
+            thinking_config=types.ThinkingConfig(
+                thinking_budget=thinking_budget
+            )
         ),
     )
     return response.text
@@ -32,4 +41,4 @@ if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
     response = query_model(prompt)
     print("User:", prompt)
-    print("AI:", response)
+    print("Gemini:", response)
