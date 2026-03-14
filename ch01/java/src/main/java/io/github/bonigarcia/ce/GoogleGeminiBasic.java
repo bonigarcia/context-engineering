@@ -19,6 +19,7 @@ package io.github.bonigarcia.ce;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
+import com.google.genai.types.GenerateContentResponseUsageMetadata;
 import com.google.genai.types.ThinkingConfig;
 
 public class GoogleGeminiBasic implements AutoCloseable {
@@ -44,8 +45,22 @@ public class GoogleGeminiBasic implements AutoCloseable {
                         .builder().thinkingBudget(thinkingBudget).build())
                 .build();
 
+        long start = System.nanoTime();
         GenerateContentResponse response = client.models.generateContent(model,
                 prompt, config);
+        double latency = (System.nanoTime() - start) / 1_000_000_000.0;
+
+        GenerateContentResponseUsageMetadata usage = response.usageMetadata()
+                .get();
+        System.out.printf("\tLatency: %.3f seconds%n", latency);
+        System.out
+                .println("\tPrompt tokens: " + usage.promptTokenCount().get());
+        System.out.println(
+                "\tOutput tokens: " + usage.candidatesTokenCount().get());
+        System.out.println(
+                "\tThinking tokens: " + usage.thoughtsTokenCount().get());
+        System.out.println("\tTotal tokens: " + usage.totalTokenCount().get());
+
         return response.text();
     }
 
@@ -55,18 +70,23 @@ public class GoogleGeminiBasic implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        // Model configuration
         String model = "gemini-2.5-flash";
         float temperature = 0;
         int thinkingBudget = 1024;
-
         try (GoogleGeminiBasic gemini = new GoogleGeminiBasic(model,
                 temperature, thinkingBudget)) {
             String prompt = "How many tokens is your context window?";
+            System.out.println("=== Basic model ===");
+            System.out.println("User: " + prompt);
             String response = gemini.queryModel(prompt);
+            System.out.println("Gemini-2.5: " + response);
 
-            System.out.println("User query: " + prompt);
-            System.out.println("Response: " + response);
+            gemini.model = "gemini-3.1-flash-lite-preview";
+            gemini.thinkingBudget = 512;
+            System.out.println("=== Advanced model  ===");
+            System.out.println("User: " + prompt);
+            response = gemini.queryModel(prompt);
+            System.out.println("Gemini-3.1: " + response);
         }
     }
 }

@@ -11,28 +11,45 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { performance } from 'perf_hooks';
 
-async function queryModel(userPrompt, modelName = "gemini-2.0-flash", temperature = 0) {
-    // GOOGLE_API_KEY should be set as an environment variable
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY); // GOOGLE_API_KEY should be set as an environment variable
+
+async function queryModel(userPrompt, modelName = "gemini-2.5-flash", temperature = 0, maxTokens = 1024, thinkingBudget = 512) {
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
         model: modelName,
         generationConfig: {
             temperature: temperature,
+            maxOutputTokens: maxTokens,
+            thinkingConfig: {
+                thinkingBudget: thinkingBudget
+            }
         }
     });
-
+    const start = performance.now();
     const result = await model.generateContent(userPrompt);
     const response = await result.response;
+    const latency = (performance.now() - start) / 1000;
+
+    const usage = response.usageMetadata;
+    console.log(`\tLatency: ${latency.toFixed(3)} seconds`);
+    console.log(`\tPrompt tokens: ${usage.promptTokenCount}`);
+    console.log(`\tOutput tokens: ${usage.candidatesTokenCount}`);
+    console.log(`\tThinking tokens: ${usage.thoughtsTokenCount}`);
+    console.log(`\tTotal tokens: ${usage.totalTokenCount}`);
+
     return response.text();
 }
 
 const userPrompt = "How many tokens is your context window?";
-queryModel(userPrompt)
-    .then(response => {
-        console.log("User:", userPrompt);
-        console.log("AI:", response);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+
+console.log("=== Basic model  ===");
+console.log("User:", userPrompt);
+var response = await queryModel(userPrompt);
+console.log("Gemini-2.5:", response);
+
+console.log("=== Advanced model  ===");
+console.log("User:", userPrompt);
+response = await queryModel(userPrompt, "gemini-3.1-flash-lite-preview");
+console.log("Gemini-3.1:", response);

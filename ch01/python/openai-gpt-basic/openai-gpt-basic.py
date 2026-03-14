@@ -60,7 +60,7 @@ if __name__ == "__main__":
     print("User:", prompt)
     response = query_model(prompt)
     print("GPT4:", response)
-    print()
+
     print("=== Advanced model  ===")
     print("User:", prompt)
     response = query_model(prompt, model="gpt-5", reasoning="medium")

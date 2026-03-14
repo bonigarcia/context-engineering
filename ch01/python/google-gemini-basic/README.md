@@ -35,7 +35,6 @@ When you run the script, it will send a user prompt to a Gemini model (`gemini-2
 User: How many tokens is your context window?
         Latency: 2.679 seconds
         Prompt tokens: 9
-        Cached prompt tokens: None
         Output tokens: 96
         Thinking tokens: 395
         Total tokens: 500
@@ -47,7 +46,6 @@ This information is proprietary and not something I can disclose. However, I am 
 User: How many tokens is your context window?
         Latency: 1.430 seconds
         Prompt tokens: 9
-        Cached prompt tokens: None
         Output tokens: 93
         Thinking tokens: 142
         Total tokens: 244

@@ -11,26 +11,51 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import OpenAI from 'openai';
+import { performance } from 'perf_hooks';
 
-async function queryModel(userPrompt, model = "gpt-4o-mini", temperature = 0) {
-    // OPENAI_API_KEY should be set as an environment variable
-    const client = new OpenAI();
+const client = new OpenAI(); // OPENAI_API_KEY should be set as an environment variable
 
-    const response = await client.chat.completions.create({
+async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 1024, temperature = 0, reasoning = "low") {
+    const params = {
         model: model,
-        messages: [{ role: "user", content: userPrompt }],
-        temperature: temperature,
-    });
+        input: userPrompt,
+        max_output_tokens: maxTokens,
+    };
 
-    return response.choices[0].message.content;
+    if (isGpt5OrAbove(model)) {
+        params.reasoning = { effort: reasoning };
+    } else {
+        params.temperature = temperature;
+    }
+
+    const start = performance.now();
+    const response = await client.responses.create(params);
+    const latency = (performance.now() - start) / 1000;
+
+    // Log some details about the response
+    const usage = response.usage;
+    console.log(`\tModel: ${response.model}`);
+    console.log(`\tLatency: ${latency.toFixed(3)} seconds`);
+    console.log(`\tInput tokens: ${usage.input_tokens}`);
+    console.log(`\tOutput tokens: ${usage.output_tokens}`);
+    console.log(`\tReasoning tokens: ${usage.output_tokens_details.reasoning_tokens}`);
+    console.log(`\tTotal tokens: ${usage.total_tokens}`);
+
+    return response.output_text;
+}
+
+function isGpt5OrAbove(model) {
+    return /^gpt-[5-9].*/i.test(model);
 }
 
 const userPrompt = "How many tokens is your context window?";
-queryModel(userPrompt)
-    .then(response => {
-        console.log("User:", userPrompt);
-        console.log("AI:", response);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-    });
+
+console.log("=== Basic model  ===");
+console.log("User:", userPrompt);
+var response = await queryModel(userPrompt);
+console.log("GPT4:", response);
+
+console.log("=== Advanced model  ===");
+console.log("User:", userPrompt);
+response = await queryModel(userPrompt, "gpt-5", 1024, 0, "medium");
+console.log("GPT5:", response);

@@ -23,6 +23,7 @@ import com.anthropic.client.okhttp.AnthropicOkHttpClient;
 import com.anthropic.models.messages.Message;
 import com.anthropic.models.messages.MessageCreateParams;
 import com.anthropic.models.messages.Model;
+import com.anthropic.models.messages.Usage;
 
 public class AnthropicClaudeBasic implements AutoCloseable {
 
@@ -50,7 +51,17 @@ public class AnthropicClaudeBasic implements AutoCloseable {
             builder.temperature(temperature);
         }
 
+        long start = System.nanoTime();
         Message response = client.messages().create(builder.build());
+        double latency = (System.nanoTime() - start) / 1_000_000_000.0;
+
+        // Log some details about the response
+        Usage usage = response.usage();
+        System.out.println("\tModel: " + response.model());
+        System.out.printf("\tLatency: %.3f seconds%n", latency);
+        System.out.println("\tInput tokens: " + usage.inputTokens());
+        System.out.println("\tOutput tokens: " + usage.outputTokens());
+
         return response.content().stream()
                 .flatMap(contentBlock -> contentBlock.text().stream())
                 .map(textBlock -> textBlock.text())
@@ -62,17 +73,25 @@ public class AnthropicClaudeBasic implements AutoCloseable {
         client.close();
     }
 
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) {
-        Model model = Model.CLAUDE_SONNET_4_20250514;
+        Model model = Model.CLAUDE_3_HAIKU_20240307;
         double temperature = 0;
-        long thinkingBudget = 1024;
+        long thinkingBudget = 0;
         try (AnthropicClaudeBasic claude = new AnthropicClaudeBasic(model,
                 temperature, thinkingBudget)) {
             String prompt = "How many tokens is your context window?";
+            System.out.println("=== Basic model  ===");
+            System.out.println("User: " + prompt);
             String response = claude.queryModel(prompt);
+            System.out.println("Claude3: " + response);
 
-            System.out.println("User query: " + prompt);
-            System.out.println("Response: " + response);
+            claude.model = Model.CLAUDE_SONNET_4_20250514;
+            claude.thinkingBudget = 1024;
+            System.out.println("\n=== Advanced model  ===");
+            System.out.println("User: " + prompt);
+            response = claude.queryModel(prompt);
+            System.out.println("Claude4: " + response);
         }
     }
 

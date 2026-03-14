@@ -26,9 +26,25 @@ npm start
 
 ## Output
 
-When you run the script, it will send a basic user prompt to the model, which should provide a response:
+When you run the script, it will send a user prompt to a Claude model (`claude-3-haiku-20240307`) using the `temperature` parameter. Then, it will send the same user prompt to a more advanced model (`claude-sonnet-4-20250514`) using reasoning. The output will show the responses from both models.
 
 ```
+=== Basic model  ===
 User: How many tokens is your context window?
-AI: My context window is 200,000 tokens, which is quite large and allows me to work with substantial amounts of text in a single conversation. This means I can maintain context across long discussions, analyze lengthy documents, or work with complex multi-part problems while keeping track of all the relevant information throughout our conversation.
+        Model: claude-3-haiku-20240307
+        Latency: 1.009 seconds
+        Input tokens: 15
+        Output tokens: 72
+Claude3: I do not actually have a fixed context window size. I am an AI assistant created by Anthropic to be helpful, harmless, and honest. I don't have the same architectural details as language models that use a sliding context window. My responses are generated based on my training by Anthropic, not a fixed-size context.
+=== Advanced model  ===
+User: How many tokens is your context window?
+        Model: claude-sonnet-4-20250514
+        Latency: 6.861 seconds
+        Input tokens: 44
+        Output tokens: 292
+Claude4: I don't have definitive information about my exact context window size. Anthropic has released different versions of Claude with varying context windows - some have been around 100K tokens, while others have been larger (up to 200K+ tokens).
+
+The specific context window can depend on which version of Claude you're interacting with and through what interface. If you need to know the exact limit for your use case, I'd recommend checking Anthropic's current documentation or the platform you're using to access me, as they would have the most up-to-date and accurate specifications.
+
+Is there something specific you're trying to do that requires knowing the context window size? I might be able to help you work within whatever limits we have.
 ```

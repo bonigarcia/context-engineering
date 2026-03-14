@@ -41,7 +41,6 @@ def query_model(prompt: str,
     usage = response.usage_metadata
     print(f"\tLatency: {latency:.3f} seconds")
     print(f"\tPrompt tokens: {usage.prompt_token_count}")
-    print(f"\tCached prompt tokens: {usage.cached_content_token_count}")
     print(f"\tOutput tokens: {usage.candidates_token_count}")
     print(f"\tThinking tokens: {usage.thoughts_token_count}")
     print(f"\tTotal tokens: {usage.total_token_count}")
@@ -55,7 +54,7 @@ if __name__ == "__main__":
     print("User:", prompt)
     response = query_model(prompt)
     print("Gemini-2.5:", response)
-    print()
+
     print("=== Advanced model  ===")
     print("User:", prompt)
     response = query_model(prompt, model="gemini-3.1-flash-lite-preview")

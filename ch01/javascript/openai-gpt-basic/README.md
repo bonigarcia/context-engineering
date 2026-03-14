@@ -26,9 +26,26 @@ npm start
 
 ## Output
 
-When you run the script, it will send a basic user prompt to the model, which should provide a response:
+When you run the script, it will send a user prompt to a GPT model (`gpt-4o-mini`) using the `temperature` parameter. Then, it will send the same user prompt to a more advanced model (`gpt-5`) using reasoning. The output will show the responses from both models.
 
 ```
+=== Basic model  ===
 User: How many tokens is your context window?
-AI: My context window is 32,768 tokens. This means I can process and keep track of up to 32,768 tokens of text in a single conversation or input. If you have any other questions about how this works, feel free to ask!
+        Model: gpt-4o-mini-2024-07-18
+        Latency: 1.695 seconds
+        Input tokens: 15
+        Output tokens: 39
+        Reasoning tokens: 0
+        Total tokens: 54
+GPT4: My context window can handle up to 8,192 tokens. This includes both the input and the output tokens. If you have any specific questions or need assistance, feel free to ask!
+
+=== Advanced model  ===
+User: How many tokens is your context window?
+        Model: gpt-5-2025-08-07
+        Latency: 17.243 seconds
+        Input tokens: 14
+        Output tokens: 750
+        Reasoning tokens: 640
+        Total tokens: 764
+GPT5: It depends on the model. Most current ChatGPT models available here use a 128,000‑token context window (shared across your input and my output). If you tell me the specific model you’re using, I can confirm the exact limit.
 ```

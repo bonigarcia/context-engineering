@@ -26,6 +26,7 @@ import com.openai.models.ReasoningEffort;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 import com.openai.models.responses.ResponseCreateParams.Builder;
+import com.openai.models.responses.ResponseUsage;
 
 public class OpenAiGptBasic implements AutoCloseable {
 
@@ -54,7 +55,20 @@ public class OpenAiGptBasic implements AutoCloseable {
             modelBuilder.temperature(temperature);
         }
 
+        long start = System.nanoTime();
         Response response = client.responses().create(modelBuilder.build());
+        double latency = (System.nanoTime() - start) / 1_000_000_000.0;
+
+        // Log some details about the response
+        ResponseUsage usage = response.usage().get();
+        System.out.println("\tModel: " + response.model().chat().get());
+        System.out.printf("\tLatency: %.3f seconds%n", latency);
+        System.out.println("\tInput tokens: " + usage.inputTokens());
+        System.out.println("\tOutput tokens: " + usage.outputTokens());
+        System.out.println("\tReasoning tokens: "
+                + usage.outputTokensDetails().reasoningTokens());
+        System.out.println("\tTotal tokens: " + usage.totalTokens());
+
         return response.output().stream()
                 .filter(item -> item.message().isPresent())
                 .flatMap(item -> item.message().get().content().stream())
@@ -73,18 +87,23 @@ public class OpenAiGptBasic implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        // Model configuration
-        ChatModel model = ChatModel.GPT_5_1;
-        ReasoningEffort reasoning = ReasoningEffort.MEDIUM;
+        ChatModel model = ChatModel.GPT_4O_MINI;
+        ReasoningEffort reasoning = ReasoningEffort.NONE;
         int temperature = 0;
-
         try (OpenAiGptBasic gpt = new OpenAiGptBasic(model, reasoning,
                 temperature)) {
             String prompt = "How many tokens is your context window?";
+            System.out.println("=== Basic model  ===");
+            System.out.println("User: " + prompt);
             String response = gpt.queryModel(prompt);
+            System.out.println("GPT4: " + response);
 
-            System.out.println("User query: " + prompt);
-            System.out.println("Response: " + response);
+            gpt.model = ChatModel.GPT_5;
+            gpt.reasoning = ReasoningEffort.MEDIUM;
+            System.out.println("\n=== Advanced model  ===");
+            System.out.println("User: " + prompt);
+            response = gpt.queryModel(prompt);
+            System.out.println("GPT5: " + response);
         }
     }
 

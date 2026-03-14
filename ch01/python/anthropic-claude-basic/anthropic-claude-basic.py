@@ -47,9 +47,6 @@ def query_model(prompt: str,
     print(f"\tLatency: {latency:.3f} seconds")
     print(f"\tInput tokens: {usage.input_tokens}")
     print(f"\tOutput tokens: {usage.output_tokens}")
-    thinking_tokens = getattr(usage, 'thinking_tokens', None)
-    if thinking_tokens is not None:
-        print("f\tThinking tokens: {thinking_tokens}")
 
     response_text = ""
     for block in response.content:
@@ -65,7 +62,7 @@ if __name__ == "__main__":
     print("User:", prompt)
     response = query_model(prompt)
     print("Claude3:", response)
-    print()
+
     print("=== Advanced model  ===")
     print("User:", prompt)
     response = query_model(prompt, model="claude-sonnet-4-20250514", thinking_budget=1024)
