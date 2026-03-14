@@ -12,7 +12,7 @@ limitations under the License.
 """
 from google import genai
 from google.genai import types
-from datetime import datetime
+import time
 
 client = genai.Client()  # GOOGLE_API_KEY should be set as an environment variable
 
@@ -24,6 +24,7 @@ def query_model(prompt: str,
                 thinking_budget: int = 512,
                 ) -> str:
     """Send a user prompt to a Google Gemini model and return the text response."""
+    start = time.perf_counter()
     response = client.models.generate_content(
         model=model,
         contents=prompt,
@@ -35,11 +36,15 @@ def query_model(prompt: str,
             )
         ),
     )
+    latency = time.perf_counter() - start
 
     usage = response.usage_metadata
-    print("\tPrompt tokens:", usage.prompt_token_count)
-    print("\tTotal tokens:", usage.total_token_count)
-    print("\tThinking tokens:", usage.thoughts_token_count)
+    print(f"\tLatency: {latency:.3f} seconds")
+    print(f"\tPrompt tokens: {usage.prompt_token_count}")
+    print(f"\tCached prompt tokens: {usage.cached_content_token_count}")
+    print(f"\tOutput tokens: {usage.candidates_token_count}")
+    print(f"\tThinking tokens: {usage.thoughts_token_count}")
+    print(f"\tTotal tokens: {usage.total_token_count}")
     return response.text
 
 
@@ -47,11 +52,11 @@ if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
 
     print("=== Basic model  ===")
-    print(f"[{datetime.now()}] User:", prompt)
+    print("User:", prompt)
     response = query_model(prompt)
-    print(f"[{datetime.now()}] Gemini-2.5:", response)
+    print("Gemini-2.5:", response)
     print()
     print("=== Advanced model  ===")
-    print(f"[{datetime.now()}] User:", prompt)
+    print("User:", prompt)
     response = query_model(prompt, model="gemini-3.1-flash-lite-preview")
-    print(f"[{datetime.now()}] Gemini-3.1:", response)
+    print("Gemini-3.1:", response)
