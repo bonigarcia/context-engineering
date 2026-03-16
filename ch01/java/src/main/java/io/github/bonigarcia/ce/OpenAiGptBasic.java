@@ -93,14 +93,14 @@ public class OpenAiGptBasic implements AutoCloseable {
         try (OpenAiGptBasic gpt = new OpenAiGptBasic(model, reasoning,
                 temperature)) {
             String prompt = "How many tokens is your context window?";
-            System.out.println("=== Basic model  ===");
+            System.out.println("=== Basic model ===");
             System.out.println("User: " + prompt);
             String response = gpt.queryModel(prompt);
             System.out.println("GPT4: " + response);
 
             gpt.model = ChatModel.GPT_5;
             gpt.reasoning = ReasoningEffort.MEDIUM;
-            System.out.println("\n=== Advanced model  ===");
+            System.out.println("\n=== Advanced model ===");
             System.out.println("User: " + prompt);
             response = gpt.queryModel(prompt);
             System.out.println("GPT5: " + response);

@@ -58,12 +58,12 @@ def query_model(prompt: str,
 if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
 
-    print("=== Basic model  ===")
+    print("=== Basic model ===")
     print("User:", prompt)
     response = query_model(prompt)
     print("Claude3:", response)
 
-    print("=== Advanced model  ===")
+    print("=== Advanced model ===")
     print("User:", prompt)
     response = query_model(prompt, model="claude-sonnet-4-20250514", thinking_budget=1024)
     print("Claude4:", response)

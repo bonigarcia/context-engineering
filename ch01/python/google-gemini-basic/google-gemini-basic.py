@@ -50,12 +50,12 @@ def query_model(prompt: str,
 if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
 
-    print("=== Basic model  ===")
+    print("=== Basic model ===")
     print("User:", prompt)
     response = query_model(prompt)
     print("Gemini-2.5:", response)
 
-    print("=== Advanced model  ===")
+    print("=== Advanced model ===")
     print("User:", prompt)
     response = query_model(prompt, model="gemini-3.1-flash-lite-preview")
     print("Gemini-3.1:", response)

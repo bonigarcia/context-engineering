@@ -56,12 +56,12 @@ def is_gpt5_or_above(model: str) -> bool:
 if __name__ == "__main__":
     prompt = "How many tokens is your context window?"
 
-    print("=== Basic model  ===")
+    print("=== Basic model ===")
     print("User:", prompt)
     response = query_model(prompt)
     print("GPT4:", response)
 
-    print("=== Advanced model  ===")
+    print("=== Advanced model ===")
     print("User:", prompt)
     response = query_model(prompt, model="gpt-5", reasoning="medium")
     print("GPT5:", response)

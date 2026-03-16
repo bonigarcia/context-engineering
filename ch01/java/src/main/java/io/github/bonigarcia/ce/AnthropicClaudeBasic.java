@@ -81,14 +81,14 @@ public class AnthropicClaudeBasic implements AutoCloseable {
         try (AnthropicClaudeBasic claude = new AnthropicClaudeBasic(model,
                 temperature, thinkingBudget)) {
             String prompt = "How many tokens is your context window?";
-            System.out.println("=== Basic model  ===");
+            System.out.println("=== Basic model ===");
             System.out.println("User: " + prompt);
             String response = claude.queryModel(prompt);
             System.out.println("Claude3: " + response);
 
             claude.model = Model.CLAUDE_SONNET_4_20250514;
             claude.thinkingBudget = 1024;
-            System.out.println("\n=== Advanced model  ===");
+            System.out.println("\n=== Advanced model ===");
             System.out.println("User: " + prompt);
             response = claude.queryModel(prompt);
             System.out.println("Claude4: " + response);

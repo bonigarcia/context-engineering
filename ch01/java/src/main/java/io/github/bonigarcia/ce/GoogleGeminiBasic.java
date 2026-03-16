@@ -83,7 +83,7 @@ public class GoogleGeminiBasic implements AutoCloseable {
 
             gemini.model = "gemini-3.1-flash-lite-preview";
             gemini.thinkingBudget = 512;
-            System.out.println("=== Advanced model  ===");
+            System.out.println("=== Advanced model ===");
             System.out.println("User: " + prompt);
             response = gemini.queryModel(prompt);
             System.out.println("Gemini-3.1: " + response);
