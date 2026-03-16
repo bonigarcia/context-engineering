@@ -8,6 +8,6 @@
     "start": "node openai-gpt-basic.js"
   },
   "dependencies": {
-    "openai": "^6.27.0"
+    "openai": "^6.29.0"
   }
 }
