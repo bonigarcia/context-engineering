@@ -2,47 +2,35 @@
 
 This sample application implements an agentic RAG system using the following stack:
 
-- LLM: [Llama 3.2 3B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
-- Agent framework: [LangChain](https://www.langchain.com/)
-- Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
-- Vector database: [FAISS](https://faiss.ai/) (in-memory)
+* LLM: [Llama 3.2 3B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
+* Agent framework: [LangChain](https://www.langchain.com/)
+* Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+* Vector database: [FAISS](https://faiss.ai/) (in-memory)
 
 This example demonstrates how an agent can decide whether to use a RAG tool to answer a question.
 
-### Requirements
+## Requirements
 
-To run this example, you need the following:
+* [Python](https://www.python.org/) 3.6+
+* [Ollama](https://ollama.com/)
 
-- [Python](https://www.python.org/)
-- [Ollama](https://ollama.com/)
-
-### Steps for running this example
+## Steps for running this example in the shell
 
 1. Pull Llama 3.2 3B with Ollama:
 ```bash
 ollama pull llama3.2:3b
 ```
 
-2. Get the Python sources and go to the example directory:
+2. Install dependencies:
 ```bash
-git clone https://github.com/bonigarcia/context-engineering
-cd context-engineering/python/ch03/agentic-rag
-```
-
-3. Create a virtual environment and activate it (optional, but recommended):
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-4. Install the required Python dependencies:
-```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows cmd: .venv\Scripts\activate # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-5.  Run the Agentic RAG example script:
+3. Run the script:
 ```bash
-python3 agentic_rag.py
+python agentic_rag.py
 ```
 
 ### Output

@@ -5,34 +5,24 @@ This sample application implements a minimal cache-AG system using the following
 - LLM: [GPT-2](https://huggingface.co/gpt2)
 - Libraries: [PyTorch](https://pytorch.org/), [Hugging Face Transformers](https://huggingface.co/docs/transformers/index)
 
-This example demonstrates how to pre-load external knowledge into the model's internal Key-Value (KV) cache. It uses a manual generation loop to provide a view of how the cache is injected and updated.
+This example demonstrates how to preload external knowledge into the model's internal Key-Value (KV) cache. It uses a manual generation loop to provide a view of how the cache is injected and updated.
 
 ### Requirements
 
-To run this example, you only need [Python](https://www.python.org/) 3.x.
+* [Python](https://www.python.org/) 3.x
 
-### Steps for running this example
+## Steps for running this example in the shell
 
-1. Get the Python sources and go to the example directory:
+1. Install dependencies:
 ```bash
-git clone https://github.com/bonigarcia/context-engineering
-cd context-engineering/python/ch03/cache-ag
-```
-
-2. Create a virtual environment and activate it (optional, but recommended):
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-3.  Install the required Python dependencies:
-```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows cmd: .venv\Scripts\activate # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-4.  Run the Cache-AG example script:
+2. Run the script:
 ```bash
-python3 cache_ag.py
+python cache_ag.py
 ```
 
 ### Output
