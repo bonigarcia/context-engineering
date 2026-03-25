@@ -10,140 +10,76 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from __future__ import annotations
-
-import json
-import os
-from datetime import datetime
-from zoneinfo import ZoneInfo
-
 from openai import OpenAI
-from rich.console import Console
-from rich.markdown import Markdown
-from rich.prompt import Prompt
+from datetime import datetime
+import json
 
-_TIMEZONES = {
-    "paris": "Europe/Paris",
-    "new york": "America/New_York",
-    "tokyo": "Asia/Tokyo",
-    "london": "Europe/London",
-    "sydney": "Australia/Sydney",
+client = OpenAI()
+
+
+def get_current_time(format="%Y-%m-%d %H:%M:%S"):
+    if not format:
+        format = "%Y-%m-%d %H:%M:%S"
+    return datetime.now().strftime(format)
+
+
+TOOLS = [{
+    "type": "function",
+    "name": "get_current_time",
+    "description": "Get the current system time.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "format": {
+                "type": "string",
+                "description": "Python strftime format string (optional)."
+            }
+        },
+        "required": []
+    }
+}]
+
+FUNCTIONS = {
+    "get_current_time": get_current_time
 }
 
 
-def get_current_time(city: str) -> str:
-    """Return the current local time in a supported city."""
-    tz = _TIMEZONES.get(city.strip().lower())
-    if not tz:
-        supported = ", ".join(sorted(_TIMEZONES.keys()))
-        return f"Unknown city '{city}'. Supported cities: {supported}."
-    now = datetime.now(ZoneInfo(tz))
-    return now.strftime("%Y-%m-%d %H:%M:%S")
-
-
-TOOLS = [
-    {
-        "type": "function",
-        "function": {
-            "name": "get_current_time",
-            "description": "Get the current local time in a city.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
-                        "type": "string",
-                        "description": "City name (e.g., Paris, New York, Tokyo)",
-                    }
-                },
-                "required": ["city"],
-                "additionalProperties": False,
-            },
-        },
-    }
-]
-
-
-def main() -> int:
-    console = Console()
-
-    if not os.getenv("OPENAI_API_KEY"):
-        console.print("[bold red]OPENAI_API_KEY is not set.[/bold red] Put it in your environment or a .env file.")
-        return 2
-
-    model = os.getenv("MODEL", "gpt-5")
-    client = OpenAI()
-
-    console.print(f"[bold]Function calling demo[/bold] model={model}")
-    console.print("Ask about the current time in a city. Type /exit to quit.\n")
-
-    messages: list[dict[str, object]] = [
-        {
-            "role": "system",
-            "content": (
-                "You are a helpful assistant.\n"
-                "If you need the current time for a city, call the tool get_current_time.\n"
-                "If the city is unsupported, ask the user to choose from the supported list."
-            ),
-        }
-    ]
+def query_model(prompt, model="gpt-4o-mini"):
+    response = client.responses.create(
+        model=model,
+        input=prompt,
+        tools=TOOLS,
+    )
 
     while True:
-        user_text = Prompt.ask("[bold cyan]you[/bold cyan]").strip()
-        if not user_text:
-            continue
-        if user_text.lower() == "/exit":
-            console.print("Goodbye.")
-            return 0
+        calls = [item for item in response.output if item.type == "function_call"]
 
-        messages.append({"role": "user", "content": user_text})
+        if not calls:
+            return response.output_text
 
-        resp = client.chat.completions.create(
+        outputs = []
+        for call in calls:
+            tool_name = call.name
+            args = json.loads(call.arguments or "{}")
+            print(f"\tTool requested: {tool_name}({args})")
+
+            result = FUNCTIONS[call.name](**args)
+
+            outputs.append({
+                "type": "function_call_output",
+                "call_id": call.call_id,
+                "output": result,
+            })
+
+        response = client.responses.create(
             model=model,
-            messages=messages,
+            previous_response_id=response.id,
+            input=outputs,
             tools=TOOLS,
-            tool_choice="auto"
         )
-
-        msg = resp.choices[0].message
-        messages.append(msg.model_dump())
-
-        tool_calls = msg.tool_calls or []
-        for call in tool_calls:
-            if call.function.name != "get_current_time":
-                tool_result = f"Unsupported tool: {call.function.name}"
-            else:
-                try:
-                    args = json.loads(call.function.arguments or "{}")
-                except json.JSONDecodeError:
-                    args = {}
-                tool_result = get_current_time(city=str(args.get("city", "")))
-
-            messages.append(
-                {
-                    "role": "tool",
-                    "tool_call_id": call.id,
-                    "content": tool_result,
-                }
-            )
-
-        final = client.chat.completions.create(
-            model=model,
-            messages=messages,
-            tools=TOOLS,
-            tool_choice="none"
-        )
-
-        assistant_text = (final.choices[0].message.content or "").strip()
-        messages.append({"role": "assistant", "content": assistant_text})
-
-        console.print(Markdown(assistant_text))
-        console.print()
-
-        if len(messages) > 30:
-            messages = [messages[0]] + messages[-28:]
-
-    return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    prompt = "What time is it right now?"
+    print("User:", prompt)
+    print("Assistant:", query_model(prompt))

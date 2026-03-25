@@ -1,50 +1,37 @@
-# Function calling: current time (CLI)
+# Function calling: current time
 
-This example demonstrates the *function-calling loop* pattern, where the model can call external functions to get information it doesn't have. The loop is in the smallest useful form: the model decides when it needs external data, calls a function, and then uses the function result to answer.
+This example demonstrates the *function-calling loop* pattern using an [OpenAI](https://openai.com/) GPT model. In this pattern, the model can call external functions to get information. The loop is in the smallest useful form: the model decides when it needs external data, calls a function, and then uses the function result to answer.
 
-## What you build
+## Requirements
 
-A tiny CLI assistant that answers: *"What time is it in X?"*
+* [Python](https://www.python.org/) 3.6+
+* An [OpenAI API key](https://platform.openai.com/api-keys)
 
-- The model can call the tool `get_current_time(city)`
-- The application executes the tool deterministically (Python `zoneinfo`)
-- The tool output is injected back into the conversation as a `tool` message
-- The model produces the final user-facing answer grounded in the tool result
+## Steps for running this example in the shell
 
-## Prerequisites
-
-- Python 3.10+ (for `zoneinfo`)
-- An OpenAI API key in `OPENAI_API_KEY`
-
-## Install
-
+1.  Install dependencies:
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Windows cmd: .venv\Scripts\activate # Windows PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-Optional `.env` file:
-
+2. Export your OpenAI API key as an environment variable:
 ```bash
-OPENAI_API_KEY=your_key_here
-MODEL=gpt-5
+export OPENAI_API_KEY="sk-..." # Windows cmd: set OPENAI_API_KEY="sk-..." # Windows PowerShell: $env:OPENAI_API_KEY="sk-..."
 ```
 
-## Run
-
+3. Run the script:
 ```bash
-python function_calling.py
+python openai-gpt-basic.py
 ```
 
-Type `/exit` to quit.
+## Output
 
-## Suggested experiment
+When you run the script, it will send a fixed user prompt (`What time is it right now?`) to a GPT model (`gpt-4o-mini`). The model will determine that it needs to call the `get_current_time` function to answer the question, and it will do so with the specified format. The application will execute the function, get the current time, and inject it back into the conversation as a `tool` message. Finally, the model will produce a user-facing answer grounded in the tool result.
 
-1. Ask: `What time is it now in Paris?`
-2. Ask: `What about Tokyo?`
-3. Ask an unsupported city (e.g., `What time is it in Atlantis?`) and observe how the assistant handles it.
-
-## Notes
-
-- To extend it, add more cities or replace the tool with an API call (e.g., weather, currency rates).
+```
+User: What time is it right now?
+        Tool requested: get_current_time({'format': '%Y-%m-%d %H:%M:%S'})
+Assistant: The current time is 2026-03-25 18:50:27.
+```
