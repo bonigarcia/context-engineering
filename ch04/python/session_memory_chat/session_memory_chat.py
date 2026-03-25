@@ -1,27 +1,15 @@
-#!/usr/bin/env python3
 """
-OpenAI Agents SDK: session memory (short-term) demo
-
-This example demonstrates *session-scoped* memory management using the OpenAI Agents SDK.
-It shows two complementary strategies:
-
-1) TrimmingSession: keep only the last N user turns (deterministic, low-latency)
-2) SummarizingSession: compress older turns into a running summary message
-
-Both sessions implement the SessionABC interface, so you can swap them without changing
-your agent logic.
-
-Run:
-  python session_memory_chat.py --strategy trim --max-turns 6
-  python session_memory_chat.py --strategy summarize --max-turns 6
-
-Inside the chat:
-  /help        show commands
-  /state       show session state (trimmed items or summary)
-  /reset       clear session
-  /exit        quit
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -38,7 +26,6 @@ from rich.prompt import Prompt
 from agents import Agent, Runner, set_tracing_disabled
 from agents.items import TResponseInputItem  # dict-like items
 from agents.memory.session import SessionABC
-
 
 ROLE_USER = "user"
 

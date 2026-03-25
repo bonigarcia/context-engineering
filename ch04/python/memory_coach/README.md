@@ -1,20 +1,15 @@
 # Memory Coach
 
-This example accompanies Chapter 4 of *Context Engineering* and demonstrates practical memory management for an LLM-based assistant. The goal is to show, end-to-end, how an application can combine:
+This example demonstrates practical memory management for an LLM-based assistant. The goal is to show how an LLM-based application can combine:
 
 - Short-term memory: a sliding window of recent turns plus a rolling running summary
-- Long-term semantic memory: a stable user profile stored as key/value pairs (SQLite)
-- Long-term episodic memory: past events and decisions stored as embedded snippets (FAISS)
+- Long-term semantic memory: a stable user profile stored as key/value pairs ([SQLite](https://sqlite.org/))
+- Long-term episodic memory: past events and decisions stored as embedded snippets ([FAISS](https://faiss.ai/)
 
-Unlike many demos that simply "store the whole chat", this example makes memory explicit:
-the assistant runs a dedicated extraction step to decide what is worth persisting.
+It implements a simple CLI assistant called *Memory Coach* that helps a user plan and reflect. The assistant remembers:
 
-## What you build
-
-A CLI assistant called **Memory Coach** that helps a user plan and reflect. It remembers:
-
-- preferences that should persist (e.g., "prefers short answers", "travels in November")
-- episodic events and constraints (e.g., "last time we chose Kyoto for 3 nights")
+- Preferences that should persist (e.g., "prefers short answers", "travels in November")
+- Episodic events and constraints (e.g., "last time we chose Kyoto for 3 nights")
 
 It then retrieves relevant long-term memories on each new message and injects them back into the context.
 
@@ -30,7 +25,7 @@ pip install -r requirements.txt
 
 ### 2) Configure environment variables
 
-Set an API key for the model you are using. The script uses the `openai` Python client and expects:
+Set an API key for the model you are using. The script uses the OpenAI Python client and expects:
 
 - `OPENAI_API_KEY` to be set
 - `MODEL` (optional), default: `gpt-4.1-mini`
@@ -49,7 +44,7 @@ export MODEL="gpt-4.1-mini"
 python memory_coach.py
 ```
 
-A small data directory `.memory_coach/` will be created to store SQLite files and the FAISS index.
+A data directory `.memory_coach` will be created to store SQLite files and the FAISS index.
 
 ## How to use it
 
@@ -78,4 +73,4 @@ Talk to the assistant normally. Use these commands to inspect memory:
 ## Notes
 
 - This is a teaching example, not a hardened security design. Do not store secrets.
-- If you want to adapt it for production, add explicit consent gates, PII filtering, and retention policies.
+- If you want to adapt it for production, consider also privacy guardrails (e.g., explicit consent gates, PII filtering, retention policies).

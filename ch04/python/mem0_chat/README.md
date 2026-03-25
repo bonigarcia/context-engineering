@@ -1,10 +1,10 @@
 # Memory-backed chat
 
-This example accompanies Chapter 4 of *Context Engineering* and demonstrates a practical memory stack:
+This example demonstrates a practical memory stack:
 
 - OpenAI GPT-5 is used as LLM.
-- Mem0 stores and retrieves long-term memories extracted from the conversation.
-- Qdrant is the vector database backend used by Mem0 for semantic retrieval.
+- [Mem0](https://mem0.ai/) stores and retrieves long-term memories extracted from the conversation.
+- [Qdrant](https://qdrant.tech/) is the vector database backend used by Mem0 for semantic retrieval.
 
 The key takeaway is architectural: GPT-5 remains stateless between runs, while Mem0+Qdrant provides durable, searchable memory that can be injected back into the model’s context on each turn.
 
@@ -18,8 +18,8 @@ A CLI chat application that:
 ## Prerequisites
 
 - Python 3.10+
-- An OpenAI API key (export `OPENAI_API_KEY`)
-- A running Qdrant instance (local Docker is easiest)
+- An OpenAI API key (exported as `OPENAI_API_KEY` env variable)
+- A running Qdrant instance (e.g., using Docker)
 
 ## Start Qdrant locally (Docker)
 

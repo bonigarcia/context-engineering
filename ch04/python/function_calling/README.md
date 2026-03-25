@@ -1,8 +1,6 @@
 # Function calling: current time (CLI)
 
-This example accompanies Chapter 4 of *Context Engineering* and demonstrates the **function-calling loop**
-in the smallest useful form: the model decides when it needs external data, calls a function, and then
-uses the function result to answer.
+This example demonstrates the *function-calling loop* pattern, where the model can call external functions to get information it doesn't have. The loop is in the smallest useful form: the model decides when it needs external data, calls a function, and then uses the function result to answer.
 
 ## What you build
 
@@ -36,7 +34,7 @@ MODEL=gpt-5
 ## Run
 
 ```bash
-python function_calling_time.py
+python function_calling.py
 ```
 
 Type `/exit` to quit.
@@ -49,5 +47,4 @@ Type `/exit` to quit.
 
 ## Notes
 
-- This example keeps the transcript bounded because the focus is the function-calling loop, not long-term memory.
 - To extend it, add more cities or replace the tool with an API call (e.g., weather, currency rates).

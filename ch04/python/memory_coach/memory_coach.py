@@ -1,15 +1,15 @@
-#!/usr/bin/env python3
 """
-Memory Coach: a CLI AI assistant that demonstrates practical memory management.
-
-Key ideas:
-- Short-term memory: sliding window + rolling summary
-- Long-term memory:
-  * Semantic memory: user profile stored as key/value in SQLite
-  * Episodic memory: "memories" stored as embedded snippets in a FAISS index
-- Memory policy: the agent decides what to store using an explicit extraction step
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
-
 from __future__ import annotations
 
 import argparse
@@ -95,6 +95,7 @@ class EpisodicStore:
     Stores memory snippets with embeddings in a FAISS index.
     We keep a parallel SQLite table to map vector IDs -> text + metadata.
     """
+
     def __init__(self, db_path: str, index_path: str, embedder: SentenceTransformer):
         self.db_path = db_path
         self.index_path = index_path
@@ -287,6 +288,7 @@ def render_profile(profile: Dict[str, str]) -> str:
     lines = [f"- {k}: {v}" for k, v in profile.items()]
     return "\n".join(lines)
 
+
 def render_retrieved(memories: List[Tuple[int, float, str]]) -> str:
     if not memories:
         return "None."
@@ -343,8 +345,10 @@ Commands:
 /exit                 Quit
 """
 
+
 def is_command(text: str) -> bool:
     return text.strip().startswith("/")
+
 
 # -----------------------------
 # Main REPL

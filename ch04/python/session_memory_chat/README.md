@@ -1,16 +1,14 @@
 # Session Memory
 
-This example accompanies Chapter 4 of *Context Engineering* and demonstrates short-term memory
-management using the OpenAI Agents SDK `Session` abstraction. It includes two strategies:
+This example  demonstrates short-term memory management using the OpenAI Agents SDK `Session` abstraction. It includes two strategies:
 
 - `TrimmingSession`: keeps only the last *N* user turns (deterministic, no extra model calls)
-- `SummarizingSession`: keeps the last *N* turns verbatim and compresses older turns into a running summary
-  (preserves long-range constraints at the cost of occasional extra calls)
+- `SummarizingSession`: keeps the last *N* turns verbatim and compresses older turns into a running summary  (preserves long-range constraints at the cost of occasional extra calls)
 
 ## Prerequisites
 
 - Python 3.10+
-- An OpenAI API key (`OPENAI_API_KEY`)
+- An OpenAI API key (exported as `OPENAI_API_KEY` env variable)
 
 ## Install
 
@@ -99,4 +97,4 @@ Expected Outcome: The agent will succeed. Even though the secret code was pushed
 ## Notes
 
 - This example demonstrates session-scoped memory, not cross-session persistence.
-- For durable memory across sessions, combine Sessions with a long-term store (e.g., Mem0 + Qdrant).
+- For durable memory across sessions, combine `Sessions` with a long-term store (e.g., Mem0 + Qdrant).

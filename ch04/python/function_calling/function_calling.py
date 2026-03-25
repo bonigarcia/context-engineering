@@ -1,18 +1,15 @@
-#!/usr/bin/env python3
-"""Function calling demo: 'What time is it in ...?'
-
-This hands-on example accompanies Chapter 4 of *Context Engineering* and demonstrates
-the core function-calling loop:
-
-1) The model decides it needs external data
-2) The app executes a deterministic function
-3) The tool result is injected back as context
-4) The model produces the final answer
-
-Run:
-  python function_calling_time.py
 """
-
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
 from __future__ import annotations
 
 import json
@@ -20,12 +17,10 @@ import os
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from dotenv import load_dotenv
 from openai import OpenAI
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.prompt import Prompt
-
 
 _TIMEZONES = {
     "paris": "Europe/Paris",
@@ -34,6 +29,7 @@ _TIMEZONES = {
     "london": "Europe/London",
     "sydney": "Australia/Sydney",
 }
+
 
 def get_current_time(city: str) -> str:
     """Return the current local time in a supported city."""
@@ -68,7 +64,6 @@ TOOLS = [
 
 
 def main() -> int:
-    load_dotenv()
     console = Console()
 
     if not os.getenv("OPENAI_API_KEY"):
@@ -106,8 +101,7 @@ def main() -> int:
             model=model,
             messages=messages,
             tools=TOOLS,
-            tool_choice="auto",
-            temperature=0.2,
+            tool_choice="auto"
         )
 
         msg = resp.choices[0].message
@@ -136,8 +130,7 @@ def main() -> int:
             model=model,
             messages=messages,
             tools=TOOLS,
-            tool_choice="none",
-            temperature=0.2,
+            tool_choice="none"
         )
 
         assistant_text = (final.choices[0].message.content or "").strip()

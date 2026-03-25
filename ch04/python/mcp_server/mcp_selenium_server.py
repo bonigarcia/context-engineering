@@ -117,7 +117,7 @@ async def handle_list_tools() -> list[Tool]:
 
 @server.call_tool()
 async def handle_call_tool(
-    name: str, arguments: Dict[str, Any] | None
+        name: str, arguments: Dict[str, Any] | None
 ) -> list[TextContent]:
     """Handle tool calls."""
     if name == "open_browser":

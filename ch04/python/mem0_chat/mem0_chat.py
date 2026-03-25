@@ -1,26 +1,15 @@
-#!/usr/bin/env python3
 """
-GPT-5 + Mem0 + Qdrant: Memory-backed chat (CLI)
-
-What this example demonstrates
-- GPT-5 generates responses (OpenAI Responses API).
-- Mem0 maintains conversation history as long-term memory.
-- Qdrant is the vector database backend for Mem0 storage and retrieval.
-
-Usage:
-  python mem0_chat.py --user alice
-
-Requirements:
-- A running Qdrant instance (default: localhost:6333)
-- OPENAI_API_KEY set in your environment (or in a .env file)
-
-Commands inside the chat:
-  /help        show commands
-  /memories    show a sample of stored memories (if available)
-  /forget      delete stored memories for this user (best-effort)
-  /exit        quit
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 """
-
 from __future__ import annotations
 
 import argparse
