@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation (RAG) in Python
 
-This folder contains Python examples for different RAG patterns, including context-augmented generation, local RAG, and agentic RAG.
+This folder contains Python examples for different RAG patterns, including context-augmented generation (CAG), local RAG, and agentic RAG.
 
 ## Requirements
 
@@ -10,12 +10,12 @@ This folder contains Python examples for different RAG patterns, including conte
 
 ## Examples
 
-- `context-augmented-generation-system-prompt/`: Injecting context into the system prompt.
-- `context-augmented-generation-user-prompt/`: Injecting context into the user prompt.
+- `context-stuffing-system-prompt/`: Injecting context into the system prompt.
+- `context-stuffing-user-prompt/`: Injecting context into the user prompt.
 - `rag-openai/`: Basic RAG using OpenAI and TF-IDF.
 - `rag-hugging-face/`: RAG using Hugging Face models and local retrieval.
 - `agentic-rag/`: RAG using a ReAct agent.
-- `cache-ag/`: Cache-augmented generation using KV cache.
+- `cag/`: Cache-augmented generation using KV cache.
 - `local-rag/`: Fully local RAG setup.
 
 ## Running the examples

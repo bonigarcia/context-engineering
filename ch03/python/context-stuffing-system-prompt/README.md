@@ -1,6 +1,6 @@
-# Context-augmented generation (system-level context)
+# Context stuffing (system-level context)
 
-This example demonstrates a context-augmented generation pattern using a LLM. Instead of performing a retrieval step for every user query, we identify the relevant domain information up front and inject it directly into the user prompt.
+This example demonstrates a *context stuffing* pattern using a LLM. Instead of performing a retrieval step for every user query, we identify the relevant domain information up front and inject it directly into the user prompt.
 
 In this example, the context is injected into the system prompt.
 
@@ -25,7 +25,7 @@ export OPENAI_API_KEY="sk-..." # Windows cmd: set OPENAI_API_KEY="sk-..." # Wind
 
 3. Run the script:
 ```bash
-python context-augmented-generation-system-prompt.py
+python context-stuffing-system-prompt.py
 ```
 
 ## Output

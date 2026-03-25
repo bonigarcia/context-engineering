@@ -1,6 +1,6 @@
-# Cache-augmented generation (cache-AG)
+# Cache-Augmented Generation (CAG)
 
-This sample application implements a minimal cache-AG system using the following stack:
+This sample application implements a minimal CAG system using the following stack:
 
 - LLM: [GPT-2](https://huggingface.co/gpt2)
 - Libraries: [PyTorch](https://pytorch.org/), [Hugging Face Transformers](https://huggingface.co/docs/transformers/index)
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 2. Run the script:
 ```bash
-python cache_ag.py
+python cag.py
 ```
 
 ### Output

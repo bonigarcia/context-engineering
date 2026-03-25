@@ -20,7 +20,7 @@ PastKeyValues = Tuple[Tuple[torch.Tensor, torch.Tensor], ...]
 
 class TrueCacheAugmentedGenerator:
     """
-    A minimal implementation of cache-augmented generation (cache-AG).
+    A minimal implementation of cache-augmented generation (CAG).
 
     This class implements the generation loop to provide a demonstration
     of how the Key-Value (KV) cache is created, injected, and updated.
