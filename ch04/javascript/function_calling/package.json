@@ -1,0 +1,13 @@
+{
+  "name": "openai-function-calling",
+  "version": "1.0.0",
+  "description": "Function calling with OpenAI GPT models",
+  "main": "openai-function-calling.js",
+  "type": "module",
+  "scripts": {
+    "start": "node openai-function-calling.js"
+  },
+  "dependencies": {
+    "openai": "^6.32.0"
+  }
+}
