@@ -22,7 +22,8 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 8. Context engineering in real-world environments
 9. Context engineering through the software development lifecycle
 10. State of the art on context engineering  
-Appendix A. The AI ecosystem
+Appendix A. The AI ecosystem  
+Appendix B. References and further reading
 
 Each chapter of this book starts by explaining the underlying principles and patterns of each thematic block. Then, the final part of each chapter is devoted to presenting specific examples. This GitHub repository contains all these examples. Moreover, I will include new examples and maintain the existing ones even after the book is published. The goal is to provide an open-source, updated reference for everyone interested in context engineering.
 
