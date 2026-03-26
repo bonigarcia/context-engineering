@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.bonigarcia</groupId>
-    <artifactId>context-engineering-ch04-spring-boot</artifactId>
+    <artifactId>mcp-spring-ai</artifactId>
     <version>1.0.0</version>
 
     <parent>

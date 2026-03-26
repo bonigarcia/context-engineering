@@ -23,14 +23,18 @@ mvn clean package
 
 2. Run the server:
 ```bash
-java -jar target/context-engineering-ch04-spring-boot-1.0.0.jar
+java -jar target/mcp-spring-ai-1.0.0.jar
 ```
 
 3. Alternatively, you can debug the MCP server using the MCP Inspector:
 ```bash
-npx @modelcontextprotocol/inspector java -jar target/context-engineering-ch04-spring-boot-1.0.0.jar
+npx @modelcontextprotocol/inspector java -jar target/mcp-spring-ai-1.0.0.jar
 ```
 
 ## Output
 
 The server communicates via standard input/output (stdio) and is intended to be used as an MCP server by an AI client.
+
+If you use the MCP inspector for debugging, once connected, it will display the available tools. You can now use its user interface to execute these tools.
+
+![MCP Inspector UI interface](/docs/img/mcp-inspector-ui.png)

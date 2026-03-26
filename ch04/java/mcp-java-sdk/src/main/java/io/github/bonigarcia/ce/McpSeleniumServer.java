@@ -26,7 +26,7 @@ import io.modelcontextprotocol.spec.McpSchema;
 
 public class McpSeleniumServer {
 
-    void main() throws Exception {
+    public static void main(String[] args) throws Exception {
         BrowserTools tools = new BrowserTools(new BrowserService());
         var transportProvider = new StdioServerTransportProvider(
                 McpJsonDefaults.getMapper());
