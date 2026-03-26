@@ -18,8 +18,6 @@ client = OpenAI()
 
 
 def get_current_time(format="%Y-%m-%d %H:%M:%S"):
-    if not format:
-        format = "%Y-%m-%d %H:%M:%S"
     return datetime.now().strftime(format)
 
 
@@ -32,7 +30,7 @@ TOOLS = [{
         "properties": {
             "format": {
                 "type": "string",
-                "description": "Python strftime format string (optional)."
+                "description": "Python date format (optional)."
             }
         },
         "required": []

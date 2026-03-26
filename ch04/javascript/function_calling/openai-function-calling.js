@@ -15,12 +15,6 @@ import OpenAI from 'openai';
 const client = new OpenAI();
 
 function getCurrentTime(args) {
-    let { format } = args || {};
-    const now = new Date();
-    if (!format) {
-        return now.toLocaleString('en-GB', { hour12: false }).replace(',', '');
-    }
-    // Simple mock of strftime for common patterns used in this repo
     return now.toLocaleString('en-GB', { hour12: false }).replace(',', '');
 }
 
@@ -33,7 +27,7 @@ const TOOLS = [{
         "properties": {
             "format": {
                 "type": "string",
-                "description": "Python strftime format string (optional)."
+                "description": "JavaScript date format (optional)."
             }
         },
         "required": []
