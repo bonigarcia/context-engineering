@@ -32,8 +32,7 @@ Each chapter of this book starts by explaining the underlying principles and pat
 This repo also hosts the [context-aware prompt builder](https://bonigarcia.dev/context-engineering/context-aware-prompt-builder.html), an online tool presented in chapter 2 for designing, comparing, and reusing structured prompts across multiple frameworks and AI models.
 
 ## Resources
-Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays there is more information than ever, and it is very easy to get lost with so many sources. This section summarizes some of the most relevant references and resources I found during my journey to unravel the essence of context engineering.
-
+Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, skills, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays, there is more information than ever, and it is very easy to get lost with so many sources. This section summarizes some of the most relevant references and resources I found during my journey to unravel the essence of context engineering.
 
 ### Context Engineering
 
@@ -49,7 +48,11 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Context Engineering – Short-Term Memory Management with Sessions from OpenAI Agents SDK](https://cookbook.openai.com/examples/agents_sdk/session_memory) (OpenAI, 2025) Practical demonstration of managing short-term memory using sessions, showing how structured context improves coherence in multi-step agent interactions.
 - [Context Engineering: Sessions, Memory](https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory) (Kimberly Milam et al., 2025) Whitepaper describing how to engineer session and long-term memory to support reliable, stateful AI agents.
 - [The Context Engineering Guide](https://weaviate.io/ebooks/the-context-engineering-guide) (Weaviate, 2025) Guide explaining how to design, structure, and optimize context for LLM applications, including chunking, retrieval, memory, and agent workflows.
-
+- [Context Engineering for Multi-Agent Systems](https://www.packtpub.com/en-us/product/context-engineering-for-multi-agent-systems-9781806690046) (Denis Rothman, 2025) Design, manage and optimize context flow and memory across multi-agent systems to ensure coherent, efficient, and scalable interactions.
+- [Context Engineering](https://github.com/davidkimai/Context-Engineering) (David Kim, 2026) Open resource explaining the concepts, patterns, and techniques of context engineering for AI systems.
+- [Awesome-Context-Engineering](https://github.com/Meirtz/Awesome-Context-Engineering) (Meirtz, 2026) Curated list of papers, tools, articles, and examples focused on context engineering for LLMs and agents.
+- [Context Engineering Template](https://github.com/coleam00/context-engineering-intro) (Cole Medin, 2026) Starter template that introduces context engineering concepts and provides structure for building context-optimized LLM applications.
+- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering) (GitHub, 2026) Automatically aggregated GitHub topics of public repositories related to "context engineering."
 
 ### Prompt Engineering
 
@@ -61,7 +64,25 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Google's Gemini prompt engineering guide](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf) (Google, 2025) How to write effective prompts for Google's Gemini (or related models), emphasizing clarity, context, and structured prompting for reliable responses.
 - [Prompt examples, by OpenAI](https://platform.openai.com/examples) (OpenAI, 2025) Collection of sample prompts illustrating good practices and giving real-world examples to help users understand how to frame prompts effectively for best results.
 - [Prompt Library, by Anthropic](https://docs.anthropic.com/en/prompt-library/library) (Anthropic, 2025) Repository of tested prompt templates and examples, serving as a practical library for users to build on and adapt for their own AI tasks.
+- [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (DAIR.AI, 2026) Extensive guide covering prompt engineering techniques, examples, patterns, and best practices for working with LLMs.
+- [Brex's prompt engineering guide](https://github.com/brexhq/prompt-engineering) (Brex, 2026) Practical prompt engineering guide from Brex, including patterns, examples, and structured instructions for improving LLM output quality.
 
+### AI Foundations (LLMs, Machine Learning)
+
+- [AI Engineering: building applications with foundation models](https://www.oreilly.com/library/view/ai-engineering/9781098166298) (Chip Huyen, Dec 04, 2024) Overview of how to build real-world applications using foundation models covering model selection, evaluation, prompt engineering, RAG, agents, deployment, and best practices for reliability and scalability.
+- [The 2026 Guide to Machine Learning](https://www.ibm.com/think/machine-learning) (IBM, 2026) Comprehensive guide covering the latest techniques, tools, and best practices in machine learning, including deep learning, LLMs, and AI system design.
+- [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners) (Microsoft, 2026) Beginner-friendly curriculum teaching the fundamentals of generative AI, including notebooks, examples, and guided lessons.
+- [Awesome Neuron](https://awesomeneuron.substack.com/) (Awesome Neuron, 2025) Newsletter/blog exploring recent developments, tools and ideas around neural-agent frameworks and agentic AI.
+- [Best AI and LLM Engineering Resources](https://github.com/javabuddy/best-ai-and-llm-engineering-resource) (Javin Paul, 2026) Large curated repository of high-quality resources on AI engineering, LLM workflows, prompt design, and system patterns.
+- [Hands-On Large Language Models](https://github.com/HandsOnLLM/Hands-On-Large-Language-Models) (Jay Alammar & Maarten Grootendorst, 2024) Official code repository for the O'Reilly book, featuring practical guides on using LLMs for various NLP tasks, fine-tuning, and advanced retrieval (RAG).
+- [LLM Course](https://github.com/mlabonne/llm-course) (Maxime Labonne, 2024) Comprehensive roadmap and collection of Colab notebooks for mastering LLMs, divided into Fundamentals, building, and deploying.
+- [AI agents for beginners](https://github.com/microsoft/ai-agents-for-beginners) (Microsoft, 2024) 10-lesson curriculum designed to teach the basics of building AI agents, covering architectures, tools, and multi-agent systems.
+- [ML For Beginners](https://github.com/microsoft/ML-For-Beginners) (Microsoft, 2021) 12-week, 26-lesson curriculum offering a comprehensive introduction to "classic" machine learning using Scikit-learn.
+- [GenAI Agents](https://github.com/NirDiamant/GenAI_Agents) (Nir Diamant, 2024) Collection of tutorials and implementations for Generative AI agents, ranging from basic conversational bots to complex multi-agent workflows.
+- [AI Engineering](https://github.com/chiphuyen/aie-book/) (Chip Huyen, 2025) AI engineering principles, covering data pipelines, LLM systems, deployment, evaluation, and production readiness.
+- [AI Engineering Toolkit](https://github.com/Sumanth077/ai-engineering-toolkit) (Sumanth077, 2026) Collection of tools, templates, and best practices to support building, testing, and deploying AI/LLM-powered applications.
+- [Awesome generative AI guide](https://github.com/aishwaryanr/awesome-generative-ai-guide) (Aishwaryanr, 2026) Curated set of learning resources, papers, tools, and tutorials for understanding and applying generative AI.
+- [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) (Shubham Saboo, 2026) Curated list of real-world LLM application examples demonstrating practical use cases and design patterns.
 
 ### AI Agents
 
@@ -76,8 +97,11 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Open Source LLM Tools](https://huyenchip.com/llama-police) (Huyenchip, 2025) Curated list and analysis of open-source tools for building, evaluating or deploying LLM-based agents.
 - [The AI agents stack](https://www.letta.com/blog/ai-agents-stack) (Letta, 2025) Article outlining the architecture layers (model, tools, memory, orchestration) that build up modern AI-agent systems.
 - [AG-UI: Agents to users](https://github.com/ag-ui-protocol/ag-ui) (AG-UI community, 2025) Open-source project aiming to provide user-facing UI/UX for agent-based systems.
-- [Awesome Neuron](https://awesomeneuron.substack.com/) (Awesome Neuron, 2025) Newsletter/blog exploring recent developments, tools and ideas around neural-agent frameworks and agentic AI.
-
+- [AI Agents in Action](https://www.manning.com/books/ai-agents-in-action) (Micheal Lanham, 2025) Practical guide to designing, building and deploying LLM-powered autonomous agents and multi-agent systems, including memory, tool integration, orchestration, and real-world use cases.
+- [Building AI Agents with LLMs, RAG, and Knowledge Graphs](https://www.packtpub.com/en-us/product/building-ai-agents-with-llms-rag-and-knowledge-graphs-9781835080382) (Salvatore Raieli & Gabriele Iuculano, Jul 2025) Step-by-step book showing how to combine LLMs with RAG and knowledge graphs to build agents capable of grounded reasoning, tool use, planning and complex task execution.
+- [AI Agents: The Definitive Guide](https://learning.oreilly.com/library/view/ai-agents-the/0642572247775/) (Nicole Koenigstein, 2025) Designing, evaluating, and deploying AI agents; covers architecture, memory, tools, orchestration and production-grade considerations.
+- [An Illustrated Guide to AI Agents](https://learning.oreilly.com/library/view/an-illustrated-guide/9798341662681/) (Maarten Grootendorst, Jay Alammar, 2025) Conceptual guide that explains agents, memory, tool use, workflows for agent-based AI.
+- [Agents Towards Production](https://github.com/NirDiamant/agents-towards-production) (Nir Diamant, 2026) Practical resources and examples demonstrating how to take AI agents from experimentation to reliable production systems.
 
 ### MCP
 
@@ -89,7 +113,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers) (Anthropic, 2025) Repository of reference implementations of MCP servers, providing working examples to help developers deploy MCP-compatible services.
 - [The Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions](https://arxiv.org/abs/2503.23278) (Xinyi Hou et al., Mar 30, 2025) Academic analysis of MCP's architecture, use cases, and ecosystem, including a survey of adoption, security/privacy risks, and recommendations for safe, sustainable development.
 - [Model Context Protocol at First Glance: Studying the Security and Maintainability of MCP Servers](https://arxiv.org/abs/2506.13538) (Mohammed Mehedi Hasan et al., Jun 16, 2025) Empirical study showing that while many open-source MCP servers are healthy and maintained, a non-trivial fraction have security vulnerabilities or tool-poisoning risks.
-
+- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) (punkpeye, 2026) Directory of MCP servers, tools, and integrations to help developers adopt the MCP ecosystem.
 
 ### Retrieval and RAG
 
@@ -100,7 +124,7 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [What is Agentic RAG](https://weaviate.io/blog/what-is-agentic-rag) (Weaviate, 2025) Explanation of “Agentic RAG,” a paradigm that combines retrieval-augmented generation with autonomous agents, enabling multi-step reasoning, tool use, and dynamic retrieval for complex workflows.
 - [Thinking Beyond RAG: Why Context-Augmented Generation Is Changing the Game](https://www.helicone.ai/blog/implement-and-monitor-cag) (Yusuf Ishola, 2025) Explanation of Context-Augmented Generation and how it improves over traditional RAG.
 - [RAG vs CAG vs Fine-Tuning](https://newsletter.rafapaez.com/p/rag-vs-cag-vs-fine-tuning) (Rafa Paez, 2025) Comparative analysis of three approaches: Retrieval-Augmented Generation (RAG), Contextual Augmented Generation (CAG), and fine-tuning, discussing trade-offs in accuracy, adaptability, cost, and maintenance for each.
-
+- [RAG-Anything: All-in-One RAG Framework](https://github.com/HKUDS/RAG-Anything) (Data Intelligence Lab@HKU, 2026) Open-source framework providing an all-in-one pipeline for RAG.
 
 ### AI for software development
 
@@ -109,38 +133,21 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - [Vibe coding is not the same as AI-Assisted engineering](https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai) (Addy Osmani, Aug 30, 2025) Warns against conflating vibe coding (prompt-driven quick prototyping) with robust, production-ready AI-assisted engineering, highlighting differences in ownership, quality, and maintainability.
 - [Coding for the Future Agentic World](https://addyo.substack.com/p/coding-for-the-future-agentic-world) (Addy Osmani, 2025) Overview of how developers should adapt their workflows and mindset to build for an agentic world, where AI agents are first-class collaborators in software development.
 - [Conductors to Orchestrators: The Future of Agentic Coding](https://addyo.substack.com/p/conductors-to-orchestrators-the-future) (Addy Osmani, Nov 01, 2025) Software engineers will shift from writing code (coder) to directing AI agents (conductor) and ultimately to overseeing fleets of agents (orchestrator), redefining the role of developers in the agent-driven future.
-
-
-### Other similar books
-
-- [AI Engineering: building applications with foundation models](https://www.oreilly.com/library/view/ai-engineering/9781098166298) (Chip Huyen, Dec 04, 2024) Overview of how to build real-world applications using foundation models covering model selection, evaluation, prompt engineering, RAG, agents, deployment, and best practices for reliability and scalability.
-- [AI Agents in Action](https://www.manning.com/books/ai-agents-in-action) (Micheal Lanham, 2025) Practical guide to designing, building and deploying LLM-powered autonomous agents and multi-agent systems, including memory, tool integration, orchestration, and real-world use cases.
-- [Building AI Agents with LLMs, RAG, and Knowledge Graphs](https://www.packtpub.com/en-us/product/building-ai-agents-with-llms-rag-and-knowledge-graphs-9781835080382) (Salvatore Raieli & Gabriele Iuculano, Jul 2025) Step-by-step book showing how to combine LLMs with RAG and knowledge graphs to build agents capable of grounded reasoning, tool use, planning and complex task execution.
-- [AI Agents: The Definitive Guide](https://learning.oreilly.com/library/view/ai-agents-the/0642572247775/) (Nicole Koenigstein, 2025) Designing, evaluating, and deploying AI agents; covers architecture, memory, tools, orchestration and production-grade considerations.
-- [Context Engineering for Multi-Agent Systems](https://www.packtpub.com/en-us/product/context-engineering-for-multi-agent-systems-9781806690046) (Denis Rothman, 2025) Design, manage and optimize context flow and memory across multi-agent systems to ensure coherent, efficient, and scalable interactions.
-- [An Illustrated Guide to AI Agents](https://learning.oreilly.com/library/view/an-illustrated-guide/9798341662681/) (Maarten Grootendorst, Jay Alammar, 2025) Conceptual guide that explains agents, memory, tool use, workflows for agent-based AI.
 - [Generative AI for Software Development](https://learning.oreilly.com/library/view/generative-ai-for/9781098162269/) (Sergio Pereira, 2025) Generative AI and LLMs leveraged to assist software development, including coding, documentation, and planning, via agentic or semi-agentic patterns.
 - [Beyond Vibe Coding: A practical guide to AI-assisted development](https://beyond.addy.ie/) (Addy Osmani, 2025) Practical handbook advocating for structured, engineering-style workflows (not ad-hoc prompts) when using AI in software development, emphasizing reproducibility, context management, and scalable patterns.
 
-### Other similar GitHub repositories
+### YouTube channels
 
-- [AI Engineering](https://github.com/chiphuyen/aie-book/) (Chip Huyen, 2025) AI engineering principles, covering data pipelines, LLM systems, deployment, evaluation, and production readiness.
-- [AI Engineering Toolkit](https://github.com/Sumanth077/ai-engineering-toolkit) (Sumanth077, 2025) Collection of tools, templates, and best practices to support building, testing, and deploying AI/LLM-powered applications.
-- [Agents Towards Production](https://github.com/NirDiamant/agents-towards-production) (Nir Diamant, 2025) Practical resources and examples demonstrating how to take AI agents from experimentation to reliable production systems.
-- [Awesome generative AI guide](https://github.com/aishwaryanr/awesome-generative-ai-guide) (Aishwaryanr, 2025) Curated set of learning resources, papers, tools, and tutorials for understanding and applying generative AI.
-- [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) (Shubham Saboo, 2025) Curated list of real-world LLM application examples demonstrating practical use cases and design patterns.
-- [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers) (punkpeye, 2025) Directory of MCP servers, tools, and integrations to help developers adopt the MCP ecosystem.
-- [Awesome-Context-Engineering](https://github.com/Meirtz/Awesome-Context-Engineering) (Meirtz, 2025) Curated list of papers, tools, articles, and examples focused on context engineering for LLMs and agents.
-- [Best AI and LLM Engineering Resources](https://github.com/javabuddy/best-ai-and-llm-engineering-resource) (Javin Paul, 2025) Large curated repository of high-quality resources on AI engineering, LLM workflows, prompt design, and system patterns.
-- [Brex's prompt engineering guide](https://github.com/brexhq/prompt-engineering) (Brex, 2025) Practical prompt engineering guide from Brex, including patterns, examples, and structured instructions for improving LLM output quality.
-- [Context Engineering](https://github.com/davidkimai/Context-Engineering) (David Kim, 2025) Open resource explaining the concepts, patterns, and techniques of context engineering for AI systems.
-- [Context Engineering Template](https://github.com/coleam00/context-engineering-intro) (Cole Medin, 2025) Starter template that introduces context engineering concepts and provides structure for building context-optimized LLM applications.
-- [Context Engineering for Multi-Agent Systems](https://github.com/Denis2054/Context-Engineering-for-Multi-Agent-Systems) (Denis Rothman, 2025) Repository exploring how to design and manage context flows within multi-agent architectures.
-- [Generative AI for beginners](https://github.com/microsoft/generative-ai-for-beginners) (Microsoft, 2025) Beginner-friendly curriculum teaching the fundamentals of generative AI, including notebooks, examples, and guided lessons.
-- [Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) (DAIR.AI, 2025) Extensive guide covering prompt engineering techniques, examples, patterns, and best practices for working with LLMs.
-- [RAG-Anything: All-in-One RAG Framework](https://github.com/HKUDS/RAG-Anything) (Data Intelligence Lab@HKU, 2025) Open-source framework providing an all-in-one pipeline for RAG.
-- [Top GitHub Context Engineering repositories](https://github.com/topics/context-engineering) (GitHub, 2025) Automatically aggregated GitHub topics of public repositories related to "context engineering."
-
+- [Andrej Karpathy](https://youtube.com/andrejkarpathy) Deep dive lectures explaining AI from first principles, including building GPT models from scratch.
+- [sentdex](https://youtube.com/@sentdex) Practical Python programming tutorials covering machine learning, finance, robotics, and more.
+- [Sebastian Raschka](https://youtube.com/@SebastianRaschka) In-depth technical content on machine learning, deep learning, and building LLMs.
+- [Jeremy Howard](https://youtube.com/@howardjeremyp) Focused on making deep learning accessible to coders through a top-down learning approach.
+- [MIT OpenCourseWare](https://youtube.com/@mitocw) Free, high-quality video lectures from MIT classrooms, including world-renowned AI courses.
+- [Stanford Online](https://youtube.com/@stanfordonline) Professional and graduate-level courses from Stanford University, including famous ML and NLP series.
+- [StatQuest with Josh Starmer](https://youtube.com/@statquest) Breaking down complex statistics and machine learning topics into intuitive, bite-sized pieces.
+- [3Blue1Brown](https://youtube.com/@3blue1brown) Visualizing mathematics and the "why" behind neural networks and linear algebra.
+- [Krish Naik](https://youtube.com/@krishnaik06) Comprehensive resource for data science, MLOps, and Generative AI with a focus on industry readiness.
+- [CampusX](https://youtube.com/@campusx-official) Structured mentorship and bootcamps for Python, machine learning, and deep learning.
 
 ### Papers
 
@@ -149,11 +156,12 @@ Although the concept of _context engineering_ is new, the underlying technologie
 - Zhang, Qizheng, Changran Hu, Shubhangi Upasani, Boyuan Ma, Fenglu Hong, Vamsidhar Kamanuru, Jay Rainton et al. "[Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models](https://arxiv.org/abs/2510.04618)." arXiv preprint arXiv:2510.04618 (2025).
 - Xu, Xiwei, Hans Weytjens, Dawen Zhang, Qinghua Lu, Ingo Weber, and Liming Zhu. "[RAGOps: Operating and Managing Retrieval-Augmented Generation Pipelines](https://arxiv.org/abs/2506.03401)." arXiv preprint arXiv:2506.03401 (2025).
 - Wang, Zexin, Jingjing Li, Quan Zhou, Haotian Si, Yuanhao Liu, Jianhui Li, Gaogang Xie, Fei Sun, Dan Pei, and Changhua Pei. "[A Survey on AgentOps: Categorization, Challenges, and Future Directions](https://arxiv.org/abs/2508.02121)." arXiv preprint arXiv:2508.02121 (2025).
+- Xiao, Tong, and Jingbo Zhu. "[Foundations of large language models](https://arxiv.org/abs/2501.09223)." arXiv preprint arXiv:2501.09223 (2025).
 
 
 ## Contributing
 
-Any comments or feedback are more than welcome. Also, if you think something can be improved or want to contribute to this repo, please open a [pull request](https://github.com/bonigarcia/context-engineering/pulls).
+If you think something should be improved or want to contribute to this repo, please open a [pull request](https://github.com/bonigarcia/context-engineering/pulls). Any comments or feedback are welcome.
 
 ## About
 
