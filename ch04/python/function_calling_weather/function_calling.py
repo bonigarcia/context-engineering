@@ -112,7 +112,7 @@ def query_model(prompt: str, model: str = "gpt-4o-mini") -> str:
     # or a specific function. We use "required" here so the demo reliably
     # exercises the function-calling path.
     response = client.responses.create(
-        model="gpt-5",
+        model=model,
         tools=TOOLS,
         tool_choice="required",
         input=prompt,

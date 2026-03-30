@@ -1,4 +1,4 @@
-# Function calling: current time
+# Function calling: weather
 
 This example demonstrates the *function-calling* pattern using an [OpenAI](https://openai.com/) GPT model. In this pattern, the model can call external functions to get information. The model decides when it needs external data, calls a function, and then uses the function result to answer.
 
