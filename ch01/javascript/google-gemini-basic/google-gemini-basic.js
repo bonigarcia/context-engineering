@@ -16,7 +16,6 @@ import { performance } from 'perf_hooks';
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY); // GOOGLE_API_KEY should be set as an environment variable
 
 async function queryModel(userPrompt, modelName = "gemini-2.5-flash", temperature = 0, maxTokens = 1024, thinkingBudget = 512) {
-    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
     const model = genAI.getGenerativeModel({
         model: modelName,
         generationConfig: {
