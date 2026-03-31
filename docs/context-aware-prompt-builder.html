@@ -461,54 +461,60 @@
         }
       };
 
-      // ---- Target models (no dates in labels; add GPT-5.1) -----------------
+      // ---- Target models (no dates in labels) -----------------------------
       const MODELS = {
+        gpt54: {
+          id: 'gpt54',
+          name: 'GPT-5.4',
+          display: 'GPT-5.4 · 1M tokens',
+          maxTokens: 1000000
+        },
         gpt51: {
           id: 'gpt51',
           name: 'GPT-5.1',
           display: 'GPT-5.1 · 400k tokens',
           maxTokens: 400000
         },
-        gpt5: {
-          id: 'gpt5',
-          name: 'GPT-5',
-          display: 'GPT-5 · 400k tokens',
-          maxTokens: 400000
-        },
-        gpt41: {
-          id: 'gpt41',
-          name: 'GPT-4.1',
-          display: 'GPT-4.1 · 1M tokens',
+        claude5sonnet: {
+          id: 'claude5sonnet',
+          name: 'Claude 5 Sonnet',
+          display: 'Claude 5 Sonnet · 1M tokens',
           maxTokens: 1000000
         },
-        claude45: {
-          id: 'claude45',
-          name: 'Claude Sonnet 4.5',
-          display: 'Claude Sonnet 4.5 · 1M tokens',
+        claude46opus: {
+          id: 'claude46opus',
+          name: 'Claude 4.6 Opus',
+          display: 'Claude 4.6 Opus · 1M tokens',
           maxTokens: 1000000
         },
-        claude35: {
-          id: 'claude35',
-          name: 'Claude 3.5 Sonnet',
-          display: 'Claude 3.5 Sonnet · 200k tokens',
-          maxTokens: 200000
-        },
-        gemini20pro: {
-          id: 'gemini20pro',
-          name: 'Gemini 2.0 Pro',
-          display: 'Gemini 2.0 Pro · 2M tokens',
+        gemini31pro: {
+          id: 'gemini31pro',
+          name: 'Gemini 3.1 Pro',
+          display: 'Gemini 3.1 Pro · 2M tokens',
           maxTokens: 2000000
         },
-        gemini25pro: {
-          id: 'gemini25pro',
-          name: 'Gemini 2.5 Pro',
-          display: 'Gemini 2.5 Pro · 2M tokens',
+        gemini3flash: {
+          id: 'gemini3flash',
+          name: 'Gemini 3 Flash',
+          display: 'Gemini 3 Flash · 1M tokens',
+          maxTokens: 1000000
+        },
+        llama4scout: {
+          id: 'llama4scout',
+          name: 'Llama 4 Scout',
+          display: 'Llama 4 Scout · 10M tokens',
+          maxTokens: 10000000
+        },
+        grok420: {
+          id: 'grok420',
+          name: 'Grok 4.20',
+          display: 'Grok 4.20 · 2M tokens',
           maxTokens: 2000000
         }
       };
 
       const DEFAULT_FRAMEWORK_ID = 'tenPart';
-      const DEFAULT_MODEL_ID = 'gpt5';
+      const DEFAULT_MODEL_ID = 'gpt54';
       const STORAGE_KEY = 'context-builder:v5';
 
       const savedStamp = document.getElementById('savedStamp');
