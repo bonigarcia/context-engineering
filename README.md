@@ -27,9 +27,50 @@ Appendix B. References and further reading
 
 Each chapter of this book starts by explaining the underlying principles and patterns of each thematic block. Then, the final part of each chapter is devoted to presenting specific examples. This GitHub repository contains all these examples. Moreover, I will include new examples and maintain the existing ones even after the book is published. The goal is to provide an open-source, updated reference for everyone interested in context engineering.
 
-## Online tool
+## Online tools
 
-This repo also hosts the [context-aware prompt builder](https://bonigarcia.dev/context-engineering/context-aware-prompt-builder.html), an online tool presented in chapter 2 for designing, comparing, and reusing structured prompts across multiple frameworks and AI models.
+This repository includes interactive, browser-based tools that complement the book and help you apply context engineering concepts in practice.
+
+### 1. Context-aware Prompt Builder
+
+🔗 https://bonigarcia.dev/context-engineering/context-aware-prompt-builder.html
+
+Design, compare, and reuse structured prompts across multiple frameworks and AI models.
+
+Key capabilities:
+- Build prompts using established frameworks (10-step, COSTAR, CRISPE, RTF, etc.)
+- Switch frameworks dynamically while preserving intent
+- Import/export prompts as JSON
+- Measure approximate context usage for different models
+- Load curated prompt samples for common SDLC roles
+
+This tool is especially useful for **creating and iterating on prompts** in a structured, repeatable way.
+
+---
+
+### 2. SDLC Prompt Library
+
+🔗 https://bonigarcia.dev/context-engineering/sdlc_prompt_library.html
+
+Browse a curated library of prompts organized around the software development lifecycle (SDLC).
+
+Included roles:
+- Architect
+- Developer
+- Debugger
+- Reviewer
+- Refactorer
+- Tester
+- Documenter
+
+Key capabilities:
+- Explore prompts visually using a card-based interface
+- Filter by framework (10-step, COSTAR, CRISPE, RTF)
+- Inspect full structured prompts for each role
+- Copy prompts directly for reuse or adaptation
+
+This tool is designed as a **reference library**, helping you understand how structured prompts vary across roles and frameworks.
+
 
 ## Resources
 Although the concept of _context engineering_ is new, the underlying technologies (LLMs, AI agents, prompt engineering, RAG, MCP, memory management, skills, etc.) have been developed over the years. Nevertheless, summarizing all these converging technologies and tools in a single book is a very challenging task. As you know, nowadays, there is more information than ever, and it is very easy to get lost with so many sources. This section summarizes some of the most relevant references and resources I found during my journey to unravel the essence of context engineering.

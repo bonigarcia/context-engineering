@@ -9,39 +9,73 @@
   <meta name="author" content="Boni Garcia">
 
   <link href="//cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body { background:#f8fafc; }
+    .hero { padding:48px 0 24px; }
+    .subtitle { color:#4b5563; max-width:720px; }
+    .card-tool {
+      border-radius:16px; border:1px solid #e5e7eb; background:#fff;
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
+      transition:transform .12s ease, box-shadow .12s ease;
+      height:100%; display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .card-tool:hover { transform:translateY(-4px); box-shadow:0 16px 32px rgba(0,0,0,.12); }
+    .badge-fw { font-size:12px; background:#e0edff; color:#1f3a8a; border-radius:999px; padding:4px 8px; }
+    .btn-primary { background:linear-gradient(135deg,#6aa5ff,#85c1ff); border:none; color:#08111f; }
+    .footer { border-top:1px solid #e5e7eb; }
+  </style>
 </head>
 
 <body class="d-flex flex-column h-100">
   <main class="flex-shrink-2">
     <div class="container">
-      <div class="row py-2">
-        <div class="col col-12">
-          <h1 class="display-4">Context Engineering</h1>
-          <hr class="my-4">
-        </div>
+      <div class="hero">
+        <h1 class="display-5 fw-bold">Context Engineering</h1>
+        <p class="subtitle lead">
+          Practical tools to design, explore, and reuse structured prompts for building context-aware AI systems.
+        </p>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <p class="lead">
-            This site contains a collection of online tools for context engineering. These tools have been created by <b>Boni García</b> as part of the Manning book <b>Context engineering, the art and science of shaping context-aware AI systems</b>.
-          </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card-tool p-4">
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="h5 mb-0">Context-aware Prompt Builder</h3>
+                <span class="badge-fw">Builder</span>
+              </div>
+              <p class="text-muted mb-3">
+                Design, compare, and reuse structured prompts across multiple frameworks and AI models.
+              </p>
+            </div>
+            <div>
+              <a href="context-aware-prompt-builder.html" class="btn btn-primary w-100">Open builder</a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <p class="lead">
-            <a href="context-aware-prompt-builder.html">Context-aware prompt builder</a>.
-            A tool to design, compare, and reuse structured prompts across multiple frameworks and AI models.
-          </p>
+
+        <div class="col-md-6">
+          <div class="card-tool p-4">
+            <div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h3 class="h5 mb-0">SDLC Prompt Library</h3>
+                <span class="badge-fw">Library</span>
+              </div>
+              <p class="text-muted mb-3">
+                Browse curated prompts for software development roles like architect, developer, tester, and more.
+              </p>
+            </div>
+            <div>
+              <a href="sdlc_prompt_library.html" class="btn btn-primary w-100">Open library</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
-  <footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-      <span class="text-muted">Copyright &copy; 2025 <a href="https://bonigarcia.dev/">Boni Garc&iacute;a</a></span>
+  <footer class="footer mt-auto py-3 bg-white">
+    <div class="container text-center">
+      <span class="text-muted">Context Engineering · Tools by <a href="https://bonigarcia.dev/">Boni Garc&iacute;a</a></span>
     </div>
   </footer>
 </body>
