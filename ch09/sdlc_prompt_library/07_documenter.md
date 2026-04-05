@@ -29,24 +29,24 @@ Avoid marketing language and avoid filler.
 
 # 5. Audience
 [choose one or more]
-- maintainers
-- new team members
-- internal developers consuming the API
-- external integrators
-- open-source contributors
+- Maintainers
+- New team members
+- Internal developers consuming the API
+- External integrators
+- Open-source contributors
 State the audience explicitly and write for that audience.
 
 # 6. Response
 Return the documentation in the requested artifact format.
 Possible artifacts include:
 - README
-- quickstart
-- setup guide
+- Quickstart
+- Setup guide
 - API guide
-- inline docstrings or JSDoc
-- module overview
-- troubleshooting guide
-- contribution guide
+- Inline docstrings or JSDoc
+- Module overview
+- Troubleshooting guide
+- Contribution guide
 
 Additional rules:
 - Prioritize first-run usability.
