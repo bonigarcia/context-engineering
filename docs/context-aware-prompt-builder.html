@@ -742,17 +742,15 @@
 
       function fillFieldsFromSample(promptData) {
         const fw = getActiveFramework();
-        const data = getFrameworkData(fw.id);
 
-        // clear first
-        Object.keys(data).forEach(k => data[k] = '');
+        // render empty state first (do NOT mutate saved state)
+        renderFields();
 
+        // then inject values directly into DOM (ephemeral)
         Object.entries(promptData).forEach(([key, value]) => {
           let fieldId = null;
 
-          if (fw.id === 'costar') {
-            fieldId = `co_${key}`;
-          }
+          if (fw.id === 'costar') fieldId = `co_${key}`;
 
           if (fw.id === 'tenPart') {
             const map = {
@@ -791,12 +789,10 @@
           }
 
           if (fieldId) {
-            data[fieldId] = value;
+            const el = document.getElementById(`field-${fieldId}`);
+            if (el) el.value = value;
           }
         });
-
-        renderFields();
-        save();
       }
 
       sampleSelect.addEventListener('change', async (e) => {
