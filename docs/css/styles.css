@@ -1,0 +1,42 @@
+:root {
+  --bg:#ffffff;
+  --text:#18181a;
+  --muted:#4b5563;
+  --accent:#6aa5ff;
+  --radius:14px;
+  --shadow:0 8px 24px rgba(0,0,0,.12);
+}
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+.card, .card-tool {
+  border:1px solid #e5e7eb;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:#fff;
+  transition:box-shadow .15s ease, border-color .15s ease;
+}
+
+.card:hover, .card-tool:hover {
+  box-shadow:0 16px 32px rgba(0,0,0,.14);
+  border-color:#d1d5db;
+}
+
+.badge-fw, .badge {
+  font-size:12px;
+  background:#e0edff;
+  color:#1f3a8a;
+  border-radius:999px;
+  padding:4px 8px;
+}
+
+button {
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#a1b9e4;
+}

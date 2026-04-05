@@ -4,28 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SDLC Prompt Library</title>
+  <link href="css/styles.css" rel="stylesheet">
   <style>
-    :root {
-      --bg:#ffffff; --text:#18181a; --muted:#4b5563; --accent:#6aa5ff; --radius:14px; --shadow:0 8px 24px rgba(0,0,0,.15);
-    }
-    body { margin:0; font:16px/1.5 system-ui; background:var(--bg); color:var(--text);} 
+    body { margin:0; }
     .container { max-width:1100px; margin:32px auto; padding:0 16px 64px; }
     h1 { margin:0 0 6px; }
     .subtitle { color:var(--muted); margin-bottom:20px; }
     .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
     select, input { padding:8px 10px; border-radius:10px; border:1px solid #ccc; }
     .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); }
-    .card { border:1px solid #e5e7eb; border-radius:var(--radius); padding:14px; box-shadow:var(--shadow); cursor:pointer; background:#fff; }
-    .card:hover { transform:translateY(-2px); }
+    .card { padding:14px; cursor:pointer; }
     .title { font-weight:700; margin-bottom:6px; }
-    .badge { font-size:12px; background:#e0edff; padding:2px 8px; border-radius:999px; display:inline-block; margin-bottom:8px; }
+    .badge { display:inline-block; margin-bottom:8px; }
     .preview { font-size:13px; color:#374151; }
     .expanded { grid-column:1/-1; cursor:default; }
     .section { margin-bottom:12px; }
     .section-title { font-weight:600; font-size:13px; margin-bottom:4px; }
     .section-body { white-space:pre-wrap; font-size:13px; }
     .actions { display:flex; gap:8px; margin-top:10px; }
-    button { padding:6px 10px; border:none; border-radius:8px; cursor:pointer; background:#a1b9e4; }
+    button { padding:6px 10px; }
   </style>
 </head>
 <body>

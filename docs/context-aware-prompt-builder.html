@@ -82,9 +82,9 @@
     .actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
     button, .btn {
       appearance:none; border:none; color:var(--text); background: #a1b9e4; padding:10px 14px; border-radius: 12px; cursor:pointer; box-shadow: var(--shadow);
-      font-weight:600; letter-spacing:.2px; transition: transform .08s ease, background .2s ease, opacity .2s ease, box-shadow .2s ease;
+      font-weight:600; letter-spacing:.2px; transition: background .2s ease, opacity .2s ease, box-shadow .2s ease;
     }
-    button:hover, .btn:hover { transform: translateY(-1px); }
+    button:hover, .btn:hover { box-shadow: 0 12px 28px rgba(0,0,0,.18); }
 
     .btn-accent { background: linear-gradient(135deg, var(--accent) 0%, #85c1ff 100%); color:#08111f; }
     .btn-ghost { background: transparent; border:1px solid #26364a; box-shadow:none; }
