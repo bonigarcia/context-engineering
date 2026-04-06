@@ -117,13 +117,53 @@
       badge.textContent = c.framework;
 
       const sections = document.createElement('div');
+
+      function getLabel(framework, key) {
+        const maps = {
+          'CRISPE': {
+            capacity: 'Capacity & Role (CR)',
+            insight: 'Insights (I)',
+            statement: 'Statement (S)',
+            personality: 'Personality (P)',
+            experiment: 'Experiment (E)'
+          },
+          'COSTAR': {
+            context: 'Context',
+            objective: 'Objective',
+            style: 'Style',
+            tone: 'Tone',
+            audience: 'Audience',
+            response: 'Response'
+          },
+          'RTF': {
+            role: 'Role',
+            task: 'Task',
+            format: 'Format'
+          },
+          '10-step': {
+            context: '1. Task context',
+            tone: '2. Tone context',
+            background: '3. Background data, documents, and images',
+            details: '4. Detailed task description & rules',
+            examples: '5. Examples',
+            history: '6. Conversation history',
+            request: '7. Immediate task description or request',
+            thinking: '8. Thinking step by step',
+            output: '9. Output formatting',
+            prefilled: '10. Prefilled response'
+          }
+        };
+
+        return (maps[framework] && maps[framework][key]) || key;
+      }
+
       Object.entries(c.prompt).forEach(([k,v]) => {
         const s = document.createElement('div');
         s.className = 'section';
 
         const st = document.createElement('div');
         st.className = 'section-title';
-        st.textContent = k;
+        st.textContent = getLabel(c.framework, k);
 
         const sb = document.createElement('div');
         sb.className = 'section-body';
