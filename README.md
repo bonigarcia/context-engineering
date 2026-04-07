@@ -15,10 +15,10 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 1. Introduction to context engineering
 2. System instructions and user prompts
 3. External knowledge and retrieval
-4. Tools and memory for AI agents
+4. Tools and memory in AI agents
 5. State and orchestration in agentic systems
-6. Context management and evaluation
-7. Context in AI frameworks
+6. Context management, evaluation, and observability
+7. AI frameworks for context engineering
 8. Context engineering in real-world environments
 9. Context engineering through the software development lifecycle
 10. State of the art on context engineering  
