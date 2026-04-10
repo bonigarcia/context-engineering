@@ -13,6 +13,6 @@
   "type": "module",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "selenium-webdriver": "^4.41.0"
+    "selenium-webdriver": "^4.42.0"
   }
 }
