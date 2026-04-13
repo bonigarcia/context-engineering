@@ -19,12 +19,12 @@ mvn clean package
 
 2. Run the server:
 ```bash
-java -jar target/context-engineering-ch04-1.0.0.jar
+java -jar target/mcp-java-sdk-1.0.0.jar
 ```
 
 3. Alternatively, you can debug the MCP server using the MCP Inspector:
 ```bash
-npx @modelcontextprotocol/inspector java -jar target/context-engineering-ch04-1.0.0.jar
+npx @modelcontextprotocol/inspector java -jar target/mcp-java-sdk-1.0.0.jar
 ```
 
 ## Output

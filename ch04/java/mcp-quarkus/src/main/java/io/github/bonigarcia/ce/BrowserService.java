@@ -16,11 +16,7 @@
  */
 package io.github.bonigarcia.ce;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
+import io.github.bonigarcia.ce.browser.BrowserManager;
 import io.quarkiverse.mcp.server.Tool;
 import io.quarkiverse.mcp.server.ToolArg;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -28,81 +24,28 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class BrowserService {
 
-    private WebDriver driver;
-
-    private static final String BROWSER_NOT_STARTED = "Browser not started. Please start a browser first.";
-    private static final String BROWSER_STARTED = "Browser started successfully.";
+    private final BrowserManager browserManager = new BrowserManager();
 
     @Tool(description = "Launches a new browser instance. Supports Chrome and Firefox browsers")
-    public synchronized String open_browser(
+    public String open_browser(
             @ToolArg(description = "The name of the browser to open. Supported values: 'chrome', 'firefox'") String browser_name) {
-        String response;
-        try {
-            if (driver != null) {
-                response = "Browser is already open.";
-            } else if (browser_name.equalsIgnoreCase("chrome")) {
-                driver = new ChromeDriver();
-                response = BROWSER_STARTED;
-            } else if (browser_name.equalsIgnoreCase("firefox")) {
-                driver = new FirefoxDriver();
-                response = BROWSER_STARTED;
-            } else {
-                response = "Error unsupported browser: " + browser_name;
-            }
-
-        } catch (Exception e) {
-            response = "Error starting browser: " + e.getMessage();
-        }
-        return response;
+        return browserManager.start(browser_name).message();
     }
 
     @Tool(description = "Navigate the browser to a specified URL. The browser must be started first")
-    public synchronized String navigate_url(
+    public String navigate_url(
             @ToolArg(description = "The complete URL to navigate to (e.g., https://example.com)") String url) {
-        String response;
-        if (driver == null) {
-            response = BROWSER_NOT_STARTED;
-        } else {
-            try {
-                driver.get(url);
-                response = "Navigation successful.";
-            } catch (Exception e) {
-                response = "Error navigating to url: " + e.getMessage();
-            }
-        }
-        return response;
+        return browserManager.navigate(url).message();
     }
 
     @Tool(description = "Close the browser")
-    public synchronized String close_browser() {
-        String response;
-        if (driver == null) {
-            response = BROWSER_NOT_STARTED;
-        } else {
-            try {
-                driver.quit();
-                response = "Browser closed successfully.";
-            } catch (Exception e) {
-                response = "Error closing browser: " + e.getMessage();
-            }
-        }
-        driver = null;
-        return response;
+    public String close_browser() {
+        return browserManager.close().message();
     }
 
     @Tool(description = "Read the visible text of the entire page")
-    public synchronized String get_browser_text() {
-        String response;
-        if (driver == null) {
-            response = BROWSER_NOT_STARTED;
-        } else {
-            try {
-                response = driver.findElement(By.tagName("body")).getText();
-            } catch (Exception e) {
-                response = "Error reading page text: " + e.getMessage();
-            }
-        }
-        return response;
+    public String get_browser_text() {
+        return browserManager.readText().message();
     }
 
 }

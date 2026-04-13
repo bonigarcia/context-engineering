@@ -19,6 +19,7 @@ package io.github.bonigarcia.ce;
 import java.util.List;
 import java.util.Map;
 
+import io.github.bonigarcia.ce.browser.BrowserManager;
 import io.modelcontextprotocol.server.McpServerFeatures;
 import io.modelcontextprotocol.spec.McpSchema;
 import io.modelcontextprotocol.spec.McpSchema.Tool;
@@ -26,34 +27,28 @@ import reactor.core.publisher.Mono;
 
 public class BrowserTools {
 
-    private final BrowserService browserService;
-
-    public BrowserTools(BrowserService browserService) {
-        this.browserService = browserService;
-    }
+    private final BrowserManager browserManager = new BrowserManager();
 
     public McpServerFeatures.AsyncToolSpecification browserStart() {
-        String browserStartArgument = "open_browser";
-        String browserNameArgument = "browser_name";
+        final String browserNamergument = "browser_name";
 
         McpSchema.JsonSchema inputSchema = new McpSchema.JsonSchema("object",
-                Map.of(browserNameArgument, Map.of("type", "string",
+                Map.of(browserNamergument, Map.of("type", "string",
                         "description",
                         "The name of the browser to open. Supported values: 'chrome', 'firefox'")),
-                List.of(browserNameArgument), null, null, null);
-        Tool tool = McpSchema.Tool.builder().name(browserStartArgument)
-                .description(
-                        "Launches a new browser instance. Supports Chrome and Firefox browsers")
+                List.of(browserNamergument), null, null, null);
+        Tool tool = McpSchema.Tool.builder().name("open_browser").description(
+                "Launches a new browser instance. Supports Chrome and Firefox browsers")
                 .inputSchema(inputSchema).build();
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
                 .callHandler((exchange, args) -> {
                     String browserName = (String) args.arguments()
-                            .get(browserNameArgument);
-                    String result = browserService.startBrowser(browserName);
+                            .get(browserNamergument);
+                    var result = browserManager.start(browserName);
                     return Mono.just(McpSchema.CallToolResult.builder()
-                            .addTextContent(result)
-                            .isError(result.startsWith("Error")).build());
+                            .addTextContent(result.message())
+                            .isError(result.error()).build());
                 }).build();
     }
 
@@ -70,10 +65,10 @@ public class BrowserTools {
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
                 .callHandler((exchange, args) -> {
                     String url = (String) args.arguments().get("url");
-                    String result = browserService.navigate(url);
+                    var result = browserManager.navigate(url);
                     return Mono.just(McpSchema.CallToolResult.builder()
-                            .addTextContent(result)
-                            .isError(result.startsWith("Error")).build());
+                            .addTextContent(result.message())
+                            .isError(result.error()).build());
                 }).build();
     }
 
@@ -87,10 +82,10 @@ public class BrowserTools {
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
                 .callHandler((exchange, args) -> {
-                    String result = browserService.closeBrowser();
+                    var result = browserManager.close();
                     return Mono.just(McpSchema.CallToolResult.builder()
-                            .addTextContent(result)
-                            .isError(result.startsWith("Error")).build());
+                            .addTextContent(result.message())
+                            .isError(result.error()).build());
                 }).build();
     }
 
@@ -104,10 +99,10 @@ public class BrowserTools {
 
         return McpServerFeatures.AsyncToolSpecification.builder().tool(tool)
                 .callHandler((exchange, args) -> {
-                    String result = browserService.readPageText();
+                    var result = browserManager.readText();
                     return Mono.just(McpSchema.CallToolResult.builder()
-                            .addTextContent(result)
-                            .isError(result.startsWith("Error")).build());
+                            .addTextContent(result.message())
+                            .isError(result.error()).build());
                 }).build();
     }
 
