@@ -5,14 +5,18 @@ plugins {
     id 'com.gradleup.shadow' version '9.4.1'
 }
 
+repositories {
+    mavenCentral()
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
-repositories {
-    mavenCentral()
+application {
+    mainClass = 'io.github.bonigarcia.ce.McpSeleniumServer'
 }
 
 micronaut {
@@ -22,11 +26,6 @@ micronaut {
 dependencies {
     implementation 'io.micronaut.mcp:micronaut-mcp-server-java-sdk'
     implementation 'io.micronaut:micronaut-jackson-databind'
-    implementation 'com.networknt:json-schema-validator'
     implementation 'org.seleniumhq.selenium:selenium-java:4.43.0'
     runtimeOnly 'ch.qos.logback:logback-classic'
-}
-
-application {
-    mainClass = 'io.github.bonigarcia.ce.McpSeleniumServer'
 }

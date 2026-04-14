@@ -3,20 +3,14 @@ plugins {
     id 'application'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation platform('io.modelcontextprotocol.sdk:mcp-bom:1.1.1')
-    implementation 'io.modelcontextprotocol.sdk:mcp'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.43.0'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
 
 application {
@@ -31,4 +25,10 @@ tasks.jar {
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+}
+
+dependencies {
+    implementation platform('io.modelcontextprotocol.sdk:mcp-bom:1.1.1')
+    implementation 'io.modelcontextprotocol.sdk:mcp'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.43.0'
 }
