@@ -1,4 +1,4 @@
-rootProject.name = 'mcp-multi-module'
+rootProject.name = 'context-engineering-ch04'
 
 include 'mcp-java-sdk'
 include 'mcp-micronaut'
