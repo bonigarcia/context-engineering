@@ -16,7 +16,8 @@
  */
 package io.github.bonigarcia.ce;
 
-import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Service;
 
 import io.github.bonigarcia.ce.browser.BrowserManager;
@@ -26,22 +27,24 @@ public class BrowserService {
 
     private final BrowserManager browserManager = new BrowserManager();
 
-    @Tool(name = "open_browser", description = "Launches a new browser instance. Supports Chrome and Firefox browsers")
-    public String startBrowser(String browserName) {
+    @McpTool(name = "open_browser", description = "Launches a new browser instance. Supports Chrome and Firefox browsers")
+    public String startBrowser(
+            @McpToolParam(description = "The name of the browser to open. Supported values: 'chrome', 'firefox'", required = true) String browserName) {
         return browserManager.start(browserName).message();
     }
 
-    @Tool(name = "navigate_url", description = "Navigate the browser to a specified URL. The browser must be started first")
-    public String navigate(String url) {
+    @McpTool(name = "navigate_url", description = "Navigate the browser to a specified URL. The browser must be started first")
+    public String navigate(
+            @McpToolParam(description = "The complete URL to navigate to (e.g., https://example.com)", required = true) String url) {
         return browserManager.navigate(url).message();
     }
 
-    @Tool(name = "close_browser", description = "Close the browser")
+    @McpTool(name = "close_browser", description = "Close the browser")
     public String closeBrowser() {
         return browserManager.close().message();
     }
 
-    @Tool(name = "get_browser_text", description = "Read the visible text of the entire page")
+    @McpTool(name = "get_browser_text", description = "Read the visible text of the entire page")
     public String readPageText() {
         return browserManager.readText().message();
     }
