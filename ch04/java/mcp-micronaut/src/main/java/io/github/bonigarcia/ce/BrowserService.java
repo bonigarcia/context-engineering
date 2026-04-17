@@ -18,6 +18,7 @@ package io.github.bonigarcia.ce;
 
 import io.github.bonigarcia.ce.browser.BrowserManager;
 import io.micronaut.mcp.annotations.Tool;
+import io.micronaut.mcp.annotations.ToolArg;
 import jakarta.inject.Singleton;
 import reactor.core.publisher.Mono;
 
@@ -27,12 +28,14 @@ public class BrowserService {
     private final BrowserManager browserManager = new BrowserManager();
 
     @Tool(description = "Launches a new browser instance. Supports Chrome and Firefox browsers")
-    public Mono<String> open_browser(String browser_name) {
+    public Mono<String> open_browser(
+            @ToolArg(description = "The name of the browser to open. Supported values: 'chrome', 'firefox'") String browser_name) {
         return Mono.just(browserManager.start(browser_name).message());
     }
 
     @Tool(description = "Navigate the browser to a specified URL. The browser must be started first")
-    public Mono<String> navigate_url(String url) {
+    public Mono<String> navigate_url(
+            @ToolArg(description = "The complete URL to navigate to (e.g., https://example.com)") String url) {
         return Mono.just(browserManager.navigate(url).message());
     }
 
@@ -45,5 +48,4 @@ public class BrowserService {
     public Mono<String> get_browser_text() {
         return Mono.just(browserManager.readText().message());
     }
-
 }
