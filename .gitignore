@@ -273,3 +273,9 @@ node_modules
 
 # Guardrails AI
 .guardrails
+
+# Others
+.vscode
+*.adoc
+AGENTS.md
+skills/
