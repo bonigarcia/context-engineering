@@ -1,0 +1,13 @@
+{
+  "name": "ollama-local-basic",
+  "version": "1.0.0",
+  "description": "Basic interaction with a local LLM using Ollama",
+  "main": "ollama-local-basic.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ollama-local-basic.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

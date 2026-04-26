@@ -1,12 +1,13 @@
 # Basic interaction with LLMs in Jupyter Notebooks
 
-This folder contains Jupyter Notebook examples for interacting with OpenAI, Anthropic, and Google Gemini models.
+This folder contains Jupyter Notebook examples for interacting with OpenAI, Anthropic, Google Gemini, and local Ollama models.
 
 ## Examples
 
 - `openai-gpt-basic.ipynb`: Basic interaction with OpenAI GPT models.
 - `anthropic-claude-basic.ipynb`: Basic interaction with Anthropic Claude models.
 - `google-gemini-basic.ipynb`: Basic interaction with Google Gemini models.
+- `ollama-local-basic.ipynb`: Basic interaction with a local LLM using Ollama.
 
 ## How to use
 
