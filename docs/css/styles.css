@@ -40,3 +40,286 @@ button {
   cursor:pointer;
   background:#a1b9e4;
 }
+
+.resources-page {
+  margin:0;
+}
+
+.docs-container {
+  max-width:1100px;
+  margin:0 auto;
+  padding:32px 16px 64px;
+}
+
+.page-hero {
+  margin-bottom:24px;
+}
+
+.page-hero h1 {
+  margin:0 0 10px;
+  font-size:clamp(2rem, 4vw, 3rem);
+}
+
+.page-backlink {
+  display:inline-block;
+  margin-bottom:14px;
+  color:#1f3a8a;
+  text-decoration:none;
+}
+
+.page-backlink:hover {
+  text-decoration:underline;
+}
+
+.page-intro {
+  margin:0;
+  max-width:760px;
+  color:var(--muted);
+}
+
+.resources-shell {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.resources-panel {
+  padding:20px;
+  border:1px solid #e5e7eb;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  background:#fff;
+}
+
+.resources-toolbar {
+  display:grid;
+  gap:12px;
+  grid-template-columns:minmax(0, 1.8fr) minmax(180px, .8fr) auto;
+  align-items:end;
+}
+
+.field {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field span,
+.topic-filter-header p,
+.keyword-filter-header p,
+.resources-summary,
+.resource-meta,
+.resource-description,
+.resource-link,
+.topic-chip small,
+.keyword-chip small {
+  color:var(--muted);
+}
+
+.field span,
+.topic-filter-header h2,
+.keyword-filter-header h2 {
+  font-size:14px;
+  font-weight:600;
+}
+
+.resources-page input,
+.resources-page select {
+  width:100%;
+  min-height:44px;
+  padding:10px 12px;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  background:#fff;
+  color:var(--text);
+  font:inherit;
+}
+
+.resources-page input:focus,
+.resources-page select:focus,
+.topic-chip:focus,
+.keyword-chip:focus,
+.reset-button:focus,
+.resource-link:focus {
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(106,165,255,.2);
+}
+
+.reset-button {
+  min-height:44px;
+  padding:10px 16px;
+  background:#edf2ff;
+  color:#1f3a8a;
+  font-weight:600;
+}
+
+.topic-filter-block,
+.keyword-filter-block {
+  margin-top:18px;
+}
+
+.topic-filter-header,
+.keyword-filter-header {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:baseline;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.topic-filter-header h2,
+.topic-filter-header p,
+.keyword-filter-header h2,
+.keyword-filter-header p {
+  margin:0;
+}
+
+.chip-list {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.topic-chip,
+.keyword-chip {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid #dbe3f4;
+  border-radius:999px;
+  background:#f8fbff;
+  color:#12325f;
+  font:inherit;
+}
+
+.topic-chip {
+  background:#f4f7fb;
+}
+
+.topic-chip small,
+.keyword-chip small {
+  font-size:12px;
+}
+
+.topic-chip.is-active {
+  border-color:#1f3a8a;
+  background:#dce7ff;
+  color:#102a66;
+}
+
+.keyword-chip.is-active {
+  border-color:#6aa5ff;
+  background:#e0edff;
+  color:#1f3a8a;
+}
+
+.resources-summary {
+  margin:0;
+  font-size:14px;
+}
+
+.resources-grid {
+  display:grid;
+  gap:16px;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.resource-card {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  padding:18px;
+}
+
+.resource-card h2 {
+  margin:0;
+  font-size:1.1rem;
+  line-height:1.35;
+}
+
+.resource-meta {
+  margin:6px 0 0;
+  font-size:14px;
+}
+
+.resource-description {
+  margin:0;
+}
+
+.resource-keywords {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.resource-keywords .badge {
+  display:inline-block;
+}
+
+.resource-link {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  color:#1f3a8a;
+  text-decoration:none;
+}
+
+.resource-link:hover {
+  text-decoration:underline;
+}
+
+.resources-empty {
+  padding:28px 20px;
+  border:1px dashed #cbd5e1;
+  border-radius:var(--radius);
+  background:#f8fafc;
+}
+
+.resources-empty h2,
+.resources-empty p {
+  margin:0;
+}
+
+.resources-empty p {
+  margin-top:8px;
+  color:var(--muted);
+}
+
+.resources-fallback {
+  padding:18px 20px;
+  border:1px solid #dbe3f4;
+  border-radius:var(--radius);
+  background:#f8fbff;
+}
+
+.resources-fallback h2,
+.resources-fallback p {
+  margin:0;
+}
+
+.resources-fallback p {
+  margin-top:8px;
+  color:var(--muted);
+}
+
+.resources-fallback a {
+  color:#1f3a8a;
+}
+
+.resources-fallback-noscript {
+  border-style:dashed;
+}
+
+@media (max-width: 800px) {
+  .resources-toolbar {
+    grid-template-columns:1fr;
+  }
+
+  .field-sort {
+    max-width:none;
+  }
+}

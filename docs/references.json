@@ -1,0 +1,794 @@
+[
+  {
+    "Title": "The rise of \"context engineering\"",
+    "Author": "LangChain",
+    "Year": 2025,
+    "URL": "https://blog.langchain.com/the-rise-of-context-engineering/",
+    "Description": "Overview of context engineering as an emerging core skill for building dynamic, tool-using AI systems.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering for Agents",
+    "Author": "LangChain",
+    "Year": 2025,
+    "URL": "https://blog.langchain.com/context-engineering-for-agents/",
+    "Description": "Breaks down practical strategies to write, select, compress, and isolate the right context for each agent step.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "From Vibe Coding to Context Engineering: A Blueprint for Production-Grade GenAI Systems",
+    "Author": "Sundeep Teki",
+    "Year": 2025,
+    "URL": "https://www.sundeepteki.org/blog/from-vibe-coding-to-context-engineering-a-blueprint-for-production-grade-genai-systems",
+    "Description": "Argues that ad-hoc vibe coding does not scale and frames context engineering as a discipline for production GenAI systems.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "What is Context Engineering: Clearly Explained",
+    "Author": "Ashley Goolam",
+    "Year": 2025,
+    "URL": "https://apidog.com/blog/context-engineering/",
+    "Description": "Introduces the main context components and explains why high-quality context often matters more than model size.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering: Bringing Engineering Discipline to Prompts",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/context-engineering-bringing-engineering",
+    "Description": "Explains context engineering as supplying models with structured, complete context instead of relying on prompt tweaks alone.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "The AI Skeptic's Guide to Context Windows",
+    "Author": "Rizel Scarlett",
+    "Year": 2025,
+    "URL": "https://block.github.io/goose/blog/2025/08/18/understanding-context-windows/",
+    "Description": "A critical look at context-window limits and how careful context engineering helps reduce overload, noise, and degradation.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering - Making Every Token Count",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://speakerdeck.com/addyosmani/context-engineering-making-every-token-count",
+    "Description": "Slide deck on structuring and managing context so AI systems produce better and more reliable outputs.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Effective context engineering for AI agents",
+    "Author": "Anthropic",
+    "Year": 2025,
+    "URL": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+    "Description": "Introduces context engineering as the practice of carefully curating and limiting what an AI agent sees.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "The OutcomeOps Way: Stop Prompting, Start Co-Engineering",
+    "Author": "Brian Carpio",
+    "Year": 2025,
+    "URL": "https://www.outcomeops.ai/blogs/the-outcomeops-way-stop-prompting-start-co-engineering",
+    "Description": "Advocates treating LLMs as co-engineers and using structured context, ADRs, and feedback loops instead of ad-hoc prompting.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering: The Next Evolution Beyond DevOps",
+    "Author": "Brian Carpio",
+    "Year": 2025,
+    "URL": "https://www.outcomeops.ai/blogs/outcomeops-and-context-engineering-the-next-corporate-evolution-beyond-devops",
+    "Description": "Frames context engineering as an organizational practice shift beyond DevOps for AI-assisted development at scale.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "How I refactored a 1,348-Line Lambda Using Context Engineering",
+    "Author": "Brian Carpio",
+    "Year": 2025,
+    "URL": "https://www.outcomeops.ai/blogs/how-i-refactored-a-1348-line-lambda-using-context-engineering",
+    "Description": "Case study on breaking a large untested AWS Lambda into cleaner modules with ADRs and AI-assisted refactoring.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Same Context. Three Models. The Floor Isn't Zero.",
+    "Author": "Brian Carpio",
+    "Year": 2026,
+    "URL": "https://www.outcomeops.ai/blogs/same-context-three-models-the-floor-isnt-zero",
+    "Description": "Empirical comparison showing that identical RAG pipelines and ADRs still produce meaningfully different outcomes across models.",
+    "Keywords": "Context engineering, RAG"
+  },
+  {
+    "Title": "Context Engineering Guide",
+    "Author": "PromptingGuide.ai",
+    "Year": 2025,
+    "URL": "https://www.promptingguide.ai/guides/context-engineering-guide",
+    "Description": "Guide to architecting and optimizing the information supplied to an LLM to improve quality and reduce errors.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering - Short-Term Memory Management with Sessions from OpenAI Agents SDK",
+    "Author": "OpenAI",
+    "Year": 2025,
+    "URL": "https://cookbook.openai.com/examples/agents_sdk/session_memory",
+    "Description": "Practical example of managing short-term memory with sessions to improve coherence in multi-step agent interactions.",
+    "Keywords": "Context engineering, Memory"
+  },
+  {
+    "Title": "Context Engineering: Sessions, Memory",
+    "Author": "Kimberly Milam et al.",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory",
+    "Description": "Whitepaper on engineering session and long-term memory for reliable, stateful AI agents.",
+    "Keywords": "Context engineering, Memory"
+  },
+  {
+    "Title": "The Context Engineering Guide",
+    "Author": "Weaviate",
+    "Year": 2025,
+    "URL": "https://weaviate.io/ebooks/the-context-engineering-guide",
+    "Description": "Guide to designing, structuring, and optimizing context, including chunking, retrieval, memory, and agent workflows.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering for Multi-Agent Systems",
+    "Author": "Denis Rothman",
+    "Year": 2025,
+    "URL": "https://www.packtpub.com/en-us/product/context-engineering-for-multi-agent-systems-9781806690046",
+    "Description": "Book on designing and optimizing context flow and memory across multi-agent systems.",
+    "Keywords": "Context engineering, Multi-agent systems"
+  },
+  {
+    "Title": "Context Engineering (GitHub Repository)",
+    "Author": "David Kim",
+    "Year": 2026,
+    "URL": "https://github.com/davidkimai/Context-Engineering",
+    "Description": "Open resource covering the concepts, patterns, and techniques behind context engineering for AI systems.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Awesome-Context-Engineering",
+    "Author": "Meirtz",
+    "Year": 2026,
+    "URL": "https://github.com/Meirtz/Awesome-Context-Engineering",
+    "Description": "Curated list of papers, tools, articles, and examples focused on context engineering for LLMs and agents.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Context Engineering Template",
+    "Author": "Cole Medin",
+    "Year": 2026,
+    "URL": "https://github.com/coleam00/context-engineering-intro",
+    "Description": "Starter template that introduces context engineering concepts and provides structure for building context-optimized LLM applications.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Top GitHub Context Engineering repositories",
+    "Author": "GitHub",
+    "Year": 2026,
+    "URL": "https://github.com/topics/context-engineering",
+    "Description": "GitHub topic page aggregating public repositories related to context engineering.",
+    "Keywords": "Context engineering"
+  },
+  {
+    "Title": "Prompt Engineering",
+    "Author": "Lee Boonstra",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-prompt-engineering",
+    "Description": "Overview of prompt engineering principles and methods for constructing effective prompts for LLMs.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Prompt Engineering Guide (PromptingGuide.ai)",
+    "Author": "PromptingGuide.ai",
+    "Year": 2025,
+    "URL": "https://www.promptingguide.ai/",
+    "Description": "Comprehensive prompt engineering guide covering techniques, patterns, and best practices for LLM use.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "The Prompt Engineering Playbook for Programmers",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/the-prompt-engineering-playbook-for",
+    "Description": "Practical playbook for programmers with patterns and guidelines for writing prompts that produce more consistent output.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Anthropic's Prompt Engineering Interactive Tutorial",
+    "Author": "Anthropic",
+    "Year": 2025,
+    "URL": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
+    "Description": "Hands-on tutorial for designing and refining prompts through guided exercises and examples.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Meta's prompt engineering guide",
+    "Author": "Meta",
+    "Year": 2025,
+    "URL": "https://llama.meta.com/docs/how-to-guides/prompting/",
+    "Description": "Guide to structuring instructions, context, and examples for stronger prompt performance with Meta models.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Google's Gemini prompt engineering guide",
+    "Author": "Google",
+    "Year": 2025,
+    "URL": "https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf",
+    "Description": "Prompting guide for Gemini that emphasizes clarity, context, and structured instructions.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Prompt Examples",
+    "Author": "OpenAI",
+    "Year": 2025,
+    "URL": "https://platform.openai.com/examples",
+    "Description": "Collection of sample prompts that illustrate practical framing patterns and common prompting tasks.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Prompt Library",
+    "Author": "Anthropic",
+    "Year": 2025,
+    "URL": "https://docs.anthropic.com/en/prompt-library/library",
+    "Description": "Library of tested prompt templates and examples that can be reused or adapted for common AI tasks.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Prompt Engineering Guide (DAIR.AI)",
+    "Author": "DAIR.AI",
+    "Year": 2026,
+    "URL": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+    "Description": "Extensive open-source guide covering prompt engineering techniques, patterns, and best practices.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "Brex's prompt engineering guide",
+    "Author": "Brex",
+    "Year": 2026,
+    "URL": "https://github.com/brexhq/prompt-engineering",
+    "Description": "Practical prompt engineering guide with patterns, examples, and structured instructions for better LLM outputs.",
+    "Keywords": "Prompt engineering"
+  },
+  {
+    "Title": "AI Engineering: building applications with foundation models",
+    "Author": "Chip Huyen",
+    "Year": 2024,
+    "URL": "https://www.oreilly.com/library/view/ai-engineering/9781098166298",
+    "Description": "Book-length overview of building applications with foundation models, including evaluation, RAG, agents, and deployment.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "The 2026 Guide to Machine Learning",
+    "Author": "IBM",
+    "Year": 2026,
+    "URL": "https://www.ibm.com/think/machine-learning",
+    "Description": "Broad guide to current machine learning techniques, tools, and best practices, including deep learning and LLM-adjacent topics.",
+    "Keywords": "Machine learning"
+  },
+  {
+    "Title": "Generative AI for beginners",
+    "Author": "Microsoft",
+    "Year": 2026,
+    "URL": "https://github.com/microsoft/generative-ai-for-beginners",
+    "Description": "Beginner-friendly curriculum with lessons, notebooks, and examples for learning generative AI concepts.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "Awesome Neuron",
+    "Author": "Awesome Neuron",
+    "Year": 2025,
+    "URL": "https://awesomeneuron.substack.com/",
+    "Description": "Newsletter exploring recent developments, tools, and ideas around neural-agent frameworks and agentic AI.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "Best AI and LLM Engineering Resources",
+    "Author": "Javin Paul",
+    "Year": 2026,
+    "URL": "https://github.com/javabuddy/best-ai-and-llm-engineering-resource",
+    "Description": "Large curated repository of high-quality resources on AI engineering, LLM workflows, and system patterns.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "Hands-On Large Language Models",
+    "Author": "Jay Alammar and Maarten Grootendorst",
+    "Year": 2024,
+    "URL": "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models",
+    "Description": "Official repository for the book, with practical guides on LLM use, fine-tuning, and advanced retrieval.",
+    "Keywords": "LLMs"
+  },
+  {
+    "Title": "LLM Course",
+    "Author": "Maxime Labonne",
+    "Year": 2024,
+    "URL": "https://github.com/mlabonne/llm-course",
+    "Description": "Comprehensive roadmap and notebook collection for learning LLM fundamentals, building, and deployment.",
+    "Keywords": "LLMs"
+  },
+  {
+    "Title": "AI agents for beginners",
+    "Author": "Microsoft",
+    "Year": 2024,
+    "URL": "https://github.com/microsoft/ai-agents-for-beginners",
+    "Description": "Introductory lesson series on building AI agents, including architectures, tools, and multi-agent systems.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "ML For Beginners",
+    "Author": "Microsoft",
+    "Year": 2021,
+    "URL": "https://github.com/microsoft/ML-For-Beginners",
+    "Description": "A broad introduction to classical machine learning with structured lessons built around scikit-learn.",
+    "Keywords": "Machine learning"
+  },
+  {
+    "Title": "GenAI Agents",
+    "Author": "Nir Diamant",
+    "Year": 2024,
+    "URL": "https://github.com/NirDiamant/GenAI_Agents",
+    "Description": "Collection of tutorials and implementations for generative AI agents, from basic bots to multi-agent workflows.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "AI Engineering",
+    "Author": "Chip Huyen",
+    "Year": 2025,
+    "URL": "https://github.com/chiphuyen/aie-book/",
+    "Description": "Repository covering AI engineering principles across data pipelines, LLM systems, evaluation, and deployment.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "AI Engineering Toolkit",
+    "Author": "Sumanth077",
+    "Year": 2026,
+    "URL": "https://github.com/Sumanth077/ai-engineering-toolkit",
+    "Description": "Collection of tools, templates, and practices for building, testing, and deploying AI applications.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "Awesome generative AI guide",
+    "Author": "Aishwaryanr",
+    "Year": 2026,
+    "URL": "https://github.com/aishwaryanr/awesome-generative-ai-guide",
+    "Description": "Curated set of learning resources, papers, tools, and tutorials for generative AI.",
+    "Keywords": "Generative AI"
+  },
+  {
+    "Title": "Awesome LLM Apps",
+    "Author": "Shubham Saboo",
+    "Year": 2026,
+    "URL": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+    "Description": "Curated list of real-world LLM application examples and implementation patterns.",
+    "Keywords": "LLMs"
+  },
+  {
+    "Title": "Introduction to Agents",
+    "Author": "Alan Blount et al.",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-introduction-to-agents",
+    "Description": "Defines agents as complete applications that combine reasoning, tooling, and orchestration to act toward goals.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "What are AI Agents? Why do they matter?",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/what-are-ai-agents-why-do-they-matter",
+    "Description": "Explains what AI agents are and why they matter for automating complex, tool-using workflows.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Agents Companion",
+    "Author": "Antonio Gulli et al.",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-agent-companion",
+    "Description": "Whitepaper covering production agent concerns such as orchestration, memory, evaluation, and deployment.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "The AI agents stack",
+    "Author": "Letta",
+    "Year": 2025,
+    "URL": "https://www.letta.com/blog/ai-agents-stack",
+    "Description": "Overview of the model, tool, orchestration, memory, and interface layers that make up an AI agent stack.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Gemini CLI Tips & Tricks",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/gemini-cli-tips-and-tricks",
+    "Description": "Practical advice and examples for using Gemini CLI effectively when working with AI agents.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Memory by LangGraph",
+    "Author": "LangGraph",
+    "Year": 2025,
+    "URL": "https://langchain-ai.github.io/langgraph/concepts/memory/",
+    "Description": "Guide to short-term and long-term memory patterns for maintaining agent state across interactions.",
+    "Keywords": "AI agents, Memory"
+  },
+  {
+    "Title": "Gemini with memory",
+    "Author": "Phil Schmid",
+    "Year": 2025,
+    "URL": "https://www.philschmid.de/gemini-with-memory",
+    "Description": "Tutorial on adding persistent memory to Gemini-based agents for more context-aware workflows.",
+    "Keywords": "AI agents, Memory"
+  },
+  {
+    "Title": "Agent Quality",
+    "Author": "Meltem Subasioglu et al.",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-agent-quality",
+    "Description": "Research-oriented paper on metrics and benchmarks for evaluating agent performance, robustness, and reliability.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Open Source LLM Tools",
+    "Author": "Chip Huyen",
+    "Year": 2025,
+    "URL": "https://huyenchip.com/llama-police",
+    "Description": "Curated analysis of open-source tools for building, evaluating, and deploying LLM-based agents.",
+    "Keywords": "LLMs"
+  },
+  {
+    "Title": "AG-UI: Agents to users",
+    "Author": "AG-UI Community",
+    "Year": 2025,
+    "URL": "https://github.com/ag-ui-protocol/ag-ui",
+    "Description": "Open-source project focused on providing user-facing interfaces and interaction patterns for agent systems.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "AI Agents in Action",
+    "Author": "Micheal Lanham",
+    "Year": 2025,
+    "URL": "https://www.manning.com/books/ai-agents-in-action",
+    "Description": "Practical guide to designing, building, and deploying autonomous and multi-agent systems.",
+    "Keywords": "AI agents, Multi-agent systems"
+  },
+  {
+    "Title": "Building AI Agents with LLMs, RAG, and Knowledge Graphs",
+    "Author": "Salvatore Raieli and Gabriele Iuculano",
+    "Year": 2025,
+    "URL": "https://www.packtpub.com/en-us/product/building-ai-agents-with-llms-rag-and-knowledge-graphs-9781835080382",
+    "Description": "Step-by-step book on combining LLMs, RAG, and knowledge graphs to build grounded, tool-using agents.",
+    "Keywords": "AI agents, RAG"
+  },
+  {
+    "Title": "AI Agents: The Definitive Guide",
+    "Author": "Nicole Koenigstein",
+    "Year": 2025,
+    "URL": "https://learning.oreilly.com/library/view/ai-agents-the/0642572247775/",
+    "Description": "Guide to designing, evaluating, and deploying AI agents with attention to architecture, memory, and operations.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "An Illustrated Guide to AI Agents",
+    "Author": "Maarten Grootendorst and Jay Alammar",
+    "Year": 2025,
+    "URL": "https://learning.oreilly.com/library/view/an-illustrated-guide/9798341662681/",
+    "Description": "Conceptual guide that explains AI agents, memory, tool use, and workflow patterns with visual intuition.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Agents Towards Production",
+    "Author": "Nir Diamant",
+    "Year": 2026,
+    "URL": "https://github.com/NirDiamant/agents-towards-production",
+    "Description": "Practical resources and examples for taking AI agents from experiments to more reliable production systems.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Model Context Protocol",
+    "Author": "Anthropic",
+    "Year": 2024,
+    "URL": "https://modelcontextprotocol.io/",
+    "Description": "The core MCP specification and project site for connecting models and agents to external tools, data, and services.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Agent Tools & Interoperability with MCP",
+    "Author": "Mike Styer et al.",
+    "Year": 2025,
+    "URL": "https://www.kaggle.com/whitepaper-agent-tools-and-interoperability-with-mcp",
+    "Description": "Analysis of how MCP enables interoperable access from agents to external tools and services.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "MCP: What It Is and Why It Matters",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/mcp-what-it-is-and-why-it-matters",
+    "Description": "Overview of MCP and why standardizing tool and data access matters for AI applications.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Function calling & MCP for LLMs",
+    "Author": "Avi Chawla",
+    "Year": 2025,
+    "URL": "https://blog.dailydoseofds.com/p/function-calling-and-mcp-for-llms",
+    "Description": "Explains how MCP extends function calling into a standard way for LLMs to invoke tools and data sources.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Find Awesome MCP Servers and Clients",
+    "Author": "Community",
+    "Year": 2025,
+    "URL": "https://mcp.so/",
+    "Description": "Community directory of public MCP servers and clients for quickly finding ready-made integrations.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Model Context Protocol Servers",
+    "Author": "Anthropic",
+    "Year": 2025,
+    "URL": "https://github.com/modelcontextprotocol/servers",
+    "Description": "Reference implementations of MCP servers that show how to build and deploy MCP-compatible services.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "The Model Context Protocol (MCP): Landscape, Security Threats, and Future Research Directions",
+    "Author": "Xinyi Hou et al.",
+    "Year": 2025,
+    "URL": "https://arxiv.org/abs/2503.23278",
+    "Description": "Academic analysis of MCP architecture, adoption, security risks, and future research directions.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Model Context Protocol at First Glance: Studying the Security and Maintainability of MCP Servers",
+    "Author": "Mohammed Mehedi Hasan et al.",
+    "Year": 2025,
+    "URL": "https://arxiv.org/abs/2506.13538",
+    "Description": "Empirical study of the security posture and maintainability of open-source MCP servers.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Awesome MCP Servers",
+    "Author": "punkpeye",
+    "Year": 2026,
+    "URL": "https://github.com/punkpeye/awesome-mcp-servers",
+    "Description": "Curated directory of MCP servers, tools, and ecosystem integrations.",
+    "Keywords": "MCP"
+  },
+  {
+    "Title": "Introduction to Information Retrieval",
+    "Author": "Christopher Manning et al.",
+    "Year": 2008,
+    "URL": "https://nlp.stanford.edu/IR-book/information-retrieval-book.html",
+    "Description": "Classic textbook on information retrieval covering indexing, search, ranking, and related fundamentals.",
+    "Keywords": "Retrieval"
+  },
+  {
+    "Title": "Introducing Contextual Retrieval",
+    "Author": "Anthropic",
+    "Year": 2024,
+    "URL": "https://www.anthropic.com/news/contextual-retrieval",
+    "Description": "Introduces Contextual Retrieval, which enriches chunks with extra context before embedding to improve RAG accuracy.",
+    "Keywords": "Retrieval, RAG"
+  },
+  {
+    "Title": "Chunking Strategies for LLM Applications",
+    "Author": "Pinecone",
+    "Year": 2025,
+    "URL": "https://www.pinecone.io/learn/chunking-strategies/",
+    "Description": "Guide to choosing chunking strategies that support better embedding quality and downstream retrieval.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "Retrieval",
+    "Author": "LangChain",
+    "Year": 2025,
+    "URL": "https://docs.langchain.com/oss/javascript/langchain/retrieval",
+    "Description": "Overview of retrieval functionality in LangChain-based LLM workflows.",
+    "Keywords": "Retrieval"
+  },
+  {
+    "Title": "What is Agentic RAG",
+    "Author": "Weaviate",
+    "Year": 2025,
+    "URL": "https://weaviate.io/blog/what-is-agentic-rag",
+    "Description": "Explains how agentic RAG combines retrieval with autonomous multi-step reasoning and tool use.",
+    "Keywords": "RAG, Retrieval"
+  },
+  {
+    "Title": "Thinking Beyond RAG: Why Context-Augmented Generation Is Changing the Game",
+    "Author": "Yusuf Ishola",
+    "Year": 2025,
+    "URL": "https://www.helicone.ai/blog/implement-and-monitor-cag",
+    "Description": "Explains Context-Augmented Generation and how it differs from conventional retrieval-augmented generation.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "RAG vs CAG vs Fine-Tuning",
+    "Author": "Rafa Paez",
+    "Year": 2025,
+    "URL": "https://newsletter.rafapaez.com/p/rag-vs-cag-vs-fine-tuning",
+    "Description": "Compares RAG, CAG, and fine-tuning across accuracy, adaptability, cost, and maintenance trade-offs.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "RAG-Anything: All-in-One RAG Framework",
+    "Author": "Data Intelligence Lab@HKU",
+    "Year": 2026,
+    "URL": "https://github.com/HKUDS/RAG-Anything",
+    "Description": "Open-source framework that packages an end-to-end workflow for retrieval-augmented generation.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "Agentic RAG for Dummies",
+    "Author": "Giovanni Pasquale",
+    "Year": 2026,
+    "URL": "https://github.com/GiovanniPasq/agentic-rag-for-dummies",
+    "Description": "Beginner-friendly guide for understanding and implementing agentic RAG.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "The AI-Native Software Engineer",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/the-ai-native-software-engineer",
+    "Description": "Essay on how AI changes the skills, responsibilities, and identity of modern software engineers.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "The reality of AI-Assisted software engineering productivity",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/the-reality-of-ai-assisted-software",
+    "Description": "Reviews evidence on where AI accelerates software work and where human debugging and design still dominate.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Vibe coding is not the same as AI-Assisted engineering",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/vibe-coding-is-not-the-same-as-ai",
+    "Description": "Distinguishes quick prompt-driven prototyping from disciplined, maintainable AI-assisted engineering.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Coding for the Future Agentic World",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/coding-for-the-future-agentic-world",
+    "Description": "Explores how developers should adapt workflows and mindset for a software ecosystem centered on AI agents.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Conductors to Orchestrators: The Future of Agentic Coding",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://addyo.substack.com/p/conductors-to-orchestrators-the-future",
+    "Description": "Describes the shift from writing code directly to supervising and orchestrating fleets of coding agents.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Generative AI for Software Development",
+    "Author": "Sergio Pereira",
+    "Year": 2025,
+    "URL": "https://learning.oreilly.com/library/view/generative-ai-for/9781098162269/",
+    "Description": "Covers practical ways generative AI and LLMs can support coding, documentation, planning, and related engineering tasks.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Beyond Vibe Coding: A practical guide to AI-assisted development",
+    "Author": "Addy Osmani",
+    "Year": 2025,
+    "URL": "https://beyond.addy.ie/",
+    "Description": "Handbook advocating for structured, reproducible workflows when using AI in software development.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Andrej Karpathy",
+    "Author": "Andrej Karpathy",
+    "Year": 2026,
+    "URL": "https://youtube.com/andrejkarpathy",
+    "Description": "YouTube channel with deep technical lectures and explanations about AI, neural networks, and GPT-style models.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "sentdex",
+    "Author": "sentdex",
+    "Year": 2026,
+    "URL": "https://youtube.com/@sentdex",
+    "Description": "YouTube channel with practical Python tutorials spanning machine learning, data work, finance, and robotics.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "Sebastian Raschka",
+    "Author": "Sebastian Raschka",
+    "Year": 2026,
+    "URL": "https://youtube.com/@SebastianRaschka",
+    "Description": "YouTube channel focused on machine learning, deep learning, and hands-on large language model topics.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "Jeremy Howard",
+    "Author": "Jeremy Howard",
+    "Year": 2026,
+    "URL": "https://youtube.com/@howardjeremyp",
+    "Description": "YouTube channel dedicated to practical deep learning education with an accessible, top-down teaching style.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "MIT OpenCourseWare",
+    "Author": "MIT OpenCourseWare",
+    "Year": 2026,
+    "URL": "https://youtube.com/@mitocw",
+    "Description": "YouTube channel with free recorded university lectures, including foundational AI and machine learning courses.",
+    "Keywords": "YouTube, Generative AI"
+  },
+  {
+    "Title": "Stanford Online",
+    "Author": "Stanford Online",
+    "Year": 2026,
+    "URL": "https://youtube.com/@stanfordonline",
+    "Description": "YouTube channel featuring Stanford courses and talks, including notable machine learning and NLP material.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "StatQuest with Josh Starmer",
+    "Author": "Josh Starmer",
+    "Year": 2026,
+    "URL": "https://youtube.com/@statquest",
+    "Description": "YouTube channel that explains statistics and machine learning concepts with unusually clear intuition.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "3Blue1Brown",
+    "Author": "3Blue1Brown",
+    "Year": 2026,
+    "URL": "https://youtube.com/@3blue1brown",
+    "Description": "YouTube channel known for visual explanations of mathematics, including topics relevant to neural networks and linear algebra.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "Krish Naik",
+    "Author": "Krish Naik",
+    "Year": 2026,
+    "URL": "https://youtube.com/@krishnaik06",
+    "Description": "YouTube channel with extensive content on data science, MLOps, and generative AI from an industry perspective.",
+    "Keywords": "YouTube, Generative AI"
+  },
+  {
+    "Title": "CampusX",
+    "Author": "CampusX",
+    "Year": 2026,
+    "URL": "https://youtube.com/@campusx-official",
+    "Description": "YouTube channel offering structured lessons and bootcamp-style material on Python, machine learning, and deep learning.",
+    "Keywords": "YouTube, Machine learning"
+  },
+  {
+    "Title": "Building effective agents",
+    "Author": "Anthropic",
+    "Year": 2024,
+    "URL": "https://www.anthropic.com/research/building-effective-agents",
+    "Description": "Anthropic guide to designing effective agent systems, including planning, tool use, memory, and operational trade-offs.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "Author": "Patrick Lewis et al.",
+    "Year": 2020,
+    "URL": "https://arxiv.org/abs/2005.11401",
+    "Description": "Foundational RAG paper introducing retrieval-augmented generation for knowledge-intensive NLP tasks.",
+    "Keywords": "RAG"
+  },
+  {
+    "Title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "Author": "Shunyu Yao et al.",
+    "Year": 2022,
+    "URL": "https://arxiv.org/abs/2210.03629",
+    "Description": "Research paper introducing the ReAct pattern, which interleaves reasoning traces with tool-oriented actions.",
+    "Keywords": "AI agents"
+  },
+  {
+    "Title": "Lost in the Middle: How Language Models Use Long Contexts",
+    "Author": "Nelson F. Liu et al.",
+    "Year": 2024,
+    "URL": "https://arxiv.org/abs/2307.03172",
+    "Description": "Paper examining how language models use long contexts and where relevance can degrade across a prompt window.",
+    "Keywords": "Context engineering"
+  }
+]
