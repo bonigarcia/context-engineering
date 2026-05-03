@@ -222,9 +222,56 @@ button {
 }
 
 .resources-grid {
-  display:grid;
-  gap:16px;
-  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-header {
+  margin: 0;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.resource-item {
+  display: block;
+}
+
+.resource-title-link {
+  font-weight: 600;
+  color: #1f3a8a;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.resource-title-link:hover {
+  text-decoration: underline;
+}
+
+.resource-meta-inline {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.resource-description-inline {
+  margin: 4px 0 0;
+  color: var(--text);
 }
 
 .resource-card {

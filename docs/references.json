@@ -93,7 +93,7 @@
     "Year": 2026,
     "URL": "https://www.outcomeops.ai/blogs/same-context-three-models-the-floor-isnt-zero",
     "Description": "Empirical comparison showing that identical RAG pipelines and ADRs still produce meaningfully different outcomes across models.",
-    "Keywords": "Context engineering, RAG"
+    "Keywords": "Context engineering"
   },
   {
     "Title": "Context Engineering Guide",
@@ -109,7 +109,7 @@
     "Year": 2025,
     "URL": "https://cookbook.openai.com/examples/agents_sdk/session_memory",
     "Description": "Practical example of managing short-term memory with sessions to improve coherence in multi-step agent interactions.",
-    "Keywords": "Context engineering, Memory"
+    "Keywords": "Context engineering"
   },
   {
     "Title": "Context Engineering: Sessions, Memory",
@@ -117,7 +117,7 @@
     "Year": 2025,
     "URL": "https://www.kaggle.com/whitepaper-context-engineering-sessions-and-memory",
     "Description": "Whitepaper on engineering session and long-term memory for reliable, stateful AI agents.",
-    "Keywords": "Context engineering, Memory"
+    "Keywords": "Context engineering"
   },
   {
     "Title": "The Context Engineering Guide",
@@ -133,7 +133,7 @@
     "Year": 2025,
     "URL": "https://www.packtpub.com/en-us/product/context-engineering-for-multi-agent-systems-9781806690046",
     "Description": "Book on designing and optimizing context flow and memory across multi-agent systems.",
-    "Keywords": "Context engineering, Multi-agent systems"
+    "Keywords": "Context engineering"
   },
   {
     "Title": "Context Engineering (GitHub Repository)",
@@ -405,7 +405,7 @@
     "Year": 2025,
     "URL": "https://langchain-ai.github.io/langgraph/concepts/memory/",
     "Description": "Guide to short-term and long-term memory patterns for maintaining agent state across interactions.",
-    "Keywords": "AI agents, Memory"
+    "Keywords": "AI agents"
   },
   {
     "Title": "Gemini with memory",
@@ -413,7 +413,7 @@
     "Year": 2025,
     "URL": "https://www.philschmid.de/gemini-with-memory",
     "Description": "Tutorial on adding persistent memory to Gemini-based agents for more context-aware workflows.",
-    "Keywords": "AI agents, Memory"
+    "Keywords": "AI agents"
   },
   {
     "Title": "Agent Quality",
@@ -445,7 +445,7 @@
     "Year": 2025,
     "URL": "https://www.manning.com/books/ai-agents-in-action",
     "Description": "Practical guide to designing, building, and deploying autonomous and multi-agent systems.",
-    "Keywords": "AI agents, Multi-agent systems"
+    "Keywords": "AI agents"
   },
   {
     "Title": "Building AI Agents with LLMs, RAG, and Knowledge Graphs",
@@ -453,7 +453,7 @@
     "Year": 2025,
     "URL": "https://www.packtpub.com/en-us/product/building-ai-agents-with-llms-rag-and-knowledge-graphs-9781835080382",
     "Description": "Step-by-step book on combining LLMs, RAG, and knowledge graphs to build grounded, tool-using agents.",
-    "Keywords": "AI agents, RAG"
+    "Keywords": "AI agents"
   },
   {
     "Title": "AI Agents: The Definitive Guide",
@@ -565,7 +565,7 @@
     "Year": 2024,
     "URL": "https://www.anthropic.com/news/contextual-retrieval",
     "Description": "Introduces Contextual Retrieval, which enriches chunks with extra context before embedding to improve RAG accuracy.",
-    "Keywords": "Retrieval, RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "Chunking Strategies for LLM Applications",
@@ -573,7 +573,7 @@
     "Year": 2024,
     "URL": "https://www.pinecone.io/learn/chunking-strategies/",
     "Description": "Guide to choosing chunking strategies that support better embedding quality and downstream retrieval.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "Retrieval",
@@ -589,7 +589,7 @@
     "Year": 2025,
     "URL": "https://weaviate.io/blog/what-is-agentic-rag",
     "Description": "Explains how agentic RAG combines retrieval with autonomous multi-step reasoning and tool use.",
-    "Keywords": "RAG, Retrieval"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "Thinking Beyond RAG: Why Context-Augmented Generation Is Changing the Game",
@@ -597,7 +597,7 @@
     "Year": 2025,
     "URL": "https://www.helicone.ai/blog/implement-and-monitor-cag",
     "Description": "Explains Context-Augmented Generation and how it differs from conventional retrieval-augmented generation.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "RAG vs CAG vs Fine-Tuning",
@@ -605,7 +605,7 @@
     "Year": 2025,
     "URL": "https://newsletter.rafapaez.com/p/rag-vs-cag-vs-fine-tuning",
     "Description": "Compares RAG, CAG, and fine-tuning across accuracy, adaptability, cost, and maintenance trade-offs.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "RAG-Anything: All-in-One RAG Framework",
@@ -613,7 +613,7 @@
     "Year": 2026,
     "URL": "https://github.com/HKUDS/RAG-Anything",
     "Description": "Open-source framework that packages an end-to-end workflow for retrieval-augmented generation.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "Agentic RAG for Dummies",
@@ -621,7 +621,7 @@
     "Year": 2026,
     "URL": "https://github.com/GiovanniPasq/agentic-rag-for-dummies",
     "Description": "Beginner-friendly guide for understanding and implementing agentic RAG.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "The AI-Native Software Engineer",
@@ -693,7 +693,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/andrejkarpathy",
     "Description": "YouTube channel with deep technical lectures and explanations about AI, neural networks, and GPT-style models.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "sentdex",
@@ -701,7 +701,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@sentdex",
     "Description": "YouTube channel with practical Python tutorials spanning machine learning, data work, finance, and robotics.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "Sebastian Raschka",
@@ -709,7 +709,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@SebastianRaschka",
     "Description": "YouTube channel focused on machine learning, deep learning, and hands-on large language model topics.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "Jeremy Howard",
@@ -717,7 +717,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@howardjeremyp",
     "Description": "YouTube channel dedicated to practical deep learning education with an accessible, top-down teaching style.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "MIT OpenCourseWare",
@@ -725,7 +725,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@mitocw",
     "Description": "YouTube channel with free recorded university lectures, including foundational AI and machine learning courses.",
-    "Keywords": "YouTube, Generative AI"
+    "Keywords": "Generative AI"
   },
   {
     "Title": "Stanford Online",
@@ -733,7 +733,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@stanfordonline",
     "Description": "YouTube channel featuring Stanford courses and talks, including notable machine learning and NLP material.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "StatQuest with Josh Starmer",
@@ -741,7 +741,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@statquest",
     "Description": "YouTube channel that explains statistics and machine learning concepts with unusually clear intuition.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "3Blue1Brown",
@@ -749,7 +749,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@3blue1brown",
     "Description": "YouTube channel known for visual explanations of mathematics, including topics relevant to neural networks and linear algebra.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "Krish Naik",
@@ -757,7 +757,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@krishnaik06",
     "Description": "YouTube channel with extensive content on data science, MLOps, and generative AI from an industry perspective.",
-    "Keywords": "YouTube, Generative AI"
+    "Keywords": "Generative AI"
   },
   {
     "Title": "CampusX",
@@ -765,7 +765,7 @@
     "Year": 2026,
     "URL": "https://youtube.com/@campusx-official",
     "Description": "YouTube channel offering structured lessons and bootcamp-style material on Python, machine learning, and deep learning.",
-    "Keywords": "YouTube, Machine learning"
+    "Keywords": "Machine learning"
   },
   {
     "Title": "Building effective agents",
@@ -781,7 +781,7 @@
     "Year": 2020,
     "URL": "https://arxiv.org/abs/2005.11401",
     "Description": "Foundational RAG paper introducing retrieval-augmented generation for knowledge-intensive NLP tasks.",
-    "Keywords": "RAG"
+    "Keywords": "Retrieval"
   },
   {
     "Title": "ReAct: Synergizing Reasoning and Acting in Language Models",

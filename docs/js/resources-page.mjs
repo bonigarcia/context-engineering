@@ -185,6 +185,7 @@ function renderKeywordChips() {
       if (state.activeKeywords.has(keyword)) {
         state.activeKeywords.delete(keyword);
       } else {
+        state.activeKeywords.clear();
         state.activeKeywords.add(keyword);
       }
 
@@ -225,7 +226,7 @@ function renderSummary(visibleResources) {
   }
 
   if (activeKeywords.length) {
-    filters.push(`keywords: ${activeKeywords.join(", ")}`);
+    filters.push(`categories: ${activeKeywords.join(", ")}`);
   }
 
   const suffix = filters.length ? ` for ${filters.join(" | ")}` : "";
@@ -237,40 +238,45 @@ function renderSummary(visibleResources) {
 function renderCards(visibleResources) {
   resourceGrid.replaceChildren();
 
+  const grouped = new Map();
   for (const resource of visibleResources) {
-    const card = createElement("article", "card resource-card");
-    const header = document.createElement("header");
-    const title = createElement("h2", "", resource?.Title ?? "Untitled resource");
-    const resourceTitle = resource?.Title ?? "Untitled resource";
-    const metaParts = [resource?.Author, resource?.Year].filter(Boolean);
-    const meta = createElement("p", "resource-meta", metaParts.join(" · "));
-    const description = createElement("p", "resource-description", resource?.Description ?? "");
-    const keywordList = createElement("div", "resource-keywords");
-    const link = createElement("a", "resource-link", "Open resource");
-
-    link.href = resource?.URL ?? "#";
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.setAttribute("aria-label", `Open resource: ${resourceTitle}`);
-
-    header.append(title);
-    if (meta.textContent) {
-      header.append(meta);
+    const category = resource?.Keywords || "Uncategorized";
+    if (!grouped.has(category)) {
+      grouped.set(category, []);
     }
+    grouped.get(category).push(resource);
+  }
 
-    for (const keyword of parseKeywords(resource?.Keywords)) {
-      keywordList.append(createElement("span", "badge", keyword));
-    }
+  const categories = Array.from(grouped.keys()).sort();
 
-    card.append(header);
-    if (description.textContent) {
-      card.append(description);
+  for (const category of categories) {
+    const section = createElement("section", "category-section");
+    const header = createElement("h2", "category-header", category);
+    const list = createElement("ul", "resource-list");
+
+    section.append(header, list);
+
+    for (const resource of grouped.get(category)) {
+      const item = createElement("li", "resource-item");
+      const titleLink = createElement("a", "resource-title-link", resource?.Title ?? "Untitled resource");
+      titleLink.href = resource?.URL ?? "#";
+      titleLink.target = "_blank";
+      titleLink.rel = "noreferrer";
+
+      const metaParts = [resource?.Author, resource?.Year].filter(Boolean);
+      const meta = createElement("span", "resource-meta-inline", ` (${metaParts.join(" · ")})`);
+      const description = createElement("p", "resource-description-inline", resource?.Description ?? "");
+
+      item.append(titleLink);
+      if (metaParts.length > 0) {
+        item.append(meta);
+      }
+      if (description.textContent) {
+        item.append(description);
+      }
+      list.append(item);
     }
-    if (keywordList.childNodes.length) {
-      card.append(keywordList);
-    }
-    card.append(link);
-    resourceGrid.append(card);
+    resourceGrid.append(section);
   }
 }
 
