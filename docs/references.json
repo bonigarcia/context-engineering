@@ -178,7 +178,7 @@
   {
     "Title": "Prompt Engineering Guide (PromptingGuide.ai)",
     "Author": "PromptingGuide.ai",
-    "Year": 2025,
+    "Year": 2026,
     "URL": "https://www.promptingguide.ai/",
     "Description": "Comprehensive prompt engineering guide covering techniques, patterns, and best practices for LLM use.",
     "Keywords": "Prompt engineering"
@@ -194,7 +194,7 @@
   {
     "Title": "Anthropic's Prompt Engineering Interactive Tutorial",
     "Author": "Anthropic",
-    "Year": 2025,
+    "Year": 2024,
     "URL": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
     "Description": "Hands-on tutorial for designing and refining prompts through guided exercises and examples.",
     "Keywords": "Prompt engineering"
@@ -234,7 +234,7 @@
   {
     "Title": "Prompt Engineering Guide (DAIR.AI)",
     "Author": "DAIR.AI",
-    "Year": 2026,
+    "Year": 2025,
     "URL": "https://github.com/dair-ai/Prompt-Engineering-Guide",
     "Description": "Extensive open-source guide covering prompt engineering techniques, patterns, and best practices.",
     "Keywords": "Prompt engineering"
@@ -242,7 +242,7 @@
   {
     "Title": "Brex's prompt engineering guide",
     "Author": "Brex",
-    "Year": 2026,
+    "Year": 2025,
     "URL": "https://github.com/brexhq/prompt-engineering",
     "Description": "Practical prompt engineering guide with patterns, examples, and structured instructions for better LLM outputs.",
     "Keywords": "Prompt engineering"
@@ -570,7 +570,7 @@
   {
     "Title": "Chunking Strategies for LLM Applications",
     "Author": "Pinecone",
-    "Year": 2025,
+    "Year": 2024,
     "URL": "https://www.pinecone.io/learn/chunking-strategies/",
     "Description": "Guide to choosing chunking strategies that support better embedding quality and downstream retrieval.",
     "Keywords": "RAG"
@@ -677,6 +677,14 @@
     "Year": 2025,
     "URL": "https://beyond.addy.ie/",
     "Description": "Handbook advocating for structured, reproducible workflows when using AI in software development.",
+    "Keywords": "AI-assisted development"
+  },
+  {
+    "Title": "Harness engineering for coding agent users",
+    "Author": "Birgitta Böckeler",
+    "Year": 2026,
+    "URL": "https://martinfowler.com/articles/harness-engineering.html",
+    "Description": "Mental model that brings together emerging concepts from context and harness engineering.",
     "Keywords": "AI-assisted development"
   },
   {
