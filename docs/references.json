@@ -310,6 +310,13 @@
     "URL": "https://engineering.block.xyz/blog/3-principles-for-designing-agent-skills",
     "Description": "Block Engineering outlines a framework for designing AI agent skills by focusing on discoverability, goal-oriented procedures, and progressive disclosure for context efficiency.",
     "Keywords": "Skills"
+  },  {
+    "Title": "Equipping agents for the real world with Agent Skills",
+    "Author": "Anthropic",
+    "Year": 2026,
+    "URL": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills",
+    "Description": "Agent Skills package procedural knowledge, scripts, and resources into discoverable folders that agents can load progressively to perform specialized tasks without overloading the context window.",
+    "Keywords": "Skills"
   },
   {
     "Title": "AI agents for beginners",
