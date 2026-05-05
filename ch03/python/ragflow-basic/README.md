@@ -6,49 +6,56 @@ This example demonstrates how to use the RAGFlow Python SDK to create a dataset,
 
 ## Prerequisites
 
-*   [Python](https://www.python.org/) 3.10+
-*   [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
-*   A running RAGFlow instance (see instructions below)
+* [Python](https://www.python.org/) 3.10+
+* [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+* A running RAGFlow instance (see instructions below)
 
 ## Steps for running RAGFlow with Docker
 
-1.  Clone the RAGFlow repository:
-    ```bash
-    git clone https://github.com/infiniflow/ragflow.git
-    cd ragflow/docker
-    # Recommended: checkout a specific stable version
-    # git checkout -f v0.24.0 
-    ```
+1. Clone the RAGFlow repository:
+```bash
+git clone https://github.com/infiniflow/ragflow.git
+cd ragflow/docker
+# Recommended: checkout a specific stable version
+# git checkout -f v0.24.0
+```
 
-2.  Start the RAGFlow server:
-    ```bash
-    docker compose up -d
-    ```
+2. Start the RAGFlow server:
+```bash
+docker compose up -d
+```
 
-3.  Access the RAGFlow UI at `http://localhost`.
-4.  Generate an API key: Click your avatar in the top right → API → Create API Key.
+3. Access the RAGFlow UI at `http://localhost`.
+4. Generate an API key: Click your avatar in the top right → API → Create API Key.
 
 ## Steps for running this example in the shell
 
-1.  Install dependencies:
-    ```bash
-    python -m venv .venv
-    # Windows cmd: .venv\Scripts\activate
-    # Windows PowerShell: .venv\Scripts\Activate.ps1
-    # Linux/macOS: source .venv/bin/activate
-    pip install -r requirements.txt
-    ```
+1. Install dependencies:
+```bash
+python -m venv .venv
 
-2.  Configure environment variables in a `.env` file:
-    ```env
-    RAGFLOW_API_KEY="your_api_key_here"
-    RAGFLOW_BASE_URL="http://localhost:9380"
-    ```
+# macOS/Linux:
+source .venv/bin/activate
 
-3.  Run the script:
-    ```bash
-    python ragflow_example.py
-    ```
+# Windows Command Prompt:
+.venv\Scripts\activate.bat
+
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+
+pip install -r requirements.txt
+```
+
+2. Configure environment variables in a `.env` file:
+```env
+RAGFLOW_API_KEY="your_api_key_here"
+RAGFLOW_BASE_URL="http://localhost:9380"
+```
+
+3. Run the script:
+```bash
+python ragflow_example.py
+```
 
 ## Output
 

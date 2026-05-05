@@ -24,7 +24,16 @@ ollama pull llama3.2:3b
 2. Install dependencies:
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows cmd: .venv\Scripts\activate # Windows PowerShell: .venv\Scripts\Activate.ps1
+
+# macOS/Linux:
+source .venv/bin/activate
+
+# Windows Command Prompt:
+.venv\Scripts\activate.bat
+
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
 ```
 
