@@ -48,13 +48,13 @@ This chapter covers the definition and usage of system instructions (persona, to
 #### Chapter 3. External knowledge and retrieval
 This chapter explores different patterns for providing external knowledge to the model. It covers Retrieval-Augmented Generation (RAG) using different retrievers and models, Cache-Augmented Generation (CAG), and context stuffing (injecting data directly into the prompt):
 - Basic RAG: [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
-- Advanced RAG: [LangChain, FAISS](./ch03/python/agentic-rag) · [Qdrant, Agno](./ch03/python/local-rag) · [PageIndex](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
+- Advanced RAG: [LangChain](./ch03/python/agentic-rag) · [Qdrant](./ch03/python/local-rag) · [PageIndex](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
 - CAG: [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
 - Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
 
 #### Chapter 4. Tools and memory for AI agents
 This chapter focuses on extending AI capabilities through tools and memory. It covers tool use (function calling), the Model Context Protocol (MCP) for standardized tool integration, and various memory patterns to maintain context over time:
-- Function calling: [Python (Time)](./ch04/python/function_calling_time) · [Python (Weather)](./ch04/python/function_calling_weather) · [JavaScript (Time)](./ch04/javascript/function_calling_time)
+- Function calling: [Python](./ch04/python/function_calling_time) · [JavaScript](./ch04/javascript/function_calling_time)
 - MCP: [Python](./ch04/python/mcp_server) · [JavaScript](./ch04/javascript/mcp_server) · [Java](./ch04/java)
 - Memory: [Mem0, Qdrant](./ch04/python/mem0_chat) · [Cognee](./ch04/python/cognee_memory) · [OpenAI Agents SDK](./ch04/python/session_memory_chat) · [SQLite, FAISS](./ch04/python/memory_coach)
 
