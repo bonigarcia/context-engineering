@@ -4,7 +4,7 @@ This example demonstrates practical memory management for an LLM-based assistant
 
 - Short-term memory: a sliding window of recent turns plus a rolling running summary
 - Long-term semantic memory: a stable user profile stored as key/value pairs ([SQLite](https://sqlite.org/))
-- Long-term episodic memory: past events and decisions stored as embedded snippets ([FAISS](https://faiss.ai/)
+- Long-term episodic memory: past events and decisions stored as embedded snippets ([FAISS](https://faiss.ai/))
 
 It implements a simple CLI assistant called *Memory Coach* that helps a user plan and reflect. The assistant remembers:
 
