@@ -27,6 +27,17 @@ Appendix B. References and further reading
 
 Each chapter of this book starts by explaining the underlying principles and patterns of each thematic block. Then, the final part of each chapter is devoted to presenting specific examples. This GitHub repository contains all these examples. Moreover, I will include new examples and maintain the existing ones even after the book is published. The goal is to provide an open-source, updated reference for everyone interested in context engineering.
 
+## Examples
+
+This repository organizes examples by chapter to help you explore context engineering concepts in practice.
+
+#### Chapter 1. Introduction to context engineering
+This chapter provides the foundations for interacting with different model providers:
+- OpenAI: [Python](./ch01/python/openai-gpt-basic) · [Jupyter](./ch01/jupyter/openai-gpt-basic.ipynb) · [JavaScript](./ch01/javascript/openai-gpt-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptBasic.java)
+- Anthropic: [Python](./ch01/python/anthropic-claude-basic) · [Jupyter](./ch01/jupyter/anthropic-claude-basic.ipynb) · [JavaScript](./ch01/javascript/anthropic-claude-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeBasic.java)
+- Google: [Python](./ch01/python/google-gemini-basic) · [Jupyter](./ch01/jupyter/google-gemini-basic.ipynb) · [JavaScript](./ch01/javascript/google-gemini-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiBasic.java)
+- Ollama: [Python](./ch01/python/ollama-local-basic) · [Jupyter](./ch01/jupyter/ollama-local-basic.ipynb) · [JavaScript](./ch01/javascript/ollama-local-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalBasic.java)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
