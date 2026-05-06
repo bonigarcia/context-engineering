@@ -112,13 +112,15 @@ a:hover {
   box-shadow: var(--shadow);
   background: #fff;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.card-padding {
   padding: 24px;
 }
 
 .card:hover, .card-tool:hover {
   box-shadow: 0 12px 32px rgba(0,0,0,.12);
   border-color: #d1d5db;
-  transform: translateY(-2px);
 }
 
 /* Buttons */
