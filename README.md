@@ -45,6 +45,13 @@ This chapter covers the definition and usage of system instructions (persona, to
 - Google: [Python](./ch02/python/google-gemini-system-prompt) · [Jupyter](./ch02/jupyter/google_gemini_system_prompt.ipynb) · [JavaScript](./ch02/javascript/google-gemini-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiSystemPrompt.java)
 - DSPy: [Python](./ch02/python/dspy-cot-vs-react) · [Jupyter](./ch02/jupyter/dspy_cot_vs_react.ipynb)
 
+#### Chapter 3. External knowledge and retrieval
+This chapter explores different patterns for providing external knowledge to the model. It covers Retrieval-Augmented Generation (RAG) using different retrievers and models, Cache-Augmented Generation (CAG), and context stuffing (injecting data directly into the prompt):
+- RAG: [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
+- Advanced RAG: [Agentic](./ch03/python/agentic-rag) · [Local](./ch03/python/local-rag) · [Vectorless](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
+- CAG: [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
+- Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
