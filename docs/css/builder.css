@@ -1,0 +1,232 @@
+/* Specific styles for Context-aware Prompt Builder */
+
+.builder-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.builder-brand {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.builder-title {
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: clamp(18px, 3vw, 22px);
+}
+
+.builder-subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.builder-header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.builder-selectors-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.builder-selector-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.builder-selector-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.builder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .builder-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.builder-card h3 {
+  margin: 0;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  letter-spacing: .4px;
+  color: var(--text);
+}
+
+.builder-card .body {
+  padding: 16px;
+}
+
+.builder-card label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.card1 { background: #fff9f2; }
+.card2 { background: #fffef2; }
+.card3 { background: #f2fff6; }
+.card4 { background: #f2fffd; }
+.card5 { background: #f2f7ff; }
+.card6 { background: #f9f2ff; }
+.card7 { background: #f9f2ff; }
+.card8 { background: #fff2f2; }
+.card9 { background: #f9fafb; }
+
+.builder-textarea {
+  min-height: 120px;
+}
+
+.builder-hint {
+  font-size: 12px;
+  color: #8aa2ba;
+  margin-top: 4px;
+}
+
+.builder-pill {
+  display: inline-block;
+  font-size: 12px;
+  color: #0e1623;
+  background: linear-gradient(135deg, var(--accent-2), #b5f5d5);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.builder-footerbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(6px);
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 100;
+}
+
+.builder-toast {
+  position: fixed;
+  right: 16px;
+  bottom: 72px;
+  background: #fff;
+  color: var(--text);
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all .25s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.builder-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.builder-stamp {
+  font-size: 12px;
+  color: #90a7bf;
+  margin-left: auto;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Context usage meter */
+.usage-block {
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.usage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.usage-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.usage-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  transition: width .2s ease;
+  border-radius: 999px;
+}
+
+.usage-bar-fill.ok { background: #22c55e; }
+.usage-bar-fill.warn { background: #f59e0b; }
+.usage-bar-fill.danger { background: #ef4444; }
+
+.usage-legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.usage-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.legend-optimal { background: #22c55e; }
+.legend-warning { background: #f59e0b; }
+.legend-danger { background: #ef4444; }

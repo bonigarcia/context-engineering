@@ -6,234 +6,71 @@
   <title>Context-aware prompt builder</title>
   <meta name="description" content="A simple context-aware prompt builder." />
   <meta name="author" content="Boni García">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #18181a;
-      --muted: #1c2127;
-      --accent: #6aa5ff;
-      --accent-2: #3ddc97;
-      --danger: #ff6b6b;
-      --shadow: 0 8px 24px rgba(0,0,0,.35);
-      --radius: 16px;
-      --gap: 16px;
-    }
-
-    * { box-sizing:border-box; }
-    html, body { height:100%; }
-    body {
-      margin:0;
-      color:var(--text);
-      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
-      background: var(--bg);
-    }
-    .container { max-width: 1100px; margin: 32px auto; padding: 0 20px 80px; }
-
-    header {
-      display:flex; align-items:flex-start; gap:12px;
-      justify-content:space-between; margin-bottom: 24px; flex-wrap:wrap;
-    }
-    .brand { display:flex; gap:8px; flex-direction:column; }
-    .title { font-weight:800; letter-spacing:.3px; font-size: clamp(18px, 3vw, 22px); }
-    .subtitle { color:var(--muted); font-size:14px; }
-
-    .header-right {
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:flex-end;
-    }
-
-    .selectors-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px 12px;
-      align-items:center;
-      justify-content:flex-end;
-    }
-
-    .selector-block {
-      display:flex;
-      flex-direction:column;
-      gap:3px;
-    }
-
-    .selector-label {
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    select {
-      border-radius: 10px;
-      padding: 6px 10px;
-      border:1px solid #1f2a38;
-      background:#ffffff;
-      color:var(--text);
-      font-size: 13px;
-      min-width: 190px;
-      cursor:pointer;
-    }
-    select:focus {
-      outline:none;
-      border-color:var(--accent);
-      box-shadow: 0 0 0 1px rgba(106,165,255,0.4);
-    }
-
-    .actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end; }
-    button, .btn {
-      appearance:none; border:none; color:var(--text); background: #a1b9e4; padding:10px 14px; border-radius: 12px; cursor:pointer; box-shadow: var(--shadow);
-      font-weight:600; letter-spacing:.2px; transition: background .2s ease, opacity .2s ease, box-shadow .2s ease;
-    }
-    button:hover, .btn:hover { box-shadow: 0 12px 28px rgba(0,0,0,.18); }
-
-    .btn-accent { background: linear-gradient(135deg, var(--accent) 0%, #85c1ff 100%); color:#08111f; }
-    .btn-ghost { background: transparent; border:1px solid #26364a; box-shadow:none; }
-    .btn-danger { background: linear-gradient(135deg, var(--danger) 0%, #ff8b8b 100%); color: #1a0b0b; }
-
-    .grid { display:grid; grid-template-columns: 1fr; gap: var(--gap); }
-    @media (min-width: 900px) {
-      .grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .card { background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%); border:1px solid #1f2a38; border-radius: var(--radius); box-shadow: var(--shadow); }
-    .card h3 { margin:0; padding: 14px 16px; border-bottom:1px solid #1c2735; font-size: 14px; letter-spacing:.4px; color:#181818; }
-    .card .body { padding: 12px; }
-
-    label { display:block; font-size: 13px; color: var(--muted); }
-    .card1 { background: #fad8ac; }
-    .card2 { background: #fef3c7; }
-    .card3 { background: #c0f6d0; }
-    .card4 { background: #a4f5e4; }
-    .card5 { background: #c3dafd; }
-    .card6 { background: #e8d5fe; }
-    .card7 { background: #e8d5fe; }
-    .card8 { background: #facbca; }
-    .card9 { background: #e5e7eb; }
-
-    textarea, input[type="text"] {
-      width:100%; color: var(--text); border:1px solid #1f2a38; border-radius: 12px; padding: 12px; resize: vertical; min-height: 84px; outline:none;
-    }
-    input[type="text"] { min-height:auto; height: 44px; }
-
-    textarea:focus, input[type="text"]:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(106,165,255,.5);
-    }
-
-    .hint { font-size: 12px; color:#8aa2ba; margin-top:4px; }
-    .pill {
-      display:inline-block; font-size:12px; color:#0e1623; background: linear-gradient(135deg, var(--accent-2), #b5f5d5); padding:4px 8px; border-radius:999px; font-weight:700;
-    }
-
-    .footerbar {
-      position: fixed; left:0; right:0; bottom:0; backdrop-filter: blur(6px); padding: 12px 16px; border-top:1px solid #1e2b3b; display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; background: rgba(255, 255, 255, 0.6);
-    }
-
-    .row { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    .toast { position: fixed; right:16px; bottom: 72px; background: #cad9eb; color: var(--text); padding: 10px 12px; border-radius: 10px; border:1px solid #213045; box-shadow: var(--shadow); opacity:0; transform: translateY(8px); transition: all .25s ease; pointer-events:none; }
-    .toast.show { opacity:1; transform: translateY(0); }
-
-    .stamp { font-size:12px; color:#90a7bf; margin-left:auto; }
-
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-
-    /* Context usage meter */
-    .usage-block {
-      margin-bottom: 8px;
-      font-size: 12px;
-      color:#4b5563;
-    }
-    .usage-header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:8px;
-      margin-bottom:4px;
-      flex-wrap:wrap;
-    }
-    .usage-bar {
-      position:relative;
-      height: 8px;
-      border-radius:999px;
-      background:#d1d5db;
-      overflow:hidden;
-    }
-    .usage-bar-fill {
-      position:absolute;
-      left:0; top:0; bottom:0;
-      width:0%;
-      transition:width .2s ease;
-      border-radius:999px;
-    }
-    .usage-bar-fill.ok { background:#22c55e; }
-    .usage-bar-fill.warn { background:#f59e0b; }
-    .usage-bar-fill.danger { background:#ef4444; }
-
-    .usage-legend {
-      margin-top:4px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .usage-legend span {
-      display:flex;
-      align-items:center;
-      gap:4px;
-    }
-    .legend-dot {
-      width:8px; height:8px; border-radius:999px;
-    }
-    .legend-optimal { background:#22c55e; }
-    .legend-warning { background:#f59e0b; }
-    .legend-danger { background:#ef4444; }
-  </style>
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/builder.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="title">Context-aware prompt builder</div>
-        <div class="subtitle">Design, compare, and reuse structured prompts across multiple frameworks and AI models.</div>
-        <div class="selectors-row">
-          <div class="selector-block">
-            <span class="selector-label">Framework</span>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="context-aware-prompt-builder.html">Prompt Builder</a>
+        <a href="sdlc_prompt_library.html">SDLC Library</a>
+        <a href="references.html">References</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="docs-container">
+    <header class="builder-header">
+      <div class="builder-brand">
+        <div class="builder-title">Context-aware prompt builder</div>
+        <div class="builder-subtitle">Design, compare, and reuse structured prompts across multiple frameworks and AI models.</div>
+        <div class="builder-selectors-row">
+          <div class="builder-selector-block">
+            <span class="builder-selector-label">Framework</span>
             <select id="frameworkSelect" aria-label="Prompt framework"></select>
           </div>
-          <div class="selector-block">
-            <span class="selector-label">Target model</span>
+          <div class="builder-selector-block">
+            <span class="builder-selector-label">Target model</span>
             <select id="modelSelect" aria-label="Target model"></select>
           </div>
-          <div class="selector-block">
-            <span class="selector-label">Prompt sample</span>
+          <div class="builder-selector-block">
+            <span class="builder-selector-label">Prompt sample</span>
             <select id="sampleSelect" aria-label="Prompt sample"></select>
           </div>
         </div>
       </div>
 
-      <div class="header-right">
-        <div class="actions">
-          <button id="copyAll" class="btn-accent" title="Copy prompt">Copy prompt</button>
-          <button id="exportData" class="btn" title="Download all fields as JSON">Export</button>
-          <label class="btn btn-ghost" title="Import from a JSON file">Import
+      <div class="builder-header-right">
+        <div class="builder-actions">
+          <button id="copyAll" class="btn btn-primary" title="Copy prompt">Copy prompt</button>
+          <button id="exportData" class="btn btn-ghost" title="Download all fields as JSON">Export</button>
+          <label class="btn btn-ghost" title="Import from a JSON file" style="cursor: pointer;">Import
             <input id="importFile" type="file" accept="application/json" hidden>
           </label>
-          <button id="clearAll" class="btn-danger" title="Clear all fields & local memory">Reset</button>
+          <button id="clearAll" class="btn btn-danger" title="Clear all fields & local memory">Reset</button>
         </div>
       </div>
     </header>
 
-    <main class="grid" id="fields">
+    <main class="builder-grid" id="fields">
       <!-- Cards will be injected by JS based on the selected framework -->
     </main>
   </div>
 
-  <div class="footerbar" role="contentinfo">
-    <span class="subtitle" style="font-size:12px;">Your edits are saved automatically locally on this device.</span>
-    <span class="stamp" id="savedStamp" aria-live="polite"></span>
+  <div class="builder-footerbar" role="contentinfo">
+    <span class="builder-subtitle" style="font-size:12px;">Your edits are saved automatically locally on this device.</span>
+    <span class="builder-stamp" id="savedStamp" aria-live="polite"></span>
   </div>
 
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer class="footer" style="margin-bottom: 60px;">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="builder-toast" role="status" aria-live="polite"></div>
 
   <script>
     (function() {
@@ -466,54 +303,14 @@
 
       // ---- Target models (no dates in labels) -----------------------------
       const MODELS = {
-        gpt54: {
-          id: 'gpt54',
-          name: 'GPT-5.4',
-          display: 'GPT-5.4 · 1M tokens',
-          maxTokens: 1000000
-        },
-        gpt51: {
-          id: 'gpt51',
-          name: 'GPT-5.1',
-          display: 'GPT-5.1 · 400k tokens',
-          maxTokens: 400000
-        },
-        claude5sonnet: {
-          id: 'claude5sonnet',
-          name: 'Claude 5 Sonnet',
-          display: 'Claude 5 Sonnet · 1M tokens',
-          maxTokens: 1000000
-        },
-        claude46opus: {
-          id: 'claude46opus',
-          name: 'Claude 4.6 Opus',
-          display: 'Claude 4.6 Opus · 1M tokens',
-          maxTokens: 1000000
-        },
-        gemini31pro: {
-          id: 'gemini31pro',
-          name: 'Gemini 3.1 Pro',
-          display: 'Gemini 3.1 Pro · 2M tokens',
-          maxTokens: 2000000
-        },
-        gemini3flash: {
-          id: 'gemini3flash',
-          name: 'Gemini 3 Flash',
-          display: 'Gemini 3 Flash · 1M tokens',
-          maxTokens: 1000000
-        },
-        llama4scout: {
-          id: 'llama4scout',
-          name: 'Llama 4 Scout',
-          display: 'Llama 4 Scout · 10M tokens',
-          maxTokens: 10000000
-        },
-        grok420: {
-          id: 'grok420',
-          name: 'Grok 4.20',
-          display: 'Grok 4.20 · 2M tokens',
-          maxTokens: 2000000
-        }
+        gpt54: { id: 'gpt54', name: 'GPT-5.4', display: 'GPT-5.4 · 1M tokens', maxTokens: 1000000 },
+        gpt51: { id: 'gpt51', name: 'GPT-5.1', display: 'GPT-5.1 · 400k tokens', maxTokens: 400000 },
+        claude5sonnet: { id: 'claude5sonnet', name: 'Claude 5 Sonnet', display: 'Claude 5 Sonnet · 1M tokens', maxTokens: 1000000 },
+        claude46opus: { id: 'claude46opus', name: 'Claude 4.6 Opus', display: 'Claude 4.6 Opus · 1M tokens', maxTokens: 1000000 },
+        gemini31pro: { id: 'gemini31pro', name: 'Gemini 3.1 Pro', display: 'Gemini 3.1 Pro · 2M tokens', maxTokens: 2000000 },
+        gemini3flash: { id: 'gemini3flash', name: 'Gemini 3 Flash', display: 'Gemini 3 Flash · 1M tokens', maxTokens: 1000000 },
+        llama4scout: { id: 'llama4scout', name: 'Llama 4 Scout', display: 'Llama 4 Scout · 10M tokens', maxTokens: 10000000 },
+        grok420: { id: 'grok420', name: 'Grok 4.20', display: 'Grok 4.20 · 2M tokens', maxTokens: 2000000 }
       };
 
       const DEFAULT_FRAMEWORK_ID = 'tenPart';
@@ -575,71 +372,25 @@
       }
 
       function tryMigrateFromOlder() {
-        // v4
-        try {
-          const v4Raw = localStorage.getItem('context-builder:v4');
-          if (v4Raw) {
-            const v4 = JSON.parse(v4Raw);
-            if (v4 && typeof v4 === 'object' && v4.data) {
-              state.activeFrameworkId = v4.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
-              state.activeModelId = v4.activeModelId || DEFAULT_MODEL_ID;
-              state.data = v4.data || {};
-              save();
-              return;
+        ['context-builder:v4', 'context-builder:v3', 'context-builder:v2', 'context-builder:v1'].forEach(key => {
+          try {
+            const raw = localStorage.getItem(key);
+            if (raw) {
+              const parsed = JSON.parse(raw);
+              if (parsed && typeof parsed === 'object') {
+                if (key === 'context-builder:v1') {
+                  state.data[DEFAULT_FRAMEWORK_ID] = parsed;
+                  localStorage.removeItem(key);
+                } else {
+                  state.activeFrameworkId = parsed.activeFrameworkId || state.activeFrameworkId;
+                  state.activeModelId = parsed.activeModelId || state.activeModelId;
+                  state.data = parsed.data || state.data;
+                }
+                save();
+              }
             }
-          }
-        } catch (e) {
-          console.warn('v4 migration failed', e);
-        }
-
-        // v3
-        try {
-          const v3Raw = localStorage.getItem('context-builder:v3');
-          if (v3Raw) {
-            const v3 = JSON.parse(v3Raw);
-            if (v3 && typeof v3 === 'object' && v3.data) {
-              state.activeFrameworkId = v3.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
-              state.data = v3.data || {};
-              save();
-              return;
-            }
-          }
-        } catch (e) {
-          console.warn('v3 migration failed', e);
-        }
-
-        // v2
-        try {
-          const v2Raw = localStorage.getItem('context-builder:v2');
-          if (v2Raw) {
-            const v2 = JSON.parse(v2Raw);
-            if (v2 && typeof v2 === 'object' && v2.data) {
-              state.activeFrameworkId = v2.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
-              state.data = v2.data || {};
-              save();
-              return;
-            }
-          }
-        } catch (e) {
-          console.warn('v2 migration failed', e);
-        }
-
-        // v1
-        try {
-          const v1Raw = localStorage.getItem('context-builder:v1');
-          if (v1Raw) {
-            const legacy = JSON.parse(v1Raw);
-            if (legacy && typeof legacy === 'object') {
-              state.data[DEFAULT_FRAMEWORK_ID] = legacy;
-              state.activeFrameworkId = DEFAULT_FRAMEWORK_ID;
-              save();
-              localStorage.removeItem('context-builder:v1');
-              showToast('Migrated data from previous version');
-            }
-          }
-        } catch (e) {
-          console.warn('v1 migration failed', e);
-        }
+          } catch (e) {}
+        });
       }
 
       // ---- Helpers: framework/model ----------------------------------------
@@ -697,22 +448,16 @@
 
       // ---- Sample loading -------------------------------------------------
       const SAMPLE_FILES = {
-        architect: '01_architect.json',
-        developer: '02_developer.json',
-        debugger: '03_debugger.json',
-        reviewer: '04_reviewer.json',
-        refactorer: '05_refactorer.json',
-        tester: '06_tester.json',
+        architect: '01_architect.json', developer: '02_developer.json', debugger: '03_debugger.json',
+        reviewer: '04_reviewer.json', refactorer: '05_refactorer.json', tester: '06_tester.json',
         documenter: '07_documenter.json'
       };
-
       const SAMPLE_BASE_PATH = 'sdlc_prompt_library/';
       const sampleCache = {};
 
       async function loadSample(sampleKey) {
         if (sampleCache[sampleKey]) return sampleCache[sampleKey];
-        const file = SAMPLE_FILES[sampleKey];
-        const res = await fetch(SAMPLE_BASE_PATH + file);
+        const res = await fetch(SAMPLE_BASE_PATH + SAMPLE_FILES[sampleKey]);
         const data = await res.json();
         sampleCache[sampleKey] = data;
         return data;
@@ -721,19 +466,14 @@
       function clearAllFields() {
         const fw = getActiveFramework();
         const data = getFrameworkData(fw.id);
-        fw.cards.forEach(card => {
-          data[card.id] = '';
-        });
+        fw.cards.forEach(card => data[card.id] = '');
         renderFields();
         save();
       }
 
       function applyFrameworkByName(name) {
         let normalized = name.toLowerCase();
-
-        // map external names -> internal ids
         if (normalized === '10-step') normalized = 'tenPart';
-
         if (!FRAMEWORKS[normalized]) return;
         state.activeFrameworkId = normalized;
         frameworkSelect.value = normalized;
@@ -742,52 +482,22 @@
 
       function fillFieldsFromSample(promptData) {
         const fw = getActiveFramework();
-
-        // render empty state first (do NOT mutate saved state)
         renderFields();
-
-        // then inject values directly into DOM (ephemeral)
         Object.entries(promptData).forEach(([key, value]) => {
           let fieldId = null;
-
           if (fw.id === 'costar') fieldId = `co_${key}`;
-
           if (fw.id === 'tenPart') {
-            const map = {
-              context: 'role',
-              tone: 'style',
-              background: 'background',
-              details: 'constraints',
-              examples: 'examples',
-              history: 'history',
-              request: 'request',
-              thinking: 'reasoning',
-              output: 'format',
-              prefilled: 'response'
-            };
+            const map = { context:'role', tone:'style', background:'background', details:'constraints', examples:'examples', history:'history', request:'request', thinking:'reasoning', output:'format', prefilled:'response' };
             fieldId = map[key];
           }
-
           if (fw.id === 'crispe') {
-            const map = {
-              capacity: 'cr_capacity',
-              insight: 'cr_insights',
-              statement: 'cr_steps',
-              personality: 'cr_personalization',
-              experiment: 'cr_examples'
-            };
+            const map = { capacity:'cr_capacity', insight:'cr_insights', statement:'cr_steps', personality:'cr_personalization', experiment:'cr_examples' };
             fieldId = map[key];
           }
-
           if (fw.id === 'rtf') {
-            const map = {
-              role: 'rt_role',
-              task: 'rt_task',
-              format: 'rt_format'
-            };
+            const map = { role:'rt_role', task:'rt_task', format:'rt_format' };
             fieldId = map[key];
           }
-
           if (fieldId) {
             const el = document.getElementById(`field-${fieldId}`);
             if (el) el.value = value;
@@ -797,19 +507,13 @@
 
       sampleSelect.addEventListener('change', async (e) => {
         const val = e.target.value;
-
-        if (val === 'none') {
-          clearAllFields();
-          return;
-        }
-
+        if (val === 'none') { clearAllFields(); return; }
         try {
           const data = await loadSample(val);
           applyFrameworkByName(data.framework);
           fillFieldsFromSample(data.prompt);
           showToast('Sample loaded');
         } catch (err) {
-          console.error('Failed to load sample', err);
           showToast('⚠️ Failed to load sample');
         }
       });
@@ -818,84 +522,45 @@
       function renderFields() {
         const fw = getActiveFramework();
         const data = getFrameworkData(fw.id);
-
         fieldsContainer.innerHTML = '';
 
         fw.cards.forEach((card, index) => {
           const section = document.createElement('section');
-          section.className = `card ${card.cardClass || ''}`;
-
-          const h3 = document.createElement('h3');
-          h3.textContent = card.title || `Field ${index + 1}`;
-          section.appendChild(h3);
-
-          const body = document.createElement('div');
-          body.className = 'body';
-
-          const label = document.createElement('label');
-          const fieldId = `field-${card.id}`;
-          label.setAttribute('for', fieldId);
-          label.textContent = card.label || card.title || card.id;
-          body.appendChild(label);
-
-          const textarea = document.createElement('textarea');
-          textarea.id = fieldId;
-          textarea.placeholder = card.placeholder || '';
-          textarea.value = data[card.id] || '';
-          body.appendChild(textarea);
-
-          section.appendChild(body);
+          section.className = `card builder-card ${card.cardClass || ''}`;
+          section.innerHTML = `
+            <h3>${card.title || `Field ${index + 1}`}</h3>
+            <div class="body">
+              <label for="field-${card.id}">${card.label || card.title || card.id}</label>
+              <textarea id="field-${card.id}" placeholder="${card.placeholder || ''}">${data[card.id] || ''}</textarea>
+            </div>
+          `;
           fieldsContainer.appendChild(section);
         });
 
         const composedSection = document.createElement('section');
-        composedSection.className = 'card';
+        composedSection.className = 'card builder-card';
         composedSection.style.gridColumn = '1 / -1';
         composedSection.style.background = '#ffffff';
-
-        const h3 = document.createElement('h3');
-        h3.textContent = 'Composed prompt';
-        composedSection.appendChild(h3);
-
-        const body = document.createElement('div');
-        body.className = 'body';
-
-        const usageBlock = document.createElement('div');
-        usageBlock.className = 'usage-block';
-        usageBlock.innerHTML = `
-          <div class="usage-header">
-            <span>Context usage (approximate)</span>
-            <span id="usageNumbers">0 / 0 tokens (0%)</span>
-          </div>
-          <div class="usage-bar">
-            <div id="usageBarFill" class="usage-bar-fill"></div>
-          </div>
-          <div class="usage-legend">
-            <span><span class="legend-dot legend-optimal"></span>Optimal (&lt; 50%)</span>
-            <span><span class="legend-dot legend-warning"></span>Warning (50–80%)</span>
-            <span><span class="legend-dot legend-danger"></span>Danger (&gt; 80%)</span>
+        composedSection.innerHTML = `
+          <h3>Composed prompt</h3>
+          <div class="body">
+            <div class="usage-block">
+              <div class="usage-header">
+                <span>Context usage (approximate)</span>
+                <span id="usageNumbers">0 / 0 tokens (0%)</span>
+              </div>
+              <div class="usage-bar"><div id="usageBarFill" class="usage-bar-fill"></div></div>
+              <div class="usage-legend">
+                <span><span class="legend-dot legend-optimal"></span>Optimal (&lt; 50%)</span>
+                <span><span class="legend-dot legend-warning"></span>Warning (50–80%)</span>
+                <span><span class="legend-dot legend-danger"></span>Danger (&gt; 80%)</span>
+              </div>
+            </div>
+            <label for="output">This read-only field composes your prompt</label>
+            <textarea id="output" class="mono builder-textarea" readonly></textarea>
+            <div class="builder-hint">Tip: the composed prompt updates as you type. Use <strong>Copy prompt</strong> above to put it on your clipboard.</div>
           </div>
         `;
-        body.appendChild(usageBlock);
-
-        const label = document.createElement('label');
-        label.setAttribute('for', 'output');
-        label.textContent = 'This read-only field composes your prompt';
-        body.appendChild(label);
-
-        const output = document.createElement('textarea');
-        output.id = 'output';
-        output.className = 'mono';
-        output.style.minHeight = '200px';
-        output.readOnly = true;
-        body.appendChild(output);
-
-        const hint = document.createElement('div');
-        hint.className = 'hint';
-        hint.innerHTML = 'Tip: the composed prompt updates as you type. Use <strong>Copy prompt</strong> above to put it on your clipboard.';
-        body.appendChild(hint);
-
-        composedSection.appendChild(body);
         fieldsContainer.appendChild(composedSection);
 
         attachFieldListeners();
@@ -903,74 +568,42 @@
         updateUsageMeter();
       }
 
-      // ---- Compose logic (no comments in prompt) ---------------------------
-      function composeForFramework(fwId) {
-        const fw = FRAMEWORKS[fwId];
-        if (!fw) return '';
-        const data = getFrameworkData(fwId);
-        const lines = [];
-
-        fw.cards.forEach(card => {
-          const value = (data[card.id] || '').trim();
-          if (!value) return;
-          lines.push(value + '\n');
-        });
-
-        return lines.join('\n');
-      }
-
       function buildFinalPrompt() {
-        return composeForFramework(state.activeFrameworkId);
+        const fw = getActiveFramework();
+        const data = getFrameworkData(fw.id);
+        return fw.cards.map(card => (data[card.id] || '').trim()).filter(v => v).join('\n\n');
       }
 
       function updateComposedFromState() {
         const output = document.getElementById('output');
-        if (!output) return;
-        output.value = buildFinalPrompt();
+        if (output) output.value = buildFinalPrompt();
       }
 
-      // ---- Usage meter ------------------------------------------------------
-      function estimateTokens(text) {
-        const length = (text || '').length;
-        return Math.ceil(length / 4); // rough heuristic
-      }
+      function estimateTokens(text) { return Math.ceil((text || '').length / 4); }
 
       function updateUsageMeter() {
         const usageNumbers = document.getElementById('usageNumbers');
         const usageBarFill = document.getElementById('usageBarFill');
         const output = document.getElementById('output');
-
         if (!usageNumbers || !usageBarFill || !output) return;
 
         const model = MODELS[state.activeModelId] || MODELS[DEFAULT_MODEL_ID];
-        const text = output.value || '';
-        const used = estimateTokens(text);
+        const used = estimateTokens(output.value);
         const max = model.maxTokens || 1;
         const pct = Math.min(100, Math.round((used / max) * 100));
 
         usageNumbers.textContent = `${used.toLocaleString()} / ${max.toLocaleString()} tokens (${pct}%)`;
-
         usageBarFill.style.width = `${pct}%`;
-        usageBarFill.classList.remove('ok', 'warn', 'danger');
-        if (pct < 50) {
-          usageBarFill.classList.add('ok');
-        } else if (pct < 80) {
-          usageBarFill.classList.add('warn');
-        } else {
-          usageBarFill.classList.add('danger');
-        }
+        usageBarFill.className = 'usage-bar-fill ' + (pct < 50 ? 'ok' : pct < 80 ? 'warn' : 'danger');
       }
 
-      // ---- State from fields ------------------------------------------------
       function readFieldsIntoState() {
         const fw = getActiveFramework();
         const data = getFrameworkData(fw.id);
         fw.cards.forEach(card => {
           const el = document.getElementById(`field-${card.id}`);
-          if (!el) return;
-          data[card.id] = el.value.trim();
+          if (el) data[card.id] = el.value.trim();
         });
-        state.data[fw.id] = data;
       }
 
       let saveTimer;
@@ -985,141 +618,62 @@
       }
 
       function attachFieldListeners() {
-        const fw = getActiveFramework();
-        fw.cards.forEach(card => {
+        getActiveFramework().cards.forEach(card => {
           const el = document.getElementById(`field-${card.id}`);
-          if (!el) return;
-          el.removeEventListener('input', scheduleSave);
-          el.addEventListener('input', scheduleSave);
+          if (el) el.oninput = scheduleSave;
         });
       }
 
-      // ---- Toolbar actions --------------------------------------------------
-      document.getElementById('copyAll').addEventListener('click', async () => {
-        const txt = document.getElementById('output').value;
+      document.getElementById('copyAll').onclick = async () => {
         try {
-          await navigator.clipboard.writeText(txt);
+          await navigator.clipboard.writeText(document.getElementById('output').value);
           showToast('Copied composed output');
-        } catch {
-          showToast('Press Ctrl/Cmd+C to copy');
-        }
-      });
+        } catch { showToast('Press Ctrl/Cmd+C to copy'); }
+      };
 
-      document.getElementById('exportData').addEventListener('click', () => {
+      document.getElementById('exportData').onclick = () => {
         const fw = getActiveFramework();
         const data = getFrameworkData(fw.id);
+        let prompt = {};
+        if (fw.id === 'costar') prompt = { context: data.co_context||'', objective: data.co_objective||'', style: data.co_style||'', tone: data.co_tone||'', audience: data.co_audience||'', response: data.co_response||'' };
+        if (fw.id === 'tenPart') prompt = { context: data.role||'', tone: data.style||'', background: data.background||'', details: data.constraints||'', examples: data.examples||'', history: data.history||'', request: data.request||'', thinking: data.reasoning||'', output: data.format||'', prefilled: data.response||'' };
+        if (fw.id === 'crispe') prompt = { capacity: data.cr_capacity||'', insight: data.cr_insights||'', statement: data.cr_steps||'', personality: data.cr_personalization||'', experiment: data.cr_examples||'' };
+        if (fw.id === 'rtf') prompt = { role: data.rt_role||'', task: data.rt_task||'', format: data.rt_format||'' };
 
-        function toSampleSchema() {
-          let frameworkName = fw.name;
-          if (fw.id === 'tenPart') frameworkName = '10-step';
-
-          let prompt = {};
-
-          if (fw.id === 'costar') {
-            prompt = {
-              context: data.co_context || '',
-              objective: data.co_objective || '',
-              style: data.co_style || '',
-              tone: data.co_tone || '',
-              audience: data.co_audience || '',
-              response: data.co_response || ''
-            };
-          }
-
-          if (fw.id === 'tenPart') {
-            prompt = {
-              context: data.role || '',
-              tone: data.style || '',
-              background: data.background || '',
-              details: data.constraints || '',
-              examples: data.examples || '',
-              history: data.history || '',
-              request: data.request || '',
-              thinking: data.reasoning || '',
-              output: data.format || '',
-              prefilled: data.response || ''
-            };
-          }
-
-          if (fw.id === 'crispe') {
-            prompt = {
-              capacity: data.cr_capacity || '',
-              insight: data.cr_insights || '',
-              statement: data.cr_steps || '',
-              personality: data.cr_personalization || '',
-              experiment: data.cr_examples || ''
-            };
-          }
-
-          if (fw.id === 'rtf') {
-            prompt = {
-              role: data.rt_role || '',
-              task: data.rt_task || '',
-              format: data.rt_format || ''
-            };
-          }
-
-          return {
-            framework: frameworkName,
-            prompt
-          };
-        }
-
-        const dataToExport = JSON.stringify(toSampleSchema(), null, 2);
-        const blob = new Blob([dataToExport], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
+        const blob = new Blob([JSON.stringify({ framework: fw.id==='tenPart'?'10-step':fw.name, prompt }, null, 2)], { type: 'application/json' });
         const a = document.createElement('a');
-        a.href = url; a.download = 'prompt.json';
+        a.href = URL.createObjectURL(blob); a.download = 'prompt.json';
         a.click();
-        URL.revokeObjectURL(url);
         showToast('Exported to JSON');
-      });
+      };
 
-      document.getElementById('importFile').addEventListener('change', ev => {
+      document.getElementById('importFile').onchange = ev => {
         const file = ev.target.files?.[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = () => {
           try {
             const obj = JSON.parse(String(reader.result || '{}'));
-
             if (obj && obj.framework && obj.prompt) {
               applyFrameworkByName(obj.framework);
               fillFieldsFromSample(obj.prompt);
-            } else {
-              showToast('Unsupported JSON schema');
-              return;
-            }
-
-            renderFrameworkOptions();
-            renderModelOptions();
-            renderFields();
-            save();
-            showToast('Imported data');
-          } catch (e) {
-            console.error(e);
-            showToast('Invalid JSON file');
-          }
+              save();
+              showToast('Imported data');
+            } else { showToast('Unsupported JSON schema'); }
+          } catch (e) { showToast('Invalid JSON file'); }
           ev.target.value = '';
         };
         reader.readAsText(file);
-      });
+      };
 
-      document.getElementById('clearAll').addEventListener('click', () => {
+      document.getElementById('clearAll').onclick = () => {
         if (!confirm('Clear all frameworks and local memory?')) return;
-        state = {
-          activeFrameworkId: DEFAULT_FRAMEWORK_ID,
-          activeModelId: DEFAULT_MODEL_ID,
-          data: {}
-        };
+        state = { activeFrameworkId: DEFAULT_FRAMEWORK_ID, activeModelId: DEFAULT_MODEL_ID, data: {} };
         save();
-        renderFrameworkOptions();
-        renderModelOptions();
-        renderFields();
+        renderFrameworkOptions(); renderModelOptions(); renderFields();
         showToast('Cleared all data');
-      });
+      };
 
-      // ---- Share via URL hash ----------------------------------------------
       function tryImportFromHash() {
         const hash = location.hash || location.search;
         const m = hash.match(/[?#].*share=([^&]+)/);
@@ -1127,91 +681,46 @@
         try {
           const decoded = JSON.parse(atob(decodeURIComponent(m[1])));
           if (decoded && decoded.data && decoded.activeFrameworkId) {
-            state = {
-              activeFrameworkId: decoded.activeFrameworkId || DEFAULT_FRAMEWORK_ID,
-              activeModelId: decoded.activeModelId || DEFAULT_MODEL_ID,
-              data: decoded.data || {}
-            };
+            state = { activeFrameworkId: decoded.activeFrameworkId, activeModelId: decoded.activeModelId || DEFAULT_MODEL_ID, data: decoded.data };
           } else if (decoded && typeof decoded === 'object') {
-            const fwId = state.activeFrameworkId || DEFAULT_FRAMEWORK_ID;
-            state.data[fwId] = decoded;
+            fillFieldsFromSample(decoded);
           }
-          renderFrameworkOptions();
-          renderModelOptions();
-          renderFields();
+          renderFrameworkOptions(); renderModelOptions(); renderFields();
           save();
           showToast('Loaded from link');
           return true;
-        } catch {
-          return false;
-        }
+        } catch { return false; }
       }
 
       document.addEventListener('keydown', async (e) => {
         if ((e.key === 's' || e.key === 'S') && (e.ctrlKey || e.metaKey)) {
           e.preventDefault();
-          readFieldsIntoState();
-          const dataStr = JSON.stringify(state);
-          const b64 = btoa(dataStr);
-          const url = location.origin + location.pathname + '#share=' + encodeURIComponent(b64);
-          try {
-            await navigator.clipboard.writeText(url);
-            showToast('Share link copied');
-          } catch {
-            showToast('Share link ready');
-          }
+          const url = location.origin + location.pathname + '#share=' + encodeURIComponent(btoa(JSON.stringify(state)));
+          try { await navigator.clipboard.writeText(url); showToast('Share link copied'); } catch { showToast('Share link ready'); }
           history.replaceState(null, '', url);
         }
       });
 
-      // ---- Dropdown handlers -----------------------------------------------
-      frameworkSelect.addEventListener('change', () => {
+      frameworkSelect.onchange = () => {
         readFieldsIntoState();
-        save();
         state.activeFrameworkId = frameworkSelect.value || DEFAULT_FRAMEWORK_ID;
-        renderFrameworkOptions();
         renderFields();
-        setSavedStamp();
-      });
-
-      modelSelect.addEventListener('change', () => {
-        state.activeModelId = modelSelect.value || DEFAULT_MODEL_ID;
         save();
-        updateUsageMeter();
-        setSavedStamp();
-      });
+      };
 
-      // ---- Init -------------------------------------------------------------
+      modelSelect.onchange = () => {
+        state.activeModelId = modelSelect.value || DEFAULT_MODEL_ID;
+        updateUsageMeter();
+        save();
+      };
+
       const loaded = load();
       if (loaded) {
-        state = {
-          activeFrameworkId: loaded.activeFrameworkId || DEFAULT_FRAMEWORK_ID,
-          activeModelId: loaded.activeModelId || DEFAULT_MODEL_ID,
-          data: loaded.data || {}
-        };
-      } else {
-        tryMigrateFromOlder();
-      }
+        state = { activeFrameworkId: loaded.activeFrameworkId || DEFAULT_FRAMEWORK_ID, activeModelId: loaded.activeModelId || DEFAULT_MODEL_ID, data: loaded.data || {} };
+      } else { tryMigrateFromOlder(); }
 
-      if (!FRAMEWORKS[state.activeFrameworkId]) {
-        state.activeFrameworkId = DEFAULT_FRAMEWORK_ID;
-      }
-      if (!MODELS[state.activeModelId]) {
-        state.activeModelId = DEFAULT_MODEL_ID;
-      }
-
-      renderFrameworkOptions();
-      renderModelOptions();
-      renderSampleOptions();
-
-      if (!tryImportFromHash()) {
-        renderFields();
-        setSavedStamp();
-      }
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('button,.btn').forEach(b => b.style.transition = 'none');
-      }
+      renderFrameworkOptions(); renderModelOptions(); renderSampleOptions();
+      if (!tryImportFromHash()) { renderFields(); }
     })();
   </script>
 </body>

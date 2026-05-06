@@ -8,6 +8,17 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body class="resources-page">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="context-aware-prompt-builder.html">Prompt Builder</a>
+        <a href="sdlc_prompt_library.html">SDLC Library</a>
+        <a href="references.html">References</a>
+      </div>
+    </div>
+  </nav>
+
   <main class="docs-container resources-shell">
     <section class="page-hero">
       <h1>Further reading</h1>
@@ -56,16 +67,6 @@
         <button id="resetButton" type="button" class="reset-button">Reset</button>
       </div>
 
-      <!--
-      <div class="topic-filter-block">
-        <div class="topic-filter-header">
-          <h2>Browse by topic</h2>
-          <p>Start with a broad topic, then refine with keyword chips.</p>
-        </div>
-        <div id="topicChips" class="chip-list" role="group" aria-label="Topic filters"></div>
-      </div>
-      -->
-
       <div class="keyword-filter-block">
         <div class="keyword-filter-header">
           <h2>Filter by category</h2>
@@ -85,6 +86,12 @@
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
 
   <script type="module" src="js/resources-page.mjs"></script>
 </body>

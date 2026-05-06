@@ -5,32 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SDLC Prompt Library</title>
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    body { margin:0; }
-    .container { max-width:1100px; margin:32px auto; padding:0 16px 64px; }
-    h1 { margin:0 0 6px; }
-    .subtitle { color:var(--muted); margin-bottom:20px; }
-    .controls { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
-    select, input { padding:8px 10px; border-radius:10px; border:1px solid #ccc; }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); }
-    .card { padding:14px; cursor:pointer; }
-    .title { font-weight:700; margin-bottom:6px; }
-    .badge { display:inline-block; margin-bottom:8px; }
-    .preview { font-size:13px; color:#374151; }
-    .expanded { grid-column:1/-1; cursor:default; }
-    .section { margin-bottom:12px; }
-    .section-title { font-weight:600; font-size:13px; margin-bottom:4px; }
-    .section-body { white-space:pre-wrap; font-size:13px; }
-    .actions { display:flex; gap:8px; margin-top:10px; }
-    button { padding:6px 10px; }
-  </style>
+  <link href="css/sdlc.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>SDLC Prompt Library</h1>
-    <div class="subtitle">Browse reusable prompts across software development roles.</div>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="context-aware-prompt-builder.html">Prompt Builder</a>
+        <a href="sdlc_prompt_library.html">SDLC Library</a>
+        <a href="references.html">References</a>
+      </div>
+    </div>
+  </nav>
 
-    <div class="controls">
+  <main class="sdlc-container">
+    <h1>SDLC Prompt Library</h1>
+    <div class="sdlc-subtitle">Browse reusable prompts across software development roles.</div>
+
+    <div class="sdlc-controls">
       <select id="frameworkFilter">
         <option value="all">All frameworks</option>
         <option value="10-step">10-step</option>
@@ -41,8 +34,14 @@
       <input id="searchInput" placeholder="Search role..." />
     </div>
 
-    <div id="grid" class="grid"></div>
-  </div>
+    <div id="grid" class="sdlc-grid"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
 
   <script>
     const FILES = [
@@ -85,7 +84,7 @@
         .filter(c => c.title.toLowerCase().includes(q))
         .forEach(c => {
           const el = document.createElement('div');
-          el.className = 'card';
+          el.className = 'card sdlc-card';
 
           if (expandedId === c.id) {
             el.classList.add('expanded');
@@ -107,102 +106,64 @@
 
     function renderExpanded(c) {
       const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
 
-      const title = document.createElement('div');
-      title.className = 'title';
-      title.textContent = c.title;
+      const close = document.createElement('button');
+      close.textContent = '✕';
+      close.className = 'btn btn-ghost';
+      close.style.position = 'absolute';
+      close.style.right = '0';
+      close.style.top = '0';
+      close.onclick = (e) => {
+        e.stopPropagation();
+        expandedId = null;
+        render();
+      };
+      wrapper.appendChild(close);
+
+      const h2 = document.createElement('h2');
+      h2.textContent = c.title;
+      wrapper.appendChild(h2);
 
       const badge = document.createElement('div');
       badge.className = 'badge';
       badge.textContent = c.framework;
+      badge.style.marginBottom = '16px';
+      wrapper.appendChild(badge);
 
-      const sections = document.createElement('div');
-
-      function getLabel(framework, key) {
-        const maps = {
-          'CRISPE': {
-            capacity: 'Capacity & Role (CR)',
-            insight: 'Insights (I)',
-            statement: 'Statement (S)',
-            personality: 'Personality (P)',
-            experiment: 'Experiment (E)'
-          },
-          'COSTAR': {
-            context: 'Context',
-            objective: 'Objective',
-            style: 'Style',
-            tone: 'Tone',
-            audience: 'Audience',
-            response: 'Response'
-          },
-          'RTF': {
-            role: 'Role',
-            task: 'Task',
-            format: 'Format'
-          },
-          '10-step': {
-            context: '1. Task context',
-            tone: '2. Tone context',
-            background: '3. Background data, documents, and images',
-            details: '4. Detailed task description & rules',
-            examples: '5. Examples',
-            history: '6. Conversation history',
-            request: '7. Immediate task description or request',
-            thinking: '8. Thinking step by step',
-            output: '9. Output formatting',
-            prefilled: '10. Prefilled response'
-          }
-        };
-
-        return (maps[framework] && maps[framework][key]) || key;
-      }
-
-      Object.entries(c.prompt).forEach(([k,v]) => {
-        const s = document.createElement('div');
-        s.className = 'section';
-
-        const st = document.createElement('div');
-        st.className = 'section-title';
-        st.textContent = getLabel(c.framework, k);
-
-        const sb = document.createElement('div');
-        sb.className = 'section-body';
-        sb.textContent = v;
-
-        s.appendChild(st);
-        s.appendChild(sb);
-        sections.appendChild(s);
+      Object.entries(c.prompt).forEach(([key, val]) => {
+        const sec = document.createElement('div');
+        sec.className = 'sdlc-section';
+        sec.innerHTML = `
+          <div class="sdlc-section-title">${key}</div>
+          <div class="sdlc-section-body">${val}</div>
+        `;
+        wrapper.appendChild(sec);
       });
 
       const actions = document.createElement('div');
-      actions.className = 'actions';
+      actions.className = 'sdlc-actions';
 
-      const copyBtn = document.createElement('button');
-      copyBtn.textContent = 'Copy';
-      copyBtn.onclick = async () => {
-        try { await navigator.clipboard.writeText(getText(c.prompt)); } catch {}
+      const copy = document.createElement('button');
+      copy.textContent = 'Copy Prompt';
+      copy.className = 'btn btn-primary';
+      copy.onclick = () => {
+        const full = Object.values(c.prompt).join('\n\n');
+        navigator.clipboard.writeText(full);
+        copy.textContent = 'Copied!';
+        setTimeout(() => copy.textContent = 'Copy Prompt', 2000);
       };
 
-      const closeBtn = document.createElement('button');
-      closeBtn.textContent = 'Close';
-      closeBtn.onclick = () => {
-        expandedId = null;
-        render();
-      };
+      const openBuilder = document.createElement('a');
+      openBuilder.textContent = 'Open in Builder';
+      openBuilder.className = 'btn btn-ghost';
+      openBuilder.href = `context-aware-prompt-builder.html?share=${btoa(JSON.stringify(c.prompt))}`;
 
-      actions.appendChild(copyBtn);
-      actions.appendChild(closeBtn);
-
-      wrapper.appendChild(title);
-      wrapper.appendChild(badge);
-      wrapper.appendChild(sections);
+      actions.appendChild(copy);
+      actions.appendChild(openBuilder);
       wrapper.appendChild(actions);
 
       return wrapper;
-    }
-
-    function getText(prompt) {
-      return Object.values(prompt).join('\n\n');
     }
 
     filter.onchange = render;

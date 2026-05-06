@@ -1,91 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 
 <head>
   <title>Context Engineering</title>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Boni Garcia">
-
-  <link href="//cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .hero { padding:48px 0 24px; }
-    .subtitle { max-width:720px; }
-    .card-tool { height:100%; display:flex; flex-direction:column; justify-content:space-between; }
-    .btn-primary { background:linear-gradient(135deg,#6aa5ff,#85c1ff); border:none; color:#08111f; }
-    .footer { border-top:1px solid #e5e7eb; }
-  </style>
 </head>
 
-<body class="d-flex flex-column h-100">
-  <main class="flex-shrink-2">
-    <div class="container">
-      <div class="hero">
-        <h1 class="display-5 fw-bold">Context Engineering</h1>
-        <p class="subtitle lead">
-          References and tools to for building context-aware AI applications. Check out the source code on <a href="https://github.com/bonigarcia/context-engineering">GitHub</a>.
-        </p>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="context-aware-prompt-builder.html">Prompt Builder</a>
+        <a href="sdlc_prompt_library.html">SDLC Library</a>
+        <a href="references.html">References</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="docs-container">
+    <div class="hero">
+      <h1>Context Engineering</h1>
+      <p>
+        References and tools for building context-aware AI applications. Check out the source code on <a href="https://github.com/bonigarcia/context-engineering">GitHub</a>.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card-tool d-flex flex-column justify-content-between">
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h3 class="h5 mb-0">Context-aware Prompt Builder</h3>
+            <span class="badge">Builder</span>
+          </div>
+          <p class="text-muted mb-4">
+            Design, compare, and reuse structured prompts across multiple frameworks and AI models.
+          </p>
+        </div>
+        <a href="context-aware-prompt-builder.html" class="btn btn-primary w-100">Open builder</a>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-4">
-          <div class="card-tool p-4">
-            <div>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="h5 mb-0">Context-aware Prompt Builder</h3>
-                <span class="badge-fw">Builder</span>
-              </div>
-              <p class="text-muted mb-3">
-                Design, compare, and reuse structured prompts across multiple frameworks and AI models.
-              </p>
-            </div>
-            <div>
-              <a href="context-aware-prompt-builder.html" class="btn btn-primary w-100">Open builder</a>
-            </div>
+      <div class="card-tool d-flex flex-column justify-content-between">
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h3 class="h5 mb-0">SDLC Prompt Library</h3>
+            <span class="badge">Library</span>
           </div>
+          <p class="text-muted mb-4">
+            Browse curated prompts for software development roles like architect, developer, tester, and more.
+          </p>
         </div>
+        <a href="sdlc_prompt_library.html" class="btn btn-primary w-100">Open library</a>
+      </div>
 
-        <div class="col-md-6 col-lg-4">
-          <div class="card-tool p-4">
-            <div>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="h5 mb-0">SDLC Prompt Library</h3>
-                <span class="badge-fw">Library</span>
-              </div>
-              <p class="text-muted mb-3">
-                Browse curated prompts for software development roles like architect, developer, tester, and more.
-              </p>
-            </div>
-            <div>
-              <a href="sdlc_prompt_library.html" class="btn btn-primary w-100">Open library</a>
-            </div>
+      <div class="card-tool d-flex flex-column justify-content-between">
+        <div>
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h3 class="h5 mb-0">Further reading</h3>
+            <span class="badge">Catalog</span>
           </div>
+          <p class="text-muted mb-4">
+            Explore a curated, searchable catalog of articles, guides, books, repositories, and tutorials covering context engineering.
+          </p>
         </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="card-tool p-4">
-            <div>
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <h3 class="h5 mb-0">Further reading</h3>
-                <span class="badge-fw">Catalog</span>
-              </div>
-              <p class="text-muted mb-3">
-                Explore a curated, searchable catalog of articles, guides, books, repositories, and tutorials covering context engineering, prompting, agents, and AI engineering.
-              </p>
-            </div>
-            <div>
-              <a href="references.html" class="btn btn-primary w-100">Open references</a>
-            </div>
-          </div>
-        </div>
+        <a href="references.html" class="btn btn-primary w-100">Open references</a>
       </div>
     </div>
   </main>
-  <footer class="footer mt-auto py-3 bg-white">
-    <div class="container text-center">
-      <span class="text-muted">Context Engineering · © <a href="https://bonigarcia.dev/">Boni Garc&iacute;a</a></span>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
     </div>
   </footer>
 </body>
