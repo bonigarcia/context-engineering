@@ -12,6 +12,7 @@ This folder contains JavaScript examples for interacting with OpenAI, Anthropic,
 - `openai-gpt-system-prompt/`: System prompt with OpenAI GPT models.
 - `anthropic-claude-system-prompt/`: System prompt with Anthropic Claude models.
 - `google-gemini-system-prompt/`: System prompt with Google Gemini models.
+- `ollama-local-system-prompt/`: System prompt with Ollama models.
 
 ## Running the examples
 

@@ -1,0 +1,11 @@
+{
+  "name": "ollama-local-system-prompt",
+  "version": "1.0.0",
+  "description": "System prompt with Ollama models using JavaScript",
+  "type": "module",
+  "main": "ollama-local-system-prompt.js",
+  "scripts": {
+    "start": "node ollama-local-system-prompt.js"
+  },
+  "dependencies": {}
+}

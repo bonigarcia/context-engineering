@@ -12,6 +12,7 @@ This folder contains Python examples for interacting with OpenAI, Anthropic, and
 - `openai-gpt-system-prompt/`: System prompt with OpenAI GPT models.
 - `anthropic-claude-system-prompt/`: System prompt with Anthropic Claude models.
 - `google-gemini-system-prompt/`: System prompt with Google Gemini models.
+- `ollama-local-system-prompt/`: System prompt with Ollama models.
 
 ## Running the examples
 

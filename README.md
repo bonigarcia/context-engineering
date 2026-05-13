@@ -45,6 +45,7 @@ This chapter covers the definition and usage of the system instructions (system 
 - OpenAI: [Python](./ch02/python/openai-gpt-system-prompt) · [Jupyter](./ch02/jupyter/openai_gpt_system_prompt.ipynb) · [JavaScript](./ch02/javascript/openai-gpt-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptSystemPrompt.java)
 - Anthropic: [Python](./ch02/python/anthropic-claude-system-prompt) · [Jupyter](./ch02/jupyter/anthropic_claude_system_prompt.ipynb) · [JavaScript](./ch02/javascript/anthropic-claude-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeSystemPrompt.java)
 - Google: [Python](./ch02/python/google-gemini-system-prompt) · [Jupyter](./ch02/jupyter/google_gemini_system_prompt.ipynb) · [JavaScript](./ch02/javascript/google-gemini-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiSystemPrompt.java)
+- Ollama: [Python](./ch02/python/ollama-local-system-prompt) · [Jupyter](./ch02/jupyter/ollama_local_system_prompt.ipynb) · [JavaScript](./ch02/javascript/ollama-local-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalSystemPrompt.java)
 
 #### Chapter 3. External knowledge and retrieval
 This chapter explores different patterns for providing external knowledge to the model. It covers Retrieval-Augmented Generation (RAG) using different retrievers and models, Cache-Augmented Generation (CAG), and context stuffing (injecting data directly into the prompt):

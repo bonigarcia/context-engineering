@@ -7,6 +7,7 @@ This folder contains Jupyter Notebook examples for interacting with OpenAI, Anth
 - `openai_gpt_system_prompt.ipynb`: System instructions with OpenAI GPT models.
 - `anthropic_claude_system_prompt.ipynb`: System instructions with Anthropic Claude models.
 - `google_gemini_system_prompt.ipynb`: System instructions with Google Gemini models.
+- `ollama_local_system_prompt.ipynb`: System instructions with Ollama models.
 
 ## How to use
 
