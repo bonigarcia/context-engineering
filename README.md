@@ -13,11 +13,11 @@ _Warning_: This repository is a work in progress, so content and structure may c
 This book aims to provide a strong, general-purpose theoretical foundation for context engineering, supported by hands-on examples. Its table of contents is the following:
 
 1. Introduction to context engineering
-2. System instructions
+2. Instructions in AI agents
 3. External knowledge and retrieval
 4. Tools in AI agents
-5. Memory and state
-6. User prompts
+5. Memory and state in agentic systems
+6. User prompts for LLMS
 7. Context management and orchestration
 8. Evaluation and observability
 9. Governance and operations
@@ -40,7 +40,7 @@ This chapter provides the foundations for interacting with different model provi
 - Google: [Python](./ch01/python/google-gemini-basic) · [Jupyter](./ch01/jupyter/google-gemini-basic.ipynb) · [JavaScript](./ch01/javascript/google-gemini-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiBasic.java)
 - Ollama: [Python](./ch01/python/ollama-local-basic) · [Jupyter](./ch01/jupyter/ollama-local-basic.ipynb) · [JavaScript](./ch01/javascript/ollama-local-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalBasic.java)
 
-#### Chapter 2. System instructions
+#### Chapter 2. Instructions in AI agents
 This chapter covers the definition and usage of the system instructions (system prompts, agent skills, and instructions artifacts) as a foundation layer to shape the model behavior:
 - OpenAI: [Python](./ch02/python/openai-gpt-system-prompt) · [Jupyter](./ch02/jupyter/openai_gpt_system_prompt.ipynb) · [JavaScript](./ch02/javascript/openai-gpt-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptSystemPrompt.java)
 - Anthropic: [Python](./ch02/python/anthropic-claude-system-prompt) · [Jupyter](./ch02/jupyter/anthropic_claude_system_prompt.ipynb) · [JavaScript](./ch02/javascript/anthropic-claude-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeSystemPrompt.java)
