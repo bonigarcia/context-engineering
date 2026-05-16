@@ -1,6 +1,6 @@
 # Session Memory
 
-This example  demonstrates short-term memory management using the OpenAI Agents SDK `Session` abstraction. It includes two strategies:
+This example demonstrates short-term memory management using the OpenAI Agents SDK `Session` abstraction. It includes two strategies:
 
 - `TrimmingSession`: keeps only the last *N* user turns (deterministic, no extra model calls)
 - `SummarizingSession`: keeps the last *N* turns verbatim and compresses older turns into a running summary  (preserves long-range constraints at the cost of occasional extra calls)
@@ -39,7 +39,7 @@ python session_memory_chat.py --strategy trim --max-turns 6
 ### Summarization strategy (better long-range continuity)
 
 ```bash
-python session_memory_chat.py --strategy summarize --max-turns 6 --refresh-every 3
+python session_memory_chat.py --strategy summarize --max-turns 6 --refresh-every 2
 ```
 
 ## Commands
@@ -73,13 +73,13 @@ This experiment will give the agent a secret code, distract it with unrelated co
 4.  Test its memory. Ask for the code back:
     > `What was the secret code I told you earlier?`
 
-Expected Outcome: The agent will fail. Because `max-turns` was 2, it only remembers the last two things you talked about (France and sports). The secret code is forgotten.
+Expected Outcome: The agent will fail. Because `max-turns` was 2, it only remembers the last two things you talked about (Spain and sports). The secret code is forgotten.
 
 ### Part 2: The `summarize` Strategy (The Remembering Agent)
 
 1.  Restart the chat with the `summarize` strategy. We'll tell it to summarize after every 2 turns.
     ```bash
-    python session_memory_chat.py --strategy summarize --max-turns 2 --refresh-every 3
+    python session_memory_chat.py --strategy summarize --max-turns 2 --refresh-every 2
     ```
 
 2.  Repeat the process. Have the exact same conversation as before:
