@@ -17,7 +17,7 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 3. External knowledge and retrieval
 4. Tools in AI agents
 5. Memory and state in agentic systems
-6. User prompts for LLMS
+6. User prompts for LLMs
 7. Context management and orchestration
 8. Evaluation and observability
 9. Governance and operations
