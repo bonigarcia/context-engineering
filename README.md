@@ -52,9 +52,9 @@ This chapter covers the definition and usage of instructions (system prompts, ag
 #### Chapter 3. External knowledge and retrieval
 This chapter explores different patterns for providing external knowledge to a model:
 - Retrieval-Augmented Generation (RAG): [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
-- Cache-Augmented Generation (CAG): [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
-- Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
 - Advanced RAG: [LangChain](./ch03/python/agentic-rag) · [Qdrant](./ch03/python/local-rag) · [PageIndex](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
+- Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
+- Cache-Augmented Generation (CAG): [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
  
 #### Chapter 4. Tools in AI agents
 This chapter focuses on extending the capabilities of AI agents through tools:
