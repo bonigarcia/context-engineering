@@ -48,16 +48,16 @@ This chapter covers the definition and usage of instructions (system prompts, ag
 - System prompts (Ollama): [Python](./ch02/python/ollama-local-system-prompt) · [Jupyter](./ch02/jupyter/ollama_local_system_prompt.ipynb) · [JavaScript](./ch02/javascript/ollama-local-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalSystemPrompt.java)
 
 #### Chapter 3. External knowledge and retrieval
-This chapter explores different patterns for providing external knowledge to a model. It covers Retrieval-Augmented Generation (RAG) using different retrievers and models, Cache-Augmented Generation (CAG), and context stuffing (injecting data directly into the context window):
-- Basic RAG: [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
-- CAG: [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
+This chapter explores different patterns for providing external knowledge to a model:
+- Retrieval-Augmented Generation (RAG): [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
+- Cache-Augmented Generation (CAG): [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
 - Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
 - Advanced RAG: [LangChain](./ch03/python/agentic-rag) · [Qdrant](./ch03/python/local-rag) · [PageIndex](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
  
 #### Chapter 4. Tools in AI agents
-This chapter focuses on extending AI capabilities through tools and memory. It covers tool use (function calling), the Model Context Protocol (MCP) for standardized tool integration, and various memory patterns to maintain context over time:
+This chapter focuses on extending the capabilities of AI agents through tools:
 - Function calling: [Python](./ch04/python/function_calling_time) · [JavaScript](./ch04/javascript/function_calling_time)
-- MCP: [Python](./ch04/python/mcp_server) · [JavaScript](./ch04/javascript/mcp_server) · [Java](./ch04/java)
+- Model Context Protocol (MCP): [Python](./ch04/python/mcp_server) · [JavaScript](./ch04/javascript/mcp_server) · [Java](./ch04/java)
 
 ## Online resources
 
