@@ -4,7 +4,8 @@ updates:
   directories:
     - "/ch01/java"
     - "/ch02/java"
-    - "/ch04/java"
+    - "/ch04/java/function_calling"
+    - "/ch04/java/mcp_server"
   schedule:
     interval: daily
     time: '06:00'
