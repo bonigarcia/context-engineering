@@ -1,0 +1,119 @@
+{
+  "title": "AI agents",
+  "intro": "General-purpose assistants and coding-focused agents that people use as the interface to context-aware workflows.",
+  "groups": [
+    {
+      "title": "General-purpose agents",
+      "items": [
+        {
+          "name": "ChatGPT",
+          "url": "https://chatgpt.com/",
+          "description": "A generative AI chatbot created by OpenAI that can function as a conversational assistant and as an AI agent.",
+          "features": [
+            "Strong reasoning, coding, and creative text generation capabilities.",
+            "Contextual understanding and memory in conversations.",
+            "Multilingual support, voice mode, and web search capabilities."
+          ],
+          "models": "GPT-4, GPT-4o, GPT-4o mini, GPT-5, and specialized o-series models.",
+          "pricing": "Free plan; paid plans and API usage available."
+        },
+        {
+          "name": "Gemini",
+          "url": "https://gemini.google.com",
+          "description": "A generative AI chatbot from Google built on a family of multimodal LLMs.",
+          "features": [
+            "Native multimodality across text, images, audio, video, and code.",
+            "Very long context window for processing large amounts of information.",
+            "Integration with Google applications such as Gmail, Docs, and Sheets."
+          ],
+          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano.",
+          "pricing": "Free plan; paid plans and API pricing available."
+        },
+        {
+          "name": "Claude",
+          "url": "https://claude.ai",
+          "description": "An AI assistant and family of LLMs from Anthropic focused on safety and ethical behavior.",
+          "features": [
+            "Advanced reasoning and problem-solving capabilities.",
+            "Large context window for long documents.",
+            "Vision capabilities for images, charts, and graphs."
+          ],
+          "models": "Claude 3.5 Haiku, Claude 3.5 Sonnet, and Claude Opus 4.",
+          "pricing": "Free plan; paid plans and API billing available."
+        },
+        {
+          "name": "Perplexity AI",
+          "url": "https://www.perplexity.ai",
+          "description": "An AI-powered conversational search engine that synthesizes web knowledge into concise answers with citations.",
+          "features": [
+            "Real-time web search capabilities.",
+            "Clickable citations for verification.",
+            "Focus modes for academic papers or news."
+          ],
+          "models": "Access to GPT-4o, Claude 4.0 Sonnet, and proprietary Sonar models.",
+          "pricing": "Free plan; paid plans for advanced features."
+        }
+      ]
+    },
+    {
+      "title": "Coding agents",
+      "items": [
+        {
+          "name": "Gemini CLI",
+          "url": "https://github.com/google-gemini/gemini-cli",
+          "description": "Google's official CLI interface for Gemini models, enabling code assistance and task automation from the terminal.",
+          "features": [
+            "Natural language code generation and editing.",
+            "Shell and file operations integration.",
+            "Supports large context windows and multimodal inputs."
+          ],
+          "pricing": "Included in Google Cloud's Gemini for Developers tier."
+        },
+        {
+          "name": "Claude Code",
+          "url": "https://github.com/anthropics/claude-code",
+          "description": "Terminal-based interface for Anthropic's Claude models, optimized for coding, debugging, and documentation tasks.",
+          "features": [
+            "Conversational coding assistant in the terminal.",
+            "Reads and modifies local files safely.",
+            "Integrates with Git and code editors."
+          ],
+          "pricing": "Included with Claude Pro and Team plans."
+        },
+        {
+          "name": "Aider",
+          "url": "https://aider.chat/",
+          "description": "Open-source CLI coding assistant that edits your codebase with GPT, Claude, or Gemini through Git-tracked commits.",
+          "features": [
+            "Works directly on your repo with automatic commits.",
+            "Supports multiple LLM backends.",
+            "Context-aware editing via diff-based workflow."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "OpenCode",
+          "url": "https://opencode.ai/",
+          "description": "AI-powered coding platform designed to assist with software development through structured workflows.",
+          "features": [
+            "Supports code generation, editing, and refactoring across projects.",
+            "Operates over full repositories with awareness of project structure.",
+            "Enables multi-step workflows, including planning and reviewing code."
+          ],
+          "pricing": "Free tier available."
+        },
+        {
+          "name": "Cursor (agent mode)",
+          "url": "https://cursor.sh/",
+          "description": "AI-native code editor with agent capabilities that can understand, modify, and navigate entire codebases.",
+          "features": [
+            "Deep integration with the code editor for inline edits and multi-file changes.",
+            "Agent mode supports autonomous code modifications across a repository.",
+            "Context-aware understanding of code structure and dependencies."
+          ],
+          "pricing": "Free tier available."
+        }
+      ]
+    }
+  ]
+}

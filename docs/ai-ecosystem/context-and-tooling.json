@@ -1,0 +1,138 @@
+{
+  "title": "Context & tooling",
+  "intro": "Infrastructure and tooling used to store, retrieve, compress, and serve context for LLM applications.",
+  "groups": [
+    {
+      "title": "Inference and serving engines",
+      "items": [
+        {
+          "name": "Ollama",
+          "url": "https://ollama.com/",
+          "description": "Open-source tool designed to run, manage, and serve open-weight language models locally.",
+          "features": ["Simple setup for running open-weight models.", "Built-in library of optimized model weights.", "Supports local API access."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "vLLM",
+          "url": "https://github.com/vllm-project/vllm",
+          "description": "High-throughput and memory-efficient serving engine for LLMs.",
+          "features": ["PagedAttention algorithm for efficient KV cache management.", "Supports continuous batching and high-concurrency requests."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "llama.cpp",
+          "url": "https://github.com/ggerganov/llama.cpp",
+          "description": "LLM inference implementation in pure C/C++ for high-performance execution on a variety of hardware.",
+          "features": ["Minimal dependencies and high portability across CPUs and GPUs.", "Supports advanced quantization techniques."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "LM Studio",
+          "url": "https://lmstudio.ai/",
+          "description": "Desktop application that allows users to discover, download, and run local LLMs.",
+          "features": ["Graphical interface for model discovery and management.", "Local inference server with OpenAI-compatible API."],
+          "pricing": "Free for personal use."
+        }
+      ]
+    },
+    {
+      "title": "Prompting and prompt ops",
+      "items": [
+        {
+          "name": "Vellum",
+          "url": "https://www.vellum.ai",
+          "description": "Integrated platform combining prompt design, evaluation, and observability for LLM-powered applications.",
+          "features": ["Visual prompt editor with experiment tracking and A/B testing.", "Centralized management of model variants and datasets."],
+          "pricing": "Free tier; paid plans based on usage and team seats."
+        },
+        {
+          "name": "PromptPerfect",
+          "url": "https://promptperfect.jina.ai",
+          "description": "Prompt optimization tool that refines and compresses prompts for efficiency and accuracy across models.",
+          "features": ["Automatic prompt tuning for different LLMs.", "Reduces token count while maintaining quality."],
+          "pricing": "Free tier; subscription plans available."
+        },
+        {
+          "name": "PromptLayer",
+          "url": "https://www.promptlayer.com",
+          "description": "Dedicated prompt management platform designed to version and analyze prompts used in LLM-powered applications.",
+          "features": ["Prompt versioning with diffs and historical comparisons.", "Runtime tracking and analytics via lightweight SDKs."],
+          "pricing": "Free tier with basic functionality."
+        },
+        {
+          "name": "Repo Prompt",
+          "url": "https://repoprompt.com/",
+          "description": "Context engineering tool and MCP-enabled platform for assembling token-efficient prompts from code repositories.",
+          "features": ["Selects and structures relevant files into optimized prompts for LLMs.", "Provides token estimation and context slicing for large codebases."],
+          "pricing": "Free tier available."
+        }
+      ]
+    },
+    {
+      "title": "Retrieval stores and graph layers",
+      "items": [
+        {
+          "name": "Pinecone",
+          "url": "https://www.pinecone.io",
+          "description": "Fully managed vector database service optimized for similarity search.",
+          "features": ["Serverless and fully managed architecture.", "Real-time vector search with metadata filtering."],
+          "pricing": "Usage-based pricing with a free tier."
+        },
+        {
+          "name": "Milvus",
+          "url": "https://milvus.io",
+          "description": "Open-source vector database built for massive embedding and similarity search workloads.",
+          "features": ["Distributed architecture for large-scale deployments.", "GPU acceleration for faster search."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Weaviate",
+          "url": "https://weaviate.io",
+          "description": "Open-source vector database supporting semantic and hybrid search.",
+          "features": ["Hybrid vector and keyword search support.", "Built-in REST and GraphQL APIs for context queries."],
+          "pricing": "Open-source and free to use for self-hosting."
+        },
+        {
+          "name": "Neo4j",
+          "url": "https://neo4j.com",
+          "description": "Native graph database used for graph RAG and multi-hop reasoning over connected data.",
+          "features": ["Cypher query language and native graph storage.", "Integrated vector search for hybrid retrieval."],
+          "pricing": "Free Community Edition and managed cloud tiers."
+        }
+      ]
+    },
+    {
+      "title": "Memory and context management",
+      "items": [
+        {
+          "name": "Mem0",
+          "url": "https://mem0.ai",
+          "description": "Advanced memory layer for LLM agents that enables persistent and structured context across sessions.",
+          "features": ["Multi-level memory including user and session states.", "Smart memory extraction and consolidation."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Letta",
+          "url": "https://docs.letta.com/",
+          "description": "Persistent memory framework enabling LLM agents to manage and update internal state over long conversations.",
+          "features": ["Self-reflective memory for adaptive agent behavior.", "Supports local and remote storage backends."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "LLMLingua",
+          "url": "https://github.com/microsoft/LLMLingua",
+          "description": "Framework for compressing prompts and long inputs to LLMs.",
+          "features": ["Token-level compression of prompts to eliminate non-essential information.", "Optimizes very long contexts for efficiency."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "QwenLong-CPRS",
+          "url": "https://github.com/Tongyi-Zhiwen/QwenLong-CPRS",
+          "description": "Context compression pipeline designed to reduce long inputs while preserving semantic fidelity.",
+          "features": ["Learned compression strategies for long documents.", "Designed to integrate into RAG pipelines."],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {"id":"llms","label":"LLMs","file":"llms.json"},
+  {"id":"agents","label":"AI agents","file":"agents.json"},
+  {"id":"frameworks","label":"AI frameworks","file":"frameworks.json"},
+  {"id":"context","label":"Context & tooling","file":"context-and-tooling.json"},
+  {"id":"workflow","label":"Workflow & connectivity","file":"workflow-connectivity.json"},
+  {"id":"assurance","label":"Assurance & governance","file":"assurance-governance.json"}
+]

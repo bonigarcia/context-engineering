@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Boni Garcia" />
+  <title>Context Engineering | AI ecosystem</title>
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="ecosystem-page">
+<body>
+<nav class="navbar">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="ai-ecosystem.html">AI ecosystem</a>
+        <a href="context-aware-prompt-builder.html">Prompt builder</a>
+        <a href="sdlc_prompt_library.html">SDLC library</a>
+        <a href="references.html">Further reading</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="docs-container ecosystem-shell">
+    <section class="page-hero">
+      <h1>AI ecosystem</h1>
+      <p class="page-intro">
+        A curated snapshot of AI models, tools, platforms, frameworks, etc.
+      </p>
+    </section>
+
+    <section class="ecosystem-toolbar" aria-label="Search and section navigation">
+      <div class="ecosystem-toolbar-top">
+        <label class="field ecosystem-search">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search models, tools, features, licenses, or pricing" />
+        </label>
+        <p id="resultsSummary" class="resources-summary">Loading ecosystem data...</p>
+      </div>
+      <div id="sectionNav" class="section-nav" aria-label="AI ecosystem sections"></div>
+    </section>
+
+    <section id="sectionGrid" class="ecosystem-sections"></section>
+
+    <div id="emptyState" class="ecosystem-empty" hidden>
+      <h2>No matching items</h2>
+      <p>Try a different search term or clear the search box.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/ai-ecosystem-page.mjs"></script>
+</body>
+</html>

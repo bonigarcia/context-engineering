@@ -214,6 +214,78 @@ input:focus, select:focus, textarea:focus {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+/* AI ecosystem page */
+.ecosystem-page { margin: 0; }
+.ecosystem-shell { display: grid; gap: 24px; }
+.ecosystem-toolbar {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 16px;
+}
+.ecosystem-toolbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ecosystem-search { max-width: 560px; flex: 1 1 320px; }
+.section-nav { display: flex; flex-wrap: wrap; gap: 10px; }
+.section-chip {
+  border: 1px solid #dbe3f4;
+  background: #f8fbff;
+  color: #12325f;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+.section-chip:hover { background: #edf4ff; }
+.ecosystem-sections { display: grid; gap: 24px; }
+.ecosystem-section {
+  padding: 24px;
+}
+.ecosystem-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: start;
+  margin-bottom: 16px;
+}
+.ecosystem-section-header h2 { margin-bottom: 6px; }
+.ecosystem-section-intro { margin: 0; color: var(--muted); max-width: 820px; }
+.ecosystem-group { margin-top: 20px; }
+.ecosystem-group-title { margin-bottom: 12px; font-size: 1rem; color: #1f3a8a; }
+.ecosystem-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.ecosystem-card {
+  padding: 18px;
+  border: 1px solid #dce5f4;
+  border-radius: 12px;
+  background: #f9fbff;
+}
+.ecosystem-card h4 { margin-bottom: 8px; }
+.ecosystem-card p { margin: 0; }
+.ecosystem-card .resource-link,
+.ecosystem-card .ecosystem-card-link { color: #1f3a8a; font-weight: 700; }
+.ecosystem-description { margin-top: 10px !important; color: var(--text); }
+.ecosystem-feature-list { margin: 12px 0 0 18px; color: var(--text); }
+.ecosystem-meta { margin-top: 12px; display: grid; gap: 10px; }
+.ecosystem-meta-row { font-size: 13px; }
+.ecosystem-meta-label { display: block; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+.ecosystem-empty {
+  padding: 24px;
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: #fff;
+}
+
 /* Specific to references.html (keeping existing logic but updating variables) */
 .resources-page { margin:0; }
 .page-hero { margin-bottom:24px; }
@@ -245,6 +317,7 @@ input:focus, select:focus, textarea:focus {
   .resources-toolbar { grid-template-columns:1fr; }
   .nav-container { justify-content: center; }
   .nav-links { width: 100%; justify-content: center; }
+  .ecosystem-toolbar-top { align-items: stretch; }
 }
 
 /* Utilities */

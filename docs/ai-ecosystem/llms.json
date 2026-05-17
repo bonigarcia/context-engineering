@@ -1,0 +1,106 @@
+{
+  "title": "LLMs",
+  "intro": "Foundational model families grouped by licensing and accessibility. The appendix treats this as a curated snapshot rather than an exhaustive catalog.",
+  "groups": [
+    {
+      "title": "Proprietary models",
+      "items": [
+        {
+          "name": "GPT series",
+          "url": "https://www.openai.com/",
+          "description": "A series of powerful and widely used LLMs from OpenAI.",
+          "features": [
+            "State-of-the-art performance across a wide range of natural language tasks.",
+            "Strong reasoning, coding, and creative text generation capabilities."
+          ],
+          "models": "GPT-4, GPT-4o, GPT-5, o1, o3, and various fine-tuned versions.",
+          "license": "Proprietary, accessible via a paid API."
+        },
+        {
+          "name": "Claude series",
+          "url": "https://www.anthropic.com/",
+          "description": "A family of conversational AI models from Anthropic focused on safety and helpful responses.",
+          "features": [
+            "Large context windows for processing and analyzing long documents.",
+            "Strong performance in conversational and text-processing tasks.",
+            "Emphasis on constitutional AI and safety."
+          ],
+          "models": "Claude 2, 3 (Haiku, Sonnet, Opus), 3.5, and 4.",
+          "license": "Proprietary, accessible via a paid API."
+        },
+        {
+          "name": "Gemini series",
+          "url": "https://deepmind.google/models/gemini/",
+          "description": "A family of multimodal LLMs developed by Google DeepMind.",
+          "features": [
+            "Native multimodal capabilities across text, images, audio, video, and code.",
+            "Advanced reasoning and coding abilities.",
+            "Substantial context windows reaching up to 1 million tokens in Gemini 1.5 models."
+          ],
+          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano across 1.0, 1.5, and 2.0 generations.",
+          "license": "Proprietary."
+        }
+      ]
+    },
+    {
+      "title": "Open-source models",
+      "items": [
+        {
+          "name": "Gemma",
+          "url": "https://deepmind.google/models/gemma/",
+          "description": "A family of lightweight, state-of-the-art open models from Google.",
+          "features": [
+            "High performance and efficiency.",
+            "Strong focus on responsible AI development."
+          ],
+          "models": "Gemma 2B, 9B, and 27B.",
+          "license": "Gemma license."
+        },
+        {
+          "name": "Llama",
+          "url": "https://ai.meta.com/llama/",
+          "description": "A family of open-weight LLMs from Meta.",
+          "features": [
+            "Llama 4 introduces a mixture-of-experts architecture and multimodal support.",
+            "Very long context windows, including up to 10 million tokens in Llama 4 Scout."
+          ],
+          "models": "Llama 3 (8B, 70B) and Llama 4 (Scout, Maverick, Behemoth).",
+          "license": "Meta Llama Community License Agreement."
+        },
+        {
+          "name": "DeepSeek",
+          "url": "https://www.deepseek.com/",
+          "description": "High-performance, cost-efficient LLMs with a strong focus on coding and reasoning.",
+          "features": [
+            "Advanced reasoning and efficient hardware utilization.",
+            "Open-weight models that can be run locally."
+          ],
+          "models": "DeepSeek-V3, DeepSeek-R1, DeepSeek-VL2, DeepSeek-Coder, and DeepSeek-Math.",
+          "license": "Model-specific DeepSeek license."
+        },
+        {
+          "name": "Mistral AI",
+          "url": "https://mistral.ai",
+          "description": "AI startup that develops a range of open-weight and proprietary models.",
+          "features": [
+            "Some models are released under Apache 2.0 or other specific licenses.",
+            "Proprietary models are accessible via a paid API."
+          ],
+          "models": "Mistral 7B, Mistral 8x7B, Mistral Small, Mistral Medium, and Mistral Large.",
+          "license": "Mixed licenses."
+        },
+        {
+          "name": "Qwen",
+          "url": "https://qwen.ai/",
+          "description": "A comprehensive family of LLMs from Alibaba Cloud.",
+          "features": [
+            "Many models are released under Apache 2.0.",
+            "Advanced models remain proprietary."
+          ],
+          "models": "Qwen series (1, 1.5, 2, 2.5, 3) with specialized variants.",
+          "license": "Mixed Apache 2.0 and proprietary licenses."
+        }
+      ]
+    }
+  ]
+}

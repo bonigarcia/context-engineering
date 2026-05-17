@@ -1,0 +1,131 @@
+{
+  "title": "Workflow & connectivity",
+  "intro": "Tooling that connects models to files, repositories, applications, and multi-step workflows.",
+  "groups": [
+    {
+      "title": "MCP servers",
+      "items": [
+        {
+          "name": "Filesystem MCP Server",
+          "url": "https://github.com/modelcontextprotocol/servers/",
+          "description": "MCP server providing controlled access to the local file system.",
+          "features": ["Structured access to directories and files.", "Explicit scoping and permission boundaries."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Git MCP Server",
+          "url": "https://github.com/modelcontextprotocol/servers/",
+          "description": "MCP server that exposes Git repositories as a queryable context for AI agents.",
+          "features": ["Access to repository files and version history.", "Supports diff inspection and code navigation."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Sequential Thinking",
+          "url": "https://github.com/modelcontextprotocol/servers/",
+          "description": "MCP server that provides structured step-by-step reasoning tools for AI agents.",
+          "features": ["Explicit reasoning and planning support.", "Enables traceable intermediate steps."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Slack MCP Server",
+          "url": "https://github.com/modelcontextprotocol/servers/",
+          "description": "MCP server that connects Slack workspaces to AI agents.",
+          "features": ["Retrieval of messages and channel history.", "Supports integration with collaboration systems."],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Orchestration",
+      "items": [
+        {
+          "name": "LangGraph",
+          "url": "https://www.langchain.com/langgraph",
+          "description": "Graph-based orchestration framework for building stateful LLM applications.",
+          "features": ["Directed graphs for modeling agent and tool interactions.", "Persistent state management across steps."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "n8n",
+          "url": "https://n8n.io",
+          "description": "Open-source workflow automation platform enabling visual orchestration of AI components.",
+          "features": ["Visual node-based workflow editor.", "Self-hosted or managed deployment options."],
+          "pricing": "Open-source and free to use for self-hosting."
+        },
+        {
+          "name": "Apache Airflow",
+          "url": "https://airflow.apache.org",
+          "description": "General-purpose workflow orchestration platform used to schedule and manage AI pipelines.",
+          "features": ["DAG-based scheduling and dependency management.", "Strong observability and retry semantics."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Temporal",
+          "url": "https://temporal.io",
+          "description": "Durable execution engine for long-running workflows used to orchestrate reliable AI-driven processes.",
+          "features": ["Fault-tolerant and stateful workflow execution.", "Handling of retries, timeouts, and failures."],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "AI gateways and proxies",
+      "items": [
+        {
+          "name": "LiteLLM",
+          "url": "https://github.com/BerriAI/litellm",
+          "description": "Unified SDK and proxy server that provides a consistent interface to interact with many LLM providers.",
+          "features": ["Single API to access multiple LLM providers.", "Built-in proxy server for routing and cost tracking."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Portkey",
+          "url": "https://portkey.ai/",
+          "description": "Control plane for AI applications that provides a unified API to connect with multiple LLMs.",
+          "features": ["Semantic caching, retries, and fallbacks.", "Observability and tracking of tokens and cost across providers."],
+          "pricing": "Free tier available for developers."
+        },
+        {
+          "name": "Martian",
+          "url": "https://withmartian.com/",
+          "description": "Dynamic router that automatically sends prompts to the best model based on cost and performance.",
+          "features": ["Model-agnostic routing to optimize for quality or cost.", "Continuous evaluation of model performance across tasks."],
+          "pricing": "Usage-based pricing based on routed requests."
+        }
+      ]
+    },
+    {
+      "title": "Context management",
+      "items": [
+        {
+          "name": "MineContext",
+          "url": "https://github.com/volcengine/MineContext",
+          "description": "Framework for managing long-term and evolving context in LLM-based systems.",
+          "features": ["Persistent storage of contextual information beyond the prompt.", "Relevance-based selection of context for reinjection."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "GSD (Get Shit Done)",
+          "url": "https://github.com/gsd-build/get-shit-done",
+          "description": "Meta-prompting and context engineering system designed for spec-driven development.",
+          "features": ["Structured planning and execution phases.", "Multi-agent orchestration with isolated context windows."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Pixeltable",
+          "url": "https://github.com/pixeltable/pixeltable",
+          "description": "Data infrastructure for AI applications that unifies tabular data and embeddings.",
+          "features": ["Combines structured data and vector embeddings in one storage layer.", "Supports versioning and reproducible data pipelines."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Acontext",
+          "url": "https://github.com/memodb-io/Acontext",
+          "description": "Context storage and retrieval framework focused on long-term memory for AI agents.",
+          "features": ["Explicit write and read APIs for persistent context.", "Structured storage with metadata for selective recall."],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "title": "Assurance & governance",
+  "intro": "Benchmarks, testing, observability, governance, and spec-driven development tools that make AI systems reliable and auditable.",
+  "groups": [
+    {
+      "title": "Benchmarks",
+      "items": [
+        {
+          "name": "MMLU",
+          "url": "https://huggingface.co/datasets/cais/mmlu",
+          "description": "General-purpose benchmark designed to assess language understanding and reasoning across academic domains.",
+          "features": ["Multiple-choice questions spanning diverse subject areas.", "Commonly used to compare general reasoning capabilities."],
+          "typicalUsage": "Baseline comparison of general model capability."
+        },
+        {
+          "name": "HELM",
+          "url": "https://github.com/stanford-crfm/helm",
+          "description": "Benchmark suite developed to evaluate language models across multiple dimensions, including accuracy and robustness.",
+          "features": ["Multi-metric evaluation beyond raw accuracy.", "Emphasis on transparency and methodology."],
+          "typicalUsage": "Comparative analysis of trade-offs between models."
+        },
+        {
+          "name": "LongBench",
+          "url": "https://github.com/THUDM/LongBench",
+          "description": "Benchmark designed to evaluate model performance on tasks requiring long-context understanding.",
+          "features": ["Tasks that stress context length and information retention.", "Highlights degradation patterns as context grows."],
+          "typicalUsage": "Assessing long-context reasoning behavior."
+        },
+        {
+          "name": "RAGBench",
+          "url": "https://huggingface.co/datasets/galileo-ai/ragbench",
+          "description": "Benchmark focused on evaluating RAG systems as combined pipelines.",
+          "features": ["Joint evaluation of retrieval and generation quality.", "Metrics related to grounding and answer relevance."],
+          "typicalUsage": "Comparative analysis of RAG pipeline designs."
+        }
+      ]
+    },
+    {
+      "title": "Evaluation and testing",
+      "items": [
+        {
+          "name": "Ragas",
+          "url": "https://docs.ragas.io/",
+          "description": "Open-source framework designed to evaluate Retrieval-Augmented Generation pipelines.",
+          "features": ["Metrics including faithfulness, answer relevance, and context recall.", "Supports synthetic test data generation."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "DeepEval",
+          "url": "https://github.com/confident-ai/deepeval",
+          "description": "Open-source evaluation framework for LLMs with a variety of metrics and testing workflows.",
+          "features": ["Unit testing LLM outputs with built-in metrics.", "Integrated dashboard for tracking evaluation results."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Arize Phoenix",
+          "url": "https://phoenix.arize.com/",
+          "description": "Open-source tool for LLM observability and evaluation that focuses on troubleshooting and improvement.",
+          "features": ["Visualizes embeddings to identify clusters of poor performance.", "Automated evaluation of retrieval and generation quality."],
+          "pricing": "Open-source and free to use for self-hosting."
+        }
+      ]
+    },
+    {
+      "title": "Observability",
+      "items": [
+        {
+          "name": "Langfuse",
+          "url": "https://langfuse.com",
+          "description": "Open-source observability platform designed for LLM applications.",
+          "features": ["End-to-end tracing of LLM requests and tool calls.", "Prompt and context inspection with version awareness."],
+          "pricing": "Open-source and free to use for self-hosting."
+        },
+        {
+          "name": "Traceloop OpenLLMetry",
+          "url": "https://www.traceloop.com/openllmetry",
+          "description": "Open-source instrumentation framework that brings LLM observability into the OpenTelemetry ecosystem.",
+          "features": ["Standardized tracing of LLM calls and prompts.", "Compatibility with OpenTelemetry collectors."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "LangSmith",
+          "url": "https://www.langchain.com/langsmith",
+          "description": "Observability and debugging platform integrated with the LangChain ecosystem.",
+          "features": ["Execution traces for chains, agents, and graphs.", "Dataset-based comparisons and regression analysis."],
+          "pricing": "Free tier for developers."
+        },
+        {
+          "name": "MLflow",
+          "url": "https://www.mlflow.org/",
+          "description": "Open-source platform for managing the AI lifecycle, including experiment tracking and model management.",
+          "features": ["Experiment tracking for logging parameters and metrics.", "Model packaging and registry for versioning."],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Governance",
+      "items": [
+        {
+          "name": "Microsoft Presidio",
+          "url": "https://microsoft.github.io/presidio/",
+          "description": "Toolkit for detecting and anonymizing sensitive information in text and images.",
+          "features": ["PII detection and redaction.", "Extensible recognizers."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "OpenAI Moderation",
+          "url": "https://developers.openai.com/api/docs/guides/moderation/",
+          "description": "API-based content moderation service for detecting policy-violating inputs and outputs.",
+          "features": ["Classification of content across safety categories.", "Real-time moderation of prompts and model responses."],
+          "pricing": "Usage-based pricing as part of OpenAI API services."
+        },
+        {
+          "name": "Guardrails AI",
+          "url": "https://github.com/guardrails-ai/guardrails",
+          "description": "Framework for enforcing structural and safety constraints on LLM inputs and outputs.",
+          "features": ["Output validation using schemas and guardrail definitions.", "Support for automated correction loops."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Weights & Biases",
+          "url": "https://wandb.ai/",
+          "description": "Experiment tracking and observability platform for AI systems.",
+          "features": ["Tracking of runs and artifacts.", "Model and dataset versioning."],
+          "pricing": "Free tier available."
+        }
+      ]
+    },
+    {
+      "title": "Specification-driven development",
+      "items": [
+        {
+          "name": "Spec Kit",
+          "url": "https://github.com/github/spec-kit",
+          "description": "Open-source CLI toolkit that structures software development around specifications.",
+          "features": ["Four-phase workflow including specification and implementation.", "Agent-agnostic design compatible with multiple coding agents."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "OpenSpec",
+          "url": "https://github.com/Fission-AI/OpenSpec",
+          "description": "Open-source framework that implements spec-driven development as a structured workflow.",
+          "features": ["End-to-end workflow from proposal to implementation.", "Native integration with multiple AI agents."],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Kiro",
+          "url": "https://kiro.dev/",
+          "description": "IDE built around spec-driven development that combines coding and planning within a unified environment.",
+          "features": ["Built-in support for specification-first workflows.", "Integrated agent execution and automation capabilities."],
+          "pricing": "Free tier available."
+        },
+        {
+          "name": "Tessl",
+          "url": "https://tessl.io/",
+          "description": "Platform for building software systems where specifications are the primary artifact.",
+          "features": ["Treats specifications as executable artifacts that drive implementation.", "AI-assisted code generation aligned with defined specifications."],
+          "pricing": "Commercial platform."
+        }
+      ]
+    }
+  ]
+}

@@ -66,13 +66,25 @@ This chapter focuses on extending the capabilities of AI agents through tools:
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
 
-### 1. Context-aware Prompt Builder
+### 1. AI Ecosystem
+
+🔗 https://bonigarcia.dev/context-engineering/ai-ecosystem.html
+
+Curated collection of the AI ecosystem:
+
+- Browse model families, agents, frameworks, and tooling in one place
+- Search across the appendix snapshot by name, feature, license, or pricing
+
+This page is a companion index for the Appendix A and is designed to stay easy to maintain as the ecosystem changes.
+
+---
+
+### 2. Context-Aware Prompt Builder
 
 🔗 https://bonigarcia.dev/context-engineering/context-aware-prompt-builder.html
 
-Design, compare, and reuse structured prompts across multiple frameworks and AI models.
+Design, compare, and reuse structured prompts across multiple frameworks and AI models:
 
-Key capabilities:
 - Build prompts using established frameworks (10-step, COSTAR, CRISPE, RTF, etc.)
 - Switch frameworks dynamically while preserving intent
 - Import/export prompts as JSON
@@ -83,22 +95,12 @@ This tool is especially useful for creating and iterating on prompts in a struct
 
 ---
 
-### 2. SDLC Prompt Library
+### 3. SDLC Prompt Library
 
 🔗 https://bonigarcia.dev/context-engineering/sdlc_prompt_library.html
 
-Browse a curated library of prompts organized around the software development lifecycle (SDLC).
+Browse a curated library of prompts organized around the software development lifecycle (SDLC), including roles for architect, developer, debugger, reviewer, refactorer, tester, and documenter:
 
-Included roles:
-- Architect
-- Developer
-- Debugger
-- Reviewer
-- Refactorer
-- Tester
-- Documenter
-
-Key capabilities:
 - Explore prompts visually using a card-based interface
 - Filter by framework (10-step, COSTAR, CRISPE, RTF)
 - Inspect full structured prompts for each role
@@ -108,13 +110,12 @@ This tool is designed as a reference library, helping you understand how structu
 
 ---
 
-### 3. Further reading
+### 4. Further Reading
 
 🔗 https://bonigarcia.dev/context-engineering/references.html
 
-Curated, searchable catalog of articles, books, repositories, tutorials, and other references related to context engineering, prompting, agents, and AI engineering.
+Curated, searchable catalog of articles, books, repositories, tutorials, and other references related to context engineering, prompting, agents, and AI engineering:
 
-Included categories:
 - Context engineering
 - AI agents
 - Machine learning
