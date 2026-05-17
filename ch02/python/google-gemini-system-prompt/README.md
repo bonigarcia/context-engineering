@@ -4,7 +4,7 @@ This example demonstrates how to set up a [Google Gemini](https://ai.google.dev/
 
 ## Requirements
 
-* [Python](https://www.python.org/) 3.6+
+* [Python](https://www.python.org/) 3.12+
 * A [Google API key](https://aistudio.google.com/app/apikey)
 
 ## Steps for running this example in the shell

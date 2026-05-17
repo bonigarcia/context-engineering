@@ -4,7 +4,7 @@ This example demonstrates how to set up an [Anthropic](https://anthropic.com/) C
 
 ## Requirements
 
-* [Python](https://www.python.org/) 3.6+
+* [Python](https://www.python.org/) 3.12+
 * An [Anthropic API key](https://console.anthropic.com/settings/keys)
 
 ## Steps for running this example in the shell

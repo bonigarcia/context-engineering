@@ -4,7 +4,7 @@ This folder contains Python examples for interacting with OpenAI, Anthropic, and
 
 ## Requirements
 
-- [Python](https://www.python.org/) 3.6+
+- [Python](https://www.python.org/) 3.12+
 - Corresponding API keys are set as environment variables (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, and `GOOGLE_API_KEY`) 
 
 ## Examples

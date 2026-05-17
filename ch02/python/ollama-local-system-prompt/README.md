@@ -4,7 +4,7 @@ This example demonstrates how to set up an [Ollama](https://ollama.com/) model a
 
 ## Requirements
 
-* [Python](https://www.python.org/) 3.6+
+* [Python](https://www.python.org/) 3.12+
 * [Ollama](https://ollama.com/) running locally
 
 ## Steps for running this example in the shell

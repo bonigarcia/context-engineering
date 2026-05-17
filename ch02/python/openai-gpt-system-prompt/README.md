@@ -4,7 +4,7 @@ This example demonstrates how to set up an [OpenAI](https://openai.com/) GPT mod
 
 ## Requirements
 
-* [Python](https://www.python.org/) 3.6+
+* [Python](https://www.python.org/) 3.12+
 * An [OpenAI API key](https://platform.openai.com/api-keys)
 
 ## Steps for running this example in the shell
