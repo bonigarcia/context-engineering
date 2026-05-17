@@ -22,7 +22,7 @@ from agno.os import AgentOS
 vector_db = Qdrant(
     collection="my-vector-db",
     url="http://localhost:6333",
-    embedder=OllamaEmbedder(),
+    embedder=OllamaEmbedder(id="nomic-embed-text"),
 )
 
 knowledge_base = Knowledge(

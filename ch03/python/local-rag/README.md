@@ -3,7 +3,7 @@
 This sample application implements a local RAG system using the following stack:
 
 - LLM: [Llama 3.2 1B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
-- Embedding model: [OpenHermes](https://ollama.com/library/openhermes) (embedder for OllamaEmbedder)
+- Embedding model: [Nomic Embed Text](https://ollama.com/library/nomic-embed-text) (embedder for OllamaEmbedder)
 - Vector database: [Qdrant](https://qdrant.tech/)
 - Agent framework: [Agno](https://github.com/agno-agi/agno)
 
@@ -18,10 +18,10 @@ To run this example, you need the following:
 
 ### Steps for running this example
 
-1. Pull Llama 3.2 1B and OpenHermes with Ollama:
+1. Pull Llama 3.2 1B and Nomic Embed Text with Ollama:
 ```bash
 ollama pull llama3.2:1b
-ollama pull openhermes
+ollama pull nomic-embed-text
 ```
 
 2. Pull and install Qdrant with Docker:
