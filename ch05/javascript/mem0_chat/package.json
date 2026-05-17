@@ -1,0 +1,14 @@
+{
+  "name": "mem0-chat",
+  "version": "1.0.0",
+  "description": "Chapter 5 Mem0 memory-backed chat demo",
+  "type": "module",
+  "main": "mem0_chat.js",
+  "scripts": {
+    "start": "node mem0_chat.js"
+  },
+  "dependencies": {
+    "mem0ai": "^3.0.0",
+    "openai": "^6.38.0"
+  }
+}

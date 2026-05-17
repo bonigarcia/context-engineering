@@ -1,0 +1,13 @@
+{
+  "name": "workflow-state-handoff",
+  "version": "1.0.0",
+  "description": "Chapter 5 workflow state handoff demo",
+  "type": "module",
+  "main": "workflow_state_handoff.js",
+  "scripts": {
+    "start": "node workflow_state_handoff.js"
+  },
+  "dependencies": {
+    "openai": "^6.38.0"
+  }
+}

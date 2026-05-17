@@ -1,0 +1,13 @@
+{
+  "name": "session-state-chat",
+  "version": "1.0.0",
+  "description": "Chapter 5 session state demo",
+  "type": "module",
+  "main": "session_state_chat.js",
+  "scripts": {
+    "start": "node session_state_chat.js"
+  },
+  "dependencies": {
+    "openai": "^6.38.0"
+  }
+}
