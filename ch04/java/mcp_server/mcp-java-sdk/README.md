@@ -4,7 +4,7 @@ This folder contains a Java implementation of a basic [Model Context Protocol (M
 
 - `open_browser`: Launches a new browser instance (e.g., Chrome, Firefox).
 - `navigate_url`: Navigates the open browser to a specified URL.
-- `read_browser_text`: Retrieves the visible text content of the current page.
+- `get_browser_text`: Retrieves the visible text content of the current page.
 - `close_browser`: Closes the current browser instance.
 
 ## Prerequisites

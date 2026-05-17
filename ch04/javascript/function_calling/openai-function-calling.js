@@ -14,8 +14,18 @@ import OpenAI from 'openai';
 
 const client = new OpenAI();
 
-function getCurrentTime(args) {
-    return now.toLocaleString('en-GB', { hour12: false }).replace(',', '');
+function formatCurrentTime(date, format) {
+    if (format === '%Y-%m-%d %H:%M:%S') {
+        const pad = (value) => String(value).padStart(2, '0');
+        return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} `
+            + `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+    }
+
+    return date.toLocaleString('en-GB', { hour12: false }).replace(',', '');
+}
+
+function getCurrentTime({ format } = {}) {
+    return formatCurrentTime(new Date(), format);
 }
 
 const TOOLS = [{
@@ -27,7 +37,7 @@ const TOOLS = [{
         "properties": {
             "format": {
                 "type": "string",
-                "description": "JavaScript date format (optional)."
+                "description": "Optional date format string."
             }
         },
         "required": []
@@ -43,6 +53,7 @@ async function queryModel(prompt, model = "gpt-4o-mini") {
         model: model,
         input: prompt,
         tools: TOOLS,
+        tool_choice: "required",
     });
 
     while (true) {

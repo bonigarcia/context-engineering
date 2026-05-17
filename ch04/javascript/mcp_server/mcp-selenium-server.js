@@ -32,13 +32,21 @@ server.registerTool(
     },
     async ({ browser_name }) => {
         if (driver) {
-            return { error: 'Browser is already open.' };
+            return {
+                content: [{ type: 'text', text: 'Browser is already open.' }],
+                isError: true,
+            };
         }
         try {
             driver = await new Builder().forBrowser(browser_name).build();
-            return { success: `Browser "${browser_name}" started successfully.` };
+            return {
+                content: [{ type: 'text', text: `Browser "${browser_name}" started successfully.` }],
+            };
         } catch (error) {
-            return { error: `Failed to open browser: ${error.message}` };
+            return {
+                content: [{ type: 'text', text: `Failed to open browser: ${error.message}` }],
+                isError: true,
+            };
         }
     },
 );
@@ -53,13 +61,21 @@ server.registerTool(
     },
     async ({ url }) => {
         if (!driver) {
-            return { error: 'Browser is not open.' };
+            return {
+                content: [{ type: 'text', text: 'Browser is not open.' }],
+                isError: true,
+            };
         }
         try {
             await driver.get(url);
-            return { success: `Navigated to ${url}` };
+            return {
+                content: [{ type: 'text', text: `Navigated to ${url}` }],
+            };
         } catch (error) {
-            return { error: `Failed to navigate to ${url}: ${error.message}` };
+            return {
+                content: [{ type: 'text', text: `Failed to navigate to ${url}: ${error.message}` }],
+                isError: true,
+            };
         }
     },
 );
@@ -72,14 +88,20 @@ server.registerTool(
     },
     async () => {
         if (!driver) {
-            return { error: 'Browser is not open.' };
+            return {
+                content: [{ type: 'text', text: 'Browser is not open.' }],
+                isError: true,
+            };
         }
         try {
             const body = await driver.findElement(By.css('body'));
             const text = await body.getText();
             return { content: [{ type: 'text', text }] };
         } catch (error) {
-            return { error: `Failed to read browser text: ${error.message}` };
+            return {
+                content: [{ type: 'text', text: `Failed to read browser text: ${error.message}` }],
+                isError: true,
+            };
         }
     },
 );
@@ -92,14 +114,22 @@ server.registerTool(
     },
     async () => {
         if (!driver) {
-            return { error: 'Browser is not open.' };
+            return {
+                content: [{ type: 'text', text: 'Browser is not open.' }],
+                isError: true,
+            };
         }
         try {
             await driver.quit();
             driver = null;
-            return { success: 'Browser closed.' };
+            return {
+                content: [{ type: 'text', text: 'Browser closed.' }],
+            };
         } catch (error) {
-            return { error: `Failed to close browser: ${error.message}` };
+            return {
+                content: [{ type: 'text', text: `Failed to close browser: ${error.message}` }],
+                isError: true,
+            };
         }
     },
 );

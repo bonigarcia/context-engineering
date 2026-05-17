@@ -26,7 +26,7 @@ npm start
 
 ## Output
 
-When you run the script, it will send a fixed user prompt (`What time is it right now?`) to a GPT model (`gpt-4o-mini`). The model will determine that it needs to call the `get_current_time` function to answer the question, and it will do so with the specified format. The application will execute the function, get the current time, and inject it back into the conversation as a `tool` message. Finally, the model will produce a user-facing answer grounded in the tool result.
+When you run the script, it will send a fixed user prompt (`What time is it right now?`) to a GPT model (`gpt-4o-mini`). The model will determine that it needs to call the `get_current_time` function to answer the question, and it will do so with the specified format. The application will execute the function, get the current time, and inject it back into the conversation as a `function_call_output` item. Finally, the model will produce a user-facing answer grounded in the tool result.
 
 ```
 User: What time is it right now?
