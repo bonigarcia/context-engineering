@@ -62,6 +62,15 @@ This chapter focuses on extending the capabilities of AI agents through tools:
 - Command-Line Interface (CLI): [workspace-analyzer](./ch04/agent-skills/workspace-analyzer)
 - Model Context Protocol (MCP) server: [Python](./ch04/python/mcp_server) · [JavaScript](./ch04/javascript/mcp_server) · [Java](./ch04/java/mcp_server)
 
+#### Chapter 5. Memory and state in agentic systems
+This chapter explores how to maintain information across interactions using memory and state:
+- Session memory: [Python](./ch05/python/session_memory_chat)
+- Long-term memory (Mem0): [Python](./ch05/python/mem0_chat) · [JavaScript](./ch05/javascript/mem0_chat) · [Java](./ch05/java/src/main/java/io/github/bonigarcia/ce/Mem0Chat.java)
+- Long-term memory (Cognee): [Python](./ch05/python/cognee_memory)
+- Memory coach: [Python](./ch05/python/memory_coach)
+- Session state: [Python](./ch05/python/session_state_chat) · [JavaScript](./ch05/javascript/session_state_chat) · [Java](./ch05/java/src/main/java/io/github/bonigarcia/ce/SessionStateChat.java)
+- Workflow state: [Python](./ch05/python/workflow_state_handoff) · [JavaScript](./ch05/javascript/workflow_state_handoff) · [Java](./ch05/java/src/main/java/io/github/bonigarcia/ce/WorkflowStateHandoff.java)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
