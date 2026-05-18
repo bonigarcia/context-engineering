@@ -19,8 +19,8 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 5. Memory and state in agentic systems
 6. User prompts for LLMs
 7. Context management and orchestration
-8. Evaluation and observability
-9. Governance and operations
+8. Evaluation and observability: the feedback harness
+9. Governance and operations: the control harness
 10. AI frameworks for context engineering
 11. Context engineering for software development
 12. State of the art on context engineering  
