@@ -91,7 +91,6 @@ def request_json(client: OpenAI, model: str, instructions: str, prompt: str) -> 
             {"role": "system", "content": instructions},
             {"role": "user", "content": prompt},
         ],
-        temperature=0.2,
         response_format={"type": "json_object"},
     )
     raw = response.choices[0].message.content or "{}"

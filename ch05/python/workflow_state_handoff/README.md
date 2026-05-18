@@ -13,8 +13,9 @@ It uses:
 - Python 3.10+
 - An OpenAI API key (`OPENAI_API_KEY`)
 
-## Install
+## Steps for running this example in the shell
 
+1.  Install dependencies:
 ```bash
 python -m venv .venv
 
@@ -30,8 +31,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Run
-
+2. Run the script
 ```bash
 python workflow_state_handoff.py --model gpt-5
 ```

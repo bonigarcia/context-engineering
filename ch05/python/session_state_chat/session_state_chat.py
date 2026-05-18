@@ -168,8 +168,7 @@ def main() -> int:
         system_prompt = build_system_prompt(state)
         response = client.chat.completions.create(
             model=args.model,
-            messages=[{"role": "system", "content": system_prompt}] + transcript,
-            temperature=0.2,
+            messages=[{"role": "system", "content": system_prompt}] + transcript
         )
         assistant_text = response.choices[0].message.content or ""
         transcript.append({"role": "assistant", "content": assistant_text})
