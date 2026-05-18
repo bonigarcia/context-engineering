@@ -72,9 +72,9 @@ This chapter explores how to maintain information across interactions using memo
 - Workflow state: [Python](./ch05/python/workflow_state_handoff) · [JavaScript](./ch05/javascript/workflow_state_handoff) · [Java](./ch05/java/src/main/java/io/github/bonigarcia/ce/WorkflowStateHandoff.java)
 
 #### Chapter 6. User prompts for LLMs
-This chapter focuses on the design and optimization of user prompts, including techniques like few-shot prompting and prompt chaining:
-- Few-shot prompting (Ticket normalizer): [Python](./ch06/python/few-shot-ticket-normalizer) · [Jupyter](./ch06/jupyter/few-shot-ticket-normalizer.ipynb) · [JavaScript](./ch06/javascript/few-shot-ticket-normalizer) · [Java](./ch06/java/src/main/java/io/github/bonigarcia/ce/FewShotTicketNormalizer.java)
-- Prompt chaining (Support reply): [Python](./ch06/python/prompt-chaining-support-reply) · [Jupyter](./ch06/jupyter/prompt-chaining-support-reply.ipynb) · [JavaScript](./ch06/javascript/prompt-chaining-support-reply) · [Java](./ch06/java/src/main/java/io/github/bonigarcia/ce/PromptChainingSupportReply.java)
+This chapter focuses on the design and optimization of user prompts, including techniques like few-shot prompting, prompt chaining, Chain-of-Thought, or ReAct:
+- Few-shot prompting: [Python](./ch06/python/few-shot-ticket-normalizer) · [Jupyter](./ch06/jupyter/few-shot-ticket-normalizer.ipynb) · [JavaScript](./ch06/javascript/few-shot-ticket-normalizer) · [Java](./ch06/java/src/main/java/io/github/bonigarcia/ce/FewShotTicketNormalizer.java)
+- Prompt chaining: [Python](./ch06/python/prompt-chaining-support-reply) · [Jupyter](./ch06/jupyter/prompt-chaining-support-reply.ipynb) · [JavaScript](./ch06/javascript/prompt-chaining-support-reply) · [Java](./ch06/java/src/main/java/io/github/bonigarcia/ce/PromptChainingSupportReply.java)
 - Chain-of-Thought vs ReAct (DSPy): [Python](./ch06/python/dspy-cot-vs-react) · [Jupyter](./ch06/jupyter/dspy_cot_vs_react.ipynb)
 
 ## Online resources
