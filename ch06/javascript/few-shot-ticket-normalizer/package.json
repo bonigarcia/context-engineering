@@ -1,0 +1,13 @@
+{
+  "name": "few-shot-ticket-normalizer",
+  "version": "1.0.0",
+  "description": "Few-shot ticket normalizer",
+  "main": "few-shot-ticket-normalizer.js",
+  "type": "module",
+  "scripts": {
+    "start": "node few-shot-ticket-normalizer.js"
+  },
+  "dependencies": {
+    "openai": "^6.38.0"
+  }
+}

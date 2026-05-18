@@ -20,7 +20,6 @@ from typing import Dict, List
 
 from openai import OpenAI
 
-
 DEFAULT_MODEL = os.getenv("MODEL", "gpt-4o-mini")
 
 

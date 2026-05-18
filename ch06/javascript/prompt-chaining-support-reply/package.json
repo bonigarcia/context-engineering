@@ -1,0 +1,13 @@
+{
+  "name": "prompt-chaining-support-reply",
+  "version": "1.0.0",
+  "description": "Prompt chaining support reply",
+  "main": "prompt-chaining-support-reply.js",
+  "type": "module",
+  "scripts": {
+    "start": "node prompt-chaining-support-reply.js"
+  },
+  "dependencies": {
+    "openai": "^6.38.0"
+  }
+}
