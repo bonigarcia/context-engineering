@@ -27,7 +27,7 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 Appendix A. The AI ecosystem  
 Appendix B. References and further reading
 
-Each chapter of this book starts by explaining the underlying principles and patterns of each thematic block. Then, the final part of each chapter is devoted to presenting specific examples. This GitHub repository contains all these examples. Moreover, I will include new examples and maintain the existing ones even after the book is published. The goal is to provide an open-source, updated reference for everyone interested in context engineering.
+Each chapter of this book begins by explaining the underlying principles and patterns of each thematic block. The final part of each chapter then presents specific examples, all of which are available in this GitHub repository. New examples will continue to be added, and existing ones maintained, even after the book is published. The goal is to provide an open-source, up-to-date reference for everyone interested in context engineering.
 
 ## Examples
 
