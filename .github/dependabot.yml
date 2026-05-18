@@ -6,6 +6,8 @@ updates:
     - "/ch02/java"
     - "/ch04/java/function_calling"
     - "/ch04/java/mcp_server"
+    - "/ch05/java"
+    - "/ch06/java"
   schedule:
     interval: daily
     time: '06:00'
@@ -13,7 +15,7 @@ updates:
 
 - package-ecosystem: gradle
   directories:
-    - "/ch04/java"
+    - "/ch04/java/mcp_server"
   schedule:
     interval: daily
     time: '06:00'
@@ -29,6 +31,11 @@ updates:
     - "/ch02/javascript/openai-gpt-system-prompt"
     - "/ch04/javascript/function_calling"
     - "/ch04/javascript/mcp_server"
+    - "/ch05/javascript/mem0_chat"
+    - "/ch05/javascript/session_state_chat"
+    - "/ch05/javascript/workflow_state_handoff"
+    - "/ch06/javascript/few-shot-ticket-normalizer"
+    - "/ch06/javascript/prompt-chaining-support-reply"
   schedule:
     interval: daily
     time: '06:00'
