@@ -77,6 +77,16 @@ This chapter focuses on the design and optimization of user prompts, including t
 - Prompt chaining: [Python](./ch06/python/prompt-chaining-support-reply) · [Jupyter](./ch06/jupyter/prompt-chaining-support-reply.ipynb) · [JavaScript](./ch06/javascript/prompt-chaining-support-reply) · [Java](./ch06/java/src/main/java/io/github/bonigarcia/ce/PromptChainingSupportReply.java)
 - Chain-of-Thought vs ReAct (DSPy): [Python](./ch06/python/dspy-cot-vs-react) · [Jupyter](./ch06/jupyter/dspy_cot_vs_react.ipynb)
 
+#### Chapter 7. Context management and orchestration
+This chapter focuses on managing and orchestrating context in complex agentic systems, including context compression, hierarchical context, or multi-agent patterns:
+
+- Context compression (LLMLingua): [Python](./ch07/context-compression)
+- Filesystem context (OpenViking): [Python](./ch07/openviking-filesystem)
+- Collaborative agents (CrewAI): [Python](./ch07/crewai-crew)
+- Multi-agent router (LangGraph): [Python](./ch07/multi-agent-router)
+- Orchestration (DeepAgents): [Python](./ch07/deepagents-orchestration)
+- Agent-to-Agent (A2A) communication: [Python](./ch07/a2a-example)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
