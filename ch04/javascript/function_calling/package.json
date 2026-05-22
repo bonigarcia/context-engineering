@@ -8,6 +8,6 @@
     "start": "node openai-function-calling.js"
   },
   "dependencies": {
-    "openai": "^6.38.0"
+    "openai": "^6.39.0"
   }
 }
