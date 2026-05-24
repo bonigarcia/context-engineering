@@ -4,7 +4,7 @@ This example demonstrates how to enable and observe traces of your LangChain app
 
 ## Requirements
 
-This project requires [Python](https://www.python.org/) 3.6+ and the libraries listed in `requirements.txt`.
+This project requires [Python](https://www.python.org/) 3.9+ and the libraries listed in `requirements.txt`. You will also need an OpenAI API key and a LangSmith account.
 
 ## Steps for running this example
 
@@ -51,4 +51,4 @@ When you run the script, it will execute a simple LangChain sequence. The consol
 
 Example LangSmith dashboard:
 
-![MCP Inspector UI interface](/docs/img/langsmith-dashboard.png)
+![LangSmith dashboard](/docs/img/langsmith-dashboard.png)

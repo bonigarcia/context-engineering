@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: Compare two support-reply prompts with model-graded checks
+
+prompts:
+  - file://support-reply-baseline.txt
+  - file://support-reply-guardrailed.txt
+
+providers:
+  - id: openai:chat:gpt-4o-mini
+    config:
+      temperature: 0
+
+tests:
+  - description: Duplicate charge case
+    vars:
+      ticket: I was charged twice for order #12345.
+      policy: Duplicate charges must be acknowledged, escalated to billing, and verified before a refund is promised.
+    assert:
+      - type: llm-rubric
+        provider:
+          id: openai:chat:gpt-4o-mini
+          config:
+            temperature: 0
+        value: The reply should acknowledge the duplicate charge, recommend billing escalation, and avoid promising a refund.
+      - type: icontains
+        value: billing
+
+  - description: Password reset case
+    vars:
+      ticket: My password reset link expired before I could use it.
+      policy: Ask the user to request a fresh reset link and avoid claiming the account was restored.
+    assert:
+      - type: llm-rubric
+        provider:
+          id: openai:chat:gpt-4o-mini
+          config:
+            temperature: 0
+        value: The reply should tell the user to request a new reset link and avoid claiming the account was restored.
+      - type: icontains
+        value: reset link

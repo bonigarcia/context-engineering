@@ -87,6 +87,15 @@ This chapter focuses on managing and orchestrating context in complex agentic sy
 - Orchestration (DeepAgents): [Python](./ch07/deepagents-orchestration)
 - Agent-to-Agent (A2A) communication: [Python](./ch07/a2a-example)
 
+#### Chapter 8. Evaluation and observability
+This chapter covers evaluation and observability for context-aware systems:
+
+- Metrics (DeepEval): [Python](./ch08/metrics-deepeval)
+- Evals (Promptfoo): [YAML](./ch08/evals-promptfoo)
+- LLM-as-judge (Ragas): [Python](./ch08/llm-as-judge-ragas)
+- Observability (LangSmith): [Python](./ch08/observability-langsmith)
+- Observability (Langfuse): [Python](./ch08/observability-langfuse)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.

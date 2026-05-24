@@ -1,3 +1,15 @@
+"""
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
 import os
 
 from datasets import Dataset
@@ -6,14 +18,15 @@ from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
-from langchain_core.runnables import RunnablePassthrough
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from ragas import evaluate
-from ragas.metrics._answer_relevance import answer_relevancy
-from ragas.metrics._context_precision import context_precision
-from ragas.metrics._context_recall import context_recall
-from ragas.metrics._faithfulness import faithfulness
+from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
+
+
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
 
 
 def main():
@@ -36,7 +49,7 @@ def main():
     retriever = vectorstore.as_retriever()
 
     # LLM used for generating answers
-    llm = ChatOpenAI(model_name="gpt-4o", temperature=0, api_key=api_key)
+    llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=api_key)
 
     template = """Answer the question based only on the following context:
 {context}
@@ -46,7 +59,7 @@ Question: {question}
     prompt = PromptTemplate.from_template(template)
 
     rag_chain = (
-            {"context": retriever, "question": RunnablePassthrough()}
+            {"context": retriever | RunnableLambda(format_docs), "question": RunnablePassthrough()}
             | prompt
             | llm
             | StrOutputParser()
