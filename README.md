@@ -99,12 +99,12 @@ This chapter covers evaluation and observability for context-aware systems:
 #### Chapter 9. Governance and operations
 This chapter covers governance, human oversight, and operational patterns for context-aware systems:
 
-- Automated PII redaction with Microsoft Presidio: [Python](./ch09/pii_presidio)
-- Output validation with JSON Schema: [Python](./ch09/output_validation)
-- Bias detection for fairness: [Python](./ch09/bias_detection)
-- Human-in-the-loop story writer: [Python](./ch09/human-in-the-loop)
+- Automated PII redaction (Microsoft Presidio): [Python](./ch09/pii_presidio)
+- Output validation (Pydantic): [Python](./ch09/output_validation)
+- Bias detection (Fairlearn): [Python](./ch09/bias_detection)
+- Human-in-the-loop: [Python](./ch09/human-in-the-loop)
 - Model fine-tuning: [Python](./ch09/fine_tuning)
-- AI gateway with LiteLLM: [Python](./ch09/litellm_gateway)
+- AI gateway (LiteLLM): [Python](./ch09/litellm_gateway)
 
 ## Online resources
 

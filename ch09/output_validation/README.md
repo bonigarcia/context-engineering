@@ -1,6 +1,6 @@
 # Output validation with JSON Schema
 
-This example demonstrates how to validate large language model outputs with a JSON Schema derived from a Pydantic model. The provided script parses the model output, checks it against the schema, and then applies a simple policy rule that requires high-risk outputs to be escalated. This keeps the example installable and still shows how schema validation and business rules work together.
+This example demonstrates how to validate large language model outputs with a JSON Schema derived from a [Pydantic](https://pydantic.dev/) model. The provided script parses the model output, checks it against the schema, and then applies a simple policy rule that requires high-risk outputs to be escalated. This keeps the example installable and still shows how schema validation and business rules work together.
 
 ## Requirements
 
