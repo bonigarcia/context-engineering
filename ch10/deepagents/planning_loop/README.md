@@ -8,3 +8,10 @@ The harness follows a simple planning loop:
 4. Synthesize the final research brief from that reduced state.
 
 That loop is the long-horizon behavior in miniature: the work is incremental, but the context stays bounded.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python planning_loop.py
+```

@@ -1,3 +1,16 @@
 # Tool Chain
 
-Placeholder companion documenting a crew where agents use explicit tools to fetch context before drafting.
+This example shows a small CrewAI workflow where an agent uses explicit tools to gather context before a writer drafts the answer.
+
+## Requirements
+
+- Python 3.10+
+- `crewai`
+- `OPENAI_API_KEY`
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python tool_chain.py
+```

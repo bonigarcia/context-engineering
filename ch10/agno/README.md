@@ -6,11 +6,11 @@ The runnable example stays focused on a single workspace tool so you can see the
 
 ## Runnable example
 
-- `sorting_hat`: a workspace-scoped agent that inventories the local `ch10/agno` folder and groups what it finds.
+- `sorting_hat/sorting_hat.py`: a workspace-scoped agent that inventories the local `ch10/agno` folder and groups what it finds.
 
 ## Companion notes
 
-- `session_memory`: session history persists between runs.
-- `knowledge_store`: knowledge sources become explicit context inputs.
-- `agent_os_service`: the same agent runs as a service behind AgentOS.
-- `audit_traces`: traces show which context reached each run.
+- `session_memory/session_memory.py`: session history persists between runs.
+- `knowledge_store/knowledge_store.py`: knowledge sources become explicit context inputs.
+- `agent_os_service/agent_os_service.py`: the same agent runs as a service behind AgentOS.
+- `audit_traces/audit_traces.py`: traces show which context reached each run.

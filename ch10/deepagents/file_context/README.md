@@ -8,3 +8,10 @@ This folder describes the file-read side of the DeepAgents pattern.
 - Pass only the reduced summary forward
 
 The point is not to preserve every byte of source text. It is to preserve the useful shape of the context while keeping the task long-horizon and manageable.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python file_context.py
+```

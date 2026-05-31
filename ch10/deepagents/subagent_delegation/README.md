@@ -8,3 +8,10 @@ This example does not spin up real subagents, but it documents where delegation 
 - One helper could write the final brief
 
 Keeping the runnable example single-file makes the control flow easier to inspect while still showing how work can be split later.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python subagent_delegation.py
+```

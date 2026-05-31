@@ -6,9 +6,9 @@ This Chapter 10 bucket groups small CrewAI examples that show how context moves 
 
 - `research_and_write`: a minimal sequential crew with a researcher and a writer, where the writer receives the research task as context.
 
-## Companion notes
+## Runnable companions
 
-- `planner_executor`: planning output becomes execution context.
-- `critique_revision`: one agent critiques, another revises.
-- `tool_chain`: agents gather context through explicit tools before drafting.
-- `memory_handoff`: prior memory influences the next crew step.
+- `planner_executor`: `planner_executor/planner_executor.py`
+- `critique_revision`: `critique_revision/critique_revision.py`
+- `tool_chain`: `tool_chain/tool_chain.py`
+- `memory_handoff`: `memory_handoff/memory_handoff.py`

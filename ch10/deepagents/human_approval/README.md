@@ -9,3 +9,10 @@ Typical pause points:
 - before publishing the synthesized brief
 
 The runnable harness does not pause automatically, but the README documents where approval would be inserted in a fuller workflow.
+
+## Run
+
+```bash
+pip install -r requirements.txt
+python human_approval.py --auto-approve
+```
