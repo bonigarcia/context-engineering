@@ -44,4 +44,9 @@ python human_approval.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Workflow started: temporal-human-approval-demo
+The workflow is paused until you approve it.
+Press Enter to approve and resume...
+Draft response for release note for a customer escalation: keep the answer concise and context-aware. Approved by human reviewer.
+```

@@ -26,4 +26,6 @@ mvn spring-boot:run
 
 ## Output
 
-The app prints a single response from the local model and exits.
+```
+Spring AI is a technology that enables businesses to improve customer experience by automating and personalizing interactions through chatbots, virtual assistants, and other conversational interfaces.
+```

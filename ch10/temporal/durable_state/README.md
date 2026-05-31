@@ -39,4 +39,8 @@ python durable_state.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Workflow started: temporal-durable-state-demo
+Worker restarted; Temporal will replay the stored state.
+started | draft prepared for chapter summary | signal:worker restart complete | completed
+```

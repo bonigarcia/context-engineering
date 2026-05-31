@@ -31,4 +31,10 @@ python structured_reply.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+{
+  "category": "bug",
+  "confidence": 0.94,
+  "summary": "The customer reports an export failure in the app."
+}
+```

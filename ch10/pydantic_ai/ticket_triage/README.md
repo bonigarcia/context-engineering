@@ -31,4 +31,10 @@ python ticket_triage.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+{
+  "priority": "low",
+  "team": "billing",
+  "reply": "a"
+}
+```

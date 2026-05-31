@@ -26,4 +26,6 @@ mvn spring-boot:run
 
 ## Output
 
-The app prints the answer after Spring AI calls the local tool.
+```
+{"operator":"plus", "parameters": {"left": "12", "right": "30"}}
+```

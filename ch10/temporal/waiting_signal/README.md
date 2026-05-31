@@ -39,4 +39,12 @@ python waiting_signal.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Workflow started: temporal-retry-resume-demo
+The activity fails once, then Temporal retries it.
+Completing activity as failed ({'activity_id': '1', 'activity_type': 'flaky_context_step', 'attempt': 1, 'namespace': 'default', 'task_queue': 'context-engineering-temporal-retry-resume', 'workflow_id': 'temporal-retry-resume-demo', 'workflow_run_id': '019e7fea-9aa9-7956-8a3f-42cf30ea473f', 'workflow_type': 'RetryResumeWorkflow'})
+Traceback (most recent call last):
+...
+RuntimeError: transient context fetch failed
+done: refined context for AI draft recovery
+```

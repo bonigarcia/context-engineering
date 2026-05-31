@@ -31,4 +31,10 @@ python context_tooling.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+{
+  "route": "support",
+  "priority": "high",
+  "note": "Escalate because the customer is blocked."
+}
+```

@@ -39,4 +39,7 @@ python subworkflow_boundary.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Workflow started: temporal-waiting-signal-demo
+draft ready for customer follow-up; resumed with external approval arrived
+```

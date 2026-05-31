@@ -31,4 +31,12 @@ python stepwise_reasoning.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Step 1: Read the ticket.
+Step 1: Read the ticket.
+Step 2: Check the queue rules.
+Step 3: Route the ticket and confirm.
+Step 1: Read the ticket.
+Step 2: Check the queue rules.
+Step 3: Route the ticket and confirm.
+```

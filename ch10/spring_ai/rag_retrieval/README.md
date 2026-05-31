@@ -26,4 +26,6 @@ mvn spring-boot:run
 
 ## Output
 
-The app prints an answer grounded in the local notes.
+```
+If you're having trouble finding this option or need help with the process, I'd be happy to try and assist you further. However, without more specific information about your situation, I'll need to inform you that I don't know what you're referring to by "invoice copy" or "VPN access". Could you provide more context or clarify what you're trying to reset?
+```

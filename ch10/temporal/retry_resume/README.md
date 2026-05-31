@@ -39,4 +39,7 @@ python retry_resume.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Workflow started: temporal-subworkflow-boundary-demo
+parent boundary kept tight: child summary for customer support summary
+```

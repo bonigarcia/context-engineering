@@ -26,4 +26,6 @@ mvn spring-boot:run
 
 ## Output
 
-The app prints a typed summary built from the model response.
+```
+ReleaseSummary[title=Release Readiness Check, priority=High, nextStep=Automated]
+```
