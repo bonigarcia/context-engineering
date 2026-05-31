@@ -5,23 +5,43 @@ The agent is created with one guideline, so the response changes only when the c
 
 ## Requirements
 
-* Python 3.10+
-* `parlant`
-* An `OPENAI_API_KEY` environment variable
+* [Python](https://www.python.org/) 3.10+
+* An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
-## Run
+## Steps for running this example in the shell
 
+1. Install dependencies:
 ```bash
 python -m venv .venv
+
+# macOS/Linux:
+source .venv/bin/activate
+
+# Windows Command Prompt:
+.venv\Scripts\activate.bat
+
+# Windows PowerShell:
 .venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
-python customer_greeting.py
 ```
 
-While the script is running, open `http://localhost:8800` in the Parlant UI, start a session with the agent, and greet it to trigger the guideline.
+2. Export your API key as an environment variable:
+```bash
+export OPENAI_API_KEY="sk-..." # Windows cmd: set OPENAI_API_KEY="sk-..." # Windows PowerShell: $env:OPENAI_API_KEY="sk-..."
+```
+
+3. Run the script:
+```bash
+python customer_greeting.py
+```
 
 ## What it demonstrates
 
 * A real Parlant agent
 * One guideline selected by conversational context
 * A lightweight harness instead of a graph or workflow engine
+
+## Output
+
+When you run the script, it will print the results to the terminal.

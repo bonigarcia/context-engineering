@@ -1,10 +1,18 @@
-# n8n examples
+# n8n workflow examples
 
-This chapter shows n8n as a visual workflow automation platform through export-shaped workflow artifacts.
+This folder contains visual workflow configurations for n8n.
+
+## Requirements
+
+- An [n8n](https://n8n.io/) instance or account
 
 ## Examples
 
-- [Human approval workflow](human_approval_workflow/README.md) - `workflow.json`
-- [Error recovery](error_recovery/README.md) - `workflow.json`
-- [Subworkflow boundary](subworkflow_boundary/README.md) - `main.workflow.json` and `subworkflow.workflow.json`
-- [Data assembly](data_assembly/README.md) - `workflow.json`
+- `human_approval_workflow/`: Pause workflow for manual human approval.
+- `error_recovery/`: Catching and recovering from errors in workflows.
+- `subworkflow_boundary/`: Parent/child subworkflow isolation patterns.
+- `data_assembly/`: Compiling multi-source data before LLM processing.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

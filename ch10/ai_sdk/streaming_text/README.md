@@ -4,15 +4,20 @@ This example uses `streamText()` with `MockLanguageModelV3` and `simulateReadabl
 
 ## Requirements
 
-- Node.js 18+
+* [Node.js](https://nodejs.org/)
 
-## Run
+## Steps for running this example in the shell
 
+1. Install dependencies:
 ```bash
 npm install
+```
+
+2. Run the script:
+```bash
 npm start
 ```
 
-## Expected output
+## Output
 
 The script streams `Hello, world!` to the terminal.

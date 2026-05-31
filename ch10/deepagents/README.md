@@ -1,10 +1,19 @@
-# DeepAgents
+# DeepAgents examples
 
-This example demonstrates how to use [DeepAgents](https://github.com/deepagents/deepagents) to orchestrate complex, multi-step tasks. DeepAgents is an orchestration framework designed for long-horizon tasks. It uses a planning layer to decompose requests and a virtual filesystem to manage context overflow.
+This folder contains examples demonstrating custom deep agent architectures.
 
-## Included examples
+## Requirements
 
-- [deep_agent_example](./deep_agent_example/README.md) - the chapter 7-style orchestration anchor
-- [filesystem_context](./filesystem_context/README.md) - filesystem-backed context and memory
-- [subagent_delegation](./subagent_delegation/README.md) - delegated work with isolated subagents
-- [human_approval](./human_approval/README.md) - interrupt-based approval for sensitive tool calls
+- [Python](https://www.python.org/) 3.10+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
+
+## Examples
+
+- `orchestration/`: Orchestrating multiple agent interactions.
+- `subagent_delegation/`: Delegating subtasks from a supervisor agent to subagents.
+- `human_approval/`: Integrating human feedback and approval steps.
+- `filesystem_context/`: Interacting with files and the system directory.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

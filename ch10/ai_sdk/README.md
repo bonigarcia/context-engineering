@@ -1,20 +1,18 @@
-# AI SDK
+# Vercel AI SDK examples
 
-This chapter slice shows small Vercel AI SDK examples that all run offline with mock models.
+This folder contains JavaScript examples demonstrating how to use the Vercel AI SDK with mock models.
 
-## Included examples
+## Requirements
 
-- `basic_text_generation/`: a runnable `generateText()` example using `MockLanguageModelV3` from `ai/test`
-- `streaming_text/`: a runnable `streamText()` example that streams text from a mock model
-- `structured_output/`: a runnable structured-output example using `Output.object()` and Zod
-- `tool_use/`: a runnable multi-step tool example using `tool()` and a mock tool call
+- [Node.js](https://nodejs.org/)
 
-## Run the example
+## Examples
 
-Each example is self-contained:
+- `basic_text_generation/`: Basic text generation using `generateText()`.
+- `streaming_text/`: Streaming generated text in real-time.
+- `structured_output/`: Generating structured JSON output using Zod.
+- `tool_use/`: Equipping the AI model with custom tools.
 
-```bash
-cd ch10/ai_sdk/<example-folder>
-npm install
-npm start
-```
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

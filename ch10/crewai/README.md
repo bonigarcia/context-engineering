@@ -1,14 +1,20 @@
-# CrewAI
+# CrewAI examples
 
-This Chapter 10 bucket groups small CrewAI examples that show how context moves through a crew.
+This folder contains examples demonstrating multi-agent orchestration using CrewAI.
 
-## Runnable example
+## Requirements
 
-- `research_and_write`: a minimal sequential crew with a researcher and a writer, where the writer receives the research task as context.
+- [Python](https://www.python.org/) 3.10+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
-## Runnable companions
+## Examples
 
-- `planner_executor`: `planner_executor/planner_executor.py`
-- `critique_revision`: `critique_revision/critique_revision.py`
-- `tool_chain`: `tool_chain/tool_chain.py`
-- `memory_handoff`: `memory_handoff/memory_handoff.py`
+- `research_and_write/`: Collaborative research and writing workflow.
+- `tool_chain/`: Linking multiple tools in sequence.
+- `memory_handoff/`: Transferring memory state between agents.
+- `planner_executor/`: Planner-executor pattern for task management.
+- `critique_revision/`: Iterative critique and revision loops.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

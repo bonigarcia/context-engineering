@@ -1,12 +1,20 @@
 # Parlant examples
 
-This chapter shows Parlant as a conversational control layer for customer-facing agents.
-The runnable example keeps the model focused on one guideline so the behavior change is easy to see in context.
+This folder contains examples demonstrating customer interaction agents with Parlant.
+
+## Requirements
+
+- [Python](https://www.python.org/) 3.10+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
 ## Examples
 
-- [Customer greeting](customer_greeting/README.md) - runnable single-guideline example
-- [Guideline routing](guideline_routing/README.md) - how Parlant selects relevant guidance
-- [Journey flow](journey_flow/README.md) - how multi-turn SOPs are modeled
-- [Glossary context](glossary_context/README.md) - how domain terms shape interpretation
-- [Canned response](canned_response/README.md) - how strict response templates are selected
+- `customer_greeting/`: Dynamic customer greeting matching brand voice.
+- `canned_response/`: Pre-defined templates for frequent inquiries.
+- `guideline_routing/`: Matching dialog flow against business guidelines.
+- `glossary_context/`: Injecting domain-specific terms into chat context.
+- `journey_flow/`: Sequential customer onboarding mapping.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

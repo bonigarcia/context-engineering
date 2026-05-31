@@ -6,17 +6,21 @@ It exposes one tiny math tool, asks the model a question that needs it, and prin
 
 ## Requirements
 
-- Java 21+
-- Maven 3.9+
-- Ollama running locally on `http://localhost:11434`
-- A pulled chat model such as `llama3.2:1b`
+* [Java](https://www.oracle.com/java/technologies/downloads/) 21+
+* [Maven](https://maven.apache.org/) 3.9+
+* [Ollama](https://ollama.com/) installed locally
+* A pulled chat model such as `llama3.2:1b`
 
-## Run
+## Steps for running this example in the shell
 
+1. Start Ollama and pull the chat model:
 ```bash
 ollama serve
 ollama pull llama3.2:1b
-cd ch10/spring_ai/tool_use
+```
+
+2. Run the application:
+```bash
 mvn spring-boot:run
 ```
 

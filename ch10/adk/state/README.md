@@ -6,11 +6,12 @@ This example demonstrates how to manage and update session state within an ADK a
 
 ## Requirements
 
-This project requires [Python](https://www.python.org/) 3.6+ and the libraries listed in `requirements.txt`.
+* [Python](https://www.python.org/) 3.10+
+* A [Google API key](https://ai.google.dev/) set as an environment variable (`GOOGLE_API_KEY`)
 
-## Steps for running this example
+## Steps for running this example in the shell
 
-1.  Install dependencies:
+1. Install dependencies:
 ```bash
 python -m venv .venv
 
@@ -26,15 +27,18 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Set environment variables:
-   Ensure your Google API key (`GOOGLE_API_KEY`) is set as an environment variable.
+2. Export your API key as an environment variable:
+```bash
+export GOOGLE_API_KEY="sk-..." # Windows cmd: set GOOGLE_API_KEY="sk-..." # Windows PowerShell: $env:GOOGLE_API_KEY="sk-..."
+```
 
 3. Run the script:
 ```bash
 python state_example.py
 ```
 
-## Expected Output
+## Output
+
 The script will execute two scenarios:
  
 * Greeting Agent: An `LlmAgent` with `output_key` configured will generate a greeting, and its response will be automatically saved to the session state.

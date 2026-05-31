@@ -5,15 +5,34 @@ The workflow records a draft, pauses on a signal, and then resumes when approval
 
 ## Requirements
 
-- Python 3.10+
-- A local Temporal server, such as `temporal server start-dev`
+* [Python](https://www.python.org/) 3.10+
+* A [Temporal Server](https://docs.temporal.io/cli) instance running locally
 
-## Run
+## Steps for running this example in the shell
 
+1. Install dependencies:
 ```bash
 python -m venv .venv
+
+# macOS/Linux:
+source .venv/bin/activate
+
+# Windows Command Prompt:
+.venv\Scripts\activate.bat
+
+# Windows PowerShell:
 .venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
+```
+
+2. Start your local Temporal Server in a separate terminal:
+```bash
+temporal server start-dev
+```
+
+3. Run the script:
+```bash
 python human_approval.py
 ```
 
@@ -22,3 +41,7 @@ python human_approval.py
 - Durable execution for long-running context flows
 - Human approval as an explicit workflow signal
 - State preserved across pauses and resumes
+
+## Output
+
+When you run the script, it will print the results to the terminal.

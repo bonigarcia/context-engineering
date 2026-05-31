@@ -2,6 +2,10 @@
 
 This example shows Zapier using an AI step to qualify incoming leads before handing them off.
 
+## Requirements
+
+* A [Zapier](https://zapier.com/) account
+
 ## What it demonstrates
 
 - Hosted trigger-action automation

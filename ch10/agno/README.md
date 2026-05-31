@@ -1,16 +1,20 @@
-# Agno
+# Agno examples
 
-This Chapter 10 bucket shows how Agno separates the agent runtime from the control plane.
+This folder contains examples demonstrating how to build stateful agents using Agno.
 
-The runnable example stays focused on a single workspace tool so you can see the agent inspect a scoped directory, while Agno's AgentOS framing explains how the same agent can later be stored, traced, and served as a managed service without changing the core agent logic.
+## Requirements
 
-## Runnable example
+- [Python](https://www.python.org/) 3.10+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
-- `sorting_hat/sorting_hat.py`: a workspace-scoped agent that inventories the local `ch10/agno` folder and groups what it finds.
+## Examples
 
-## Companion notes
+- `sorting_hat/`: Workspace-scoped agent that inventories files.
+- `session_memory/`: Persistence of session memory across runs.
+- `knowledge_store/`: Using external knowledge sources as explicit context.
+- `agent_os_service/`: Deploying the agent as a service.
+- `audit_traces/`: Inspecting trace logs for agent inputs and actions.
 
-- `session_memory/session_memory.py`: session history persists between runs.
-- `knowledge_store/knowledge_store.py`: knowledge sources become explicit context inputs.
-- `agent_os_service/agent_os_service.py`: the same agent runs as a service behind AgentOS.
-- `audit_traces/audit_traces.py`: traces show which context reached each run.
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

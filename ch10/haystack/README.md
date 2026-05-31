@@ -1,10 +1,18 @@
-# Haystack
+# Haystack examples
 
-This Chapter 10 bucket shows Haystack as a local-first framework for assembling retrieval context in memory.
+This folder contains examples demonstrating search, retrieval, and RAG pipelines using Haystack.
 
-## Runnable examples
+## Requirements
 
-- `rag_pipeline/`: a minimal in-memory BM25 retrieval pipeline over a tiny LumaNote corpus.
-- `reranking/`: a retrieval pipeline that reranks results with a lightweight query-aware scorer.
-- `query_expansion/`: a pipeline that expands a query into a few local variants before retrieval.
-- `pipeline_composition/`: a three-stage pipeline that composes retrieval, assembly, and formatting.
+- [Python](https://www.python.org/) 3.10+
+
+## Examples
+
+- `rag_pipeline/`: Basic Retrieval-Augmented Generation pipeline.
+- `pipeline_composition/`: Combining multiple custom components into a single pipeline.
+- `query_expansion/`: Expanding user queries using LLMs before retrieval.
+- `reranking/`: Reranking retrieved documents for better context relevance.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

@@ -2,16 +2,16 @@
 
 This example shows CrewAI memory in action: one task records notes and the next task reuses them as context.
 
-## Prerequisites
+## Requirements
 
-- Python 3.13+
-- OpenAI API Key (configured via `OPENAI_API_KEY` environment variable)
+* [Python](https://www.python.org/) 3.10+
+* An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
-## Steps for running this example
+## Steps for running this example in the shell
 
-1.  Install dependencies:
+1. Install dependencies:
 ```bash
-py -3.13 -m venv .venv
+python -m venv .venv
 
 # macOS/Linux:
 source .venv/bin/activate
@@ -25,10 +25,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Set environment variables:
-   Ensure your OpenAI API key is set as an environment variable. You can do this by:
-```
-OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+2. Export your API key as an environment variable:
+```bash
+export OPENAI_API_KEY="sk-..." # Windows cmd: set OPENAI_API_KEY="sk-..." # Windows PowerShell: $env:OPENAI_API_KEY="sk-..."
 ```
 
 3. Run the script:

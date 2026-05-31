@@ -4,15 +4,20 @@ This example uses `generateText()` with `Output.object()` and a mock model that 
 
 ## Requirements
 
-- Node.js 18+
+* [Node.js](https://nodejs.org/)
 
-## Run
+## Steps for running this example in the shell
 
+1. Install dependencies:
 ```bash
 npm install
+```
+
+2. Run the script:
+```bash
 npm start
 ```
 
-## Expected output
+## Output
 
 The script prints a validated JavaScript object.

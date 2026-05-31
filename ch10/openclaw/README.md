@@ -1,10 +1,18 @@
-# OpenClaw
+# OpenClaw examples
 
-This chapter treats OpenClaw as a self-hosted agent gateway with real config, skill, and workspace prompt artifacts.
+This folder contains examples demonstrating agent systems built with OpenClaw.
+
+## Requirements
+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
 ## Examples
 
-- `autonomous_loop/openclaw.json5`: always-on gateway + heartbeat config
-- `tool_gatekeeping/openclaw.json5`: channel access and sandbox policy
-- `human_review_queue/SKILL.md`: approval-gate skill for risky work
-- `context_sync/AGENTS.md`: workspace sync instructions for the agent
+- `autonomous_loop/`: Running agents in autonomous execution loops.
+- `tool_gatekeeping/`: Intercepting and authorizing tool execution.
+- `human_review_queue/`: Queuing task results for human oversight.
+- `context_sync/`: Synchronizing external context inputs with agent memory.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

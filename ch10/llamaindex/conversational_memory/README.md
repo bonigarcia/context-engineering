@@ -4,15 +4,14 @@ This example demonstrates how LlamaIndex facilitates conversational memory, allo
 
 This example uses LlamaIndex's condense-question chat mode to combine the new user query with the chat history into a single query for retrieval and synthesis, effectively managing the conversational state.
 
-
 ## Requirements
 
-* [Python](https://www.python.org/) 3.8+
-* An OpenAI API key set as an environment variable (`OPENAI_API_KEY`).
+* [Python](https://www.python.org/) 3.10+
+* An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
-## Steps for running this example
+## Steps for running this example in the shell
 
-1.  Install dependencies:
+1. Install dependencies:
 ```bash
 python -m venv .venv
 
@@ -28,10 +27,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Set environment variables:
-Ensure your OpenAI API key is set as an environment variable. You can do this by setting it directly or by creating a `.env` file in the example directory:
-```
-OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
+2. Export your API key as an environment variable:
+```bash
+export OPENAI_API_KEY="sk-..." # Windows cmd: set OPENAI_API_KEY="sk-..." # Windows PowerShell: $env:OPENAI_API_KEY="sk-..."
 ```
 
 3. Run the script:

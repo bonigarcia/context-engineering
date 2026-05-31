@@ -1,22 +1,18 @@
-# DSPy
+# DSPy examples
 
-This Chapter 10 bucket shows how DSPy expresses tasks as signatures and runs them through modules with a local deterministic LM.
+This folder contains examples demonstrating programming (not prompting) LLMs using DSPy.
 
-## Runnable examples
+## Requirements
 
-- `ticket_triage/`: support-ticket triage with structured outputs.
-- `structured_output/`: a compact action-plan generator with typed fields.
-- `context_tooling/`: a local retrieval tool that threads offline context into the answer step.
-- `stepwise_reasoning/`: a reasoned reply pattern with separate reasoning and answer fields.
+- [Python](https://www.python.org/) 3.10+
 
-## Run
+## Examples
 
-1. Create and activate a virtual environment.
-2. Install dependencies:
-   ```bash
-   pip install -r ch10/dspy/<example>/requirements.txt
-   ```
-3. Run the example:
-   ```bash
-   python ch10/dspy/<example>/<example>.py
-   ```
+- `ticket_triage/`: Automated ticket categorization and priority routing.
+- `structured_output/`: Enforcing structured output schemas.
+- `context_tooling/`: Equipping DSPy signatures with runtime tools.
+- `stepwise_reasoning/`: Stepwise reasoning chains in DSPy modules.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

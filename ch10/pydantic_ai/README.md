@@ -1,10 +1,18 @@
-# Pydantic AI
+# PydanticAI examples
 
-This chapter bucket contains four fully local Pydantic AI examples.
+This folder contains examples demonstrating type-safe LLM programming using PydanticAI.
+
+## Requirements
+
+- [Python](https://www.python.org/) 3.10+
 
 ## Examples
 
-- `ticket_triage/`: deterministic ticket triage with typed deps, a tool, and structured output
-- `structured_reply/`: structured output only
-- `context_tooling/`: tool use with dependency-injected context
-- `stepwise_reasoning/`: streamed stepwise output using a local model function
+- `ticket_triage/`: Type-safe ticket parsing and prioritization.
+- `structured_reply/`: Generating responses that match Pydantic model schemas.
+- `context_tooling/`: Providing typed environment context to agent tools.
+- `stepwise_reasoning/`: Stepwise execution chains with type checking.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.

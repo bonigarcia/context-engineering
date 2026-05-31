@@ -1,10 +1,20 @@
 # LangGraph examples
 
-This chapter groups small LangGraph examples that make state flow explicit.
+This folder contains examples demonstrating stateful workflows and agent routing with LangGraph.
+
+## Requirements
+
+- [Python](https://www.python.org/) 3.10+
+- An [OpenAI API key](https://platform.openai.com/api-keys) set as an environment variable (`OPENAI_API_KEY`)
 
 ## Examples
 
-- [Review workflow](review_workflow/README.md)
-- [Checkpointed resume](checkpointed_resume/README.md)
-- [Human in the loop](human_in_the_loop/README.md)
-- [Multi-agent router](multi_agent_router/README.md)
+- `basic_agent/`: Basic single-node stateful graph agent.
+- `review_workflow/`: Graph workflow with explicit review states.
+- `checkpointed_resume/`: Resuming graph runs from saved checkpoints.
+- `human_in_the_loop/`: Pausing graph execution for human approval.
+- `multi_agent_router/`: Routing execution across multiple specialized agents.
+
+## Running the examples
+
+Each example is in its own folder and contains a `README.md` with instructions on how to run it.
