@@ -36,7 +36,8 @@ WORKSPACE_NOTES_PATH = "/workspace/notes.md"
 MEMORIES_CONTENT = "# AGENTS.md\n- Keep agent context explicit.\n"
 WORKSPACE_CONTENT = "# Notes\n- Filesystem-backed context is visible.\n"
 
-_FILESYSTEM_ROOT = Path(__file__).resolve().with_name("workspace")
+_MEMORY_ROOT = Path(__file__).resolve().with_name("memory")
+_WORKSPACE_ROOT = Path(__file__).resolve().with_name("workspace")
 _BACKEND = None
 _STORE = None
 
@@ -46,11 +47,19 @@ def _namespace(_runtime):
 
 
 def _seed_workspace_notes() -> Path:
-    _FILESYSTEM_ROOT.mkdir(parents=True, exist_ok=True)
-    notes_path = _FILESYSTEM_ROOT / "notes.md"
+    _WORKSPACE_ROOT.mkdir(parents=True, exist_ok=True)
+    notes_path = _WORKSPACE_ROOT / "notes.md"
     if not notes_path.exists():
         notes_path.write_text(WORKSPACE_CONTENT, encoding="utf-8")
-    return _FILESYSTEM_ROOT
+    return _WORKSPACE_ROOT
+
+
+def _seed_memory_file() -> Path:
+    _MEMORY_ROOT.mkdir(parents=True, exist_ok=True)
+    memory_path = _MEMORY_ROOT / "AGENTS.md"
+    if not memory_path.exists():
+        memory_path.write_text(MEMORIES_CONTENT, encoding="utf-8")
+    return _MEMORY_ROOT
 
 
 def build_store():
@@ -71,12 +80,13 @@ def build_backend():
 
     global _BACKEND
     if _BACKEND is None:
+        _seed_memory_file()
         _seed_workspace_notes()
         _BACKEND = CompositeBackend(
             default=StateBackend(),
             routes={
-                "/memories/": StoreBackend(namespace=_namespace, store=build_store()),
-                "/workspace/": FilesystemBackend(root_dir=str(_FILESYSTEM_ROOT), virtual_mode=True),
+                "/memories/": FilesystemBackend(root_dir=str(_MEMORY_ROOT), virtual_mode=True),
+                "/workspace/": FilesystemBackend(root_dir=str(_WORKSPACE_ROOT), virtual_mode=True),
             },
         )
     return _BACKEND
