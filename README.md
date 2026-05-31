@@ -80,31 +80,31 @@ This chapter focuses on the design and optimization of user prompts, including t
 #### Chapter 7. Context management and orchestration
 This chapter focuses on managing and orchestrating context in complex agentic systems, including context compression, hierarchical context, or multi-agent patterns:
 
-- Context compression (LLMLingua): [Python](./ch07/context-compression)
-- Filesystem context (OpenViking): [Python](./ch07/openviking-filesystem)
-- Collaborative agents (CrewAI): [Python](./ch07/crewai-crew)
-- Multi-agent router (LangGraph): [Python](./ch07/multi-agent-router)
-- Orchestration (DeepAgents): [Python](./ch07/deepagents-orchestration)
-- Agent-to-Agent (A2A) communication: [Python](./ch07/a2a-example)
+- Context compression: [LLMLingua](./ch07/context-compression)
+- Filesystem context: [OpenViking](./ch07/openviking-filesystem)
+- Collaborative agents: [CrewAI](./ch07/crewai-crew)
+- Multi-agent router: [LangGraph](./ch07/multi-agent-router)
+- Orchestration: [DeepAgents](./ch07/deepagents-orchestration)
+- Agent-to-Agent (A2A): [Python](./ch07/a2a-example)
 
 #### Chapter 8. Evaluation and observability
 This chapter covers evaluation and observability for context-aware systems:
 
-- Metrics (DeepEval): [Python](./ch08/metrics-deepeval)
-- Evals (Promptfoo): [YAML](./ch08/evals-promptfoo)
-- LLM-as-judge (Ragas): [Python](./ch08/llm-as-judge-ragas)
-- Observability (Langfuse): [Python](./ch08/observability-langfuse)
-- Observability (LangSmith): [Python](./ch08/observability-langsmith)
+- Metrics: [DeepEval](./ch08/metrics-deepeval)
+- Evals: [Promptfoo](./ch08/evals-promptfoo)
+- LLM-as-judge: [Ragas](./ch08/llm-as-judge-ragas)
+- Observability: [Langfuse](./ch08/observability-langfuse)
+- Observability: [LangSmith](./ch08/observability-langsmith)
 
 #### Chapter 9. Governance and operations
 This chapter covers governance, human oversight, and operational patterns for context-aware systems:
 
-- Automated PII redaction (Microsoft Presidio): [Python](./ch09/pii_presidio)
-- Output validation (Pydantic): [Python](./ch09/output_validation)
-- Bias detection (Fairlearn): [Python](./ch09/bias_detection)
+- PII redaction: [Microsoft Presidio](./ch09/pii_presidio)
+- Output validation: [Pydantic](./ch09/output_validation)
+- Bias detection: [Fairlearn](./ch09/bias_detection)
+- AI gateway: [LiteLLM](./ch09/litellm_gateway)
 - Human-in-the-loop: [Python](./ch09/human-in-the-loop)
 - Model fine-tuning: [Python](./ch09/fine_tuning)
-- AI gateway (LiteLLM): [Python](./ch09/litellm_gateway)
 
 #### Chapter 10. AI frameworks for context engineering
 This chapter covers specific AI frameworks that facilitate context engineering, including application frameworks, agent orchestration frameworks, and AI application platforms:
