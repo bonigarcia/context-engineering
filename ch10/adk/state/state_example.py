@@ -56,7 +56,7 @@ async def run_scenario():
     )
 
     user_message = Content(parts=[Part(text="Hello")])
-    for event in runner_greeting.run_async(
+    async for event in runner_greeting.run_async(
         user_id=USER_ID, session_id=f"{SESSION_ID}_greeting", new_message=user_message
     ):
         if event.is_final_response() and event.content and event.content.parts:

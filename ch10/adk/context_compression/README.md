@@ -25,14 +25,11 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-   Ensure your Google API key is set as an environment variable. You can do this by:
-```
-echo 'GOOGLE_API_KEY="YOUR_API_KEY"' > my_agent/.env
-```
+   Ensure your Google API key (`GOOGLE_API_KEY`) is set as an environment variable.
 
 3. Run the script:
 ```bash
-adk run my_agent
+python context_compression.py
 ```
 
 ## Expected Output

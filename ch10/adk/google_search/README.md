@@ -34,4 +34,4 @@ python google_search.py
 
 ## Expected Output
 
-The agent will respond to your queries, potentially using Google Search to find the answer. You will observe the agent's thought process, including when it decides to invoke the search tool and the results it obtains.
+The agent will respond to your queries, potentially using Google Search to find the answer. You will observe when it invokes the search tool and the results it obtains.

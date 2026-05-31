@@ -1,6 +1,6 @@
 # Agent with tool in Agent Development Kit (ADK)
 
-This example demonstrates how to integrate and use a Python function as a tool within an ADK `LlmAgent`. The agent is configured to use a `get_current_time` function to answer questions about the current time in cities. This highlights ADK's ability to extend agent capabilities with external functionalities, thereby enriching the context available to the LLM.
+This example demonstrates how to integrate and use a Python function as a tool within an ADK `LlmAgent`. The agent is configured to use a mock `get_current_time` function to answer questions about the current time in cities. This highlights ADK's ability to extend agent capabilities with external functionalities, thereby enriching the context available to the LLM.
 
 ## Requirements
 
