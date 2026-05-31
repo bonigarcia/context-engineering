@@ -101,26 +101,6 @@ class UserInfoMemory(ContextProvider):
 
     def serialize(self) -> str:
         return self.user_info.model_dump_json()
-
-
-def _extract_userinfo_memory(ctx_provider: Any) -> UserInfoMemory | None:
-    """
-    Agent Framework versions differ:
-    - sometimes thread.context_provider is the provider itself
-    - sometimes it's a composite with .providers
-    """
-    if isinstance(ctx_provider, UserInfoMemory):
-        return ctx_provider
-
-    providers = getattr(ctx_provider, "providers", None)
-    if providers:
-        for p in providers:
-            if isinstance(p, UserInfoMemory):
-                return p
-
-    return None
-
-
 async def main() -> None:
     load_dotenv()
 
@@ -147,9 +127,6 @@ async def main() -> None:
 
             reply = await agent.run(user_input, thread=thread)
             print(f"\nAgent: {reply}\n")
-
-            # Robust debug memory display
-            mem = _extract_userinfo_memory(getattr(thread, "context_provider", None))
 
 if __name__ == "__main__":
     asyncio.run(main())

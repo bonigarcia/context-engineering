@@ -12,7 +12,7 @@ limitations under the License.
 """
 
 import asyncio
-from agent_framework import ChatAgent, tool
+from agent_framework import tool
 from agent_framework.openai import OpenAIChatClient
 
 # Create simple tools for the example

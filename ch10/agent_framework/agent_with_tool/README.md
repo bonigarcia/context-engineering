@@ -1,6 +1,6 @@
 # Agent with Tool with Microsoft Agent Framework
 
-This example demonstrates how to create an agent equipped with a custom tool using the Microsoft Agent Framework. The agent is designed to calculate the square of a number using a `calculate_square` function registered as a tool.
+This example demonstrates how to create an agent equipped with custom tools using the Microsoft Agent Framework. The agent uses small demo tools for weather and time so you can see tool selection in action.
 
 
 ## Requirements

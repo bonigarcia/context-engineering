@@ -12,7 +12,6 @@ limitations under the License.
 """
 
 import asyncio
-from agent_framework import ChatAgent
 from agent_framework.openai import OpenAIChatClient
 
 async def main():

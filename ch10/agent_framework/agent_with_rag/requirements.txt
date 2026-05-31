@@ -1,4 +1,5 @@
+--pre
 agent-framework-core
 agent-framework
-semantic-kernel==1.39.3
+semantic-kernel
 python-dotenv>=1.0.1
