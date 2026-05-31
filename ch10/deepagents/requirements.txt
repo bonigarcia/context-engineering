@@ -1,6 +1,2 @@
-deepagents
-langchain-openai
-langgraph
-langchain-core
-python-dotenv
-pytest
+deepagents>=0.0.1
+langchain-openai>=0.1.0
