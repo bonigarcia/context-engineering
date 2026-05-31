@@ -42,10 +42,6 @@ _BACKEND = None
 _STORE = None
 
 
-def _namespace(_runtime):
-    return ("filesystem_context", "memories")
-
-
 def _seed_workspace_notes() -> Path:
     _WORKSPACE_ROOT.mkdir(parents=True, exist_ok=True)
     notes_path = _WORKSPACE_ROOT / "notes.md"
@@ -68,9 +64,7 @@ def build_store():
 
     global _STORE
     if _STORE is None:
-        store = InMemoryStore()
-        store.put(_namespace(None), "AGENTS.md", {"content": MEMORIES_CONTENT})
-        _STORE = store
+        _STORE = InMemoryStore()
     return _STORE
 
 
