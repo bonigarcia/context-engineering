@@ -1,10 +1,13 @@
 # Spring AI for context engineering
 
-This chapter bucket contains a minimal Spring AI example that runs against a local Ollama server.
+This chapter bucket contains four minimal Spring AI examples that run against a local Ollama server.
 
 ## Examples
 
 - `basic_assistant/`: a tiny Spring Boot app that sends one prompt to a local Ollama chat model and prints the reply
+- `tool_use/`: a one-shot tool-calling demo with a local math helper
+- `rag_retrieval/`: a small retrieval example backed by a local in-memory vector store
+- `structured_output/`: a typed output example that returns a Java record
 
 ## Run the example
 
@@ -13,10 +16,10 @@ This chapter bucket contains a minimal Spring AI example that runs against a loc
    ollama serve
    ollama pull llama3.2:1b
    ```
-2. Run the example:
-   ```bash
-   cd ch10/spring_ai/basic_assistant
-   mvn spring-boot:run
-   ```
+2. Run one of the examples:
+    ```bash
+    cd ch10/spring_ai/<example>
+    mvn spring-boot:run
+    ```
 
-The app prints one assistant response from Spring AI and then exits.
+Each app prints one Spring AI response and then exits.

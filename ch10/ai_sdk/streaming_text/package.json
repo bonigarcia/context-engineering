@@ -1,0 +1,12 @@
+{
+  "name": "streaming_text",
+  "version": "1.0.0",
+  "description": "Minimal AI SDK streamText example with a mock model",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ai": "^6.0.0"
+  }
+}

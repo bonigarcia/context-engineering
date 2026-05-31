@@ -1,0 +1,13 @@
+{
+  "name": "structured_output",
+  "version": "1.0.0",
+  "description": "Minimal AI SDK structured output example with a mock model",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ai": "^6.0.0",
+    "zod": "^3.25.0"
+  }
+}
