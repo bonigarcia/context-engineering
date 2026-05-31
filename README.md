@@ -113,7 +113,6 @@ This chapter maps framework choices to the kind of context problem they solve:
 - Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [DeepAgents](./ch10/deepagents)
 - AI application platforms: [Agno](./ch10/agno) · [Parlant](./ch10/parlant) · [Temporal](./ch10/temporal)
 - Visual workflow platforms: [Dify](./ch10/dify) · [LangFlow](./ch10/langflow) · [Flowise](./ch10/flowise) · [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw)
-- Legacy examples retained for reference: [AutoGen](./ch10/autogen)
 
 ## Online resources
 
