@@ -12,6 +12,6 @@ The point is not to preserve every byte of source text. It is to preserve the us
 ## Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python file_context.py
 ```

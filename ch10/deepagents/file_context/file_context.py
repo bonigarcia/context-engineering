@@ -1,43 +1,46 @@
 from __future__ import annotations
 
-from collections import deque
 from pathlib import Path
-
-
-BUFFER_LIMIT = 3
 
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[3]
 
 
-def trim_note(path: Path) -> str:
+def select_files(root: Path) -> list[Path]:
+    return [
+        root / "README.md",
+        root / "file_context" / "README.md",
+        root / "planning_loop" / "README.md",
+    ]
+
+
+def summarize_file(path: Path) -> str:
     lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    heading = lines[0].lstrip("# ") if lines else path.name
-    detail = next((line[2:] for line in lines[1:] if line.startswith("- ")), lines[1] if len(lines) > 1 else "")
-    note = f"{heading}: {detail}".strip()
-    return note[:100]
+    return lines[0].lstrip("# ") if lines else path.name
+
+
+def reduce_notes(notes: list[str], limit: int = 2) -> list[str]:
+    return notes[-limit:]
 
 
 def main() -> None:
     root = repo_root() / "ch10" / "deepagents"
-    sources = [
-        root / "README.md",
-        root / "research_harness" / "README.md",
-        root / "subagent_delegation" / "README.md",
-        root / "planning_loop" / "README.md",
-        root / "human_approval" / "README.md",
-    ]
-
-    notes = deque(maxlen=BUFFER_LIMIT)
-    for source in sources:
-        notes.append((source.relative_to(root).as_posix(), trim_note(source)))
+    files = select_files(root)
+    notes = [summarize_file(path) for path in files]
+    reduced = reduce_notes(notes)
 
     print("# File context")
-    print(f"Bounded note buffer: {BUFFER_LIMIT}")
-    print("Trimmed notes:")
-    for source, note in notes:
-        print(f"- {source}: {note}")
+    print()
+    print("Selected files:")
+    for path in files:
+        print(f"- {path.relative_to(root).as_posix()}")
+    print()
+    print("Trimmed note buffer:")
+    for note in reduced:
+        print(f"- {note}")
+    print()
+    print("Bounded note buffer preserved the useful shape of the repo.")
 
 
 if __name__ == "__main__":

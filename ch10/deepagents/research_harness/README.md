@@ -1,19 +1,23 @@
 # Research harness
 
-This runnable example researches a concrete repo/docs question end-to-end:
+This runnable example follows the upstream DeepAgents pattern:
 
-> How does this repository organize chapter 10 orchestration examples, and how does the DeepAgents slice manage context?
+- `create_deep_agent` builds the agent
+- local tools expose repo/docs research
+- notes stay bounded before the final brief is produced
+
+It keeps the example local and testable while still showing the long-horizon research shape.
 
 ## What it demonstrates
 
-- A small local file tool that only lists and reads repo/docs files
-- A bounded note buffer so the harness does not carry every read forward
-- A reduced `context_state` that captures only the distilled signals
-- A final synthesis step that turns the reduced state into a short research brief
+- A small set of local markdown helpers for repo/docs research
+- Bounded notes so the harness does not carry every read forward
+- A concise brief instead of a large context dump
+- An upstream-style builder that can be monkeypatched in tests
 
 ## Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python research_harness.py
 ```

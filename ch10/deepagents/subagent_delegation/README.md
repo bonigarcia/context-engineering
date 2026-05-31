@@ -12,6 +12,6 @@ Keeping the runnable example single-file makes the control flow easier to inspec
 ## Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python subagent_delegation.py
 ```

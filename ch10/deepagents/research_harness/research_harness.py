@@ -13,194 +13,89 @@ limitations under the License.
 
 from __future__ import annotations
 
-from collections import Counter, deque
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Deque
+from typing import Iterable
+
+try:
+    from deepagents import create_deep_agent
+except ImportError:  # pragma: no cover - lets tests monkeypatch the builder
+    create_deep_agent = None
 
 
-TASK = (
-    "Research how this repository organizes chapter 10 orchestration examples "
-    "and explain how the DeepAgents slice manages context."
+RESEARCH_TASK = (
+    "Research how this repository organizes the DeepAgents examples and write a concise brief "
+    "using bounded notes."
 )
-NOTE_LIMIT = 5
-FILE_LIMIT = 5
-SNIPPET_LIMIT = 1200
-STOPWORDS = {
-    "the",
-    "and",
-    "for",
-    "with",
-    "this",
-    "that",
-    "from",
-    "into",
-    "about",
-    "using",
-    "example",
-    "examples",
-    "readme",
-    "chapter",
-    "context",
-    "task",
-    "run",
-    "small",
-    "local",
-}
+SYSTEM_PROMPT = (
+    "You are a concise research assistant. Inspect repo and docs markdown, keep notes bounded, "
+    "and return a short, useful brief."
+)
 
 
-@dataclass(frozen=True)
-class Note:
-    source: str
-    summary: str
+def list_markdown_files(root: Path) -> list[Path]:
+    return sorted(path for path in root.rglob("*.md") if path.is_file())
 
 
-class LocalFileTool:
-    def __init__(self, root: Path) -> None:
-        self.root = root
-
-    def list_sources(self) -> list[Path]:
-        candidates = [
-            self.root / "README.md",
-            self.root / "docs" / "README.md",
-            self.root / "docs" / "superpowers" / "plans" / "2026-05-31-ch10-orchestration-frameworks-phase1.md",
-            self.root / "ch10" / "README.md",
-            self.root / "ch10" / "langgraph" / "README.md",
-            self.root / "ch10" / "crewai" / "research_and_write" / "README.md",
-            self.root / "ch10" / "agent_framework" / "basic_conversation" / "README.md",
-        ]
-
-        discovered = sorted(
-            path
-            for path in self.root.glob("ch10/**/*.md")
-            if path.is_file() and "__pycache__" not in path.parts
-        )
-        candidates.extend(discovered)
-
-        selected: list[Path] = []
-        seen: set[Path] = set()
-        for path in candidates:
-            if path in seen or not path.exists() or not path.is_file():
-                continue
-            selected.append(path)
-            seen.add(path)
-            if len(selected) >= FILE_LIMIT:
-                break
-        return selected
-
-    def read(self, path: Path) -> str:
-        return path.read_text(encoding="utf-8")[:SNIPPET_LIMIT]
+def read_markdown_file(path: Path) -> str:
+    return path.read_text(encoding="utf-8").strip()
 
 
-class BoundedNoteBuffer:
-    def __init__(self, limit: int) -> None:
-        self._items: Deque[Note] = deque(maxlen=limit)
-
-    def add(self, note: Note) -> None:
-        self._items.append(note)
-
-    def items(self) -> list[Note]:
-        return list(self._items)
-
-
-def find_repo_root(start: Path) -> Path:
-    for candidate in start.parents:
-        if (candidate / "README.md").exists() and (candidate / "ch10").exists():
-            return candidate
-    raise RuntimeError("Could not locate the repository root")
+def _resolve_markdown_path(repo_root: Path, relative_path: str) -> Path:
+    path = (repo_root / relative_path).resolve()
+    if path.suffix.lower() != ".md":
+        raise ValueError("Only markdown files are allowed")
+    if repo_root.resolve() not in path.parents and path != repo_root.resolve():
+        raise ValueError("Path must stay inside the repository root")
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    return path
 
 
-def normalize_words(text: str) -> list[str]:
-    words = []
-    for raw in text.replace("/", " ").replace("-", " ").split():
-        cleaned = "".join(char for char in raw.lower() if char.isalnum())
-        if len(cleaned) < 4 or cleaned in STOPWORDS:
-            continue
-        words.append(cleaned)
-    return words
+def summarize_bounded_notes(notes: Iterable[str], limit: int = 5) -> str:
+    bounded = [note.strip() for note in list(notes)[-limit:] if note.strip()]
+    if not bounded:
+        return "(no notes)"
+    return "\n".join(f"- {note.splitlines()[0]}" for note in bounded)
 
 
-def summarize_text(text: str) -> str:
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
-    headings = [line.lstrip("# ") for line in lines if line.startswith("#")][:2]
-    bullets = [line for line in lines if line.startswith("-")][:2]
-    if headings and bullets:
-        return f"{headings[0]} | {'; '.join(bullets)}"
-    if headings:
-        return f"{headings[0]} | {lines[1] if len(lines) > 1 else ''}".strip(" |")
-    return lines[0] if lines else "(empty file)"
+def _tool(name: str, description: str):
+    def decorator(func):
+        func.name = name
+        func.description = description
+        return func
+
+    return decorator
 
 
-def collect_notes(tool: LocalFileTool) -> BoundedNoteBuffer:
-    buffer = BoundedNoteBuffer(NOTE_LIMIT)
-    for source in tool.list_sources():
-        content = tool.read(source)
-        buffer.add(Note(source=source.relative_to(tool.root).as_posix(), summary=summarize_text(content)))
-    return buffer
+def build_agent(root: Path | None = None):
+    if create_deep_agent is None:
+        raise RuntimeError("deepagents.create_deep_agent is not available")
 
+    repo_root = Path(root) if root is not None else Path(__file__).resolve().parents[3]
 
-def reduce_context(task: str, notes: BoundedNoteBuffer) -> dict[str, object]:
-    note_items = notes.items()
-    keyword_counter: Counter[str] = Counter()
-    for note in note_items:
-        keyword_counter.update(normalize_words(note.summary))
+    @_tool("list_markdown_files", "List markdown files available for repository and docs research.")
+    def list_markdown_files_tool() -> str:
+        return "\n".join(path.relative_to(repo_root).as_posix() for path in list_markdown_files(repo_root))
 
-    context_state = {
-        "task": task,
-        "buffer_limit": NOTE_LIMIT,
-        "note_count": len(note_items),
-        "sources": [note.source for note in note_items],
-        "note_summaries": [note.summary for note in note_items],
-        "signals": [word for word, _ in keyword_counter.most_common(4)],
-    }
-    return context_state
+    @_tool("read_markdown_file", "Read a markdown file relative to the repository root.")
+    def read_markdown_file_tool(path: str) -> str:
+        return read_markdown_file(_resolve_markdown_path(repo_root, path))
 
+    @_tool("summarize_bounded_notes", "Summarize newline-separated notes while keeping only a bounded tail.")
+    def summarize_bounded_notes_tool(notes: str, limit: int = 5) -> str:
+        return summarize_bounded_notes(notes.splitlines(), limit=limit)
 
-def synthesize_brief(context_state: dict[str, object]) -> str:
-    sources = context_state["sources"]
-    notes = context_state["note_summaries"]
-    signals = context_state["signals"]
-
-    lines = [
-        "# Research brief",
-        "",
-        f"Task: {context_state['task']}",
-        "",
-        "## Context state",
-        f"- Bounded note buffer: {context_state['buffer_limit']}",
-        f"- Notes kept: {context_state['note_count']}",
-        "",
-        "## What I inspected",
-    ]
-    lines.extend(f"- {source}" for source in sources)
-    lines.extend([
-        "",
-        "## Context signals",
-    ])
-    if signals:
-        lines.extend(f"- {signal}" for signal in signals)
-    else:
-        lines.append("- none")
-    lines.extend([
-        "",
-        "## Reduced notes",
-    ])
-    lines.extend(f"- {note}" for note in notes)
-    lines.extend([
-        "",
-        "## Conclusion",
-        "- The harness keeps only a bounded note buffer, compresses those notes into a reduced context state, and uses that state for the final brief.",
-        "- This keeps the example focused on long-horizon repo/docs research without carrying the full file text forward.",
-    ])
-    return "\n".join(lines)
+    return create_deep_agent(
+        model="openai:gpt-5.4",
+        system_prompt=SYSTEM_PROMPT,
+        tools=[list_markdown_files_tool, read_markdown_file_tool, summarize_bounded_notes_tool],
+    )
 
 
 def main() -> None:
-    root = find_repo_root(Path(__file__).resolve())
-    tool = LocalFileTool(root)
-    notes = collect_notes(tool)
-    context_state = reduce_context(TASK, notes)
-    print(synthesize_brief(context_state))
+    agent = build_agent()
+    result = agent.invoke({"messages": [("user", RESEARCH_TASK)]})
+    print(result)
 
 
 if __name__ == "__main__":

@@ -13,6 +13,6 @@ The runnable harness does not pause automatically, but the README documents wher
 ## Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python human_approval.py --auto-approve
 ```

@@ -12,6 +12,6 @@ That loop is the long-horizon behavior in miniature: the work is incremental, bu
 ## Run
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python planning_loop.py
 ```

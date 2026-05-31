@@ -3,28 +3,25 @@ from __future__ import annotations
 import argparse
 
 
-def draft_response() -> str:
-    return "Draft response: keep the answer short and context-aware."
-
-
-def get_approver(auto_approve: bool) -> str:
+def build_output(auto_approve: bool) -> str:
+    lines = [
+        "# Human approval",
+        "",
+        "Awaiting approval before publishing the synthesized brief.",
+    ]
     if auto_approve:
-        return "auto reviewer"
-    answer = input("Press Enter to approve and continue: ").strip()
-    return answer or "human reviewer"
+        lines.extend([
+            "",
+            "Approved.",
+        ])
+    return "\n".join(lines)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--auto-approve", action="store_true")
     args = parser.parse_args()
-
-    draft = draft_response()
-    print("# Human approval")
-    print(draft)
-    print("Awaiting approval...")
-    approver = get_approver(args.auto_approve)
-    print(f"Approved by {approver}.")
+    print(build_output(args.auto_approve))
 
 
 if __name__ == "__main__":

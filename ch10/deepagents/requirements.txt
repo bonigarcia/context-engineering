@@ -1,0 +1,6 @@
+deepagents
+langchain-openai
+langgraph
+langchain-core
+python-dotenv
+pytest
