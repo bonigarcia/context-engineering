@@ -106,6 +106,15 @@ This chapter covers governance, human oversight, and operational patterns for co
 - Model fine-tuning: [Python](./ch09/fine_tuning)
 - AI gateway (LiteLLM): [Python](./ch09/litellm_gateway)
 
+#### Chapter 10. AI frameworks for context engineering
+This chapter maps framework choices to the kind of context problem they solve:
+
+- AI application frameworks: [Haystack](./ch10/haystack) · [AI SDK](./ch10/ai_sdk) · [Spring AI](./ch10/spring_ai) · [Pydantic AI](./ch10/pydantic_ai) · [DSPy](./ch10/dspy)
+- Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [DeepAgents](./ch10/deepagents)
+- AI application platforms: [Agno](./ch10/agno) · [Parlant](./ch10/parlant) · [Temporal](./ch10/temporal)
+- Visual workflow platforms: [Dify](./ch10/dify) · [LangFlow](./ch10/langflow) · [Flowise](./ch10/flowise) · [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw)
+- Legacy examples retained for reference: [AutoGen](./ch10/autogen)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.

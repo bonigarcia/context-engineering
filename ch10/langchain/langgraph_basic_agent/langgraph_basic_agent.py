@@ -13,12 +13,11 @@ limitations under the License.
 
 import os
 from dotenv import load_dotenv
-from typing import TypedDict, Annotated
+from typing import TypedDict
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langgraph.graph import StateGraph, END
-import operator
 
 # Load environment variables from .env file
 load_dotenv()
@@ -38,7 +37,7 @@ class GraphState(TypedDict):
         output: LLM output
     """
     input: str
-    output: Annotated[str, operator.add]
+    output: str
 
 # Define the nodes
 def call_llm(state: GraphState):
@@ -54,24 +53,15 @@ def call_llm(state: GraphState):
     response = chain.invoke({"input": state["input"]})
     return {"output": response}
 
-def end_node(state: GraphState):
-    """
-    Node that represents the end of the graph, simply passes the state.
-    """
-    print("---END_NODE---")
-    return state
-
 if __name__ == "__main__":
     # Build the graph
     workflow = StateGraph(GraphState)
 
     workflow.add_node("llm_node", call_llm)
-    workflow.add_node("final_output", end_node)
 
     # Set up edges
     workflow.set_entry_point("llm_node")
-    workflow.add_edge("llm_node", "final_output")
-    workflow.add_edge("final_output", END)
+    workflow.add_edge("llm_node", END)
 
     # Compile the graph
     app = workflow.compile()
