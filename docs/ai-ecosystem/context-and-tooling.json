@@ -99,7 +99,7 @@
           "pricing": "Free access with an OpenAI account; pay-as-you-go billing for API requests."
         },
         {
-          "name": "Vertex Generative AI Studio",
+          "name": "Vertex AI Studio",
           "url": "https://console.cloud.google.com/vertex-ai/studio/",
           "description": "Google Cloud environment for prototyping and tuning generative AI models, including Gemini.",
           "features": [
