@@ -39,4 +39,12 @@ python stepwise_reasoning.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question 1: How should we handle the product launch this week?
+Reasoning: A launch request needs a short plan and a clear final status.
+Answer: Summarize the release steps, confirm the rollout owner, and share the final checklist.
+
+Question 2: What should we say about the duplicate billing report?
+Reasoning: Billing questions should confirm the charge and keep the reply precise.
+Answer: Verify the charge, explain the refund status, and point the user to billing support
+```

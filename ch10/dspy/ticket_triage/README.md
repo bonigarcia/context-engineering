@@ -37,4 +37,19 @@ python ticket_triage.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Ticket 1: I was charged twice for my subscription and need a refund.
+Priority: high
+Team: billing
+Reply: Thanks for the details. I am routing this to billing now and will help get it resolved.
+
+Ticket 2: I cannot log in after resetting my password.
+Priority: high
+Team: support
+Reply: Thanks. I am routing this to support so we can help restore your access quickly.
+
+Ticket 3: The dashboard export button is broken and shows an error.
+Priority: medium
+Team: engineering
+Reply: Thanks for reporting this. I am sending it to engineering for a closer look.
+```

@@ -37,4 +37,10 @@ python orchestration.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Executing task: Research the latest trends in context engineering for 2026 and save a report.md
+
+Task complete. (Note: Running this in a real environment requires API keys)
+
+Final execution state (message list) contains the plan and sub-agent results.
+```

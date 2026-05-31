@@ -31,4 +31,9 @@ python haystack_rag_pipeline.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question: How do I keep notes organized?
+Retrieved context:
+- Organizing with tags: Use tags to group related notes and keep the workspace tidy.
+- Archiving old notes: Archive finished notes instead of deleting them so they stay searchable.
+```

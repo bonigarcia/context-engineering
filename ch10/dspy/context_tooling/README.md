@@ -39,4 +39,16 @@ python context_tooling.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question 1: How do I reset my password?
+Answer: Use the self-service portal to reset the password, then retry the login.
+Source: Reset password
+
+Question 2: I cannot connect to the VPN from home.
+Answer: Open the local VPN client, select the office profile, and reconnect.
+Source: VPN access
+
+Question 3: Where can I download the invoice copy?
+Answer: Download the latest invoice from the billing page.
+Source: Invoice copy
+```

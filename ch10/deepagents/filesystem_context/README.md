@@ -37,4 +37,6 @@ python filesystem_context.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Seeded /memories/AGENTS.md and /workspace/notes.md.
+```

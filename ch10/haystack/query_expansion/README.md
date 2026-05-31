@@ -31,4 +31,10 @@ python haystack_query_expansion.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question: sync notes
+Expanded retrieval:
+- Syncing notes: Sync notes from every device after you sign in.
+- Organizing notes: Organize notes with tags and folders.
+- Backing up notes: Backup notes regularly so you can restore them later.
+```

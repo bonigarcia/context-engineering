@@ -37,4 +37,6 @@ python human_approval.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Awaiting approval for remove_file.
+```

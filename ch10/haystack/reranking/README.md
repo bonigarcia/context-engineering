@@ -31,4 +31,10 @@ python haystack_reranking.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question: Where do I find important notes?
+Reranked results:
+- Important notes: Important notes stay pinned at the top of the workspace.
+- Tagging notes: Tagging groups related notes by project or topic.
+- Archiving notes: Archived notes remain searchable after the task is done.
+```

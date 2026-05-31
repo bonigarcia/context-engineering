@@ -31,4 +31,12 @@ python haystack_pipeline_composition.py
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+```
+Question: organize notes
+Pipeline composition answer:
+- retrieval gathers the local notes
+- assembly turns them into a readable context
+- final context:
+Pipeline composition: Haystack pipelines keep retrieval, assembly, and formatting separate when you organize notes.
+Single-purpose stages: A small pipeline is easier to test when each component does one job.
+```
