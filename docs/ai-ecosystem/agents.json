@@ -1,57 +1,95 @@
 {
   "title": "AI agents",
-  "intro": "General-purpose assistants and coding-focused agents that people use as the interface to context-aware workflows.",
+  "intro": "User-facing or developer-facing systems that expose LLM-based capabilities through chat interfaces, APIs, integrated tools, memory, connectors, or multi-step execution.",
   "groups": [
     {
-      "title": "General-purpose agents",
+      "title": "General-purpose assistants",
       "items": [
         {
           "name": "ChatGPT",
           "url": "https://chatgpt.com/",
-          "description": "A generative AI chatbot created by OpenAI that can function as a conversational assistant and as an AI agent.",
+          "description": "A generative AI chatbot created by OpenAI that can function as a conversational assistant and as an AI agent capable of using tools and leveraging memory.",
           "features": [
+            "State-of-the-art performance across a wide range of natural language tasks.",
             "Strong reasoning, coding, and creative text generation capabilities.",
             "Contextual understanding and memory in conversations.",
             "Multilingual support, voice mode, and web search capabilities."
           ],
           "models": "GPT-4, GPT-4o, GPT-4o mini, GPT-5, and specialized o-series models.",
-          "pricing": "Free plan; paid plans and API usage available."
+          "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
           "name": "Gemini",
           "url": "https://gemini.google.com",
-          "description": "A generative AI chatbot from Google built on a family of multimodal LLMs.",
+          "description": "A generative AI chatbot from Google built on a family of multimodal LLMs. Through its web interface and API, Gemini can access external tools and perform context-aware tasks.",
           "features": [
-            "Native multimodality across text, images, audio, video, and code.",
-            "Very long context window for processing large amounts of information.",
+            "Native multimodality allows it to understand and combine text, images, audio, video, and code.",
+            "A very long context window for processing large amounts of information.",
             "Integration with Google applications such as Gmail, Docs, and Sheets."
           ],
           "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano.",
-          "pricing": "Free plan; paid plans and API pricing available."
+          "pricing": "Free plan; paid plans starting at $19.99/month; API usage-based pricing."
         },
         {
           "name": "Claude",
           "url": "https://claude.ai",
-          "description": "An AI assistant and family of LLMs from Anthropic focused on safety and ethical behavior.",
+          "description": "An AI assistant and family of LLMs from Anthropic, known for its strong emphasis on safety and ethical behavior. Claude functions as both an AI assistant and an AI agent.",
           "features": [
             "Advanced reasoning and problem-solving capabilities.",
-            "Large context window for long documents.",
-            "Vision capabilities for images, charts, and graphs."
+            "A large context window for processing and analyzing long documents.",
+            "Vision capabilities for analyzing images, charts, and graphs."
           ],
           "models": "Claude 3.5 Haiku, Claude 3.5 Sonnet, and Claude Opus 4.",
-          "pricing": "Free plan; paid plans and API billing available."
+          "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
+        },
+        {
+          "name": "Meta AI",
+          "url": "https://www.meta.ai/",
+          "description": "An AI assistant created by Meta that can serve as an agent, supporting dialogue, reasoning, and tool use, integrated into Meta's ecosystem of products.",
+          "features": [
+            "Conversational AI and generative capabilities for text, images, and video.",
+            "AI-powered search and personalized recommendations.",
+            "Real-time voice conversations and integration with Meta services."
+          ],
+          "models": "The Llama family of models, including Llama 3 and Llama 4 Turbo.",
+          "pricing": "Free plan; Meta AI+ subscription at $10/month; API usage-based pricing."
         },
         {
           "name": "Perplexity AI",
           "url": "https://www.perplexity.ai",
-          "description": "An AI-powered conversational search engine that synthesizes web knowledge into concise answers with citations.",
+          "description": "An AI-powered conversational search engine that synthesizes web knowledge into concise, natural-language answers with citations.",
           "features": [
             "Real-time web search capabilities.",
-            "Clickable citations for verification.",
-            "Focus modes for academic papers or news."
+            "Conversational AI for interactive querying.",
+            "Provides clickable citations for verification.",
+            "Focus modes to refine search results, including academic papers or news."
           ],
-          "models": "Access to GPT-4o, Claude 4.0 Sonnet, and proprietary Sonar models.",
-          "pricing": "Free plan; paid plans for advanced features."
+          "models": "Access to advanced AI models including GPT-4o, Claude 4.0 Sonnet, and proprietary Sonar models.",
+          "pricing": "Free plan; paid plans starting at $20/month."
+        },
+        {
+          "name": "Manus",
+          "url": "https://manus.im/",
+          "description": "Autonomous general AI agent product designed to execute complex tasks end-to-end.",
+          "features": [
+            "Autonomous task execution, including planning and reasoning.",
+            "Integration of multiple models and tools to complete delegated tasks.",
+            "Capabilities spanning coding, research, and data analysis."
+          ],
+          "pricing": "Commercial product with subscription-based access."
+        },
+        {
+          "name": "Microsoft Copilot",
+          "url": "https://copilot.microsoft.com",
+          "description": "A generative AI chatbot developed by Microsoft AI, built on OpenAI's advanced LLMs.",
+          "features": [
+            "Secure, web-grounded AI chat.",
+            "Integration with Microsoft 365 apps, including Word, Excel, and PowerPoint.",
+            "Enterprise data protection and Microsoft Graph grounding.",
+            "Image generation capabilities."
+          ],
+          "models": "OpenAI's advanced LLMs such as the GPT-4 and GPT-5 series.",
+          "pricing": "Free version for eligible M365 users; paid plans starting at $20/month."
         }
       ]
     },
@@ -59,26 +97,15 @@
       "title": "Coding agents",
       "items": [
         {
-          "name": "Gemini CLI",
-          "url": "https://github.com/google-gemini/gemini-cli",
-          "description": "Google's official CLI interface for Gemini models, enabling code assistance and task automation from the terminal.",
-          "features": [
-            "Natural language code generation and editing.",
-            "Shell and file operations integration.",
-            "Supports large context windows and multimodal inputs."
-          ],
-          "pricing": "Included in Google Cloud's Gemini for Developers tier."
-        },
-        {
           "name": "Claude Code",
           "url": "https://github.com/anthropics/claude-code",
-          "description": "Terminal-based interface for Anthropic's Claude models, optimized for coding, debugging, and documentation tasks.",
+          "description": "Terminal-based interface for Anthropic's Claude models, optimized for coding, debugging, and documentation tasks within the CLI.",
           "features": [
             "Conversational coding assistant in the terminal.",
             "Reads and modifies local files safely.",
             "Integrates with Git and code editors."
           ],
-          "pricing": "Included with Claude Pro and Team plans."
+          "pricing": "Included with Claude Pro and Team plans; usage-based API billing for enterprise access."
         },
         {
           "name": "Aider",
@@ -86,10 +113,32 @@
           "description": "Open-source CLI coding assistant that edits your codebase with GPT, Claude, or Gemini through Git-tracked commits.",
           "features": [
             "Works directly on your repo with automatic commits.",
-            "Supports multiple LLM backends.",
+            "Supports multiple LLM backends, including GPT, Claude, and Gemini.",
             "Context-aware editing via diff-based workflow."
           ],
-          "pricing": "Open-source and free to use."
+          "pricing": "Open-source and free to use; API key required for external LLMs."
+        },
+        {
+          "name": "ForgeCode",
+          "url": "https://forgecode.dev/",
+          "description": "Developer-focused AI CLI that integrates with your local environment to assist with coding and debugging.",
+          "features": [
+            "Local-first coding assistant with shell integration.",
+            "Supports context sharing between files and commands.",
+            "Plugin system for custom workflows."
+          ],
+          "pricing": "Free tier available with limited usage; paid plans for advanced features."
+        },
+        {
+          "name": "Codex CLI",
+          "url": "https://developers.openai.com/codex/cli/",
+          "description": "Command-line interface for OpenAI's Codex models offering code generation and completion in the terminal.",
+          "features": [
+            "Autocompletion and inline code generation.",
+            "Natural language to shell command translation.",
+            "Integration with editors and REPLs."
+          ],
+          "pricing": "Pay-as-you-go via OpenAI API; free credits available for new accounts."
         },
         {
           "name": "OpenCode",
@@ -100,10 +149,21 @@
             "Operates over full repositories with awareness of project structure.",
             "Enables multi-step workflows, including planning and reviewing code."
           ],
-          "pricing": "Free tier available."
+          "pricing": "Free tier available; paid plans for advanced features."
         },
         {
-          "name": "Cursor (agent mode)",
+          "name": "Antigravity",
+          "url": "https://antigravity.google/",
+          "description": "Agent-first software development platform from Google that enables developers to orchestrate autonomous coding agents across projects, tools, and workflows.",
+          "features": [
+            "Multi-agent environment for planning, coding, debugging, and task execution.",
+            "Integrated editor, terminal, browser, and agent management capabilities.",
+            "Includes Antigravity CLI and SDK for terminal-based and programmable workflows."
+          ],
+          "pricing": "Free preview tier available; advanced usage tied to Google AI and Gemini plans."
+        },
+        {
+          "name": "Cursor",
           "url": "https://cursor.sh/",
           "description": "AI-native code editor with agent capabilities that can understand, modify, and navigate entire codebases.",
           "features": [
@@ -111,7 +171,7 @@
             "Agent mode supports autonomous code modifications across a repository.",
             "Context-aware understanding of code structure and dependencies."
           ],
-          "pricing": "Free tier available."
+          "pricing": "Free tier available; paid plans for extended usage and advanced models."
         }
       ]
     }

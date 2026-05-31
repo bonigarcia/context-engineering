@@ -9,127 +9,501 @@
           "name": "Ollama",
           "url": "https://ollama.com/",
           "description": "Open-source tool designed to run, manage, and serve open-weight language models locally.",
-          "features": ["Simple setup for running open-weight models.", "Built-in library of optimized model weights.", "Supports local API access."],
+          "features": [
+            "Simple setup for running open-weight models such as Llama and Mistral.",
+            "Built-in library of optimized model weights.",
+            "Supports local API access for integration with other tools."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "vLLM",
           "url": "https://github.com/vllm-project/vllm",
           "description": "High-throughput and memory-efficient serving engine for LLMs.",
-          "features": ["PagedAttention algorithm for efficient KV cache management.", "Supports continuous batching and high-concurrency requests."],
+          "features": [
+            "PagedAttention algorithm for efficient KV cache management.",
+            "Supports continuous batching and high-concurrency requests.",
+            "Compatible with many open-weight model architectures."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "llama.cpp",
           "url": "https://github.com/ggerganov/llama.cpp",
           "description": "LLM inference implementation in pure C/C++ for high-performance execution on a variety of hardware.",
-          "features": ["Minimal dependencies and high portability across CPUs and GPUs.", "Supports advanced quantization techniques."],
+          "features": [
+            "Minimal dependencies and high portability across CPUs and GPUs.",
+            "Supports advanced quantization techniques to reduce memory footprint.",
+            "Foundational component for many other local LLM applications."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "LM Studio",
           "url": "https://lmstudio.ai/",
           "description": "Desktop application that allows users to discover, download, and run local LLMs.",
-          "features": ["Graphical interface for model discovery and management.", "Local inference server with OpenAI-compatible API."],
+          "features": [
+            "Graphical interface for model discovery and management.",
+            "Local inference server with OpenAI-compatible API.",
+            "Hardware-accelerated execution on multiple platforms."
+          ],
           "pricing": "Free for personal use."
+        },
+        {
+          "name": "Text Generation Inference (TGI)",
+          "url": "https://github.com/huggingface/text-generation-inference",
+          "description": "A toolkit for deploying and serving LLMs developed by Hugging Face.",
+          "features": [
+            "Optimized for production deployments with support for many model architectures.",
+            "Features including tensor parallelism and token streaming.",
+            "Integrated with the Hugging Face ecosystem for model discovery."
+          ],
+          "pricing": "Open-source and free to use under the HFOIL license."
         }
       ]
     },
     {
-      "title": "Prompting and prompt ops",
+      "title": "Prompting IDEs and playgrounds",
       "items": [
         {
           "name": "Vellum",
           "url": "https://www.vellum.ai",
           "description": "Integrated platform combining prompt design, evaluation, and observability for LLM-powered applications.",
-          "features": ["Visual prompt editor with experiment tracking and A/B testing.", "Centralized management of model variants and datasets."],
-          "pricing": "Free tier; paid plans based on usage and team seats."
+          "features": [
+            "Visual prompt editor with experiment tracking and A/B testing.",
+            "Centralized management of model variants and datasets.",
+            "Production deployment tools with performance monitoring."
+          ],
+          "pricing": "Free tier for small projects; paid plans based on usage and team seats."
         },
         {
           "name": "PromptPerfect",
           "url": "https://promptperfect.jina.ai",
           "description": "Prompt optimization tool that refines and compresses prompts for efficiency and accuracy across models.",
-          "features": ["Automatic prompt tuning for different LLMs.", "Reduces token count while maintaining quality."],
-          "pricing": "Free tier; subscription plans available."
+          "features": [
+            "Automatic prompt tuning for different LLMs.",
+            "Reduces token count while maintaining quality.",
+            "Integrates via API for programmatic optimization."
+          ],
+          "pricing": "Free tier available; subscription plans for professional and enterprise users."
         },
         {
-          "name": "PromptLayer",
-          "url": "https://www.promptlayer.com",
-          "description": "Dedicated prompt management platform designed to version and analyze prompts used in LLM-powered applications.",
-          "features": ["Prompt versioning with diffs and historical comparisons.", "Runtime tracking and analytics via lightweight SDKs."],
-          "pricing": "Free tier with basic functionality."
+          "name": "OpenAI Playground",
+          "url": "https://platform.openai.com/playground",
+          "description": "Interactive web interface to experiment with OpenAI models and test prompts.",
+          "features": [
+            "Real-time prompt testing with adjustable parameters.",
+            "Supports GPT-4o and fine-tuned models.",
+            "Integrated API preview and token usage display."
+          ],
+          "pricing": "Free access with an OpenAI account; pay-as-you-go billing for API requests."
+        },
+        {
+          "name": "Vertex Generative AI Studio",
+          "url": "https://console.cloud.google.com/vertex-ai/studio/",
+          "description": "Google Cloud environment for prototyping and tuning generative AI models, including Gemini.",
+          "features": [
+            "Visual interface for prompt design and model evaluation.",
+            "Supports multimodal models and enterprise data connectors.",
+            "Integrates with Vertex AI Workbench and pipelines."
+          ],
+          "pricing": "Free trial credits on Google Cloud; usage-based billing depending on the model."
+        },
+        {
+          "name": "Anthropic Console",
+          "url": "https://platform.claude.com/",
+          "description": "Web-based interface for experimenting with Claude models and optimizing prompts.",
+          "features": [
+            "Prompt experimentation with the Claude 3 and Claude 4 models.",
+            "Adjustable system prompts and context size.",
+            "Conversation history and export for reproducible tests."
+          ],
+          "pricing": "Free access with a Claude account; API billing applies to extended or automated testing."
+        }
+      ]
+    },
+    {
+      "title": "Prompt management",
+      "items": [
+        {
+          "name": "Helicone",
+          "url": "https://www.helicone.ai",
+          "description": "Observability and prompt analytics platform for LLM-based applications.",
+          "features": [
+            "Centralized logging of prompts and responses.",
+            "Prompt version tracking tied to runtime requests.",
+            "Cost, latency, and quality analytics across model variants."
+          ],
+          "pricing": "Free tier for individual developers; paid plans based on request volume and team features."
         },
         {
           "name": "Repo Prompt",
           "url": "https://repoprompt.com/",
           "description": "Context engineering tool and MCP-enabled platform for assembling token-efficient prompts from code repositories.",
-          "features": ["Selects and structures relevant files into optimized prompts for LLMs.", "Provides token estimation and context slicing for large codebases."],
-          "pricing": "Free tier available."
+          "features": [
+            "Selects and structures relevant files into optimized prompts for LLMs.",
+            "Supports planning workflows and reviewable diffs for code changes.",
+            "Provides token estimation and context slicing for large codebases."
+          ],
+          "pricing": "Free tier available; paid plans for advanced features."
+        },
+        {
+          "name": "PromptLayer",
+          "url": "https://www.promptlayer.com",
+          "description": "Dedicated prompt management platform designed to version and analyze prompts used in LLM-powered applications.",
+          "features": [
+            "Prompt versioning with diffs and historical comparisons.",
+            "Association of prompts with models and datasets.",
+            "Runtime tracking and analytics via lightweight SDKs."
+          ],
+          "pricing": "Free tier with basic functionality; usage-based pricing for production workloads and teams."
+        },
+        {
+          "name": "Mirascope",
+          "url": "https://www.mirascope.com",
+          "description": "Open-source Python framework that combines prompt management and evaluation.",
+          "features": [
+            "Prompt definitions expressed as composable Python constructs.",
+            "Tight integration between prompts and function calling.",
+            "Built-in support for testing prompt behavior."
+          ],
+          "pricing": "Open-source and free to use; commercial support and enterprise offerings available."
+        },
+        {
+          "name": "Lilypad",
+          "url": "https://www.lilypad.tech",
+          "description": "Prompt operations and observability platform focused on tracing and evaluating prompts.",
+          "features": [
+            "Prompt tracing with full request and response context.",
+            "Versioned prompt experiments with evaluation hooks.",
+            "Integration with common LLM providers and frameworks."
+          ],
+          "pricing": "Free tier for experimentation; paid plans based on usage."
+        },
+        {
+          "name": "Agenta",
+          "url": "https://agenta.ai/",
+          "description": "Open-source LLMOps platform for building and monitoring LLM-powered applications.",
+          "features": [
+            "Unified platform for prompt engineering and versioning.",
+            "Built-in evaluation workflows including LLM-as-a-judge capabilities.",
+            "Observability and tracing of inputs and system performance."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; managed cloud offering available."
         }
       ]
     },
     {
-      "title": "Retrieval stores and graph layers",
+      "title": "Vector databases",
       "items": [
         {
           "name": "Pinecone",
           "url": "https://www.pinecone.io",
           "description": "Fully managed vector database service optimized for similarity search.",
-          "features": ["Serverless and fully managed architecture.", "Real-time vector search with metadata filtering."],
-          "pricing": "Usage-based pricing with a free tier."
+          "features": [
+            "Serverless and fully managed architecture.",
+            "Real-time vector search with metadata filtering.",
+            "High scalability and strong ecosystem integrations."
+          ],
+          "pricing": "Usage-based pricing; free tier available for smaller projects."
         },
         {
           "name": "Milvus",
           "url": "https://milvus.io",
           "description": "Open-source vector database built for massive embedding and similarity search workloads.",
-          "features": ["Distributed architecture for large-scale deployments.", "GPU acceleration for faster search."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Distributed architecture for large-scale deployments.",
+            "GPU acceleration for faster search.",
+            "Integration with AI frameworks and cloud hosting options."
+          ],
+          "pricing": "Open-source and free to use; paid managed option via Zilliz Cloud."
         },
         {
           "name": "Weaviate",
           "url": "https://weaviate.io",
           "description": "Open-source vector database supporting semantic and hybrid search.",
-          "features": ["Hybrid vector and keyword search support.", "Built-in REST and GraphQL APIs for context queries."],
-          "pricing": "Open-source and free to use for self-hosting."
+          "features": [
+            "Hybrid vector and keyword search support.",
+            "Built-in REST and GraphQL APIs for context queries.",
+            "Managed and self-hosted deployment options."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; managed cloud service with usage-based pricing."
         },
         {
-          "name": "Neo4j",
-          "url": "https://neo4j.com",
-          "description": "Native graph database used for graph RAG and multi-hop reasoning over connected data.",
-          "features": ["Cypher query language and native graph storage.", "Integrated vector search for hybrid retrieval."],
-          "pricing": "Free Community Edition and managed cloud tiers."
+          "name": "Qdrant",
+          "url": "https://qdrant.tech",
+          "description": "Open-source vector search engine focused on reliability and high performance.",
+          "features": [
+            "High-performance similarity search engine.",
+            "REST and gRPC APIs for easy integration.",
+            "Ready for on-premise and managed cloud environments."
+          ],
+          "pricing": "Open-source and free to use; managed Qdrant Cloud with tiered pricing."
+        },
+        {
+          "name": "Chroma",
+          "url": "https://www.trychroma.com",
+          "description": "Lightweight vector store designed for prototyping and local development.",
+          "features": [
+            "Simple setup with local or embedded mode.",
+            "Tight integration with popular LLM frameworks.",
+            "Supports persistence and metadata filtering."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "FAISS",
+          "url": "https://github.com/facebookresearch/faiss",
+          "description": "High-performance library for efficient similarity search and clustering of dense vector embeddings.",
+          "features": [
+            "Optimized nearest-neighbor search for large-scale collections.",
+            "Multiple indexing strategies balancing recall and latency.",
+            "CPU and GPU implementations for high-throughput retrieval."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Zvec",
+          "url": "https://github.com/alibaba/zvec",
+          "description": "Open-source, in-process vector database designed to embed directly into applications.",
+          "features": [
+            "Runs entirely in-process with no server or network dependency.",
+            "Supports dense and sparse embeddings and hybrid search.",
+            "Built on Alibaba Proxima engine for high-performance retrieval."
+          ],
+          "pricing": "Open-source and free to use."
         }
       ]
     },
     {
-      "title": "Memory and context management",
+      "title": "Embedding models",
+      "items": [
+        {
+          "name": "text-embedding-3-large",
+          "url": "https://platform.openai.com/docs/guides/embeddings",
+          "description": "OpenAI's highest-quality embedding model designed for semantic search and RAG tasks.",
+          "features": [
+            "State-of-the-art quality across retrieval benchmarks.",
+            "High consistency across domains such as code and documents.",
+            "Excellent performance for English-language search."
+          ],
+          "lens": "API-hosted model optimized for high-quality semantic retrieval.",
+          "pricing": "API-based pricing per 1 million tokens; pay-as-you-go usage."
+        },
+        {
+          "name": "Cohere Embed v3",
+          "url": "https://docs.cohere.com/docs/embed",
+          "description": "A multilingual embedding model optimized for enterprise search and RAG pipelines.",
+          "features": [
+            "Very strong multilingual performance.",
+            "Long-context input support.",
+            "Optimized for high-recall search."
+          ],
+          "lens": "API-hosted multilingual model aimed at enterprise search.",
+          "pricing": "API usage pricing per 1 million tokens; enterprise plans available."
+        },
+        {
+          "name": "BGE-large",
+          "url": "https://huggingface.co/BAAI/bge-large-en",
+          "description": "Open-source embedding models known for high retrieval accuracy.",
+          "features": [
+            "Excellent performance among open-source models.",
+            "Suitable for local and privacy-sensitive workloads.",
+            "Strong semantic retrieval with a small footprint."
+          ],
+          "lens": "Self-hostable open model family commonly used for English retrieval.",
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "jina-embeddings-v3",
+          "url": "https://huggingface.co/jinaai/jina-embeddings-v3",
+          "description": "Open-source embedding model designed for long-context documents and multilingual tasks.",
+          "features": [
+            "Long-context support up to approximately 64k tokens.",
+            "Multilingual embeddings with consistent quality.",
+            "Optimized for generative search and RAG."
+          ],
+          "lens": "Self-hostable or API-hosted multilingual model with long-input support.",
+          "pricing": "Open-source and free to use; optional hosted API available."
+        }
+      ]
+    },
+    {
+      "title": "Graph databases",
+      "items": [
+        {
+          "name": "Neo4j",
+          "url": "https://neo4j.com",
+          "description": "The industry-standard native graph database used for its maturity and performance.",
+          "features": [
+            "Native graph storage processing with the Cypher query language.",
+            "Integrated vector search for hybrid retrieval.",
+            "Rich ecosystem including Graph Data Science library."
+          ],
+          "pricing": "Free Community Edition; managed cloud service with free and paid tiers."
+        },
+        {
+          "name": "Amazon Neptune",
+          "url": "https://aws.amazon.com/neptune",
+          "description": "A fully managed graph database service built for the AWS cloud, designed for high availability.",
+          "features": [
+            "Support for Property Graph and RDF data models.",
+            "Neptune Analytics for analyzing graph data in memory.",
+            "Deep integration with the AWS ecosystem."
+          ],
+          "pricing": "Pay-per-hour for instances or serverless usage."
+        },
+        {
+          "name": "ArangoDB",
+          "url": "https://arangodb.com",
+          "description": "A native multi-model database that combines graph, document, and key-value data models.",
+          "features": [
+            "Unified Query Language for graphs and vector search.",
+            "Scalable architecture with SmartGraphs for distributed processing.",
+            "Multi-model support for combining metadata filtering with graph traversals."
+          ],
+          "pricing": "Open-source and free to use; managed cloud service available."
+        }
+      ]
+    },
+    {
+      "title": "RAG platforms",
+      "items": [
+        {
+          "name": "OpenRAG",
+          "url": "https://github.com/langflow-ai/openrag",
+          "description": "End-to-end open-source RAG platform that integrates document ingestion and conversational interfaces.",
+          "features": [
+            "Pre-integrated RAG stack including ingestion and chat interface.",
+            "Visual workflow builder for rapid iteration.",
+            "Agentic RAG workflows with re-ranking."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "RAGFlow",
+          "url": "https://github.com/infiniflow/ragflow",
+          "description": "Open-source RAG engine that combines document understanding and agent orchestration.",
+          "features": [
+            "Integrated ingestion and retrieval pipelines.",
+            "Advanced document parsing and hybrid search capabilities.",
+            "Support for agent workflows and multi-source data ingestion."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "PageIndex",
+          "url": "https://github.com/VectifyAI/PageIndex",
+          "description": "Framework for reasoning-based retrieval that organizes documents into hierarchical structures.",
+          "features": [
+            "Eliminates vector databases and chunking through structured indexing.",
+            "Builds hierarchical table-of-contents representations for long documents.",
+            "Enables reasoning-based retrieval with improved traceability."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Airweave",
+          "url": "https://github.com/airweave-ai/airweave",
+          "description": "Context retrieval layer that connects external data sources and exposes them through a unified search interface.",
+          "features": [
+            "Continuous data synchronization from multiple tools and databases.",
+            "Unified retrieval API for agents and AI systems.",
+            "Handles ingestion and access control across heterogeneous sources."
+          ],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Memory management",
       "items": [
         {
           "name": "Mem0",
           "url": "https://mem0.ai",
           "description": "Advanced memory layer for LLM agents that enables persistent and structured context across sessions.",
-          "features": ["Multi-level memory including user and session states.", "Smart memory extraction and consolidation."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Multi-level memory including user and session states.",
+            "Smart memory extraction and consolidation.",
+            "Token-efficient retrieval for long-term context."
+          ],
+          "pricing": "Open-source and free to use; enterprise features available."
+        },
+        {
+          "name": "Zep",
+          "url": "https://www.getzep.com",
+          "description": "Context engineering platform that builds temporal knowledge graphs to manage user and conversation data.",
+          "features": [
+            "Graph-based memory representation of entities and relationships.",
+            "Dynamic context assembly optimized for token efficiency.",
+            "Scalable enterprise-grade memory persistence."
+          ],
+          "pricing": "Free developer tier; paid enterprise plans available."
+        },
+        {
+          "name": "Cognee",
+          "url": "https://www.cognee.ai",
+          "description": "Hybrid memory engine combining graph and vector stores for reasoning-driven context management.",
+          "features": [
+            "Unified graph plus vector memory architecture.",
+            "Custom pipelines for reasoning and domain adaptation.",
+            "Designed for multi-agent and enterprise workflows."
+          ],
+          "pricing": "Free trial available; subscription plans for advanced features."
         },
         {
           "name": "Letta",
           "url": "https://docs.letta.com/",
           "description": "Persistent memory framework enabling LLM agents to manage and update internal state over long conversations.",
-          "features": ["Self-reflective memory for adaptive agent behavior.", "Supports local and remote storage backends."],
+          "features": [
+            "Self-reflective memory for adaptive agent behavior.",
+            "Supports local and remote storage backends.",
+            "Compatible with popular LLM frameworks."
+          ],
+          "pricing": "Open-source and free to use; paid hosting available."
+        },
+        {
+          "name": "LangMem",
+          "url": "https://github.com/langchain-ai/langmem",
+          "description": "Modular memory management component that provides flexible context persistence for LLM agents.",
+          "features": [
+            "Supports multiple storage backends, including Redis and Postgres.",
+            "Integrates with LangChain agents and tools.",
+            "Customizable strategies for context summarization."
+          ],
+          "pricing": "Open-source and free to use; enterprise hosting via LangSmith."
+        },
+        {
+          "name": "MemPalace",
+          "url": "https://github.com/milla-jovovich/mempalace",
+          "description": "Memory management framework designed to structure and retrieve contextual information for AI systems.",
+          "features": [
+            "Organizes context into structured and hierarchical memory spaces.",
+            "Enables selective retrieval of information based on semantic associations.",
+            "Designed to reduce context fragmentation in AI workflows."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "LLMLingua",
-          "url": "https://github.com/microsoft/LLMLingua",
-          "description": "Framework for compressing prompts and long inputs to LLMs.",
-          "features": ["Token-level compression of prompts to eliminate non-essential information.", "Optimizes very long contexts for efficiency."],
+          "name": "OpenViking",
+          "url": "https://github.com/volcengine/OpenViking",
+          "description": "Open-source long-context management framework focused on compressing and retrieving large-scale context.",
+          "features": [
+            "Context compression and summarization for long documents.",
+            "Efficient retrieval mechanisms for large-scale contextual data.",
+            "Designed to support long-context reasoning."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "QwenLong-CPRS",
-          "url": "https://github.com/Tongyi-Zhiwen/QwenLong-CPRS",
-          "description": "Context compression pipeline designed to reduce long inputs while preserving semantic fidelity.",
-          "features": ["Learned compression strategies for long documents.", "Designed to integrate into RAG pipelines."],
+          "name": "Memori",
+          "url": "https://github.com/GibsonAI/memori",
+          "description": "Open-source memory engine using SQL-native storage to provide transparent agent memory.",
+          "features": [
+            "Local-first memory management using SQLite or PostgreSQL.",
+            "Automatic entity and relationship extraction.",
+            "Simple integration for lightweight agent deployments."
+          ],
           "pricing": "Open-source and free to use."
         }
       ]

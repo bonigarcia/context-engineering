@@ -1,96 +1,239 @@
 {
   "title": "AI frameworks",
-  "intro": "Frameworks shape how context is assembled, shared, and executed across models, tools, and workflows.",
+  "intro": "High-level abstractions for building context-aware AI systems by composing models, prompts, tools, and control logic.",
   "groups": [
     {
-      "title": "Code-first frameworks",
+      "title": "AI application frameworks",
       "items": [
         {
           "name": "LangChain",
           "url": "https://www.langchain.com",
           "description": "General-purpose framework for building LLM-powered applications by composing prompts, models, and tools.",
-          "features": ["Abstractions for chains, agents, tools, and memory.", "Broad ecosystem of integrations."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Abstractions for chains, agents, tools, and memory.",
+            "Broad ecosystem of integrations with models and vector stores.",
+            "Strong support for iterative development and experimentation."
+          ],
+          "pricing": "Open-source and free to use; commercial services available via LangSmith."
         },
         {
           "name": "LlamaIndex",
           "url": "https://www.llamaindex.ai",
           "description": "Data-centric framework focused on ingesting, structuring, and selecting context for LLM applications.",
-          "features": ["Indexing and retrieval abstractions for diverse data sources.", "Flexible context assembly and query pipelines."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Indexing and retrieval abstractions for diverse data sources.",
+            "Flexible context assembly and query pipelines.",
+            "Emphasis on grounding model outputs in data."
+          ],
+          "pricing": "Open-source and free to use; paid cloud and enterprise offerings available."
         },
         {
           "name": "Haystack",
           "url": "https://haystack.deepset.ai",
-          "description": "Open-source framework for search-, retrieval-, and question-answering-centric AI systems.",
-          "features": ["Modular pipelines for retrieval, ranking, and generation.", "Strong focus on production-ready RAG architectures."],
+          "description": "Open-source framework for building search-, retrieval-, and question-answering-centric AI systems.",
+          "features": [
+            "Modular pipelines for retrieval, ranking, and generation.",
+            "Strong focus on production-ready RAG architectures.",
+            "Integration with multiple vector stores and model providers."
+          ],
+          "pricing": "Open-source and free to use; commercial offerings available through Deepset."
+        },
+        {
+          "name": "Spring AI",
+          "url": "https://spring.io/projects/spring-ai",
+          "description": "Enterprise-oriented framework for integrating LLMs and AI capabilities into Spring-based Java applications.",
+          "features": [
+            "Familiar Spring abstractions for prompts, models, and embeddings.",
+            "Integration with enterprise systems and application infrastructure.",
+            "Emphasis on configuration, testability, and maintainability."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "DSPy",
           "url": "https://dspy.ai/",
-          "description": "Declarative framework for building LLM applications using modular Python programs.",
-          "features": ["Programming model based on signatures and modules instead of raw prompts.", "Automatic optimization of prompts and model behavior."],
+          "description": "Declarative framework for building LLM applications using modular Python programs, replacing manual prompt engineering with structured pipelines.",
+          "features": [
+            "Programming model based on signatures and modules instead of raw prompts.",
+            "Automatic optimization of prompts and model behavior.",
+            "Supports building RAG systems and agent workflows."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "AI SDK",
+          "url": "https://github.com/vercel/ai",
+          "description": "Provider-agnostic TypeScript toolkit for building AI-powered applications and agents.",
+          "features": [
+            "Unified API to interact with multiple model providers.",
+            "Native support for streaming, tool calling, and structured outputs.",
+            "Integration with modern web frameworks such as Next.js."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Pydantic AI",
+          "url": "https://github.com/pydantic/pydantic-ai",
+          "description": "Python framework for building production-grade AI applications and agents using typed models and validation based on Pydantic.",
+          "features": [
+            "Strongly-typed interfaces for inputs and outputs using Pydantic models.",
+            "Model-agnostic architecture supporting multiple LLM providers.",
+            "Designed for building reliable and production-ready AI workflows."
+          ],
           "pricing": "Open-source and free to use."
         }
       ]
     },
     {
-      "title": "Agent-centric frameworks",
+      "title": "Agent orchestration frameworks",
       "items": [
         {
           "name": "Agent Development Kit",
           "url": "https://developers.google.com/ai/agent",
           "description": "Agent-focused development kit for building and operating AI agents within the Google ecosystem.",
-          "features": ["Native integration with Google models and cloud services.", "Tool use, planning, and agent lifecycle management."],
+          "features": [
+            "Native integration with Google models and cloud services.",
+            "Tool use, planning, and agent lifecycle management.",
+            "Emphasis on production deployment and platform integration."
+          ],
           "pricing": "Pricing depends on underlying Google Cloud services and model usage."
         },
         {
           "name": "Microsoft Agent Framework",
           "url": "https://github.com/microsoft/agent-framework",
-          "description": "Open-source framework for building modular, agent-driven AI systems.",
-          "features": ["Modular agent abstractions enabling reusable behaviors.", "Integration patterns for tools, models, and memory components."],
+          "description": "Open-source framework for building modular, agent-driven AI systems. Microsoft maintains this tool as an evolution of AutoGen.",
+          "features": [
+            "Modular agent abstractions enabling reusable behaviors.",
+            "Integration patterns for tools, models, and memory components.",
+            "Emphasis on structured and interpretable agent workflows."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "CrewAI",
           "url": "https://www.crewai.com",
           "description": "Framework for orchestrating collaborative, role-based AI agents working toward shared goals.",
-          "features": ["Explicit roles, goals, and task delegation between agents.", "Designed for building agent teams with clear responsibilities."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Explicit roles, goals, and task delegation between agents.",
+            "Emphasis on coordination and collaboration patterns.",
+            "Designed for building agent teams with clear responsibilities."
+          ],
+          "pricing": "Open-source and free to use; paid plans for hosted and enterprise features."
         },
         {
           "name": "Agno",
           "url": "https://www.agno.com/",
           "description": "Open-source framework and runtime for building and managing multi-agent AI systems with memory and tools.",
-          "features": ["Support for agents and workflows with shared memory.", "Built-in components for tool integration and knowledge retrieval."],
+          "features": [
+            "Support for building agents and agentic workflows with shared memory.",
+            "Built-in components for tool integration and knowledge retrieval.",
+            "Includes a production runtime and control plane for managing agents."
+          ],
+          "pricing": "Open-source and free to use; enterprise features available via hosted offerings."
+        },
+        {
+          "name": "Parlant",
+          "url": "https://github.com/emcie-co/parlant",
+          "description": "Open-source conversational AI framework focused on building structured and controllable dialogue systems.",
+          "features": [
+            "Declarative conversation design with explicit state and transitions.",
+            "Fine-grained control over dialogue flow and agent behavior.",
+            "Designed for reliable and production-grade conversational systems."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "DeepAgents",
+          "url": "https://github.com/langchain-ai/deepagents",
+          "description": "Open-source agent harness built on LangChain and LangGraph for creating structured, multi-step AI agents.",
+          "features": [
+            "Built-in planning, task tracking, and sub-agent delegation.",
+            "Filesystem-backed context management to persist intermediate results.",
+            "Middleware-based architecture with capabilities such as summarization."
+          ],
           "pricing": "Open-source and free to use."
         }
       ]
     },
     {
-      "title": "Platform-oriented frameworks",
+      "title": "AI application platforms",
       "items": [
+        {
+          "name": "OpenClaw",
+          "url": "https://github.com/openclaw/openclaw",
+          "description": "Open-source autonomous AI agent platform that runs locally and connects language models to external tools.",
+          "features": [
+            "Local-first execution with integrations across messaging platforms.",
+            "Autonomous task execution, including web browsing and code execution.",
+            "Extensible skills system allowing agents to acquire new capabilities."
+          ],
+          "pricing": "Open-source and free to use."
+        },
         {
           "name": "Dify",
           "url": "https://github.com/langgenius/dify",
-          "description": "Open-source platform for building and operating LLM applications, combining prompt engineering and RAG.",
-          "features": ["Unified interface for prompt design, workflows, and model integration.", "Built-in RAG pipelines and dataset management."],
-          "pricing": "Open-source and free to use for self-hosting."
+          "description": "Open-source platform for building and operating LLM applications, combining prompt engineering, RAG, agents, and workflows.",
+          "features": [
+            "Unified interface for prompt design, workflows, and model integration.",
+            "Built-in RAG pipelines and dataset management.",
+            "Integrated observability and governance features."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; managed cloud offering available."
         },
         {
           "name": "LangFlow",
           "url": "https://github.com/langflow-ai/langflow",
-          "description": "Visual development environment for building LLM applications and agents using a drag-and-drop interface.",
-          "features": ["Graph-based visual editor for composing prompts, models, and tools.", "Rapid prototyping of RAG pipelines and agent workflows."],
+          "description": "Visual development environment for building LLM applications, RAG pipelines, and agents using a drag-and-drop interface.",
+          "features": [
+            "Graph-based visual editor for composing prompts, models, tools, and data sources.",
+            "Integration with the Python and LLM application ecosystem.",
+            "Rapid prototyping of RAG pipelines and agent workflows."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "Manus",
-          "url": "https://manus.im/",
-          "description": "Autonomous general AI agent platform designed to execute complex tasks end-to-end.",
-          "features": ["Fully autonomous task execution, including planning and reasoning.", "Integrates multiple models and tools to complete tasks without human input."],
-          "pricing": "Commercial product with subscription-based access."
+          "name": "Flowise",
+          "url": "https://github.com/FlowiseAI/Flowise",
+          "description": "Open-source visual development platform for building agents and LLM workflows.",
+          "features": [
+            "Visual builders for chatflows, agents, and tool-using workflows.",
+            "API deployment, tracing, analytics, evaluations, and team workspaces.",
+            "Support for human-in-the-loop and production-oriented workflows."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; managed cloud offering available."
+        },
+        {
+          "name": "Zapier",
+          "url": "https://zapier.com",
+          "description": "No-code automation platform that connects AI-driven actions with SaaS applications and business workflows.",
+          "features": [
+            "Trigger-action workflows integrating AI with business tools.",
+            "Large ecosystem of prebuilt connectors.",
+            "Rapid deployment without custom infrastructure."
+          ],
+          "pricing": "Free tier with limited automations; paid plans based on task volume and features."
+        },
+        {
+          "name": "n8n",
+          "url": "https://n8n.io",
+          "description": "Open-source workflow automation platform enabling visual orchestration of AI components and external systems.",
+          "features": [
+            "Visual, node-based workflow editor.",
+            "Self-hosted or managed deployment options.",
+            "Control over data flow and execution logic."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; paid plans for managed offerings."
+        },
+        {
+          "name": "Temporal",
+          "url": "https://temporal.io",
+          "description": "Durable execution platform for reliable long-running workflows used in production AI and agentic systems.",
+          "features": [
+            "Fault-tolerant and stateful workflow execution.",
+            "Handling of retries, timeouts, failures, and external events.",
+            "Language-native workflow definitions for production software systems."
+          ],
+          "pricing": "Open-source and free to use; paid cloud and enterprise plans available."
         }
       ]
     }

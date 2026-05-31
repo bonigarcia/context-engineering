@@ -1,37 +1,75 @@
 {
   "title": "Assurance & governance",
-  "intro": "Benchmarks, testing, observability, governance, and spec-driven development tools that make AI systems reliable and auditable.",
+  "intro": "Benchmarks, testing, observability, and governance mechanisms that ensure AI systems operate responsibly and reliably.",
   "groups": [
     {
-      "title": "Benchmarks",
+      "title": "AI benchmarks",
       "items": [
         {
           "name": "MMLU",
           "url": "https://huggingface.co/datasets/cais/mmlu",
           "description": "General-purpose benchmark designed to assess language understanding and reasoning across academic domains.",
-          "features": ["Multiple-choice questions spanning diverse subject areas.", "Commonly used to compare general reasoning capabilities."],
-          "typicalUsage": "Baseline comparison of general model capability."
+          "features": [
+            "Multiple-choice questions spanning diverse subject areas.",
+            "Commonly used to compare general reasoning capabilities.",
+            "Frequently cited in model release reports."
+          ],
+          "usage": "Baseline comparison of general model capability."
         },
         {
           "name": "HELM",
           "url": "https://github.com/stanford-crfm/helm",
           "description": "Benchmark suite developed to evaluate language models across multiple dimensions, including accuracy and robustness.",
-          "features": ["Multi-metric evaluation beyond raw accuracy.", "Emphasis on transparency and methodology."],
-          "typicalUsage": "Comparative analysis of trade-offs between models."
+          "features": [
+            "Multi-metric evaluation beyond raw accuracy.",
+            "Emphasis on transparency and methodology.",
+            "Covers a wide range of tasks and scenarios."
+          ],
+          "usage": "Comparative analysis of trade-offs between models."
+        },
+        {
+          "name": "MTEB",
+          "url": "https://github.com/embeddings-benchmark/mteb",
+          "description": "Standardized benchmark for evaluating text embedding models across retrieval and clustering tasks.",
+          "features": [
+            "Broad coverage of downstream embedding use cases.",
+            "Widely adopted for comparing embedding models.",
+            "Strong relevance for retrieval quality."
+          ],
+          "usage": "Selection and comparison of embedding models."
+        },
+        {
+          "name": "BEIR",
+          "url": "https://github.com/beir-cellar/beir",
+          "description": "Benchmark suite for evaluating information retrieval systems across heterogeneous datasets.",
+          "features": [
+            "Focus on retrieval performance independent of generation.",
+            "Covers multiple real-world retrieval scenarios.",
+            "Common reference for RAG system design."
+          ],
+          "usage": "Evaluation of retrievers and vector search configurations."
         },
         {
           "name": "LongBench",
           "url": "https://github.com/THUDM/LongBench",
           "description": "Benchmark designed to evaluate model performance on tasks requiring long-context understanding.",
-          "features": ["Tasks that stress context length and information retention.", "Highlights degradation patterns as context grows."],
-          "typicalUsage": "Assessing long-context reasoning behavior."
+          "features": [
+            "Tasks that stress context length and information retention.",
+            "Highlights degradation patterns as context grows.",
+            "Relevant for testing long-context models."
+          ],
+          "usage": "Assessing long-context reasoning behavior."
         },
         {
           "name": "RAGBench",
           "url": "https://huggingface.co/datasets/galileo-ai/ragbench",
           "description": "Benchmark focused on evaluating RAG systems as combined pipelines.",
-          "features": ["Joint evaluation of retrieval and generation quality.", "Metrics related to grounding and answer relevance."],
-          "typicalUsage": "Comparative analysis of RAG pipeline designs."
+          "features": [
+            "Joint evaluation of retrieval and generation quality.",
+            "Metrics related to grounding and answer relevance.",
+            "Designed to reflect realistic RAG workflows."
+          ],
+          "usage": "Comparative analysis of RAG pipeline designs."
         }
       ]
     },
@@ -41,23 +79,35 @@
         {
           "name": "Ragas",
           "url": "https://docs.ragas.io/",
-          "description": "Open-source framework designed to evaluate Retrieval-Augmented Generation pipelines.",
-          "features": ["Metrics including faithfulness, answer relevance, and context recall.", "Supports synthetic test data generation."],
+          "description": "Open-source framework designed to evaluate Retrieval-Augmented Generation (RAG) pipelines.",
+          "features": [
+            "Metrics including faithfulness, answer relevance, and context recall.",
+            "Supports synthetic test data generation to jumpstart evaluation.",
+            "Integration with major LLM frameworks and observability tools."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "DeepEval",
           "url": "https://github.com/confident-ai/deepeval",
-          "description": "Open-source evaluation framework for LLMs with a variety of metrics and testing workflows.",
-          "features": ["Unit testing LLM outputs with built-in metrics.", "Integrated dashboard for tracking evaluation results."],
-          "pricing": "Open-source and free to use."
+          "description": "Open-source evaluation framework for LLMs that provides a variety of metrics and testing workflows.",
+          "features": [
+            "Support for unit testing LLM outputs with many built-in metrics.",
+            "Integrated dashboard for tracking evaluation results over time.",
+            "Enables the use of LLM-as-a-judge for complex quality assessments."
+          ],
+          "pricing": "Open-source and free to use; paid cloud offering for enterprise teams."
         },
         {
           "name": "Arize Phoenix",
           "url": "https://phoenix.arize.com/",
           "description": "Open-source tool for LLM observability and evaluation that focuses on troubleshooting and improvement.",
-          "features": ["Visualizes embeddings to identify clusters of poor performance.", "Automated evaluation of retrieval and generation quality."],
-          "pricing": "Open-source and free to use for self-hosting."
+          "features": [
+            "Visualizes embeddings to identify clusters of poor performance.",
+            "Automated evaluation of retrieval and generation quality.",
+            "Supports tracing and dataset versioning for reproducible testing."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; managed enterprise plans available."
         }
       ]
     },
@@ -65,65 +115,364 @@
       "title": "Observability",
       "items": [
         {
+          "name": "Datadog",
+          "url": "https://www.datadoghq.com",
+          "description": "General-purpose observability platform extended to monitor AI-enabled services and infrastructure.",
+          "features": [
+            "Metrics and traces across services.",
+            "Monitoring of latency and resource usage for AI workloads.",
+            "Integration with cloud platforms."
+          ],
+          "pricing": "Commercial, usage-based pricing."
+        },
+        {
           "name": "Langfuse",
           "url": "https://langfuse.com",
           "description": "Open-source observability platform designed for LLM applications.",
-          "features": ["End-to-end tracing of LLM requests and tool calls.", "Prompt and context inspection with version awareness."],
-          "pricing": "Open-source and free to use for self-hosting."
+          "features": [
+            "End-to-end tracing of LLM requests and tool calls.",
+            "Prompt and context inspection with version awareness.",
+            "Support for user feedback loops."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; paid plans for managed deployments."
         },
         {
           "name": "Traceloop OpenLLMetry",
           "url": "https://www.traceloop.com/openllmetry",
           "description": "Open-source instrumentation framework that brings LLM observability into the OpenTelemetry ecosystem.",
-          "features": ["Standardized tracing of LLM calls and prompts.", "Compatibility with OpenTelemetry collectors."],
+          "features": [
+            "Standardized tracing of LLM calls and prompts.",
+            "Compatibility with OpenTelemetry collectors.",
+            "Designed for vendor-neutral observability pipelines."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "LangSmith",
           "url": "https://www.langchain.com/langsmith",
           "description": "Observability and debugging platform integrated with the LangChain ecosystem.",
-          "features": ["Execution traces for chains, agents, and graphs.", "Dataset-based comparisons and regression analysis."],
-          "pricing": "Free tier for developers."
+          "features": [
+            "Execution traces for chains, agents, and graphs.",
+            "Inspection of intermediate steps and tool interactions.",
+            "Dataset-based comparisons and regression analysis."
+          ],
+          "pricing": "Free tier for developers; paid plans for teams and higher usage."
         },
         {
           "name": "MLflow",
           "url": "https://www.mlflow.org/",
           "description": "Open-source platform for managing the AI lifecycle, including experiment tracking and model management.",
-          "features": ["Experiment tracking for logging parameters and metrics.", "Model packaging and registry for versioning."],
-          "pricing": "Open-source and free to use."
+          "features": [
+            "Experiment tracking for logging parameters and metrics.",
+            "Model packaging and registry for versioning.",
+            "Support for evaluation and monitoring of AI applications."
+          ],
+          "pricing": "Open-source and free to use; managed enterprise offerings available."
         }
       ]
     },
     {
-      "title": "Governance",
+      "title": "Privacy",
       "items": [
         {
           "name": "Microsoft Presidio",
           "url": "https://microsoft.github.io/presidio/",
           "description": "Toolkit for detecting and anonymizing sensitive information in text and images.",
-          "features": ["PII detection and redaction.", "Extensible recognizers."],
+          "features": [
+            "PII detection and redaction.",
+            "Extensible recognizers.",
+            "Integration into data pipelines."
+          ],
           "pricing": "Open-source and free to use."
         },
+        {
+          "name": "OpenDP",
+          "url": "https://docs.opendp.org/",
+          "description": "Framework for implementing differential privacy in data analysis.",
+          "features": [
+            "Formal privacy guarantees.",
+            "Statistical tooling.",
+            "Open governance model."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "OneTrust",
+          "url": "https://www.onetrust.com/",
+          "description": "Enterprise platform for privacy and regulatory compliance.",
+          "features": [
+            "Consent and data governance management.",
+            "Regulatory compliance workflows.",
+            "Enterprise reporting."
+          ],
+          "pricing": "Commercial pricing."
+        },
+        {
+          "name": "Apache Ranger",
+          "url": "https://ranger.apache.org/",
+          "description": "Framework for centralized data access control and auditing.",
+          "features": [
+            "Fine-grained access policies.",
+            "Audit logging.",
+            "Integration with big data ecosystems."
+          ],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Safety and security",
+      "items": [
         {
           "name": "OpenAI Moderation",
           "url": "https://developers.openai.com/api/docs/guides/moderation/",
           "description": "API-based content moderation service for detecting policy-violating inputs and outputs.",
-          "features": ["Classification of content across safety categories.", "Real-time moderation of prompts and model responses."],
+          "features": [
+            "Classification of content across safety categories.",
+            "Real-time moderation of prompts and model responses.",
+            "Integration into production inference pipelines."
+          ],
           "pricing": "Usage-based pricing as part of OpenAI API services."
+        },
+        {
+          "name": "Lakera",
+          "url": "https://www.lakera.ai/",
+          "description": "Security platform focused on protecting LLM applications against prompt injection.",
+          "features": [
+            "Detection of prompt injection and jailbreak attempts.",
+            "Monitoring of tool calls and external integrations.",
+            "Policy enforcement for LLM-based applications."
+          ],
+          "pricing": "Commercial pricing."
+        },
+        {
+          "name": "OWASP GenAI Security Project",
+          "url": "https://genai.owasp.org/",
+          "description": "Community-driven initiative providing guidelines for securing generative AI systems.",
+          "features": [
+            "Catalog of common LLM vulnerabilities.",
+            "Security checklists and architectural guidance.",
+            "Alignment with OWASP security standards."
+          ],
+          "pricing": "Open and freely available."
+        },
+        {
+          "name": "TextAttack",
+          "url": "https://github.com/QData/TextAttack",
+          "description": "Open-source framework for adversarial testing and robustness evaluation of LLM models.",
+          "features": [
+            "Generation of adversarial text examples.",
+            "Robustness benchmarking across tasks.",
+            "Support for attack and defense experimentation."
+          ],
+          "pricing": "Open-source and free to use."
         },
         {
           "name": "Guardrails AI",
           "url": "https://github.com/guardrails-ai/guardrails",
           "description": "Framework for enforcing structural and safety constraints on LLM inputs and outputs.",
-          "features": ["Output validation using schemas and guardrail definitions.", "Support for automated correction loops."],
-          "pricing": "Open-source and free to use."
-        },
+          "features": [
+            "Output validation using schemas and guardrail definitions.",
+            "Integration with LLM pipelines to enforce policy checks.",
+            "Support for automated correction loops."
+          ],
+          "pricing": "Open-source and free to use; commercial offerings available."
+        }
+      ]
+    },
+    {
+      "title": "Accountability",
+      "items": [
         {
           "name": "Weights & Biases",
           "url": "https://wandb.ai/",
           "description": "Experiment tracking and observability platform for AI systems.",
-          "features": ["Tracking of runs and artifacts.", "Model and dataset versioning."],
-          "pricing": "Free tier available."
+          "features": [
+            "Tracking of runs and artifacts.",
+            "Model and dataset versioning.",
+            "Collaboration and audit trails."
+          ],
+          "pricing": "Free tier available; paid enterprise plans."
+        },
+        {
+          "name": "DVC",
+          "url": "https://dvc.org/",
+          "description": "Data and model version control system designed for reproducible workflows.",
+          "features": [
+            "Versioning of datasets and models.",
+            "Pipeline reproducibility.",
+            "Integration with Git workflows."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Arize AI",
+          "url": "https://arize.com/",
+          "description": "Monitoring and evaluation platform for production AI systems.",
+          "features": [
+            "Drift detection and performance monitoring.",
+            "Production traceability.",
+            "Model performance diagnostics."
+          ],
+          "pricing": "Commercial pricing."
+        },
+        {
+          "name": "Evidently AI",
+          "url": "https://www.evidentlyai.com/",
+          "description": "Open-source framework for evaluating and monitoring model performance.",
+          "features": [
+            "Data drift and quality monitoring.",
+            "Custom evaluation reports.",
+            "Integration with production pipelines."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; paid cloud offering available."
+        }
+      ]
+    },
+    {
+      "title": "Transparency",
+      "items": [
+        {
+          "name": "OpenLineage",
+          "url": "https://openlineage.io/",
+          "description": "Open standard for tracking data lineage across systems.",
+          "features": [
+            "Metadata collection for pipelines.",
+            "Integration with data orchestration tools.",
+            "Standardized lineage schema."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "SHAP",
+          "url": "https://shap.readthedocs.io/",
+          "description": "Explainability library for interpreting model predictions.",
+          "features": [
+            "Feature attribution methods.",
+            "Model-agnostic explainability.",
+            "Visualization tools."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Jaeger",
+          "url": "https://www.jaegertracing.io/",
+          "description": "Open-source distributed tracing system for monitoring microservices.",
+          "features": [
+            "End-to-end request tracing.",
+            "Latency analysis.",
+            "Integration with observability stacks."
+          ],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Fairness",
+      "items": [
+        {
+          "name": "IBM AI Fairness 360",
+          "url": "https://ai-fairness-360.org/",
+          "description": "Open-source toolkit for detecting and mitigating bias in AI models.",
+          "features": [
+            "Bias detection metrics.",
+            "Mitigation algorithms.",
+            "Extensive documentation."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Fairlearn",
+          "url": "https://fairlearn.org/",
+          "description": "Toolkit for assessing and improving fairness in machine learning models.",
+          "features": [
+            "Fairness metrics and evaluation.",
+            "Mitigation strategies.",
+            "Visualization dashboards."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "What-If Tool",
+          "url": "https://pair-code.github.io/what-if-tool/",
+          "description": "Interactive tool for exploring model behavior and fairness issues.",
+          "features": [
+            "Scenario analysis.",
+            "Counterfactual exploration.",
+            "Bias detection support."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Aequitas",
+          "url": "https://aequitas.world/",
+          "description": "Open-source bias audit toolkit for classification systems.",
+          "features": [
+            "Fairness metrics.",
+            "Group-based disparity analysis.",
+            "Policy-oriented reporting."
+          ],
+          "pricing": "Open-source and free to use."
+        }
+      ]
+    },
+    {
+      "title": "Human oversight",
+      "items": [
+        {
+          "name": "Labelbox",
+          "url": "https://labelbox.com/",
+          "description": "Data annotation and evaluation platform enabling human review loops.",
+          "features": [
+            "Human-in-the-loop annotation workflows.",
+            "Quality control and reviewer management.",
+            "Dataset curation and evaluation tooling."
+          ],
+          "pricing": "Commercial pricing."
+        },
+        {
+          "name": "Scale AI",
+          "url": "https://www.scaleai.ca/",
+          "description": "Enterprise data labeling platform supporting human oversight operations.",
+          "features": [
+            "Managed annotation services.",
+            "Reinforcement learning from human feedback pipelines.",
+            "Evaluation and quality assurance workflows."
+          ],
+          "pricing": "Commercial pricing."
+        },
+        {
+          "name": "ServiceNow",
+          "url": "https://www.servicenow.com/",
+          "description": "Enterprise workflow platform used to implement review and approval processes.",
+          "features": [
+            "Structured approval and escalation workflows.",
+            "Audit trails and compliance documentation.",
+            "Integration with enterprise governance processes."
+          ],
+          "pricing": "Commercial enterprise pricing."
+        },
+        {
+          "name": "Label Studio",
+          "url": "https://labelstud.io/",
+          "description": "Open-source data labeling and review platform for building human-in-the-loop workflows.",
+          "features": [
+            "Customizable annotation interfaces.",
+            "Support for text and multimodal labeling.",
+            "Integration with AI pipelines."
+          ],
+          "pricing": "Open-source and free to use for self-hosting; paid enterprise plans available."
+        },
+        {
+          "name": "Sentry",
+          "url": "https://sentry.io/",
+          "description": "Application monitoring and error-tracking platform used to respond to runtime issues.",
+          "features": [
+            "Real-time error tracking and alerting.",
+            "Issue triage and incident response workflows.",
+            "Integration with development tooling."
+          ],
+          "pricing": "Free tier available; paid plans based on usage."
         }
       ]
     },
@@ -134,28 +483,55 @@
           "name": "Spec Kit",
           "url": "https://github.com/github/spec-kit",
           "description": "Open-source CLI toolkit that structures software development around specifications.",
-          "features": ["Four-phase workflow including specification and implementation.", "Agent-agnostic design compatible with multiple coding agents."],
+          "features": [
+            "Four-phase workflow including specification and implementation.",
+            "Agent-agnostic design compatible with multiple coding agents.",
+            "Version-controlled specification artifacts integrated with Git."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "OpenSpec",
           "url": "https://github.com/Fission-AI/OpenSpec",
-          "description": "Open-source framework that implements spec-driven development as a structured workflow.",
-          "features": ["End-to-end workflow from proposal to implementation.", "Native integration with multiple AI agents."],
+          "description": "Open-source framework that implements SDD as a structured workflow.",
+          "features": [
+            "End-to-end workflow from proposal to implementation.",
+            "Native integration with multiple AI agents such as Cursor.",
+            "Change-centric model with versioned specifications."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "BMad Method (BMM)",
+          "url": "https://github.com/bmad-code-org/BMAD-METHOD",
+          "description": "SDD methodology that combines structured specifications with multi-agent workflows.",
+          "features": [
+            "Role-based agent system for planning and implementation.",
+            "Emphasis on structured documentation and process discipline.",
+            "Designed for complex AI-driven development."
+          ],
           "pricing": "Open-source and free to use."
         },
         {
           "name": "Kiro",
           "url": "https://kiro.dev/",
-          "description": "IDE built around spec-driven development that combines coding and planning within a unified environment.",
-          "features": ["Built-in support for specification-first workflows.", "Integrated agent execution and automation capabilities."],
-          "pricing": "Free tier available."
+          "description": "IDE built around SDD that combines coding and planning within a unified environment.",
+          "features": [
+            "Built-in support for specification-first workflows within the IDE.",
+            "Integrated agent execution and automation capabilities.",
+            "Designed for end-to-end development."
+          ],
+          "pricing": "Free tier available; paid plans for advanced usage."
         },
         {
           "name": "Tessl",
           "url": "https://tessl.io/",
           "description": "Platform for building software systems where specifications are the primary artifact.",
-          "features": ["Treats specifications as executable artifacts that drive implementation.", "AI-assisted code generation aligned with defined specifications."],
+          "features": [
+            "Treats specifications as executable artifacts that drive implementation.",
+            "AI-assisted code generation aligned with defined specifications.",
+            "Focus on maintaining consistency between intent and implementation."
+          ],
           "pricing": "Commercial platform."
         }
       ]
