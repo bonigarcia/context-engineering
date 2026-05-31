@@ -99,15 +99,15 @@
           "pricing": "Free access with an OpenAI account; pay-as-you-go billing for API requests."
         },
         {
-          "name": "Vertex AI Studio",
-          "url": "https://console.cloud.google.com/vertex-ai/studio/",
-          "description": "Google Cloud environment for prototyping and tuning generative AI models, including Gemini.",
+          "name": "Google AI Studio",
+          "url": "https://aistudio.google.com/",
+          "description": "Web-based environment for experimenting with Gemini models, testing prompts, and moving from prompt prototypes to Gemini API code.",
           "features": [
-            "Visual interface for prompt design and model evaluation.",
-            "Supports multimodal models and enterprise data connectors.",
-            "Integrates with Vertex AI Workbench and pipelines."
+            "Interactive prompt testing for Gemini models.",
+            "Supports multimodal experimentation.",
+            "Provides code export for Gemini API integration."
           ],
-          "pricing": "Free trial credits on Google Cloud; usage-based billing depending on the model."
+          "pricing": "Free access with a Google account; API usage is billed separately when prototypes are moved to production."
         },
         {
           "name": "Anthropic Console",
