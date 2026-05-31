@@ -1,4 +1,4 @@
-# Spring AI for context engineering
+# Spring AI
 
 This chapter bucket contains four minimal Spring AI examples that run against a local Ollama server.
 
