@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-Ensure your OpenAI API key is set as an environment variable. You can do this by:
+Ensure your OpenAI API key is set as an environment variable. You can do this by setting it directly or by creating a `.env` file in the example directory:
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```

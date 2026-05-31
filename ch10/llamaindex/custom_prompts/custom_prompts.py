@@ -12,13 +12,17 @@ limitations under the License.
 """
 
 import os
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from dotenv import load_dotenv
+from llama_index.core import VectorStoreIndex
 from llama_index.core.prompts import PromptTemplate
 from llama_index.llms.openai import OpenAI
-from llama_index.embeddings.openai import OpenAIEmbedding
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+if os.getenv("OPENAI_API_KEY") is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
 
 # Create a dummy document
 documents = [
@@ -42,17 +46,16 @@ custom_system_prompt = (
 
 # Query prompt: Guides the LLM on how to respond to user queries, incorporating retrieved context
 custom_query_prompt = PromptTemplate(
-    "Given the following information, please answer the question below:"
-    "---------------------"
-    "{context_str}"
-    "---------------------"
-    "Question: {query_str}"
+    "Given the following information, please answer the question below:\n"
+    "---------------------\n"
+    "{context_str}\n"
+    "---------------------\n"
+    "Question: {query_str}\n"
     "Your concise answer: "
 )
 
-# Configure the LLM and Embedding Model
+# Configure the LLM
 llm = OpenAI(model="gpt-3.5-turbo", temperature=0.0)
-embed_model = OpenAIEmbedding()
 
 # Create a query engine with custom prompts
 query_engine = index.as_query_engine(

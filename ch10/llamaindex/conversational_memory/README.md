@@ -2,7 +2,7 @@
 
 This example demonstrates how LlamaIndex facilitates conversational memory, allowing an LLM-powered chatbot to maintain context across multiple turns of a conversation. This is crucial for building engaging and coherent interactive AI applications, as it enables the LLM to remember past interactions and user preferences, thus influencing its future responses.
 
-The `CondenseQuestionChatEngine` is used here to condense the new user query with the chat history into a single query for retrieval and synthesis, effectively managing the conversational state.
+This example uses LlamaIndex's condense-question chat mode to combine the new user query with the chat history into a single query for retrieval and synthesis, effectively managing the conversational state.
 
 
 ## Requirements
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-Ensure your OpenAI API key is set as an environment variable. You can do this by:
+Ensure your OpenAI API key is set as an environment variable. You can do this by setting it directly or by creating a `.env` file in the example directory:
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```

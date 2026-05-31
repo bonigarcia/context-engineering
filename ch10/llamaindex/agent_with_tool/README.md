@@ -2,7 +2,7 @@
 
 This example demonstrates how to create a LlamaIndex agent capable of using custom tools to extend its capabilities beyond its core knowledge. Tools allow agents to interact with the external environment, perform specific actions, or retrieve information that is not available in their pre-trained data or through RAG.
 
-In this example, a simple `get_current_weather` tool is defined and then provided to a LlamaIndex `AgentRunner`. The agent can then decide when to use this tool based on the user's query.
+In this example, a simple `get_current_weather` tool is defined and then provided to a LlamaIndex `FunctionAgent`. The agent can then decide when to use this tool based on the user's query.
 
 
 ## Requirements
@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 
 2. Set environment variables:
-Ensure your OpenAI API key is set as an environment variable. You can do this by:
+Ensure your OpenAI API key is set as an environment variable. You can do this by setting it directly or by creating a `.env` file in the example directory:
 ```
 OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 ```

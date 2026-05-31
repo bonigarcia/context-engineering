@@ -1,2 +1,3 @@
 llama-index
-openai
+llama-index-llms-openai
+llama-index-embeddings-openai

@@ -12,12 +12,17 @@ limitations under the License.
 """
 
 import os
+from dotenv import load_dotenv
 from llama_index.core.agent.workflow import FunctionAgent
-from llama_index.core.tools import BaseTool, FunctionTool
+from llama_index.core.tools import FunctionTool
 from llama_index.llms.openai import OpenAI
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+if os.getenv("OPENAI_API_KEY") is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
 
 # Define a simple custom tool
 def get_current_weather(city: str) -> str:

@@ -12,12 +12,16 @@ limitations under the License.
 """
 
 import os
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
-from llama_index.core.chat_engine import CondenseQuestionChatEngine
+from llama_index.core import VectorStoreIndex
 from llama_index.llms.openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Set OpenAI API key
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+if os.getenv("OPENAI_API_KEY") is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
 
 # Create a dummy document
 documents = [
