@@ -100,3 +100,30 @@ def test_build_agent_configures_two_isolated_subagents(monkeypatch):
         "writer-agent",
     ]
     assert "delegate" in captured["system_prompt"].lower() or "task tool" in captured["system_prompt"].lower()
+
+
+def test_human_approval_build_agent_wires_interrupts_and_checkpointer(monkeypatch):
+    module = load_example_module("ch10/deepagents/human_approval/human_approval.py")
+    captured = {}
+
+    def fake_create_deep_agent(**kwargs):
+        captured.update(kwargs)
+        return object()
+
+    monkeypatch.setattr(module, "create_deep_agent", fake_create_deep_agent)
+    monkeypatch.setattr(module, "MemorySaver", lambda: "memory-saver")
+
+    agent = module.build_agent()
+
+    assert agent is not None
+    assert captured["model"] == "google_genai:gemini-3.5-flash"
+    assert captured["tools"] == [module.remove_file]
+    assert captured["interrupt_on"] == {"remove_file": True}
+    assert captured["checkpointer"] == "memory-saver"
+
+
+def test_human_approval_build_output_reports_status():
+    module = load_example_module("ch10/deepagents/human_approval/human_approval.py")
+
+    assert "Awaiting approval" in module.build_output(False)
+    assert "Approved." in module.build_output(True)
