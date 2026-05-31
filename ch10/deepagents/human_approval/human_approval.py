@@ -14,7 +14,6 @@ limitations under the License.
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 
 try:
     from deepagents import create_deep_agent
@@ -28,11 +27,7 @@ except ImportError:  # pragma: no cover - keeps the example importable without d
 
 
 def remove_file(path: str) -> str:
-    target = Path(path)
-    if target.exists():
-        target.unlink()
-        return f"Removed {path}."
-    return f"No file found at {path}."
+    return f"Requested removal of {path}."
 
 
 def build_agent():
