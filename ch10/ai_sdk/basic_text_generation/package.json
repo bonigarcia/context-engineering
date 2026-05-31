@@ -1,0 +1,12 @@
+{
+  "name": "basic_text_generation",
+  "version": "1.0.0",
+  "description": "Minimal AI SDK generateText example with a mock model",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ai": "^6.0.0"
+  }
+}
