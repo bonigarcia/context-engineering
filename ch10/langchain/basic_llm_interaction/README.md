@@ -1,6 +1,6 @@
-# Basic interaction with an LLM using LangGraph
+# Basic interaction with an LLM using LangChain
 
-This example demonstrates how to set up a LLM (e.g., OpenAI), invoke a prompt, and parse its output using [LangChain](https://docs.langchain.com/).
+This example demonstrates how to set up an LLM (e.g., OpenAI), invoke a prompt, and parse its output using [LangChain](https://docs.langchain.com/).
 
 ## Requirements
 
