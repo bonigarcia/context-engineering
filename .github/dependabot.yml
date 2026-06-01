@@ -8,6 +8,10 @@ updates:
     - "/ch04/java/mcp_server"
     - "/ch05/java"
     - "/ch06/java"
+    - "/ch10/spring_ai/basic_assistant"
+    - "/ch10/spring_ai/rag_retrieval"
+    - "/ch10/spring_ai/structured_output"
+    - "/ch10/spring_ai/tool_use"
   schedule:
     interval: daily
     time: '06:00'
@@ -36,6 +40,10 @@ updates:
     - "/ch05/javascript/workflow_state_handoff"
     - "/ch06/javascript/few-shot-ticket-normalizer"
     - "/ch06/javascript/prompt-chaining-support-reply"
+    - "/ch10/ai_sdk/basic_text_generation"
+    - "/ch10/ai_sdk/streaming_text"
+    - "/ch10/ai_sdk/structured_output"
+    - "/ch10/ai_sdk/tool_use"
   schedule:
     interval: daily
     time: '06:00'
