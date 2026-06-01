@@ -99,7 +99,7 @@ This chapter covers evaluation and observability for context-aware systems:
 #### Chapter 9. Governance and operations
 This chapter covers governance, human oversight, and operational patterns for context-aware systems:
 
-- PII redaction: [Microsoft Presidio](./ch09/pii_presidio)
+- Personally Identifiable Information (PII) redaction: [Microsoft Presidio](./ch09/pii_presidio)
 - Output validation: [Pydantic](./ch09/output_validation)
 - Bias detection: [Fairlearn](./ch09/bias_detection)
 - AI gateway: [LiteLLM](./ch09/litellm_gateway)
