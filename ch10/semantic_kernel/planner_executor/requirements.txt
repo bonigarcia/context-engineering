@@ -1,0 +1,2 @@
+semantic-kernel
+pytest>=8.0

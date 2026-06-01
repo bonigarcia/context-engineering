@@ -3,10 +3,10 @@
 Tool: `lookup_example_code`
 
 Purpose:
-- Return a fixed code word so the tool call is easy to verify.
+- Return a fixed code word so the plugin call is easy to verify.
 
 Behavior:
-- If the user asks for the example code word, return `SK-TOOL-42`.
+- If the user asks `What is the example code word?`, return `SK-TOOL-42`.
 - If the request is outside that scope, do not use the tool.
 
 Verification prompt:

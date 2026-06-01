@@ -1,6 +1,6 @@
 # Semantic Kernel examples
 
-This folder contains three self-contained Semantic Kernel examples:
+This folder contains three runnable Python examples for Semantic Kernel:
 
 - `tool_use/`: calling a small tool or plugin instead of answering only from the model.
 - `memory_state/`: preserving and reusing a small piece of state across turns.
@@ -8,14 +8,15 @@ This folder contains three self-contained Semantic Kernel examples:
 
 ## Prerequisites
 
-- Semantic Kernel installed in the language/runtime named in that example's `README.md`.
-- The API key required by that example, as documented in that example's `README.md`.
+- Python 3.10+
+- `semantic-kernel` installed in your local environment
 
-## How to use these examples
+## Running the examples
 
-1. Open the example folder you want to explore.
+1. Open the example folder you want to run.
 2. Read that folder's `README.md` first.
-3. Inspect the config and supporting files referenced there.
-4. Follow the setup steps in that example's `README.md`.
+3. Create and activate a virtual environment.
+4. Install the dependencies from that folder's `requirements.txt`.
+5. Run the script described in that folder's `README.md`.
 
 Each example is intentionally small and isolated so you can understand one pattern without reading the others.

@@ -1,34 +1,37 @@
 # Tool use
 
-This example shows how Semantic Kernel can call a small tool or plugin instead of answering only from the model.
+This example shows how Semantic Kernel can register a small plugin function and use it to answer the exact prompt `What is the example code word?`.
 
 ## Prerequisites
 
-- Semantic Kernel installed in the language/runtime you are using for this chapter.
-- The API key required by your local Semantic Kernel setup, if your runtime needs one.
+- Python 3.10+
+- `semantic-kernel` installed from this folder's `requirements.txt`
 
 ## Files to inspect first
 
-- `semantic-kernel-tool-use.md`: the tool name, its scope, and the exact response it should return.
-- `tool_use_config.md`: the minimal setup notes for loading the example folder.
+- `semantic-kernel-tool-use.md`: the exact prompt and the fixed tool response.
+- `tool_use_config.md`: the minimal plugin registration notes.
+- `semantic_kernel_tool_use.py`: the runnable example script.
 
 ## Configure Semantic Kernel
 
-1. Open this folder as the example workspace in your Semantic Kernel setup.
-2. Read `tool_use_config.md` and register the `lookup_example_code` tool.
-3. Read `semantic-kernel-tool-use.md` and confirm that `lookup_example_code` returns `SK-TOOL-42` for the prompt `What is the example code word?`.
+1. Create and activate a virtual environment.
+2. Install the dependencies from `requirements.txt`.
+3. Read `tool_use_config.md` and register the `lookup_example_code` plugin function.
+4. Confirm the plugin function returns `SK-TOOL-42` for the prompt `What is the example code word?`.
 
 ## Run the example
 
-1. Ask `What is the example code word?`.
-2. Confirm Semantic Kernel calls `lookup_example_code`.
-3. Confirm the reply includes `SK-TOOL-42`.
+1. Run `python semantic_kernel_tool_use.py` from this folder.
+2. Confirm the script uses Semantic Kernel to invoke the `lookup_example_code` plugin function.
+3. Confirm the printed output includes `SK-TOOL-42`.
 
 ## Expected result
 
-- The assistant invokes the tool for the example request.
-- The reply includes the exact fixed value returned by the tool.
+- The plugin function is registered with Semantic Kernel.
+- The prompt `What is the example code word?` resolves to `SK-TOOL-42`.
+- The script prints `Tool-backed example output: SK-TOOL-42`.
 
 ## Cleanup or reset
 
-1. Remove any cache files created by your Semantic Kernel runtime for this example workspace.
+1. Remove any virtual environment or cache files created for this example.

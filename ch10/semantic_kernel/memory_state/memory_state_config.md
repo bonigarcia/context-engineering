@@ -1,5 +1,5 @@
 # Memory and state config
 
-- Use this folder as the example workspace.
-- Persist the small state object between turns.
-- Keep the example minimal so the reused state is easy to verify.
+- Keep `memory_state.json` next to `semantic_kernel_memory_state.py`.
+- The script reads and writes that file directly.
+- Delete the file to reset the example.

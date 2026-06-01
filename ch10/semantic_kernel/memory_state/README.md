@@ -1,34 +1,37 @@
 # Memory and state
 
-This example shows how Semantic Kernel can store a small state object on one turn and reuse it on a follow-up turn.
+This example shows how a small local state object can remember one fact and answer a follow-up prompt deterministically.
 
 ## Prerequisites
 
-- Semantic Kernel installed in the language/runtime you are using for this chapter.
-- The API key required by your local Semantic Kernel setup, if your runtime needs one.
+- Python 3.10+
+- `pytest` from this folder's `requirements.txt`
 
 ## Files to inspect first
 
-- `memory_state_notes.md`: the state object and the exact follow-up prompt to verify.
-- `memory_state_config.md`: the minimal setup notes for loading and persisting the example state.
+- `memory_state_notes.md`: the exact prompts and expected topic value.
+- `memory_state_config.md`: the minimal local-file setup notes.
+- `semantic_kernel_memory_state.py`: the runnable example and helper functions.
 
-## Configure Semantic Kernel
+## Configure
 
-1. Open this folder as the example workspace in your Semantic Kernel setup.
-2. Read `memory_state_config.md` and enable persistence for the example state.
-3. Read `memory_state_notes.md` and confirm the state object stays small and readable.
+1. Create and activate a virtual environment.
+2. Install dependencies with `pip install -r requirements.txt`.
+3. Read `memory_state_config.md` and keep the example folder writable so `memory_state.json` can be created.
 
-## Run the example
+## Run
 
-1. Send the first prompt from `memory_state_notes.md` and save the state object.
-2. Send the follow-up prompt from `memory_state_notes.md`.
-3. Confirm the reply uses the same saved state.
+1. Run `python semantic_kernel_memory_state.py` from this folder.
+2. The script will remember the prompt `Remember that my favorite topic is semantic kernels.` if the state file is empty.
+3. It will then answer `What is my favorite topic?` from the saved state.
 
 ## Expected result
 
-- The first turn stores the small state object.
-- The follow-up turn reuses that same state instead of starting over.
+- `memory_state.json` appears in this folder.
+- The stored topic is `semantic kernels`.
+- The script prints the remembered topic and then `semantic kernels`.
 
 ## Cleanup or reset
 
-1. Delete any local cache or state files created by your Semantic Kernel runtime for this example workspace.
+1. Delete `memory_state.json` to reset the example.
+2. Remove any virtual environment or cache files you created.
