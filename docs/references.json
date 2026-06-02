@@ -813,5 +813,13 @@
     "URL": "https://arxiv.org/abs/2307.03172",
     "Description": "Paper examining how language models use long contexts and where relevance can degrade across a prompt window.",
     "Keywords": "Context engineering"
+  },
+  {
+    "Title": "The Orchestration Tax",
+    "Author": "Addy Osmani",
+    "Year": 2026,
+    "URL": "https://addyosmani.com/blog/orchestration-tax/",
+    "Description": "Running more AI agents increases output but not human attention; the 'orchestration tax' is the growing gap between what agents produce and what a single person can effectively review, understand, and merge.",
+    "Keywords": "AI agents"
   }
 ]
