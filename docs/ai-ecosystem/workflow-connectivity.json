@@ -175,9 +175,9 @@
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "GSD (Get Shit Done)",
-          "url": "https://github.com/gsd-build/get-shit-done",
-          "description": "Meta-prompting and context engineering system designed for spec-driven development.",
+          "name": "GSD Core",
+          "url": "https://github.com/open-gsd/gsd-core",
+          "description": "Meta-prompting and context engineering system designed for spec-driven development. Originally called 'Get Shit Done'",
           "features": [
             "Spec-driven development with structured phases including planning and execution.",
             "Multi-agent orchestration using sub-agents with isolated context windows.",
