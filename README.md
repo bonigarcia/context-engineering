@@ -113,6 +113,16 @@ This chapter covers specific AI frameworks that facilitate context engineering, 
 - Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [DeepAgents](./ch10/deepagents) · [Agno](./ch10/agno) · [Parlant](./ch10/parlant) · [Semantic Kernel](./ch10/semantic_kernel) · [Agent Development Kit](./ch10/agent_development_kit) · [Microsoft Agent Framework](./ch10/agent_framework)
 - AI application platforms: [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw) · [Temporal](./ch10/temporal)
 
+#### Chapter 11. Context engineering for software development
+This chapter shows how context engineering supports the software development lifecycle through reusable skills, artifacts, external documentation, orchestration layers, and specialized agents:
+
+- Specification-driven development: [Spec Kit](./ch11/spec-kit-sdd)
+- Agent skills: [Claude Code](./ch11/claude-code-agent-skills)
+- Documentation retrieval: [Cursor with Context7](./ch11/cursor-context7)
+- Orchestration: [OpenCode with Superpowers](./ch11/opencode-superpowers)
+- Orchestration: [Antigravity with Open GSD](./ch11/open-gsd-antigravity)
+- Specialized agents: [BMAD](./ch11/bmad-specialized-agents)
+
 ## Online resources
 
 This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.

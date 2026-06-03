@@ -1,6 +1,6 @@
 # Specialized agents with the BMAD Method
 
-This compact example decomposes the small `idea-score` feature into narrower role artifacts instead of one broad prompt. Each role carries only the context needed for its handoff, while the Python files provide a runnable anchor.
+This compact example shows how the small `idea-score` feature can be decomposed into narrower role artifacts instead of one broad prompt. Each role carries only the context needed for its handoff, and the Python files provide a runnable anchor.
 
 ## Files
 

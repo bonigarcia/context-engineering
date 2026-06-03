@@ -1,8 +1,8 @@
 # SDD with Spec Kit
 
-This compact example is modeled on [GitHub Spec Kit](https://github.com/github/spec-kit) and shows a compact Spec Kit workflow for a small backlog assistant that computes idea scores from `impact`, `effort`, and `strategic_fit` inputs.
+This compact example shows [GitHub Spec Kit](https://github.com/github/spec-kit) as a staged workflow for a small backlog assistant that computes idea scores from `impact`, `effort`, and `strategic_fit` inputs.
 
-In fuller Spec Kit setups, teams commonly add `/speckit.constitution` early to capture shared project rules. Chapter 9 keeps this example focused on the workflow that defines, plans, and implements the backlog-scoring change, so the walkthrough starts at specification and follows the main feature commands only.
+In fuller Spec Kit setups, teams commonly add `/speckit.constitution` early to capture shared project rules. Chapter 11 keeps this example focused on the workflow that defines, plans, and implements the backlog-scoring change, so the walkthrough starts at specification and follows the main feature commands only.
 
 ## Files
 

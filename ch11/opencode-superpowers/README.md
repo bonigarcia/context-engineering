@@ -1,6 +1,6 @@
 # OpenCode with Superpowers
 
-This compact example shows a plan-first workflow for the `idea-score` feature. The implementation is intentionally small, but the surrounding artifacts make design and planning explicit before code is written.
+This compact example shows a design-first workflow for the `idea-score` feature. The implementation is intentionally small, but the surrounding artifacts make design, planning, and verification explicit before code is written.
 
 ## Files
 
@@ -17,4 +17,4 @@ This compact example shows a plan-first workflow for the `idea-score` feature. T
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-The key lesson is that orchestration changes context across stages: idea refinement, design, planning, and implementation each work from a narrower slice of context instead of one monolithic prompt.
+The key lesson is that orchestration changes context across stages: idea refinement, design, planning, implementation, and verification each work from a narrower slice of context instead of one monolithic prompt.
