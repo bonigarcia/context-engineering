@@ -306,18 +306,19 @@
 
       // ---- Target models (no dates in labels) -----------------------------
       const MODELS = {
-        gpt54: { id: 'gpt54', name: 'GPT-5.4', display: 'GPT-5.4 · 1M tokens', maxTokens: 1000000 },
+        gpt55: { id: 'gpt55', name: 'GPT-5.5', display: 'GPT-5.5 · 1M tokens', maxTokens: 1000000 },
         gpt51: { id: 'gpt51', name: 'GPT-5.1', display: 'GPT-5.1 · 400k tokens', maxTokens: 400000 },
-        claude5sonnet: { id: 'claude5sonnet', name: 'Claude 5 Sonnet', display: 'Claude 5 Sonnet · 1M tokens', maxTokens: 1000000 },
-        claude46opus: { id: 'claude46opus', name: 'Claude 4.6 Opus', display: 'Claude 4.6 Opus · 1M tokens', maxTokens: 1000000 },
-        gemini31pro: { id: 'gemini31pro', name: 'Gemini 3.1 Pro', display: 'Gemini 3.1 Pro · 2M tokens', maxTokens: 2000000 },
-        gemini3flash: { id: 'gemini3flash', name: 'Gemini 3 Flash', display: 'Gemini 3 Flash · 1M tokens', maxTokens: 1000000 },
-        llama4scout: { id: 'llama4scout', name: 'Llama 4 Scout', display: 'Llama 4 Scout · 10M tokens', maxTokens: 10000000 },
-        grok420: { id: 'grok420', name: 'Grok 4.20', display: 'Grok 4.20 · 2M tokens', maxTokens: 2000000 }
+        claude55sonnet: { id: 'claude55sonnet', name: 'Claude 5.5 Sonnet', display: 'Claude 5.5 Sonnet · 1M tokens', maxTokens: 1000000 },
+        claude5opus: { id: 'claude5opus', name: 'Claude 5 Opus', display: 'Claude 5 Opus · 1M tokens', maxTokens: 1000000 },
+        gemini35pro: { id: 'gemini35pro', name: 'Gemini 3.5 Pro', display: 'Gemini 3.5 Pro · 2M tokens', maxTokens: 2000000 },
+        gemini35flash: { id: 'gemini35flash', name: 'Gemini 3.5 Flash', display: 'Gemini 3.5 Flash · 1M tokens', maxTokens: 1000000 },
+        llama5: { id: 'llama5', name: 'Llama 5', display: 'Llama 5 · 10M tokens', maxTokens: 10000000 },
+        grok5: { id: 'grok5', name: 'Grok 5', display: 'Grok 5 · 2M tokens', maxTokens: 2000000 },
+        kimik26: { id: 'kimik26', name: 'Kimi K2.6', display: 'Kimi K2.6 · 2M tokens', maxTokens: 2000000 }
       };
 
       const DEFAULT_FRAMEWORK_ID = 'tenPart';
-      const DEFAULT_MODEL_ID = 'gpt54';
+      const DEFAULT_MODEL_ID = 'gpt55';
       const STORAGE_KEY = 'context-builder:v5';
 
       const savedStamp = document.getElementById('savedStamp');

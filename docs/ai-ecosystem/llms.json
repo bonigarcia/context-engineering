@@ -13,7 +13,7 @@
             "State-of-the-art performance across a wide range of natural language tasks.",
             "Strong reasoning, coding, and creative text generation capabilities."
           ],
-          "models": "GPT-4, GPT-4o, GPT-5, o1, o3, and various fine-tuned versions.",
+          "models": "GPT-4, GPT-4o, GPT-5, GPT-5.5, o1, o3, and various fine-tuned versions.",
           "license": "Proprietary, accessible via a paid API."
         },
         {
@@ -25,7 +25,7 @@
             "Strong performance in conversational and text-processing tasks.",
             "Emphasis on constitutional AI and safety."
           ],
-          "models": "Claude 2, 3 (Haiku, Sonnet, Opus), 3.5, and 4.",
+          "models": "Claude 3 (Haiku, Sonnet, Opus), 4, 5, and 5.5.",
           "license": "Proprietary, accessible via a paid API."
         },
         {
@@ -38,7 +38,7 @@
             "Substantial context windows reaching up to 1 million tokens in Gemini 1.5 models.",
             "Optimized versions for different applications, including Ultra for complex tasks, Flash for real-time interactions, and Nano for on-device use."
           ],
-          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano, with various versions such as 1.0, 1.5, and 2.0.",
+          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano, with various versions such as 1.0, 2.0, 3.0, and 3.5.",
           "license": "Proprietary."
         }
       ]
@@ -54,19 +54,19 @@
             "High performance and efficiency, with smaller models often outperforming larger ones.",
             "Strong focus on responsible AI development."
           ],
-          "models": "Gemma 2B, 9B, and 27B.",
+          "models": "Gemma 2, 3, and 4 series.",
           "license": "Gemma license, which allows commercial use under its terms."
         },
         {
           "name": "Llama",
           "url": "https://ai.meta.com/llama/",
-          "description": "A family of open-weight LLMs from Meta, including the latest Llama 4 with multimodal capabilities.",
+          "description": "A family of open-weight LLMs from Meta, including the latest Llama 5 with multimodal capabilities.",
           "features": [
-            "Llama 4 introduces a mixture-of-experts (MoE) architecture and can process text, images, and video.",
-            "Very long context windows that can handle up to 10 million tokens in Llama 4 Scout.",
+            "Llama 5 introduces a mixture-of-experts (MoE) architecture and can process text, images, and video.",
+            "Very long context windows that can handle up to 10 million tokens in Llama 5 Scout.",
             "A community license that allows for free use and modification up to a certain scale."
           ],
-          "models": "Llama 3 (8B, 70B), Llama 4 (Scout, Maverick, Behemoth).",
+          "models": "Llama 3 (8B, 70B), Llama 4 (Scout, Maverick, Behemoth), Llama 5.",
           "license": "Meta Llama Community License Agreement."
         },
         {
@@ -100,7 +100,7 @@
             "Many models are released under the permissive Apache 2.0 license.",
             "Alibaba Cloud's most advanced models are kept proprietary."
           ],
-          "models": "Qwen series (1, 1.5, 2, 2.5, 3), with specialized variants.",
+          "models": "Qwen series (2, 2.5, 3, 4), with specialized variants.",
           "license": "A mix of Apache 2.0 for many models and a proprietary license for the most advanced ones."
         },
         {
@@ -109,22 +109,22 @@
           "description": "LLM from xAI, with a focus on real-time information access.",
           "features": [
             "Grok-1 was released as open-source.",
-            "Newer and more powerful versions, such as Grok-1.5 and Grok-2, are proprietary.",
+            "Newer and more powerful versions, such as Grok-2, Grok-3, and Grok-5 are proprietary.",
             "Access to proprietary models is available through paid subscriptions on the X platform and via an API."
           ],
-          "models": "Grok-1 (open-source), Grok-1.5, Grok-2, and subsequent versions (proprietary).",
+          "models": "Grok-1 (open-source), Grok-2, Grok-3, Grok-5, and subsequent versions (proprietary).",
           "license": "A hybrid approach where Grok-1 is under the Apache 2.0 license, and newer models are proprietary."
         },
         {
-          "name": "Kimi K2",
-          "url": "https://github.com/MoonshotAI/Kimi-K2/",
+          "name": "Kimi K2.6",
+          "url": "https://github.com/MoonshotAI/Kimi-K2.6/",
           "description": "A trillion-parameter open-weight language model from Moonshot AI designed for high-end reasoning, tool-use, and agentic workflows.",
           "features": [
             "MoE architecture with approximately 1 trillion total parameters and 32 billion active per token.",
             "Very long context window support, including up to 256k tokens in the Thinking variant.",
             "Agent capabilities such as tool invocation, chain of thought, and sustained workflows."
           ],
-          "models": "Kimi-K2-Base, Kimi-K2-Instruct, Kimi-K2-Thinking.",
+          "models": "Kimi-K2.6-Base, Kimi-K2.6-Instruct, Kimi-K2.6-Thinking.",
           "license": "Modified MIT license allowing open-weight distribution under model-specific terms."
         }
       ]

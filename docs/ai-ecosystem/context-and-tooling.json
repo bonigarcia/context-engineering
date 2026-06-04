@@ -93,7 +93,7 @@
           "description": "Interactive web interface to experiment with OpenAI models and test prompts.",
           "features": [
             "Real-time prompt testing with adjustable parameters.",
-            "Supports GPT-4o and fine-tuned models.",
+            "Supports GPT-5.5 and fine-tuned models.",
             "Integrated API preview and token usage display."
           ],
           "pricing": "Free access with an OpenAI account; pay-as-you-go billing for API requests."
@@ -114,7 +114,7 @@
           "url": "https://platform.claude.com/",
           "description": "Web-based interface for experimenting with Claude models and optimizing prompts.",
           "features": [
-            "Prompt experimentation with the Claude 3 and Claude 4 models.",
+            "Prompt experimentation with the Claude 4 and Claude 5 models.",
             "Adjustable system prompts and context size.",
             "Conversation history and export for reproducible tests."
           ],

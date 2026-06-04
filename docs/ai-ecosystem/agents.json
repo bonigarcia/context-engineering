@@ -15,7 +15,7 @@
             "Contextual understanding and memory in conversations.",
             "Multilingual support, voice mode, and web search capabilities."
           ],
-          "models": "GPT-4, GPT-4o, GPT-4o mini, GPT-5, and specialized o-series models.",
+          "models": "GPT-4, GPT-4o, GPT-4o mini, GPT-5, GPT-5.5, and specialized o-series models.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -27,7 +27,7 @@
             "A very long context window for processing large amounts of information.",
             "Integration with Google applications such as Gmail, Docs, and Sheets."
           ],
-          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano.",
+          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano, including the latest 3.5 series.",
           "pricing": "Free plan; paid plans starting at $19.99/month; API usage-based pricing."
         },
         {
@@ -39,7 +39,7 @@
             "A large context window for processing and analyzing long documents.",
             "Vision capabilities for analyzing images, charts, and graphs."
           ],
-          "models": "Claude 3.5 Haiku, Claude 3.5 Sonnet, and Claude Opus 4.",
+          "models": "Claude 3.5 Haiku, Claude 5 Sonnet, Claude 5.5 Sonnet, and Claude Opus 5.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -51,7 +51,7 @@
             "AI-powered search and personalized recommendations.",
             "Real-time voice conversations and integration with Meta services."
           ],
-          "models": "The Llama family of models, including Llama 3 and Llama 4 Turbo.",
+          "models": "The Llama family of models, including Llama 4 and Llama 5 series.",
           "pricing": "Free plan; Meta AI+ subscription at $10/month; API usage-based pricing."
         },
         {
@@ -64,7 +64,7 @@
             "Provides clickable citations for verification.",
             "Focus modes to refine search results, including academic papers or news."
           ],
-          "models": "Access to advanced AI models including GPT-4o, Claude 4.0 Sonnet, and proprietary Sonar models.",
+          "models": "Access to advanced AI models including GPT-5.5, Claude 5.5 Sonnet, and proprietary Sonar models.",
           "pricing": "Free plan; paid plans starting at $20/month."
         },
         {
@@ -88,7 +88,7 @@
             "Enterprise data protection and Microsoft Graph grounding.",
             "Image generation capabilities."
           ],
-          "models": "OpenAI's advanced LLMs such as the GPT-4 and GPT-5 series.",
+          "models": "OpenAI's advanced LLMs such as the GPT-4, GPT-5, and GPT-5.5 series.",
           "pricing": "Free version for eligible M365 users; paid plans starting at $20/month."
         }
       ]
