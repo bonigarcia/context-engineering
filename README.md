@@ -127,7 +127,7 @@ This chapter shows how context engineering supports the software development lif
 This chapter covers mathematical foundations, open research challenges, technical innovation frontiers, domain-specific applications, and future directions:
 
 - Base knowledge: [Graphify](./ch12/base_knowledge)
-- [Technology radar](./ch12/context_engineering_radar)
+- Technology radar: [Web page](./ch12/context_engineering_radar)
 
 ## Online resources
 
