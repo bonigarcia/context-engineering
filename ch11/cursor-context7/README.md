@@ -1,22 +1,22 @@
 # Cursor with Context7
 
-This example uses [Upstash Context7](https://github.com/upstash/context7) as a Cursor MCP server. The coding task is a small `httpx` client helper, and it benefits from current documentation because the example depends on version-specific details such as `base_url`, timeout construction, and explicit redirect handling.
+This example uses [Context7](https://github.com/upstash/context7) as a Cursor MCP server. The coding task is a FastAPI backlog scoring endpoint, and it benefits from current documentation for routing, request validation using Pydantic fields, and response models.
 
 ## Files
 
 - `README.md` explains the workflow and local verification.
-- `.cursor/mcp.json` shows the manual Cursor MCP configuration for Upstash Context7.
+- `.cursor/mcp.json` shows the manual Cursor MCP configuration for Context7.
 - `context7-query.md` captures the retrieval flow and the documentation facts used before coding.
 - `requirements.txt` pins the library version used by the example.
-- `src/http_client.py` contains the runnable helper.
-- `tests/test_http_client.py` verifies the result.
+- `src/backlog.py` contains the FastAPI endpoint and scoring logic.
+- `tests/test_backlog.py` verifies the result.
 
 ## Manual Cursor Setup
 
 1. Open this project in Cursor.
 2. Add the Context7 MCP server configuration from `.cursor/mcp.json`.
 3. Replace `"YOUR_CONTEXT7_API_KEY"` in the Cursor MCP configuration with your own Context7 API key, or paste your key into the equivalent Cursor MCP settings field.
-4. Ask Cursor to use Context7 for the `httpx` task before generating code.
+4. Ask Cursor to use Context7 for the `fastapi` task before generating code.
 
 If you want a shortcut, `npx ctx7 setup --cursor` can help bootstrap the configuration, but the main artifact in this example is the explicit manual MCP setup kept in the repository.
 
