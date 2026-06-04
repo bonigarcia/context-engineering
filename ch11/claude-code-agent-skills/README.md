@@ -1,6 +1,6 @@
-# Claude Code Agent Skills Example
+# Claude Code with Agent Skill
 
-This compact example shows how Claude Code can use [agent-skills](https://github.com/addyosmani/agent-skills) as the workflow layer for a tiny product backlog assistant with an `idea-score` feature. The public skill pack is the durable workflow artifact: it carries the reusable SDLC routine instead of relying on a one-off prompt.
+This example shows how Claude Code can use [agent-skills](https://github.com/addyosmani/agent-skills) as the workflow layer for a tiny product backlog assistant with an `idea-score` feature. The public skill pack is the durable workflow artifact: it carries the reusable SDLC routine instead of relying on a one-off prompt.
 
 The code stays intentionally small. The durable workflow context lives in the public agent-skills plugin and is reinforced by `CLAUDE.md` and `agent-skills-workflow.md`.
 
