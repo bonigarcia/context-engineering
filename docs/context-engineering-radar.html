@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Boni Garcia" />
+  <title>Context Engineering | Radar</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/radar.css" rel="stylesheet">
+</head>
+<body class="radar-page">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="ai-ecosystem.html">AI ecosystem</a>
+        <a href="context-aware-prompt-builder.html">Prompt builder</a>
+        <a href="sdlc_prompt_library.html">SDLC library</a>
+        <a href="context-engineering-radar.html" style="color: var(--accent);">Radar</a>
+        <a href="references.html">Further reading</a>
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="docs-container">
+    <section class="page-hero">
+      <h1>Context engineering radar</h1>
+      <p class="page-intro">
+        An interactive mapping of literature, frameworks, builders, and directories shaping context engineering.
+      </p>
+    </section>
+
+    <div class="radar-shell">
+      <!-- Left side: Visualizer -->
+      <div class="card card-padding radar-viz-container">
+        <h3 class="h5 mb-2">The Technology Radar</h3>
+        <p class="text-muted mb-4 text-center" style="font-size: 13px; max-width: 420px; line-height: 1.4;">
+          Hover over nodes to trace connections. Closer to the center means closer to primary research/raw sources.
+        </p>
+
+        <div class="radar-chart-area" id="radarContainer">
+          <!-- The SVG radar will load here -->
+        </div>
+
+        <div class="radar-legend-bar">
+          <div class="radar-legend-pill">
+            <span class="legend-color-dot dot-primary"></span> Primary (Source)
+          </div>
+          <div class="radar-legend-pill">
+            <span class="legend-color-dot dot-secondary"></span> Secondary (Analysis)
+          </div>
+          <div class="radar-legend-pill">
+            <span class="legend-color-dot dot-tertiary"></span> Tertiary (Index)
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Search/Filters & Cards -->
+      <div class="radar-sidebar">
+        <div class="search-field">
+          <input type="search" id="radarSearchInput" placeholder="Search sources, authors, or tools..." autocomplete="off" />
+        </div>
+
+        <div class="filter-bar" id="radarFilters">
+          <button class="filter-pill active" data-filter="all" id="pill-all">All</button>
+          <button class="filter-pill" data-filter="primary" id="pill-primary">Primary</button>
+          <button class="filter-pill" data-filter="secondary" id="pill-secondary">Secondary</button>
+          <button class="filter-pill" data-filter="tertiary" id="pill-tertiary">Tertiary</button>
+        </div>
+
+        <div class="sidebar-list" id="resourcesList">
+          <!-- Dynamically populated cards -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal" aria-hidden="true">
+    <div class="modal-popup">
+      <button class="close-popup-btn" id="closePopupBtn" aria-label="Close details">&times;</button>
+      <div class="popup-body">
+        <span class="popup-tag" id="popupRingType">Primary</span>
+        <h3 class="popup-title" id="popupTitle">Resource Title</h3>
+        <p class="popup-description" id="popupDescription">Resource description</p>
+
+        <div class="popup-meta-box">
+          <div class="meta-box-item">
+            <span class="meta-box-label">Domain</span>
+            <span class="meta-box-value" id="popupDomain">Literature</span>
+          </div>
+          <div class="meta-box-item" id="popupContribContainer">
+            <span class="meta-box-label">Notable Contribution</span>
+            <span class="meta-box-value" id="popupContribution">Preprints</span>
+          </div>
+        </div>
+
+        <div class="popup-actions">
+          <a href="#" target="_blank" class="btn btn-primary w-100" style="color: #08111f !important;" id="popupLink">Visit Resource ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/radar-page.js"></script>
+</body>
+</html>

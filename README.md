@@ -171,7 +171,20 @@ This tool is designed as a reference library, helping you understand how structu
 
 ---
 
-### 4. Further Reading
+### 4. Context Engineering Radar
+
+🔗 https://bonigarcia.dev/context-engineering/context-engineering-radar.html
+
+An interactive dashboard to explore and track concepts, sources, frameworks, and publications in the field of context engineering:
+
+- Circular radar visualization using SVG geometry and polar coordinates mapping
+- Classify resources across Primary, Secondary, and Tertiary ring levels
+- Group items in distinct quadrants: Literature, Frameworks, Models, and Communities
+- Dynamic searching, category filters, and detailed description modal overlays
+
+---
+
+### 5. Further Reading
 
 🔗 https://bonigarcia.dev/context-engineering/references.html
 
