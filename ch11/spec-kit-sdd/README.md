@@ -1,28 +1,23 @@
 # SDD with Spec Kit
 
-This compact example shows [GitHub Spec Kit](https://github.com/github/spec-kit) as a staged workflow for a small backlog assistant that computes idea scores from `impact`, `effort`, and `strategic_fit` inputs.
+This compact example uses [Spec Kit](https://github.com/github/spec-kit) as a staged workflow for a small backlog assistant that computes idea scores from `impact`, `effort`, and `strategic_fit` inputs.
 
-In fuller Spec Kit setups, teams commonly add `/speckit.constitution` early to capture shared project rules. Chapter 11 keeps this example focused on the workflow that defines, plans, and implements the backlog-scoring change, so the walkthrough starts at specification and follows the main feature commands only.
-
-## Files
-
-- `README.md` explains the compact workflow and how to run the example.
-- `spec-kit-workflow.md` shows the representative Spec Kit command flow for this example.
-- `artifacts/spec.md` is a compact stand-in for the fuller per-feature spec artifact that Spec Kit normally manages.
-- `artifacts/plan.md` is a compact stand-in for the fuller per-feature plan artifact that Spec Kit normally manages.
-- `artifacts/tasks.md` is a compact stand-in for the fuller per-feature task artifact that Spec Kit normally manages.
-- `src/backlog.py` contains the immutable data structure and scoring rule.
-- `tests/test_backlog.py` verifies valid scoring and invalid input handling.
+The files in `artifacts/spec.md`, `artifacts/plan.md`, and `artifacts/tasks.md` are representative stand-ins for the fuller per-feature artifacts that Spec Kit normally manages.
 
 ## Representative Command Flow
 
 ```text
 specify init .
+/speckit.constitution
 /speckit.specify
 /speckit.plan
 /speckit.tasks
 /speckit.implement
 ```
+
+## Example Feature Request
+
+Create an `idea-score` feature that lets a team score backlog ideas from `impact`, `effort`, and `strategic_fit` inputs so they can compare candidate work consistently.
 
 ## Run the Example Tests
 
