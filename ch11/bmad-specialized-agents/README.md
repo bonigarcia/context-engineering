@@ -1,21 +1,26 @@
-# Specialized agents with the BMAD Method
+# Specialized Agents with the BMAD Method
 
-This compact example shows how the small `idea-score` feature can be decomposed into narrower role artifacts instead of one broad prompt. Each role carries only the context needed for its handoff, and the Python files provide a runnable anchor.
+This example demonstrates multi-agent orchestration through role decomposition using the [BMAD Method](https://docs.bmad-method.org/) framework. Each specialized agent (Product Manager, Architect, Developer, Reviewer) is given a focused role file containing a small, specific slice of context. This isolation makes execution and verification much more reliable than using a single monolithic context.
 
-## Files
+## Folder Structure
 
-- `README.md` explains the example and how to run it.
-- `agents/product-manager.md` states the business intent for `idea-score`.
-- `agents/architect.md` states the design boundary for the implementation.
-- `agents/developer.md` states the implementation task and scoring formula.
-- `agents/reviewer.md` contains the review checklist.
-- `src/backlog.py` contains the immutable model and scoring function.
-- `tests/test_backlog.py` verifies the runnable example.
+The directory is organized following the official BMAD installation structure:
+
+- `_bmad/` holds configuration and agent profiles:
+  - `_bmad/agents/product-manager.md` (Role description for PM)
+  - `_bmad/agents/architect.md` (Role description for Architect)
+  - `_bmad/agents/developer.md` (Role description for Developer)
+  - `_bmad/agents/reviewer.md` (Role description for Reviewer)
+- `_bmad-output/` holds generated planning and implementation artifacts:
+  - `_bmad-output/planning-artifacts/PRD.md` (Requirements document)
+  - `_bmad-output/planning-artifacts/architecture.md` (Technical design decisions)
+  - `_bmad-output/planning-artifacts/epics/epic-01-core-scoring.md` (Epic and story definitions)
+  - `_bmad-output/implementation-artifacts/sprint-status.yaml` (Active sprint status tracking)
+- `src/backlog.py` contains the implemented backlog prioritization module.
+- `tests/test_backlog.py` contains the verification unit test suite.
 
 ## Run the example
 
 ```bash
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
-
-Role specialization reduces context sprawl and makes handoffs explicit, which is the main teaching point of this example.

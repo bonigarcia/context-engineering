@@ -1,0 +1,10 @@
+sprint:
+  status: active
+  epics:
+    - id: epic-01-core-scoring
+      status: completed
+      stories:
+        - id: STORY-01-01
+          status: completed
+        - id: STORY-01-02
+          status: completed
