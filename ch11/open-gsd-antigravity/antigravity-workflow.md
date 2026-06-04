@@ -2,18 +2,19 @@
 
 ## Goal
 
-Use Open GSD to turn a small backlog-scoring request into a verified change.
+Use Open GSD to turn the `idea-score` feature request into a verified change.
 
-## Workflow
+## Stage Pipeline
 
-1. Discuss the request and confirm the scope.
-2. Plan the change and write the stage artifacts.
-3. Execute the minimal code change.
-4. Verify with unit tests and review the git diff.
-5. Ship only when the work is verified and the history is clean.
+1. **Discuss (`/gsd-discuss-phase 1`)**: Align on requirements (REQ-001, REQ-002, REQ-003) and log choices in `.planning/phases/01-backlog-scoring/CONTEXT.md`.
+2. **Plan (`/gsd-plan-phase 1`)**: Perform stack verification (`RESEARCH.md`) and compile atomic tasks (`01-01-PLAN.md`).
+3. **Execute (`/gsd-execute-phase 1`)**: Implement core dataclass and scoring function in `src/backlog.py`.
+4. **Verify (`/gsd-verify-work 1`)**: Run verification suite and compile UAT checks (`VERIFICATION.md`, `UAT.md`).
+5. **Ship (`/gsd-ship 1`)**: Confirm all checks pass and merge/ship.
 
-## Ship gate
+## Ship Gate Checklist
 
-- The tests pass.
-- The plan artifact is up to date.
-- The git working tree is clean.
+- [x] All requirements (REQ-001, REQ-002, REQ-003) verified.
+- [x] Automated unit test suite passes.
+- [x] Planning artifacts in `.planning/` updated and committed.
+- [x] Git working tree is clean.
