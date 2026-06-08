@@ -2,7 +2,7 @@
 
 **Context engineering** can be defined as the practice of designing systems that provide a Large Language Model (LLM) and AI agents with all the necessary information to complete a task effectively. It goes beyond prompt engineering since it focuses on building a comprehensive and structured context from various sources like instructions, external knowledge, memory, tools, and state. The central idea is that the success of a complex LLM-based system depends more on the quality and completeness of the context provided than on the specific wording of the prompt itself.
 
-Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging discipline. Since then, I've been working on a book entitled **Context Engineering: Build Consistent, Accurate, Predictable AI Systems**, to be published by [Manning](https://hubs.la/Q04ksQ8J0) in 2026. Currently, the early access version of the book is available, and you can get it [here](https://hubs.la/Q04ksQ8J0). 
+Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging discipline. Since then, I've been working on a book entitled **Context Engineering: Build Consistent, Accurate, Predictable AI Systems**, published by Manning. Currently, the early access version of the book is available, and you can get it [here](https://hubs.la/Q04ksQ8J0). 
 
 [![](/docs/img/context-engineering-MEAP-cover.png)](https://hubs.la/Q04ksQ8J0)
 
@@ -133,7 +133,7 @@ This chapter covers mathematical foundations, open research challenges, technica
 
 ## Online resources
 
-This repository includes interactive web pages that complement the book and help you apply context engineering concepts in practice.
+This repository includes interactive [web pages](https://bonigarcia.dev/context-engineering/) that complement the book and help you apply context engineering concepts in practice.
 
 ### 1. AI Ecosystem
 
