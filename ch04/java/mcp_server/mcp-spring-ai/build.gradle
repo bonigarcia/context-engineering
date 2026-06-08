@@ -16,7 +16,7 @@ java {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation platform('org.springframework.ai:spring-ai-bom:2.0.0-M8')
+    implementation platform('org.springframework.ai:spring-ai-bom:2.0.0-RC1')
     implementation 'org.springframework.ai:spring-ai-starter-mcp-server'
     implementation 'org.springframework:spring-web'
     implementation 'org.seleniumhq.selenium:selenium-java'
