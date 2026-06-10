@@ -8,6 +8,6 @@
     "start": "node anthropic-claude-basic.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.102.0"
+    "@anthropic-ai/sdk": "^0.104.1"
   }
 }
