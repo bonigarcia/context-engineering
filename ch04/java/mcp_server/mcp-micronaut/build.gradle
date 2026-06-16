@@ -26,6 +26,6 @@ micronaut {
 dependencies {
     implementation 'io.micronaut.mcp:micronaut-mcp-server-java-sdk'
     implementation 'io.micronaut:micronaut-jackson-databind'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.44.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.45.0'
     runtimeOnly 'ch.qos.logback:logback-classic'
 }
