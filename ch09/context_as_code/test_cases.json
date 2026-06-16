@@ -1,0 +1,17 @@
+[
+  {
+    "name": "checkout outage",
+    "ticket": "The checkout page is down for every customer.",
+    "expected": "urgent"
+  },
+  {
+    "name": "password reset",
+    "ticket": "How do I reset my password?",
+    "expected": "normal"
+  },
+  {
+    "name": "double charge",
+    "ticket": "I was charged twice and cannot complete my order.",
+    "expected": "urgent"
+  }
+]

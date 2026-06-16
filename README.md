@@ -105,6 +105,7 @@ This chapter covers governance, human oversight, and operational patterns for co
 - AI gateway: [LiteLLM](./ch09/litellm_gateway)
 - Human-in-the-loop: [Python](./ch09/human-in-the-loop)
 - Model fine-tuning: [Python](./ch09/fine_tuning)
+- Context as code: [Python](./ch09/context_as_code)
 
 #### Chapter 10. AI frameworks for context engineering
 This chapter covers specific AI frameworks that facilitate context engineering, including application frameworks, agent orchestration frameworks, and AI application platforms:

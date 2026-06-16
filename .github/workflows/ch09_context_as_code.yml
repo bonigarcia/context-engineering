@@ -1,0 +1,36 @@
+name: context-as-code example
+
+on:
+  push:
+    paths:
+      - "ch09/context_as_code/**"
+      - ".github/workflows/ch09_context_as_code.yml"
+  pull_request:
+    paths:
+      - "ch09/context_as_code/**"
+      - ".github/workflows/ch09_context_as_code.yml"
+
+jobs:
+  evaluate-prompt:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ch09/context_as_code
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run prompt evaluation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4o-mini
+        run: python evaluate_prompt.py
