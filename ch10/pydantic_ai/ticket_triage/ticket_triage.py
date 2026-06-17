@@ -24,7 +24,7 @@ class TicketTriage(BaseModel):
 
 
 triage_agent = Agent(
-    "openai:gpt-4o-mini",
+    "openai:gpt-5-mini",
     deps_type=TriageContext,
     output_type=TicketTriage,
     instructions=(

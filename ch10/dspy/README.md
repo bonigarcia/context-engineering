@@ -12,6 +12,7 @@ This folder contains examples demonstrating programming (not prompting) LLMs usi
 - `structured_output/`: Enforcing structured output schemas.
 - `context_tooling/`: Equipping DSPy signatures with runtime tools.
 - `stepwise_reasoning/`: Stepwise reasoning chains in DSPy modules.
+- `bootstrap_few_shot/`: Compiling a predictor with `BootstrapFewShot`.
 
 ## Running the examples
 

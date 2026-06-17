@@ -25,7 +25,7 @@ class RoutingResult(BaseModel):
 
 
 routing_agent = Agent(
-    "openai:gpt-4o-mini",
+    "openai:gpt-5-mini",
     deps_type=SupportContext,
     output_type=RoutingResult,
     instructions=(

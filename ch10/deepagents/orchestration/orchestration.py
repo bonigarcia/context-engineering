@@ -29,7 +29,7 @@ def main() -> None:
         raise RuntimeError("deepagents.create_deep_agent is not available")
 
     agent = create_deep_agent(
-        model="openai:gpt-4o",  # Replace with your preferred model
+        model="openai:gpt-5-mini",  # Replace with your preferred model
         tools=[],  # Add custom tools here; built-in filesystem tools are included by default
         system_prompt="You are a senior analyst capable of complex research and planning."
     )

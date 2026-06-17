@@ -11,43 +11,47 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 from langgraph.graph import END, StateGraph
 
 
-class ReviewState(TypedDict):
-    topic: str
+class GraphState(TypedDict):
+    input: str
     draft: str
-    review: str
-    final: str
+    needs_review: bool
 
 
-def draft_node(state: ReviewState) -> dict[str, str]:
-    return {"draft": f"Draft answer about {state['topic']}."}
+def draft_answer(state: GraphState) -> dict[str, str]:
+    return {
+        "draft": "Processed response",
+        "needs_review": "payment" in state["input"],
+    }
 
 
-def review_node(state: ReviewState) -> dict[str, str]:
-    return {"review": f"Review approved for: {state['draft']}"}
+def human_review(state: GraphState) -> dict[str, str]:
+    return {"draft": f"Reviewed: {state['draft']}"}
 
 
-def finalize_node(state: ReviewState) -> dict[str, str]:
-    return {"final": f"{state['draft']} | {state['review']}"}
+def route_after_draft(state: GraphState) -> Literal["review", "done"]:
+    return "review" if state["needs_review"] else "done"
 
 
 if __name__ == "__main__":
-    graph = StateGraph(ReviewState)
-    graph.add_node("draft", draft_node)
-    graph.add_node("review", review_node)
-    graph.add_node("finalize", finalize_node)
+    graph = StateGraph(GraphState)
+    graph.add_node("draft", draft_answer)
+    graph.add_node("review", human_review)
 
     graph.set_entry_point("draft")
-    graph.add_edge("draft", "review")
-    graph.add_edge("review", "finalize")
-    graph.add_edge("finalize", END)
+    graph.add_conditional_edges(
+        "draft",
+        route_after_draft,
+        {"review": "review", "done": END},
+    )
+    graph.add_edge("review", END)
 
     app = graph.compile()
-    result = app.invoke(
-        {"topic": "context engineering", "draft": "", "review": "", "final": ""}
-    )
-    print(result)
+    for user_input in ["Summarize the chapter", "Escalate the payment issue"]:
+        result = app.invoke({"input": user_input, "draft": "", "needs_review": False})
+        print(f"Input: {user_input}")
+        print(result)
