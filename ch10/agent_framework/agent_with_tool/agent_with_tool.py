@@ -28,7 +28,7 @@ def get_time() -> str:
 
 async def main():
     # Create client
-    client = OpenAIChatClient(model="gpt-5")
+    client = OpenAIChatClient(model="gpt-5-mini")
 
     # Agent creation with factory method
     agent = client.as_agent(

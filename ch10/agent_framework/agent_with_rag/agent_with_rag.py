@@ -31,7 +31,7 @@ from semantic_kernel.functions import KernelParameterMetadata
 # =============
 # CONFIGURATION
 # =============
-CHAT_MODEL_ID = "gpt-4o-mini"
+CHAT_MODEL_ID = "gpt-5-mini"
 EMBEDDING_MODEL_ID = "text-embedding-3-small"
 EMBEDDING_DIMS = 1536  # text-embedding-3-small
 

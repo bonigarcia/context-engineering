@@ -48,7 +48,7 @@ if __name__ == "__main__":
     base_retriever = vectorstore.as_retriever(search_kwargs={"k": 2}) # Retrieve top 2 documents
 
     # 3. Initialize the LLM for compression
-    llm = ChatOpenAI(api_key=api_key, model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
 
     # 4. Create a document compressor using an LLM
     # LLMChainExtractor extracts relevant passages from documents

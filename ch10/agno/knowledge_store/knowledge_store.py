@@ -31,7 +31,7 @@ def build_knowledge(root: Path) -> FileSystemKnowledge:
 def build_agent(root: Path) -> Agent:
     return Agent(
         name="Knowledge Store",
-        model=OpenAIResponses(id="gpt-5.4-mini"),
+        model=OpenAIResponses(id="gpt-5-mini"),
         knowledge=build_knowledge(root),
         add_knowledge_to_context=True,
         markdown=True,

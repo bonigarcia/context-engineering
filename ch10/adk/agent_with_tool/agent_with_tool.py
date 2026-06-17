@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 APP_NAME = "agent_with_tool_app"
 USER_ID = "user1"
 SESSION_ID = "session1"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-3.5-flash"
 
 # Mock tool implementation
 def get_current_time(city: str) -> dict:

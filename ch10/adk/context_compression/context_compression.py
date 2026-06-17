@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO)
 APP_NAME = "basic_agent"
 USER_ID = "user1"
 SESSION_ID = "session1"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-3.5-flash"
 
 
 async def main():

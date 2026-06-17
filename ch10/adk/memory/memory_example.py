@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO)
 # --- Constants ---
 APP_NAME = "memory_example_app"
 USER_ID = "mem_user"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-3.5-flash"
 
 # --- Agent Definitions ---
 # Agent 1: Simple agent to capture information

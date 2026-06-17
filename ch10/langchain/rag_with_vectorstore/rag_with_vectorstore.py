@@ -70,7 +70,7 @@ if __name__ == "__main__":
     Question: {input}""")
 
     # 6. Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
 
     # 7. Create a chain to combine documents
     combine_docs_chain = create_stuff_documents_chain(llm, rag_prompt)

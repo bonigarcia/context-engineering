@@ -35,7 +35,7 @@ def get_current_time(format: str = "%H:%M:%S") -> str:
 if __name__ == "__main__":
     # Create the agent
     agent = create_agent(
-        model = "gpt-4o",
+        model = "gpt-5-mini",
         tools = [get_current_time],
         system_prompt="You are a helpful assistant with access to tools."
     )

@@ -23,7 +23,7 @@ from agno.tools.workspace import Workspace
 def build_agent(root: Path) -> Agent:
     return Agent(
         name="Sorting Hat",
-        model=OpenAIResponses(id="gpt-5.4-mini"),
+        model=OpenAIResponses(id="gpt-5-mini"),
         tools=[Workspace(root=str(root), allowed=["read", "list", "search"])],
         instructions=(
             "Inspect the scoped Agno folder, group the files into the companion themes, "

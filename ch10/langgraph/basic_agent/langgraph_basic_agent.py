@@ -45,7 +45,7 @@ def call_llm(state: GraphState):
     Node that calls the LLM to generate a response based on the input.
     """
     print("---CALL_LLM---")
-    llm = ChatOpenAI(api_key=api_key, model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
     prompt = ChatPromptTemplate.from_messages([
         ("user", "{input}")
     ])

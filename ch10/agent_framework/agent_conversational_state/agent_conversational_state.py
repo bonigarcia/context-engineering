@@ -25,7 +25,7 @@ from agent_framework import Agent, ContextProvider, SessionContext
 from agent_framework.openai import OpenAIChatClient
 
 
-MODEL_ID = "gpt-4o-mini"
+MODEL_ID = "gpt-5-mini"
 STATE_FILE = Path("conversation_state.json")
 
 try:

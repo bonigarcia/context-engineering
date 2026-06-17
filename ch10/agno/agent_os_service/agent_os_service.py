@@ -24,7 +24,7 @@ from fastapi import FastAPI
 def build_agent(root: Path) -> Agent:
     return Agent(
         name="AgentOS Service Agent",
-        model=OpenAIResponses(id="gpt-5.4-mini"),
+        model=OpenAIResponses(id="gpt-5-mini"),
         markdown=True,
         instructions=(
             "Describe the difference between the runtime agent and the AgentOS control plane, "

@@ -26,7 +26,7 @@ logging.basicConfig(level=logging.INFO)
 APP_NAME = "state_example_app"
 USER_ID = "state_user"
 SESSION_ID = "state_session"
-MODEL = "gemini-2.0-flash"
+MODEL = "gemini-3.5-flash"
 
 async def run_scenario():
     session_service = InMemorySessionService()

@@ -27,7 +27,7 @@ def build_trace_db(root: Path) -> JsonDb:
 def build_agent(root: Path, trace_db: JsonDb | None = None) -> Agent:
     return Agent(
         name="Audit Traces",
-        model=OpenAIResponses(id="gpt-5.4-mini"),
+        model=OpenAIResponses(id="gpt-5-mini"),
         db=trace_db or build_trace_db(root),
         store_events=True,
         markdown=True,
