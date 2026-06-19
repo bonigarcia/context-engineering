@@ -13,7 +13,7 @@ This GitHub repository is intended to be a companion resource for this book and 
 This book aims to provide a strong, general-purpose theoretical foundation for context engineering, supported by hands-on examples. Its table of contents is the following:
 
 1. Introduction to context engineering
-2. Instructions in AI agents
+2. Instructions for AI agents
 3. External knowledge and retrieval
 4. Tools in AI agents
 5. Memory and state in agentic systems
