@@ -23,7 +23,7 @@ This book aims to provide a strong, general-purpose theoretical foundation for c
 9. Governance and operations
 10. AI frameworks for context engineering
 11. Context engineering for software development
-12. The state of the art in context engineering
+12. The state of the art in context engineering  
 Appendix A. The AI ecosystem  
 Appendix B. References and further reading
 
