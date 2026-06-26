@@ -7,6 +7,6 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ai": "^6.0.209"
+    "ai": "^7.0.2"
   }
 }
