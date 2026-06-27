@@ -12,9 +12,12 @@ limitations under the License.
 """
 
 import os
+
 from dotenv import load_dotenv
-from langchain.agents import create_agent
-import datetime
+from langchain_core.messages import ToolMessage
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.tools import tool
+from langchain_openai import ChatOpenAI
 
 # Load environment variables from .env file
 load_dotenv()
@@ -24,24 +27,41 @@ api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise ValueError("OPENAI_API_KEY not found in .env file")
 
+
 # Define a custom tool
-def get_current_time(format: str = "%H:%M:%S") -> str:
-    """Returns the current time in the specified format.
-    The format should be a string acceptable by datetime.strftime().
-    For example: "%H:%M:%S" for hour:minute:second, "%Y-%m-%d" for year-month-day."""
-    now = datetime.datetime.now()
-    return now.strftime(format)
+@tool
+def lookup_policy(topic: str) -> str:
+    """Return the support policy for a topic."""
+    return "Refunds above 100 euros require human approval."
+
 
 if __name__ == "__main__":
-    # Create the agent
-    agent = create_agent(
-        model = "gpt-5-mini",
-        tools = [get_current_time],
-        system_prompt="You are a helpful assistant with access to tools."
-    )
+    # Initialize the LLM
+    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
+    llm_with_tools = llm.bind_tools([lookup_policy])
 
-    # Invoke the agent with a query that requires tool use
-    user_prompt = "What time is it right now?"
-    print(f"User: {user_prompt}")
-    response = agent.invoke({"messages": [{"role": "user", "content": user_prompt}]})
-    print(f"Agent response: {response['messages'][-1].content}")
+    # Define a chat prompt template with a system message and user input
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "Use policy tools when a support answer depends on rules."),
+        ("user", "{input}")
+    ])
+
+    # Build messages from the prompt
+    messages = prompt.invoke({"input": "Can I approve a 250 euro refund?"}).to_messages()
+
+    # Get LLM response (may include tool calls)
+    response = llm_with_tools.invoke(messages)
+
+    # Handle tool calls if present
+    if response.tool_calls:
+        for tool_call in response.tool_calls:
+            if tool_call["name"] == "lookup_policy":
+                result = lookup_policy.invoke(tool_call["args"])
+                messages.append(response)
+                messages.append(ToolMessage(result, tool_call_id=tool_call["id"]))
+
+        # Invoke again with tool results
+        final_response = llm_with_tools.invoke(messages)
+        print(final_response.content)
+    else:
+        print(response.content)
