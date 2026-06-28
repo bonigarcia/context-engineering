@@ -52,14 +52,14 @@ To start, what should the story be about? A lone explorer discovers a forgotten 
 --- AI's suggestion ---
 Elara, a seasoned archaeo-botanist with a compass as her only true companion, hacked through the dense, emerald curtain of the Amazon. For weeks, the hum of insects and the distant roar of howler monkeys had been her lullaby. Her quest: the legendary Sunken Temple of Xylos, a myth whispered only in the most obscure indigenous legends. Then, through a sudden break in the canopy, a glint of weathered stone caught her eye – an impossibly geometric pattern amidst the chaos of nature.
 -----------------------
-What happens next? (Approve with Enter, or provide a different direction): The temple entrance is blocked by ancient, glowing vines.
+What happens next? (Approve with Enter, or provide a correction): The temple entrance is blocked by ancient, glowing vines.
 
 ... The AI is thinking ...
 
 --- AI's suggestion ---
 As Elara approached, the air grew heavy, thick with the scent of ozone and ancient earth. What she had first taken for moss on the temple's façade now pulsed with a soft, ethereal luminescence. Thick, fibrous vines, impossibly intertwined, writhed with an inner light, forming an impenetrable barrier across the temple's grand entrance. They seemed to breathe, contracting and expanding with a slow, deliberate rhythm, guarding secrets untold.
 -----------------------
-What happens next? (Approve with Enter, or provide a different direction): quit
+What happens next? (Approve with Enter, or provide a correction): quit
 
 --- Your Final Story ---
 A lone explorer discovers a forgotten temple in the jungle.

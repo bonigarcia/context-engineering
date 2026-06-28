@@ -60,7 +60,7 @@ def main():
         print("-----------------------")
 
         # Human-in-the-loop feedback
-        feedback = get_user_input("What happens next? (Approve with Enter, or provide a different direction): ")
+        feedback = get_user_input("What happens next? (Approve with Enter, or provide a correction): ")
 
         if feedback.lower() in ["quit", "exit"]:
             break
