@@ -186,6 +186,17 @@
           "pricing": "Open-source and free to use."
         },
         {
+          "name": "Pluribus",
+          "url": "https://github.com/caioribeiroclw-pixel/pluribus",
+          "description": "Open-source CLI for synchronizing AI context across coding tools and emitting evidence receipts for context drift, handoffs, and sufficiency checks.",
+          "features": [
+            "Syncs shared project context and rules into tool-specific instruction artifacts.",
+            "Supports Claude Code, Cursor, Copilot, Windsurf, Continue, Zed, and OpenClaw workflows.",
+            "Includes npm-runnable demos for context sufficiency and evidence-oriented handoff checks."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
           "name": "Pixeltable",
           "url": "https://github.com/pixeltable/pixeltable",
           "description": "Data infrastructure for AI applications that unifies tabular data and embeddings.",
