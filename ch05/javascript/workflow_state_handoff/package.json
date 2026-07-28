@@ -8,6 +8,6 @@
     "start": "node workflow_state_handoff.js"
   },
   "dependencies": {
-    "openai": "^6.38.0"
+    "openai": "^7.0.0"
   }
 }
