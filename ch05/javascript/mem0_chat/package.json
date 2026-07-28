@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "mem0ai": "^3.0.0",
-    "openai": "^6.38.0"
+    "openai": "^7.0.0"
   }
 }
