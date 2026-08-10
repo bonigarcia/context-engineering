@@ -36,9 +36,9 @@ def query_model(prompt: str,
     response = requests.post(f"{OLLAMA_HOST}/api/generate",
                              json=payload,
                              timeout=120)
-    # ...
     latency = time.perf_counter() - start
     response.raise_for_status()
+
     result = response.json()
 
     input_tokens = result.get("prompt_eval_count", 0)
