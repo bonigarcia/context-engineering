@@ -14,7 +14,7 @@ from langchain.agents import create_agent
 from langchain_core.tools import create_retriever_tool
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import ChatOllama
-from langchain_community.vectorstores import FAISS
+from langchain_core.vectorstores import InMemoryVectorStore
 
 # 1. Set up the vector store
 documents = [
@@ -22,7 +22,7 @@ documents = [
     "The book discusses techniques for building robust and reliable AI systems.",
 ]
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-vector_store = FAISS.from_texts(documents, embeddings)
+vector_store = InMemoryVectorStore.from_texts(documents, embeddings)
 retriever = vector_store.as_retriever()
 
 # 2. Create the RAG tool
@@ -38,9 +38,9 @@ tool = create_retriever_tool(
 tools = [tool]
 
 # 3. Create the agent
-# create_agent (LangChain 1.0+) builds the tool-calling loop internally.
-# The model must support tool calling and have enough capacity to answer from
-# the retrieved passages
+# create_agent (LangChain 1.0+) builds the tool-calling loop internally, so no
+# ReAct prompt and no AgentExecutor are needed. The model must support tool
+# calling and have enough capacity to answer from the retrieved passages
 llm = ChatOllama(model="llama3.1:8b", temperature=0)
 agent = create_agent(
     model=llm,

@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.documents import Document
-from langchain_community.vectorstores import FAISS
+from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnableLambda
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     # 1. Create embeddings and a vector store
     embeddings = OpenAIEmbeddings(api_key=api_key)
-    vectorstore = FAISS.from_documents(documents, embeddings)
+    vectorstore = InMemoryVectorStore.from_documents(documents, embeddings)
 
     # 2. Create a base retriever
     base_retriever = vectorstore.as_retriever(search_kwargs={"k": 2}) # Retrieve top 2 documents

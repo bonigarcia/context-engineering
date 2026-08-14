@@ -1,6 +1,6 @@
-# Retrieval-Augmented Generation (RAG) with LangChain and FAISS
+# Retrieval-Augmented Generation (RAG) with LangChain
 
-This example demonstrates how to implement a basic Retrieval-Augmented Generation (RAG) system using LangChain. It showcases loading a document, splitting it into chunks, generating embeddings, storing them in a FAISS vector store, and then retrieving relevant information to answer a query using an LLM.
+This example demonstrates how to implement a basic Retrieval-Augmented Generation (RAG) system using LangChain. It showcases loading a document, splitting it into chunks, generating embeddings, storing them in an in-memory vector store, and then retrieving relevant information to answer a query using an LLM. The vector store is `InMemoryVectorStore`, which ships with `langchain-core` and needs no extra dependency.
 
 ## Requirements
 
@@ -40,9 +40,9 @@ python rag_with_vectorstore.py
 When you run the script, it will perform the following actions:
 1.  Create a temporary `sample_document.txt` with some dummy text.
 2.  Load and split this document.
-3.  Create embeddings and store them in an in-memory FAISS vector store.
+3.  Create embeddings and store them in an `InMemoryVectorStore`.
 4.  Retrieve relevant chunks for the question "What is RAG and why is it useful?".
-5.  Use an LLM (GPT-4o) to answer the question based on the retrieved context.
+5.  Use an LLM to answer the question based on the retrieved context.
 6.  Print the query, the LLM's answer, and the metadata of the source documents used.
 7.  Clean up the temporary `sample_document.txt`.
 

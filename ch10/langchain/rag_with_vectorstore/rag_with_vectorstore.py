@@ -17,10 +17,10 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.documents import Document
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import TextLoader
-from langchain_community.vectorstores import FAISS
 
 # Load environment variables from .env file
 load_dotenv()
@@ -46,9 +46,12 @@ if __name__ == "__main__":
     with open(dummy_doc_path, "w") as f:
         f.write(document_content)
 
-    # 1. Load the document
-    loader = TextLoader(dummy_doc_path)
-    docs = loader.load()
+    # 1. Load the document. A plain read plus a Document is enough here, and
+    # it avoids the loader classes that live in the sunset langchain-community
+    # package
+    with open(dummy_doc_path, encoding="utf-8") as f:
+        docs = [Document(page_content=f.read(),
+                         metadata={"source": dummy_doc_path})]
 
     # 2. Split the document into chunks
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
@@ -56,7 +59,7 @@ if __name__ == "__main__":
 
     # 3. Create embeddings and a vector store
     embeddings = OpenAIEmbeddings(api_key=api_key)
-    vectorstore = FAISS.from_documents(splits, embeddings)
+    vectorstore = InMemoryVectorStore.from_documents(splits, embeddings)
 
     # 4. Create a retriever
     retriever = vectorstore.as_retriever()

@@ -1,7 +1,4 @@
 langfuse
 langchain
 langchain-openai
-langchain-community
-duckduckgo-search
 python-dotenv
-ddgs

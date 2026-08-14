@@ -17,22 +17,36 @@ import uuid
 from dotenv import load_dotenv
 
 from langchain.agents import create_agent
-from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_core.tools import tool
 from langchain_openai import ChatOpenAI
 
 from langfuse import get_client
 from langfuse.langchain import CallbackHandler
 
 SYSTEM_PROMPT = (
-    "You are a helpful assistant. Use the available tools whenever the "
-    "answer depends on information you do not already have. When you have "
-    "the final answer, respond concisely."
+    "Use the available tools to answer questions about programming "
+    "languages, and answer concisely."
 )
 
 QUESTION = (
-    "Identify who created the Python programming language and the year of "
-    "its first release."
+    "Who created the Python programming language, and in which year was "
+    "it first released?"
 )
+
+LANGUAGE_FACTS = {
+    "python": "Python was created by Guido van Rossum and first released "
+              "in 1991.",
+    "java": "Java was created by James Gosling and first released in 1995.",
+}
+
+
+# A deterministic tool keeps the trace reproducible across runs, which matters
+# when the trace itself is the thing being inspected
+@tool
+def lookup_language(name: str) -> str:
+    """Look up who created a programming language and when it was first
+    released."""
+    return LANGUAGE_FACTS.get(name.strip().lower(), f"No record for {name}.")
 
 
 def _ensure_env(name: str) -> str:
@@ -58,7 +72,7 @@ def main():
     llm = ChatOpenAI(
         model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY")
     )
-    tools = [DuckDuckGoSearchRun()]
+    tools = [lookup_language]
 
     agent = create_agent(model=llm, tools=tools, system_prompt=SYSTEM_PROMPT)
 

@@ -2,6 +2,8 @@
 
 This example demonstrates the **LLM-as-Judge** pattern for evaluating the quality of a Retrieval-Augmented Generation (RAG) system. It uses the `ragas` library, which leverages a large language model (LLM) to score the performance of a RAG pipeline across several key dimensions of context engineering.
 
+> Note: Ragas depends on `langchain-community`, so this example still installs that package and may print its sunset warning. Ragas 0.4.3 also imports `langchain_community.chat_models.vertexai`, which was removed in `langchain-community` 0.4. The script registers a small placeholder module before importing Ragas so the import succeeds. See [ragas issue #2753](https://github.com/vibrantlabsai/ragas/issues/2753). That block can be deleted once Ragas guards the import.
+
 ## Requirements
 
 This project requires [Python](https://www.python.org/) 3.6+ and the libraries listed in `requirements.txt`.

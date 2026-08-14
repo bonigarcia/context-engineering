@@ -10,16 +10,45 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+import importlib
 import os
+import sys
+import types
+import warnings
 
 from datasets import Dataset
 from dotenv import load_dotenv
 
-from langchain_community.vectorstores import FAISS
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.vectorstores import InMemoryVectorStore
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+
+# Ragas imports langchain_community.chat_models.vertexai, a module that
+# langchain-community 0.4 removed. The import fails before any Ragas code runs,
+# so a placeholder is registered first. See
+# https://github.com/vibrantlabsai/ragas/issues/2753 and delete this block once
+# Ragas guards that import
+_VERTEXAI = "langchain_community.chat_models.vertexai"
+if _VERTEXAI not in sys.modules:
+    _stub = types.ModuleType(_VERTEXAI)
+    _stub.ChatVertexAI = type("ChatVertexAI", (), {})
+    sys.modules[_VERTEXAI] = _stub
+    setattr(importlib.import_module("langchain_community.chat_models"),
+            "vertexai", _stub)
+
+# Ragas warns that these metrics moved to ragas.metrics.collections, but that
+# path cannot be used with evaluate(). Collections metrics derive from
+# SimpleBaseMetric, while evaluate() requires instances of Metric, which is a
+# separate hierarchy, so passing them raises "All metrics must be initialised
+# metric objects". The warning is silenced until Ragas reconciles both APIs.
+# See https://github.com/vibrantlabsai/ragas/issues/2624
+warnings.filterwarnings(
+    "ignore",
+    message=r"Importing .* from 'ragas\.metrics' is deprecated",
+    category=DeprecationWarning,
+)
 
 from ragas import evaluate
 from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
@@ -45,7 +74,7 @@ def main():
 
     # Vector store
     embeddings = OpenAIEmbeddings(api_key=api_key)
-    vectorstore = FAISS.from_texts(documents, embedding=embeddings)
+    vectorstore = InMemoryVectorStore.from_texts(documents, embedding=embeddings)
     retriever = vectorstore.as_retriever()
 
     # LLM used for generating answers

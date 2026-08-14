@@ -5,7 +5,7 @@ This sample application implements an agentic RAG system using the following sta
 * LLM: [Llama 3.1 8B](https://ollama.com/library/llama3.1) via [Ollama](https://ollama.com/download)
 * Agent framework: [LangChain](https://www.langchain.com/)
 * Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
-* Vector database: [FAISS](https://faiss.ai/) (in-memory)
+* Vector store: `InMemoryVectorStore` (included in `langchain-core`)
 
 This example demonstrates how an agent can decide whether to use a RAG tool to answer a question.
 
@@ -50,7 +50,6 @@ After running the script, you will see the agent answering a question. It will u
 
 ```
 Who is the author of the book 'Fake Book: The New Age'?
-Based on the tool call response, I can answer the original question:
 
 The author of the book 'Fake Book: The New Age' is George Cauldron.
 ```

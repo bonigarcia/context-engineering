@@ -1,6 +1,4 @@
 langchain
 langchain-openai
-python-dotenv
-faiss-cpu
 langchain-text-splitters
-langchain-community
+python-dotenv
