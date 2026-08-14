@@ -3,4 +3,3 @@ langchain-openai
 python-dotenv
 faiss-cpu
 langchain-community
-langchain-classic

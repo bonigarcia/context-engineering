@@ -17,11 +17,10 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from langchain_community.vectorstores import FAISS
-from langchain_classic.chains.combine_documents import create_stuff_documents_chain
-from langchain_classic.chains import create_retrieval_chain
 
 # Load environment variables from .env file
 load_dotenv()
@@ -72,11 +71,29 @@ if __name__ == "__main__":
     # 6. Initialize the LLM
     llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
 
-    # 7. Create a chain to combine documents
-    combine_docs_chain = create_stuff_documents_chain(llm, rag_prompt)
+    # 7. Build the generation step with LangChain Expression Language. The
+    # retrieved documents are flattened into a single string before they reach
+    # the prompt. The legacy create_stuff_documents_chain and
+    # create_retrieval_chain helpers moved to langchain-classic, and this
+    # explicit composition is the current way of wiring the same pipeline
+    def format_docs(documents):
+        return "\n\n".join(doc.page_content for doc in documents)
 
-    # 8. Create the retrieval chain
-    retrieval_chain = create_retrieval_chain(retriever, combine_docs_chain)
+    generation_chain = (
+        RunnablePassthrough.assign(context=lambda x: format_docs(x["context"]))
+        | rag_prompt
+        | llm
+        | StrOutputParser()
+    )
+
+    # 8. Create the retrieval chain, which adds the retrieved documents under
+    # the context key and then the generated text under the answer key
+    retrieval_chain = (
+        RunnablePassthrough.assign(
+            context=RunnableLambda(lambda x: x["input"]) | retriever
+        )
+        | RunnablePassthrough.assign(answer=generation_chain)
+    )
 
     # 9. Invoke the retrieval chain with a query
     query = "What is RAG and why is it useful?"

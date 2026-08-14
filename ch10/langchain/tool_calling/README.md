@@ -37,23 +37,30 @@ python tool_calling.py
 
 ## Output
 
-When you run the script, it will execute an agent that processes several queries. For queries requiring external information (like the current time or date), the agent will utilize the `get_current_time` tool. The output will show the agent's thought process (due to `verbose=True`) and its final responses.
+When you run the script, the model receives a query that cannot be answered
+without the policy tool. The model issues a tool call, the script executes the
+tool and appends its result to the message list, and the model is invoked again
+to produce the final answer. Only that final answer is printed.
 
 Example output:
 
 ```
---- Query 1: Get current time ---
-> Entering new AgentExecutor chain...
-... (agent's thought process using the tool) ...
-Agent response: The current time is HH:MM:SS (actual time will vary).
+No — refunds over €100 require human approval.
 
---- Query 2: Get current date in a specific format ---
-> Entering new AgentExecutor chain...
-... (agent's thought process using the tool) ...
-Agent response: Today's date is YYYY-MM-DD (actual date will vary).
+What to do next
+- Escalate the request to the authorized approver (manager/finance team/approval queue).
+- Include these details in the escalation:
+  - Customer name and contact
+  - Order number / transaction ID
+  - Refund amount: €250
+  - Reason for refund and any relevant notes
+  - Original payment method and date
+  - Supporting evidence (receipts, screenshots, correspondence)
+  - Desired outcome (full refund, partial, store credit)
+  - Any policy exceptions requested
 
---- Query 3: A simple question not requiring tools ---
-> Entering new AgentExecutor chain...
-... (agent's thought process, not calling the tool) ...
-Agent response: The capital of Spain is Madrid.
+Quick approval-request template you can copy/paste
+"Please approve a €250 refund for Order #[ORDER_ID] (Customer: [NAME]). Reason: [SHORT REASON]. Supporting docs attached: [list]. Original payment: [METHOD, DATE]. Requested by: [YOUR NAME]."
+
+If you tell me which approval channel you use (email, ticket system, Slack, etc.) or give the order details, I can draft the exact message/ticket for you.
 ```

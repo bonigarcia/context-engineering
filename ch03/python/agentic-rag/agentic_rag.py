@@ -10,14 +10,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-from langchain_community.llms import Ollama
-from langchain_community.vectorstores import FAISS
-from langchain_classic.agents.agent import AgentExecutor
-from langchain_classic.agents.react.agent import create_react_agent
+from langchain.agents import create_agent
 from langchain_core.tools import create_retriever_tool
-from langchain_classic import hub
-from langchain_ollama import OllamaLLM
 from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import ChatOllama
+from langchain_community.vectorstores import FAISS
 
 # 1. Set up the vector store
 documents = [
@@ -29,25 +26,41 @@ vector_store = FAISS.from_texts(documents, embeddings)
 retriever = vector_store.as_retriever()
 
 # 2. Create the RAG tool
+# The description is the only signal the agent has when it decides whether to
+# retrieve, so it must state what the collection contains
 tool = create_retriever_tool(
     retriever,
     "search_documents",
-    "Searches and returns documents.",
+    "Search the private document collection, which contains facts about "
+    "books, their authors, and their content. Use it for any question "
+    "about a book or an author.",
 )
 tools = [tool]
 
 # 3. Create the agent
-prompt = hub.pull("hwchase17/react")  # A pre-built ReAct prompt
-llm = OllamaLLM(model="llama3.2:3b")
-agent = create_react_agent(llm, tools, prompt)
-agent_executor = AgentExecutor(agent=agent, tools=tools)
+# create_agent (LangChain 1.0+) builds the tool-calling loop internally.
+# The model must support tool calling and have enough capacity to answer from
+# the retrieved passages
+llm = ChatOllama(model="llama3.1:8b", temperature=0)
+agent = create_agent(
+    model=llm,
+    tools=tools,
+    system_prompt=(
+        "For any question about a book or an author, call the "
+        "search_documents tool first. Then answer in one concise "
+        "sentence, using only the returned passages and trusting "
+        "their content."
+    ),
+)
 
 
 # 4. Run the agent with some questions
 def run_agent(question):
     try:
-        response = agent_executor.invoke({"input": question})
-        print(response["output"])
+        response = agent.invoke(
+            {"messages": [{"role": "user", "content": question}]}
+        )
+        print(response["messages"][-1].content)
     except Exception as e:
         print(f"An error occurred: {e}")
 

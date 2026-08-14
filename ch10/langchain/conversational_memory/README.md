@@ -1,6 +1,6 @@
 # Conversational memory with LangChain
 
-This example demonstrates how to implement conversational memory in LangChain, allowing an LLM to retain context from previous turns in a dialogue. It utilizes `ConversationBufferMemory` to store chat messages and inject them into subsequent prompts, enabling more coherent and context-aware interactions.
+This example demonstrates how to implement conversational memory in LangChain, allowing an LLM to retain context from previous turns in a dialogue. It builds an agent with `create_agent` and attaches an `InMemorySaver` checkpointer, so every turn sent with the same thread identifier reloads the accumulated message history.
 
 ## Requirements
 
@@ -37,7 +37,7 @@ python conversational_memory.py
 
 ## Output
 
-When you run the script, it will simulate a short conversation with an LLM. The output will show each turn of the conversation, along with the AI's response and the accumulated chat history maintained by `ConversationBufferMemory`. You will observe how the LLM uses the past conversation to inform its answers.
+When you run the script, it will simulate a short conversation with an LLM. The output will show each turn of the conversation, along with the AI's response and the accumulated chat history maintained by the checkpointer. You will observe how the LLM uses the past conversation to inform its answers.
 
 Example output:
 

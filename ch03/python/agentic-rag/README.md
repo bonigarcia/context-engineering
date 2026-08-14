@@ -2,7 +2,7 @@
 
 This sample application implements an agentic RAG system using the following stack:
 
-* LLM: [Llama 3.2 3B](https://ollama.com/library/llama3.2:1b) via [Ollama](https://ollama.com/download)
+* LLM: [Llama 3.1 8B](https://ollama.com/library/llama3.1) via [Ollama](https://ollama.com/download)
 * Agent framework: [LangChain](https://www.langchain.com/)
 * Embedding model: [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
 * Vector database: [FAISS](https://faiss.ai/) (in-memory)
@@ -16,10 +16,12 @@ This example demonstrates how an agent can decide whether to use a RAG tool to a
 
 ## Steps for running this example in the shell
 
-1. Pull Llama 3.2 3B with Ollama:
+1. Pull Llama 3.1 8B with Ollama:
 ```bash
-ollama pull llama3.2:3b
+ollama pull llama3.1:8b
 ```
+
+The model has to support tool calling, because the agent decides whether to retrieve by emitting a tool call. It also needs enough capacity to answer from the retrieved passages. Smaller models such as `llama3.2:3b` emit the tool call correctly but often ignore the retrieved text and reply that they found no information.
 
 2. Install dependencies:
 ```bash
@@ -48,6 +50,7 @@ After running the script, you will see the agent answering a question. It will u
 
 ```
 Who is the author of the book 'Fake Book: The New Age'?
+Based on the tool call response, I can answer the original question:
 
 The author of the book 'Fake Book: The New Age' is George Cauldron.
 ```

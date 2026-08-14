@@ -1,6 +1,6 @@
 # Context compression with LangChain
 
-This example demonstrates how to use LangChain's `ContextualCompressionRetriever` to optimize the context provided to an LLM. It shows how a base retriever can fetch relevant documents, and then an `LLMChainExtractor` (powered by an LLM) can further process and compress these documents, extracting only the most pertinent information before it's passed to the final LLM prompt. This technique helps reduce token usage and improve the relevance of responses by eliminating noise from retrieved contexts.
+This example demonstrates how to compress retrieved context before it reaches an LLM. A base retriever fetches candidate documents, and an extractor chain built with LangChain Expression Language keeps only the passages that are relevant to the query. This technique helps reduce token usage and improve the relevance of responses by eliminating noise from retrieved contexts.
 
 ## Requirements
 
@@ -37,7 +37,7 @@ python context_compression.py
 
 ## Output
 
-When you run the script, it will first show documents retrieved by a standard retriever. Then, it will demonstrate how the `ContextualCompressionRetriever` processes these documents, extracting only the most relevant sentences or phrases pertaining to the query. Finally, it will conceptually show an LLM generating a response using this compressed context.
+When you run the script, it will first show documents retrieved by a standard retriever. Then, it will demonstrate how the compression chain processes these documents, extracting only the most relevant sentences or phrases pertaining to the query. Finally, it will conceptually show an LLM generating a response using this compressed context.
 
 Example output:
 

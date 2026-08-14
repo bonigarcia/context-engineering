@@ -1,43 +1,38 @@
+"""
+(C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 import os
 import uuid
+
 from dotenv import load_dotenv
 
-from langchain_classic import hub
-from langchain_openai import ChatOpenAI
+from langchain.agents import create_agent
 from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_openai import ChatOpenAI
 
-# ----------------------------
-# Langfuse imports (SDK versions vary)
-# ----------------------------
-try:
-    # Recommended in newer SDKs
-    from langfuse import get_client
-except Exception:
-    get_client = None  # fallback below
+from langfuse import get_client
+from langfuse.langchain import CallbackHandler
 
-try:
-    # Langfuse v3+ (current)
-    from langfuse.langchain import CallbackHandler
-except ModuleNotFoundError:
-    # Langfuse v2.x (legacy)
-    from langfuse.callback import CallbackHandler
+SYSTEM_PROMPT = (
+    "You are a helpful assistant. Use the available tools whenever the "
+    "answer depends on information you do not already have. When you have "
+    "the final answer, respond concisely."
+)
 
-# ----------------------------
-# Agent API compatibility:
-# Prefer LangChain v1 create_agent; fall back to classic create_react_agent + AgentExecutor.
-# ----------------------------
-try:
-    from langchain.agents import create_agent  # LangChain v1+
-    AGENT_MODE = "v1"
-except ImportError:
-    from langchain.agents import create_react_agent  # classic
-    AGENT_MODE = "classic"
-
-    # Classic AgentExecutor import paths vary by version
-    try:
-        from langchain.agents.agent import AgentExecutor  # older-ish
-    except Exception:
-        from langchain.agents import AgentExecutor  # older
+QUESTION = (
+    "Identify who created the Python programming language and the year of "
+    "its first release."
+)
 
 
 def _ensure_env(name: str) -> str:
@@ -47,125 +42,50 @@ def _ensure_env(name: str) -> str:
     return val
 
 
-def _get_langfuse_client():
-    """
-    Return a Langfuse client object if available (preferred), else None.
-    We avoid relying on handler methods like get_trace_url(), which may not exist.
-    """
-    if get_client is None:
-        return None
-    try:
-        return get_client()
-    except Exception:
-        return None
-
-
-def _invoke_with_callbacks(obj, payload, callbacks, trace_id: str, *, is_v1: bool):
-    """
-    Invoke an agent/chain across versions:
-    - v1 agents typically accept invoke(payload, config={...})
-    - classic AgentExecutor often accepts invoke(payload, config_dict) (2nd positional arg)
-    """
-    config = {"callbacks": callbacks, "run_id": trace_id}
-
-    if is_v1:
-        # Most v1: invoke(payload, config={...})
-        try:
-            return obj.invoke(payload, config=config)
-        except TypeError:
-            # Some variants accept positional config
-            return obj.invoke(payload, config)
-    else:
-        # Classic AgentExecutor: invoke(payload, config_dict) is common
-        try:
-            return obj.invoke(payload, config)
-        except TypeError:
-            # Some variants use invoke(payload) only; fallback without run_id propagation
-            # (still traces via callbacks, but URL may not be derivable deterministically)
-            return obj.invoke(payload)
-
-
 def main():
     load_dotenv()
 
     _ensure_env("OPENAI_API_KEY")
     _ensure_env("LANGFUSE_PUBLIC_KEY")
     _ensure_env("LANGFUSE_SECRET_KEY")
-    # LANGFUSE_HOST is optional (defaults depend on SDK); set it if you use self-hosted.
+    # LANGFUSE_HOST is optional, and it is only needed for self-hosted servers
 
-    # Langfuse client (for URL construction)
-    langfuse_client = _get_langfuse_client()
-
-    # LLM + tools
-    llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY"))
-    tools = [DuckDuckGoSearchRun()]
-
-    # Langfuse callback handler (LangChain integration)
+    # Langfuse client (used later to build the trace URL) and callback handler
+    langfuse_client = get_client()
     langfuse_handler = CallbackHandler()
 
-    print("--- Running agent with Langfuse tracing ---")
-    question = "What was the score of the last Super Bowl and who won?"
+    # Model and tools
+    llm = ChatOpenAI(
+        model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY")
+    )
+    tools = [DuckDuckGoSearchRun()]
 
-    # Use a deterministic trace id by forcing LangChain run_id
+    agent = create_agent(model=llm, tools=tools, system_prompt=SYSTEM_PROMPT)
+
+    print("--- Running agent with Langfuse tracing ---")
+
+    # A trace identifier is generated in advance so the run can be located
+    # later in the Langfuse UI
     trace_id = str(uuid.uuid4())
 
-    if AGENT_MODE == "v1":
-        system_prompt = (
-            "You are a helpful assistant. Use tools when needed to answer questions. "
-            "When you have the final answer, respond concisely."
-        )
-        agent = create_agent(model=llm, tools=tools, system_prompt=system_prompt)
+    response = agent.invoke(
+        {"messages": [{"role": "user", "content": QUESTION}]},
+        config={"callbacks": [langfuse_handler], "run_id": trace_id},
+    )
 
-        response = _invoke_with_callbacks(
-            agent,
-            {"messages": [{"role": "user", "content": question}]},
-            callbacks=[langfuse_handler],
-            trace_id=trace_id,
-            is_v1=True,
-        )
+    # The agent returns the full message list, and the answer is the content
+    # of the last message
+    final_answer = response["messages"][-1].content
 
-        # Extract final answer from common response shapes
-        final_answer = None
-        if isinstance(response, dict) and "messages" in response and response["messages"]:
-            # try to find last assistant message
-            for msg in reversed(response["messages"]):
-                if isinstance(msg, dict) and msg.get("role") == "assistant":
-                    final_answer = msg.get("content")
-                    break
-            if final_answer is None:
-                last = response["messages"][-1]
-                final_answer = last.get("content") if isinstance(last, dict) else str(last)
-        else:
-            final_answer = str(response)
+    # Flush queued events, which matters in short-lived scripts
+    langfuse_client.flush()
 
-    else:
-        # Classic ReAct agent via hub
-        prompt = hub.pull("hwchase17/react")
-        agent = create_react_agent(llm, tools, prompt)
-        agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-
-        response = _invoke_with_callbacks(
-            agent_executor,
-            {"input": question},
-            callbacks=[langfuse_handler],
-            trace_id=trace_id,
-            is_v1=False,
-        )
-        if isinstance(response, dict):
-            final_answer = response.get("output") or response.get("final") or str(response)
-        else:
-            final_answer = str(response)
-
-    # Trace URL (do not rely on handler.get_trace_url(), which may not exist)
     print("\n--- Trace ---")
-    if langfuse_client is not None:
-        try:
-            trace_url = langfuse_client.get_trace_url(trace_id=trace_id)
-            print(f"View the trace in Langfuse: {trace_url}")
-        except Exception:
-            print(f"Trace created; trace_id={trace_id} (URL unavailable from client in this SDK).")
-    else:
-        print(f"Trace created; trace_id={trace_id} (install/upgrade langfuse to enable get_trace_url).")
+    try:
+        trace_url = langfuse_client.get_trace_url(trace_id=trace_id)
+        print(f"View the trace in Langfuse: {trace_url}")
+    except Exception:
+        print(f"Trace created with trace_id={trace_id} (URL unavailable).")
 
     print("\n--- Final Answer ---")
     print(final_answer)

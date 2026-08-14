@@ -13,10 +13,9 @@ limitations under the License.
 
 import os
 from dotenv import load_dotenv
+from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.output_parsers import StrOutputParser
-from langchain_classic.memory import ConversationBufferMemory
+from langgraph.checkpoint.memory import InMemorySaver
 
 # Load environment variables from .env file
 load_dotenv()
@@ -30,40 +29,35 @@ if __name__ == "__main__":
     # Initialize the LLM
     llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
 
-    # Define a chat prompt template with a system message, history, and user input
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful AI assistant."),
-        MessagesPlaceholder(variable_name="history"),
-        ("user", "{input}")
-    ])
+    # Short-term memory is provided by a checkpointer, which stores the
+    # message history of every conversation thread. InMemorySaver keeps that
+    # history in the process, and a persistent saver would be used in
+    # production. This mechanism replaces the legacy ConversationBufferMemory
+    # class, which is now part of langchain-classic
+    agent = create_agent(
+        model=llm,
+        tools=[],
+        system_prompt="You are a helpful AI assistant.",
+        checkpointer=InMemorySaver(),
+    )
 
-    # Create a chain combining the prompt, LLM, and output parser
-    chain = prompt | llm | StrOutputParser()
+    # Every turn shares the same thread identifier, so the agent reloads the
+    # accumulated history instead of receiving it in the prompt
+    thread_config = {"configurable": {"thread_id": "conversation-1"}}
 
-    # Initialize ConversationBufferMemory
-    memory = ConversationBufferMemory(return_messages=True)
+    turns = [
+        "Hi there! What's your name?",
+        "What did I just ask you?",
+        "And what is your name again?",
+    ]
 
     # Simulate a conversation
-    print("--- Conversation Turn 1 ---")
-    input_text_1 = "Hi there! What's your name?"
-    response_1 = chain.invoke({"input": input_text_1, "history": memory.load_memory_variables({})["history"]})
-    print(f"User: {input_text_1}")
-    print(f"AI: {response_1}")
-    memory.save_context({"input": input_text_1}, {"output": response_1})
-    print(f"Current History: {memory.load_memory_variables({})['history']}")
-
-    print("--- Conversation Turn 2 ---")
-    input_text_2 = "What did I just ask you?"
-    response_2 = chain.invoke({"input": input_text_2, "history": memory.load_memory_variables({})["history"]})
-    print(f"User: {input_text_2}")
-    print(f"AI: {response_2}")
-    memory.save_context({"input": input_text_2}, {"output": response_2})
-    print(f"Current History: {memory.load_memory_variables({})['history']}")
-
-    print("--- Conversation Turn 3 ---")
-    input_text_3 = "And what is your name again?"
-    response_3 = chain.invoke({"input": input_text_3, "history": memory.load_memory_variables({})["history"]})
-    print(f"User: {input_text_3}")
-    print(f"AI: {response_3}")
-    memory.save_context({"input": input_text_3}, {"output": response_3})
-    print(f"Current History: {memory.load_memory_variables({})['history']}")
+    for index, user_input in enumerate(turns, start=1):
+        print(f"--- Conversation Turn {index} ---")
+        state = agent.invoke(
+            {"messages": [{"role": "user", "content": user_input}]},
+            thread_config,
+        )
+        print(f"User: {user_input}")
+        print(f"AI: {state['messages'][-1].content}")
+        print(f"Current History: {state['messages']}")

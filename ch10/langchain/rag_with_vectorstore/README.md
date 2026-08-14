@@ -50,7 +50,7 @@ The output should look similar to this:
 
 ```
 Query: What is RAG and why is it useful?
-Response: RAG, or Retrieval-Augmented Generation, combines large language models with external knowledge bases. It is useful because it allows LLMs to retrieve relevant, up-to-date information, thereby generating more accurate and current responses.
-Source Documents: [{}, {}]
+Response: RAG (Retrieval-Augmented Generation) is an approach that combines large language models with external knowledge bases. It is useful because it lets the LLM retrieve relevant information from those external sources and use it to produce more accurate and up-to-date responses. Tooling like LangChain (document loaders, text splitters, embedding models, vector stores, retrievers) and libraries such as FAISS (for efficient similarity search of dense vectors) support building RAG systems.
+Source Documents: [{'source': 'sample_document.txt'}]
 ```
 (Note: The metadata for the source documents will be empty as they are generated on the fly for this example.)

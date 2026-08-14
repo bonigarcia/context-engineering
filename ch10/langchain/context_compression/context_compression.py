@@ -17,10 +17,9 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
-from langchain_classic.retrievers import ContextualCompressionRetriever
-from langchain_classic.retrievers.document_compressors import LLMChainExtractor
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableLambda
 
 # Load environment variables from .env file
 load_dotenv()
@@ -50,14 +49,36 @@ if __name__ == "__main__":
     # 3. Initialize the LLM for compression
     llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
 
-    # 4. Create a document compressor using an LLM
-    # LLMChainExtractor extracts relevant passages from documents
-    compressor = LLMChainExtractor.from_llm(llm)
+    # 4. Build an LLM-based extractor with LangChain Expression Language
+    extractor_prompt = ChatPromptTemplate.from_template(
+        """Extract verbatim the parts of the text below that are relevant to
+the question. Do not add words of your own. Return an empty string if no
+part of the text is relevant.
 
-    # 5. Create a ContextualCompressionRetriever
-    compression_retriever = ContextualCompressionRetriever(
-        base_compressor=compressor,
-        base_retriever=base_retriever
+Question: {question}
+
+Text:
+{text}"""
+    )
+    extractor = extractor_prompt | llm | StrOutputParser()
+
+    # 5. Wrap retrieval and extraction into a single compression retriever
+    def compress(payload):
+        docs = payload["documents"]
+        extracted = extractor.batch(
+            [{"question": payload["question"], "text": d.page_content} for d in docs]
+        )
+        return [
+            Document(page_content=text.strip(), metadata=doc.metadata)
+            for doc, text in zip(docs, extracted)
+            if text.strip()
+        ]
+
+    compression_retriever = (
+        RunnableLambda(
+            lambda q: {"question": q, "documents": base_retriever.invoke(q)}
+        )
+        | RunnableLambda(compress)
     )
 
     query = "What is contextual compression in LangChain?"
@@ -82,10 +103,10 @@ if __name__ == "__main__":
     {context}
 
     Question: {question}""")
-    
+
     # Combine compressed documents into a single string for the prompt
     context_str = "".join([d.page_content for d in compressed_docs])
-    
+
     response_chain = qa_prompt | llm | StrOutputParser()
     llm_response = response_chain.invoke({"context": context_str, "question": query})
     print(llm_response)
