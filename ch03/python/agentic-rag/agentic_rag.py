@@ -46,10 +46,8 @@ agent = create_agent(
     model=llm,
     tools=tools,
     system_prompt=(
-        "For any question about a book or an author, call the "
-        "search_documents tool first. Then answer in one concise "
-        "sentence, using only the returned passages and trusting "
-        "their content."
+        "Answer in one sentence, using only the passages returned "
+        "by the search_documents tool."
     ),
 )
 
