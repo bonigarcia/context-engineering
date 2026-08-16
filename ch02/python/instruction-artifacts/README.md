@@ -7,7 +7,6 @@ This folder contains examples of instruction artifacts, which are files that sto
 - `task-tracker/`: A sample Python project demonstrating the use of portable and agent-specific instruction artifacts:
     - `AGENTS.md`: Portable Markdown format for coding-agent guidance.
     - `CLAUDE.md`: Anthropic's convention for Claude Code.
-    - `GEMINI.md`: Instruction artifact for the Gemini CLI.
 
 ## Purpose
 

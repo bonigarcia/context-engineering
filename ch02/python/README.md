@@ -13,7 +13,7 @@ This folder contains Python examples for interacting with OpenAI, Anthropic, and
 - `anthropic-claude-system-prompt/`: System prompt with Anthropic Claude models.
 - `google-gemini-system-prompt/`: System prompt with Google Gemini models.
 - `ollama-local-system-prompt/`: System prompt with Ollama models.
-- `instruction-artifacts/`: Examples of instruction artifacts (e.g., `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`) for a Python project.
+- `instruction-artifacts/`: Examples of instruction artifacts (e.g., `AGENTS.md`, `CLAUDE.md`) for a Python project.
 
 ## Running the examples
 
