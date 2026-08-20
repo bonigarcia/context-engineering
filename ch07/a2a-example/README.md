@@ -3,9 +3,12 @@
 This example provides a hands-on demonstration of the **Agent-to-Agent (A2A)** protocol. It includes a simple server agent (a "weather bot") and a client agent that discovers and interacts with it.
 
 The demonstration covers the core concepts of A2A:
-1. Agent card discovery: The client fetches a `agent-card.json` file from a well-known endpoint to learn about the server's capabilities.
-2. Task-based communication: The client sends a structured request to the server's task endpoint to execute a skill.
-3. Client-server Interaction: A clear and simple showcase of two Python processes acting as distinct agents communicating over HTTP.
+1. Agent card discovery: The client fetches an `agent-card.json` file from a well-known endpoint to learn the server's identity, capabilities, skills, and supported interfaces.
+2. Message-based communication: The client sends a message made of parts to the `message:send` endpoint declared in the agent card.
+3. Task-shaped responses: The server replies with a completed task that carries the result as an artifact.
+4. Client-server interaction: A clear and simple showcase of two Python processes acting as distinct agents communicating over HTTP.
+
+This code is a teaching scaffold, not a conformant implementation. It omits authentication, signed agent cards, full capability validation, streaming, push notifications, polling, version negotiation, and the complete error model. Consult the [A2A specification](https://a2a-protocol.org/) before building a production agent.
 
 ## Requirements
 
@@ -58,4 +61,15 @@ python a2a_client.py
 
 ## Output
 
-The client will automatically perform the discovery and task execution steps, printing its progress to the console. You will see it fetch the agent card, find the task endpoint, send the request, and display the weather information returned by the server.
+The client performs discovery and message submission automatically, printing its progress to the console. You will see it fetch the agent card, select the supported interface, send the message, and display the weather information carried in the artifact of the completed task:
+
+```
+1. Discovering agent by fetching agent card...
+   - Fetched agent card for 'Nimbus Weather Bot'
+   - Selected message endpoint: http://127.0.0.1:5000/message:send
+
+2. Requesting the current weather for 'San Francisco, CA'
+3. Sending message to http://127.0.0.1:5000/message:send...
+4. Received response from the server agent:
+   - Result: The current weather in San Francisco, CA is Sunny at 51 degrees F.
+```

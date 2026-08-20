@@ -10,59 +10,65 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
-import requests
-import json
+import uuid
 
-# Define the base URL of the A2A server
+import requests
+
+# Base URL of the A2A server agent
 SERVER_BASE_URL = "http://127.0.0.1:5000"
 
+
 def run_client():
-    """
-    An A2A client agent that discovers and interacts with the weather bot.
-    """
+    """An A2A client agent that discovers and interacts with the weather bot."""
     try:
-        # 1. Discover the agent's capabilities by fetching its agent card
+        # 1. Discover the server agent by fetching its agent card
         print("1. Discovering agent by fetching agent card...")
         agent_card_url = f"{SERVER_BASE_URL}/agent-card.json"
         response = requests.get(agent_card_url)
         response.raise_for_status()
         agent_card = response.json()
-        print(f"   - Successfully fetched agent card for '{agent_card['name']}'")
+        print(f"   - Fetched agent card for '{agent_card['name']}'")
 
-        # 2. Find the endpoint for the desired skill
-        task_endpoint = agent_card.get("communicationEndpoints", {}).get("rest")
-        if not task_endpoint:
-            raise ValueError("Could not find REST endpoint in agent card.")
-        print(f"   - Found task endpoint: {task_endpoint}")
-        
-        # 3. Prepare the A2A task request payload
+        # 2. Select a supported interface declared in the agent card
+        interfaces = agent_card.get("supportedInterfaces", [])
+        if not interfaces:
+            raise ValueError("Agent card does not declare a supported interface.")
+        message_endpoint = interfaces[0]["url"]
+        print(f"   - Selected message endpoint: {message_endpoint}")
+
+        # 3. Build a minimal A2A message payload
         location_to_query = "San Francisco, CA"
-        print(f"\n2. Preparing to call skill 'get_current_weather' for location: '{location_to_query}'")
-        task_payload = {
-            "skill": "get_current_weather",
-            "parameters": {
-                "location": location_to_query
-            }
+        print(f"\n2. Requesting the current weather for '{location_to_query}'")
+        message_payload = {
+            "message": {
+                "messageId": str(uuid.uuid4()),
+                "role": "ROLE_USER",
+                "parts": [{"text": f"Current weather. location: {location_to_query}"}]
+            },
+            "configuration": {"acceptedOutputModes": ["text/plain"]}
         }
 
-        # 4. Send the task to the server agent
-        print(f"3. Sending task to server at {task_endpoint}...")
-        task_response = requests.post(task_endpoint, json=task_payload)
-        task_response.raise_for_status()
-        result_payload = task_response.json()
+        # 4. Send the message to the server agent
+        print(f"3. Sending message to {message_endpoint}...")
+        headers = {"Content-Type": "application/a2a+json"}
+        message_response = requests.post(message_endpoint, json=message_payload, headers=headers)
+        message_response.raise_for_status()
+        result_payload = message_response.json()
 
-        # 5. Process the result
-        print("4. Received response from server agent:")
-        if result_payload.get("status") == "completed":
-            final_message = result_payload["result"]["messages"][0]["content"]
+        # 5. Read the artifact returned by the completed task
+        print("4. Received response from the server agent:")
+        task = result_payload.get("task", {})
+        state = task.get("status", {}).get("state")
+        if state == "TASK_STATE_COMPLETED":
+            artifact = task["artifacts"][0]
+            final_message = artifact["parts"][0]["text"]
             print(f"   - Result: {final_message}")
         else:
-            print(f"   - Task failed with status: {result_payload.get('status')}")
-            print(f"   - Details: {result_payload.get('error')}")
+            print(f"   - Task did not complete. State: {state}")
 
     except requests.exceptions.RequestException as e:
-        print(f"\n[ERROR] Failed to connect to the A2A server.")
-        print(f"Please ensure the server is running by executing: python a2a_server.py")
+        print("\n[ERROR] Failed to connect to the A2A server.")
+        print("Please ensure the server is running by executing: python a2a_server.py")
         print(f"Details: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")

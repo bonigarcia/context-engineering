@@ -1,29 +1,34 @@
 {
-    "agentId": "weather-forecaster-001",
-    "name": "Nimbus Weather Bot",
-    "description": "An AI agent specialized in weather forecasts, for demonstration purposes.",
-    "capabilities": [
-      {
-        "name": "get_current_weather",
-        "description": "Retrieves current weather conditions for a location",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {
-              "type": "string",
-              "description": "The city and state, e.g., 'San Francisco, CA'"
-            }
-          },
-          "required": ["location"]
-        }
-      }
-    ],
-    "communicationEndpoints": {
-      "rest": "http://127.0.0.1:5000/tasks"
-    },
-    "supportedInteractionPatterns": [
-      "synchronous-request-response"
-    ],
-    "version": "1.0.0"
-  }
-  
+  "name": "Nimbus Weather Bot",
+  "description": "An AI agent specialized in weather forecasts",
+  "provider": {
+    "organization": "Nimbus Weather Services",
+    "url": "https://www.nimbusweather.example"
+  },
+  "version": "1.0.0",
+  "supportedInterfaces": [
+    {
+      "url": "http://127.0.0.1:5000/message:send",
+      "protocolBinding": "HTTP+JSON",
+      "protocolVersion": "1.0.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "skills": [
+    {
+      "id": "current-weather",
+      "name": "Current Weather",
+      "description": "Retrieves current weather conditions for a location",
+      "tags": ["weather", "forecast"],
+      "examples": ["Current weather in San Francisco, CA"],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/plain"]
+    }
+  ]
+}
