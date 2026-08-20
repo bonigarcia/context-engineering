@@ -23,7 +23,7 @@ from rich.console import Console
 from rich.markdown import Markdown
 from rich.prompt import Prompt
 
-from mem0 import Memory  # provided by the mem0ai package
+from mem0 import Memory
 
 
 # -----------------------------
@@ -43,7 +43,7 @@ def build_mem0_config() -> Dict[str, Any]:
         "vector_store": {
             "provider": "qdrant",
             "config": {
-                "collection_name": os.getenv("MEM0_COLLECTION", "context_engineering_demo"),
+                "collection_name": os.getenv("MEM0_COLLECTION", "mem0_demo"),
                 "host": os.getenv("QDRANT_HOST", "localhost"),
                 "port": int(os.getenv("QDRANT_PORT", "6333")),
             },

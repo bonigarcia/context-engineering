@@ -12,7 +12,7 @@ function buildMem0Config() {
     vectorStore: {
       provider: "qdrant",
       config: {
-        collectionName: process.env.MEM0_COLLECTION || "context_engineering_demo",
+        collectionName: process.env.MEM0_COLLECTION || "mem0_demo",
         embeddingModelDims: 1536,
         host: process.env.QDRANT_HOST || "localhost",
         port: Number(process.env.QDRANT_PORT || 6333),

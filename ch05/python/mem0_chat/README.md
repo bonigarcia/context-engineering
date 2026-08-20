@@ -57,7 +57,7 @@ OPENAI_API_KEY=your_key_here
 MODEL=gpt-5
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
-MEM0_COLLECTION=context_engineering_demo
+MEM0_COLLECTION=mem0_demo
 ```
 
 ## Run
