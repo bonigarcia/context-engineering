@@ -24,8 +24,8 @@ from openai import OpenAI
 DEFAULT_MODEL = os.getenv("MODEL", "gpt-4o-mini")
 
 
-def extract_issue(client: OpenAI, model: str, message: str) -> Dict[str, str]:
-    """First chain step: turn an unstructured message into a structured record."""
+def analyze_inquiry(client: OpenAI, model: str, message: str) -> Dict[str, str]:
+    """Step 1: Extract structured case classification and sentiment from the raw message."""
 
     response = client.chat.completions.create(
         model=model,
@@ -33,33 +33,16 @@ def extract_issue(client: OpenAI, model: str, message: str) -> Dict[str, str]:
             {
                 "role": "system",
                 "content": (
-                    "Extract the key support fields from a customer message. "
-                    "Return only valid JSON with the keys product, issue, sentiment, urgency, and next_action."
+                    "Analyze the customer support inquiry. Return only valid JSON with the following keys: "
+                    "category (one of: billing, technical_bug, feature_request, general_inquiry), "
+                    "urgency (one of: low, medium, high, critical), "
+                    "sentiment (one of: positive, neutral, frustrated, angry), "
+                    "summary (a concise 1-sentence summary of the core issue)."
                 ),
             },
             {
                 "role": "user",
-                "content": (
-                    "Customer message:\n"
-                    "The dashboard keeps logging me out when I switch tabs. I need to sign in again every time."
-                ),
-            },
-            {
-                "role": "assistant",
-                "content": json.dumps(
-                    {
-                        "product": "dashboard",
-                        "issue": "Session expires or resets when switching tabs",
-                        "sentiment": "frustrated",
-                        "urgency": "medium",
-                        "next_action": "Check session persistence and browser lifecycle handling.",
-                    },
-                    indent=2,
-                ),
-            },
-            {
-                "role": "user",
-                "content": f"Customer message:\n{message}\n\nReturn only JSON.",
+                "content": f"Customer inquiry:\n{message}\n\nReturn only JSON.",
             },
         ],
         temperature=0,
@@ -69,8 +52,68 @@ def extract_issue(client: OpenAI, model: str, message: str) -> Dict[str, str]:
     return json.loads(content)
 
 
-def draft_reply(client: OpenAI, model: str, extracted: Dict[str, str]) -> str:
-    """Second chain step: use the structured context to draft the customer reply."""
+def resolve_policy(analysis: Dict[str, str]) -> Dict[str, str]:
+    """Intermediate business logic: determine SLA and resolution rules based on extracted state."""
+
+    category = analysis.get("category", "general_inquiry")
+    urgency = analysis.get("urgency", "medium")
+
+    if category == "billing" and urgency in ("high", "critical"):
+        return {
+            "sla_response_time": "1 hour",
+            "escalation_team": "Priority Billing & Finance Ops",
+            "resolution_guidelines": (
+                "Acknowledge the billing discrepancy, confirm expedited review with Finance Ops "
+                "for refund processing, and provide a direct case tracking reference."
+            ),
+        }
+    elif category == "technical_bug" and urgency in ("high", "critical"):
+        return {
+            "sla_response_time": "2 hours",
+            "escalation_team": "Tier-2 Engineering",
+            "resolution_guidelines": (
+                "Acknowledge the technical disruption, outline immediate diagnostic steps, "
+                "and route logs to Tier-2 Engineering."
+            ),
+        }
+    else:
+        return {
+            "sla_response_time": "24 hours",
+            "escalation_team": "Standard Support",
+            "resolution_guidelines": (
+                "Provide helpful guidance addressing the customer question and offer links to documentation."
+            ),
+        }
+
+
+def draft_reply(
+    client: OpenAI,
+    model: str,
+    message: str,
+    analysis: Dict[str, str],
+    policy: Dict[str, str],
+) -> str:
+    """Step 2: Generate a tailored customer reply combining inquiry analysis and resolution policy."""
+
+    context_prompt = dedent(
+        f"""
+        Customer inquiry:
+        {message}
+
+        Case analysis:
+        - Category: {analysis.get('category')}
+        - Urgency: {analysis.get('urgency')}
+        - Customer sentiment: {analysis.get('sentiment')}
+        - Core issue: {analysis.get('summary')}
+
+        Resolution policy:
+        - Target SLA response: {policy.get('sla_response_time')}
+        - Assigned team: {policy.get('escalation_team')}
+        - Guidelines: {policy.get('resolution_guidelines')}
+
+        Draft a professional, empathetic 3 to 4 sentence customer reply adhering to the resolution policy.
+        """
+    ).strip()
 
     response = client.chat.completions.create(
         model=model,
@@ -78,17 +121,14 @@ def draft_reply(client: OpenAI, model: str, extracted: Dict[str, str]) -> str:
             {
                 "role": "system",
                 "content": (
-                    "You are a support agent. Write a concise reply that acknowledges the issue, "
-                    "summarizes the next step, and stays professional and empathetic."
+                    "You are an enterprise customer support specialist. Write a professional, empathetic reply "
+                    "that strictly follows the provided resolution policy and case analysis. "
+                    "Do not mention JSON keys or internal system labels."
                 ),
             },
             {
                 "role": "user",
-                "content": (
-                    "Use this structured context to draft the reply:\n"
-                    f"{json.dumps(extracted, indent=2)}\n\n"
-                    "Write 3 to 4 sentences. Do not mention the JSON fields."
-                ),
+                "content": context_prompt,
             },
         ],
         temperature=0.2,
@@ -107,20 +147,23 @@ def main() -> int:
     client = OpenAI()
     message = dedent(
         """
-        I keep getting signed out of the app whenever I move between dashboard tabs.
-        It is happening on both Chrome and Edge, and it is slowing down our team.
+        We were double-billed on invoice #INV-9821 for our annual Enterprise tier ($4,800 instead of $2,400).
+        This is blocking our quarterly accounting close, and we need an immediate refund and an updated invoice.
         """
     ).strip()
 
-    extracted = extract_issue(client, args.model, message)
-    reply = draft_reply(client, args.model, extracted)
+    analysis = analyze_inquiry(client, args.model, message)
+    policy = resolve_policy(analysis)
+    reply = draft_reply(client, args.model, message, analysis, policy)
 
     print("=== Prompt chaining support reply ===")
     print("Customer message:")
     print(message)
-    print("\nStep 1: extracted context")
-    print(json.dumps(extracted, indent=2))
-    print("\nStep 2: support reply")
+    print("\nStep 1: extracted analysis")
+    print(json.dumps(analysis, indent=2))
+    print("\nIntermediate: resolved policy")
+    print(json.dumps(policy, indent=2))
+    print("\nStep 2: customer reply")
     print(reply)
 
     return 0

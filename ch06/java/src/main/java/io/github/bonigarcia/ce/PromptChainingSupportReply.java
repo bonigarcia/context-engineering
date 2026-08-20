@@ -40,43 +40,93 @@ public class PromptChainingSupportReply {
         this.model = model;
     }
 
-    public JsonNode extractIssue(String message) throws IOException, InterruptedException {
+    public JsonNode analyzeInquiry(String message) throws IOException, InterruptedException {
         ObjectNode body = MAPPER.createObjectNode();
         body.put("model", model);
         body.put("temperature", 0);
         body.set("response_format", MAPPER.createObjectNode().put("type", "json_object"));
-        body.set("messages", extractMessages(message));
+
+        ArrayNode messages = MAPPER.createArrayNode();
+        messages.add(message("system",
+                "Analyze the customer support inquiry. Return only valid JSON with the following keys: "
+                        + "category (one of: billing, technical_bug, feature_request, general_inquiry), "
+                        + "urgency (one of: low, medium, high, critical), "
+                        + "sentiment (one of: positive, neutral, frustrated, angry), "
+                        + "summary (a concise 1-sentence summary of the core issue)."));
+        messages.add(message("user", "Customer inquiry:\n" + message + "\n\nReturn only JSON."));
+        body.set("messages", messages);
 
         JsonNode response = send(body);
         String content = response.path("choices").path(0).path("message").path("content").asText("{}");
         return MAPPER.readTree(content);
     }
 
-    public String draftReply(JsonNode extracted) throws IOException, InterruptedException {
+    public JsonNode resolvePolicy(JsonNode analysis) {
+        String category = analysis.path("category").asText("general_inquiry");
+        String urgency = analysis.path("urgency").asText("medium");
+
+        ObjectNode policy = MAPPER.createObjectNode();
+        if ("billing".equals(category) && ("high".equals(urgency) || "critical".equals(urgency))) {
+            policy.put("sla_response_time", "1 hour");
+            policy.put("escalation_team", "Priority Billing & Finance Ops");
+            policy.put("resolution_guidelines",
+                    "Acknowledge the billing discrepancy, confirm expedited review with Finance Ops for refund processing, and provide a direct case tracking reference.");
+        } else if ("technical_bug".equals(category) && ("high".equals(urgency) || "critical".equals(urgency))) {
+            policy.put("sla_response_time", "2 hours");
+            policy.put("escalation_team", "Tier-2 Engineering");
+            policy.put("resolution_guidelines",
+                    "Acknowledge the technical disruption, outline immediate diagnostic steps, and route logs to Tier-2 Engineering.");
+        } else {
+            policy.put("sla_response_time", "24 hours");
+            policy.put("escalation_team", "Standard Support");
+            policy.put("resolution_guidelines",
+                    "Provide helpful guidance addressing the customer question and offer links to documentation.");
+        }
+        return policy;
+    }
+
+    public String draftReply(String message, JsonNode analysis, JsonNode policy) throws IOException, InterruptedException {
+        String contextPrompt = """
+                Customer inquiry:
+                %s
+
+                Case analysis:
+                - Category: %s
+                - Urgency: %s
+                - Customer sentiment: %s
+                - Core issue: %s
+
+                Resolution policy:
+                - Target SLA response: %s
+                - Assigned team: %s
+                - Guidelines: %s
+
+                Draft a professional, empathetic 3 to 4 sentence customer reply adhering to the resolution policy.
+                """.formatted(
+                message,
+                analysis.path("category").asText(),
+                analysis.path("urgency").asText(),
+                analysis.path("sentiment").asText(),
+                analysis.path("summary").asText(),
+                policy.path("sla_response_time").asText(),
+                policy.path("escalation_team").asText(),
+                policy.path("resolution_guidelines").asText()
+        );
+
         ObjectNode body = MAPPER.createObjectNode();
         body.put("model", model);
         body.put("temperature", 0.2);
+
         ArrayNode messages = MAPPER.createArrayNode();
-        messages.add(message("system", "You are a support agent. Write a concise reply that acknowledges the issue, summarizes the next step, and stays professional and empathetic."));
-        messages.add(message("user", "Use this structured context to draft the reply:\n" + extracted.toPrettyString() + "\n\nWrite 3 to 4 sentences. Do not mention the JSON fields."));
+        messages.add(message("system",
+                "You are an enterprise customer support specialist. Write a professional, empathetic reply "
+                        + "that strictly follows the provided resolution policy and case analysis. "
+                        + "Do not mention JSON keys or internal system labels."));
+        messages.add(message("user", contextPrompt));
         body.set("messages", messages);
 
         JsonNode response = send(body);
         return response.path("choices").path(0).path("message").path("content").asText("");
-    }
-
-    private ArrayNode extractMessages(String message) {
-        ArrayNode messages = MAPPER.createArrayNode();
-        messages.add(message("system", "Extract the key support fields from a customer message. Return only valid JSON with the keys product, issue, sentiment, urgency, and next_action."));
-        messages.add(message("user", "Customer message:\nThe dashboard keeps logging me out when I switch tabs. I need to sign in again every time."));
-        messages.add(message("assistant", supportJson(
-                "dashboard",
-                "Session expires or resets when switching tabs",
-                "frustrated",
-                "medium",
-                "Check session persistence and browser lifecycle handling.")));
-        messages.add(message("user", "Customer message:\n" + message + "\n\nReturn only JSON."));
-        return messages;
     }
 
     private JsonNode send(ObjectNode body) throws IOException, InterruptedException {
@@ -104,28 +154,26 @@ public class PromptChainingSupportReply {
         return MAPPER.createObjectNode().put("role", role).put("content", content);
     }
 
-    private String supportJson(String product, String issue, String sentiment, String urgency, String nextAction) {
-        return MAPPER.createObjectNode().put("product", product).put("issue", issue)
-                .put("sentiment", sentiment).put("urgency", urgency).put("next_action", nextAction)
-                .toString();
-    }
-
     public static void main(String[] args) throws Exception {
         String message = """
-                I keep getting signed out of the app whenever I move between dashboard tabs.
-                It is happening on both Chrome and Edge, and it is slowing down our team.
+                We were double-billed on invoice #INV-9821 for our annual Enterprise tier ($4,800 instead of $2,400).
+                This is blocking our quarterly accounting close, and we need an immediate refund and an updated invoice.
                 """.strip();
 
-        PromptChainingSupportReply example = new PromptChainingSupportReply(System.getenv().getOrDefault("MODEL", "gpt-4o-mini"));
-        JsonNode extracted = example.extractIssue(message);
-        String reply = example.draftReply(extracted);
+        PromptChainingSupportReply example = new PromptChainingSupportReply(
+                System.getenv().getOrDefault("MODEL", "gpt-4o-mini"));
+        JsonNode analysis = example.analyzeInquiry(message);
+        JsonNode policy = example.resolvePolicy(analysis);
+        String reply = example.draftReply(message, analysis, policy);
 
         System.out.println("=== Prompt chaining support reply ===");
         System.out.println("Customer message:");
         System.out.println(message);
-        System.out.println("\nStep 1: extracted context");
-        System.out.println(MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(extracted));
-        System.out.println("\nStep 2: support reply");
+        System.out.println("\nStep 1: extracted analysis");
+        System.out.println(MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(analysis));
+        System.out.println("\nIntermediate: resolved policy");
+        System.out.println(MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(policy));
+        System.out.println("\nStep 2: customer reply");
         System.out.println(reply);
     }
 }

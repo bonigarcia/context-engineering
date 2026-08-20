@@ -15,31 +15,17 @@ import OpenAI from 'openai';
 const client = new OpenAI();
 const DEFAULT_MODEL = process.env.MODEL || 'gpt-4o-mini';
 
-async function extractIssue(model, message) {
+async function analyzeInquiry(model, message) {
     const response = await client.chat.completions.create({
         model,
         messages: [
             {
                 role: 'system',
-                content: 'Extract the key support fields from a customer message. Return only valid JSON with the keys product, issue, sentiment, urgency, and next_action.',
+                content: 'Analyze the customer support inquiry. Return only valid JSON with the following keys: category (one of: billing, technical_bug, feature_request, general_inquiry), urgency (one of: low, medium, high, critical), sentiment (one of: positive, neutral, frustrated, angry), summary (a concise 1-sentence summary of the core issue).',
             },
             {
                 role: 'user',
-                content: 'Customer message:\nThe dashboard keeps logging me out when I switch tabs. I need to sign in again every time.',
-            },
-            {
-                role: 'assistant',
-                content: JSON.stringify({
-                    product: 'dashboard',
-                    issue: 'Session expires or resets when switching tabs',
-                    sentiment: 'frustrated',
-                    urgency: 'medium',
-                    next_action: 'Check session persistence and browser lifecycle handling.',
-                }, null, 2),
-            },
-            {
-                role: 'user',
-                content: `Customer message:\n${message}\n\nReturn only JSON.`,
+                content: `Customer inquiry:\n${message}\n\nReturn only JSON.`,
             },
         ],
         temperature: 0,
@@ -50,17 +36,58 @@ async function extractIssue(model, message) {
     return JSON.parse(content);
 }
 
-async function draftReply(model, extracted) {
+function resolvePolicy(analysis) {
+    const category = analysis.category || 'general_inquiry';
+    const urgency = analysis.urgency || 'medium';
+
+    if (category === 'billing' && (urgency === 'high' || urgency === 'critical')) {
+        return {
+            sla_response_time: '1 hour',
+            escalation_team: 'Priority Billing & Finance Ops',
+            resolution_guidelines: 'Acknowledge the billing discrepancy, confirm expedited review with Finance Ops for refund processing, and provide a direct case tracking reference.',
+        };
+    } else if (category === 'technical_bug' && (urgency === 'high' || urgency === 'critical')) {
+        return {
+            sla_response_time: '2 hours',
+            escalation_team: 'Tier-2 Engineering',
+            resolution_guidelines: 'Acknowledge the technical disruption, outline immediate diagnostic steps, and route logs to Tier-2 Engineering.',
+        };
+    } else {
+        return {
+            sla_response_time: '24 hours',
+            escalation_team: 'Standard Support',
+            resolution_guidelines: 'Provide helpful guidance addressing the customer question and offer links to documentation.',
+        };
+    }
+}
+
+async function draftReply(model, message, analysis, policy) {
+    const contextPrompt = `Customer inquiry:
+${message}
+
+Case analysis:
+- Category: ${analysis.category}
+- Urgency: ${analysis.urgency}
+- Customer sentiment: ${analysis.sentiment}
+- Core issue: ${analysis.summary}
+
+Resolution policy:
+- Target SLA response: ${policy.sla_response_time}
+- Assigned team: ${policy.escalation_team}
+- Guidelines: ${policy.resolution_guidelines}
+
+Draft a professional, empathetic 3 to 4 sentence customer reply adhering to the resolution policy.`;
+
     const response = await client.chat.completions.create({
         model,
         messages: [
             {
                 role: 'system',
-                content: 'You are a support agent. Write a concise reply that acknowledges the issue, summarizes the next step, and stays professional and empathetic.',
+                content: 'You are an enterprise customer support specialist. Write a professional, empathetic reply that strictly follows the provided resolution policy and case analysis. Do not mention JSON keys or internal system labels.',
             },
             {
                 role: 'user',
-                content: `Use this structured context to draft the reply:\n${JSON.stringify(extracted, null, 2)}\n\nWrite 3 to 4 sentences. Do not mention the JSON fields.`,
+                content: contextPrompt,
             },
         ],
         temperature: 0.2,
@@ -70,21 +97,24 @@ async function draftReply(model, extracted) {
 }
 
 const message = `
-I keep getting signed out of the app whenever I move between dashboard tabs.
-It is happening on both Chrome and Edge, and it is slowing down our team.
+We were double-billed on invoice #INV-9821 for our annual Enterprise tier ($4,800 instead of $2,400).
+This is blocking our quarterly accounting close, and we need an immediate refund and an updated invoice.
 `.trim();
 
 if (!process.env.OPENAI_API_KEY) {
     throw new Error('OPENAI_API_KEY is not set');
 }
 
-const extracted = await extractIssue(DEFAULT_MODEL, message);
-const reply = await draftReply(DEFAULT_MODEL, extracted);
+const analysis = await analyzeInquiry(DEFAULT_MODEL, message);
+const policy = resolvePolicy(analysis);
+const reply = await draftReply(DEFAULT_MODEL, message, analysis, policy);
 
 console.log('=== Prompt chaining support reply ===');
 console.log('Customer message:');
 console.log(message);
-console.log('\nStep 1: extracted context');
-console.log(JSON.stringify(extracted, null, 2));
-console.log('\nStep 2: support reply');
+console.log('\nStep 1: extracted analysis');
+console.log(JSON.stringify(analysis, null, 2));
+console.log('\nIntermediate: resolved policy');
+console.log(JSON.stringify(policy, null, 2));
+console.log('\nStep 2: customer reply');
 console.log(reply);
