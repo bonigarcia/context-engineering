@@ -1,0 +1,16 @@
+{
+  "name": "openai-gpt-streaming",
+  "version": "1.0.0",
+  "description": "Streaming responses from OpenAI GPT models",
+  "main": "openai-gpt-streaming.js",
+  "type": "module",
+  "scripts": {
+    "start": "node openai-gpt-streaming.js"
+  },
+  "dependencies": {
+    "openai": "^7.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

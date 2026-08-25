@@ -1,0 +1,16 @@
+{
+  "name": "google-gemini-streaming",
+  "version": "1.0.0",
+  "description": "Streaming responses from Google Gemini models",
+  "main": "google-gemini-streaming.js",
+  "type": "module",
+  "scripts": {
+    "start": "node google-gemini-streaming.js"
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

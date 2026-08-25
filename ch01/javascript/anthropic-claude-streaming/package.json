@@ -1,0 +1,16 @@
+{
+  "name": "anthropic-claude-streaming",
+  "version": "1.0.0",
+  "description": "Streaming responses from Anthropic Claude models",
+  "main": "anthropic-claude-streaming.js",
+  "type": "module",
+  "scripts": {
+    "start": "node anthropic-claude-streaming.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

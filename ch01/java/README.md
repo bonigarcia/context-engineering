@@ -12,8 +12,11 @@ This folder contains Java examples for interacting with OpenAI, Anthropic, Googl
 ## Examples
 
 - `OpenAiGptBasic.java`: Basic interaction with OpenAI GPT models.
+- `OpenAiGptStreaming.java`: Streaming responses from OpenAI GPT models.
 - `AnthropicClaudeBasic.java`: Basic interaction with Anthropic Claude models.
+- `AnthropicClaudeStreaming.java`: Streaming responses from Anthropic Claude models.
 - `GoogleGeminiBasic.java`: Basic interaction with Google Gemini models.
+- `GoogleGeminiStreaming.java`: Streaming responses from Google Gemini models.
 - `OllamaLocalBasic.java`: Basic interaction with a local LLM using Ollama.
 - `OllamaLocalStreaming.java`: Streaming responses from a local LLM using Ollama.
 
@@ -22,9 +25,12 @@ This folder contains Java examples for interacting with OpenAI, Anthropic, Googl
 You can run each example using Maven:
 
 ```bash
-mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OpenAiGptBasic"
-mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.AnthropicClaudeBasic"
-mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.GoogleGeminiBasic"
-mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalBasic"
-mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalStreaming"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.OpenAiGptBasic"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.OpenAiGptStreaming"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.AnthropicClaudeBasic"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.AnthropicClaudeStreaming"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.GoogleGeminiBasic"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.GoogleGeminiStreaming"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalBasic"
+mvn compile exec:exec -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalStreaming"
 ```

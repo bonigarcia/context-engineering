@@ -11,8 +11,11 @@ This folder contains JavaScript examples for interacting with OpenAI, Anthropic,
 ## Examples
 
 - `openai-gpt-basic/`: Basic interaction with OpenAI GPT models.
+- `openai-gpt-streaming/`: Streaming responses from OpenAI GPT models.
 - `anthropic-claude-basic/`: Basic interaction with Anthropic Claude models.
+- `anthropic-claude-streaming/`: Streaming responses from Anthropic Claude models.
 - `google-gemini-basic/`: Basic interaction with Google Gemini models.
+- `google-gemini-streaming/`: Streaming responses from Google Gemini models.
 - `ollama-local-basic/`: Basic interaction with a local LLM using Ollama.
 - `ollama-local-streaming/`: Streaming responses from a local LLM using Ollama.
 
