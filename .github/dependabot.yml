@@ -28,8 +28,13 @@ updates:
 - package-ecosystem: npm
   directories:
     - "/ch01/javascript/anthropic-claude-basic"
+    - "/ch01/javascript/anthropic-claude-streaming"
     - "/ch01/javascript/google-gemini-basic"
+    - "/ch01/javascript/google-gemini-streaming"
+    - "/ch01/javascript/ollama-basic"
+    - "/ch01/javascript/ollama-streaming"
     - "/ch01/javascript/openai-gpt-basic"
+    - "/ch01/javascript/openai-gpt-streaming"
     - "/ch02/javascript/anthropic-claude-system-prompt"
     - "/ch02/javascript/google-gemini-system-prompt"
     - "/ch02/javascript/openai-gpt-system-prompt"
