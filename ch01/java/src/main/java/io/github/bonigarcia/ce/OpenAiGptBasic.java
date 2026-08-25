@@ -92,7 +92,7 @@ public class OpenAiGptBasic implements AutoCloseable {
         int temperature = 0;
         try (OpenAiGptBasic gpt = new OpenAiGptBasic(model, reasoning,
                 temperature)) {
-            String prompt = "How many tokens is your context window?";
+            String prompt = "How many tokens are in your context window?";
             System.out.println("=== Basic model ===");
             System.out.println("User: " + prompt);
             String response = gpt.queryModel(prompt);

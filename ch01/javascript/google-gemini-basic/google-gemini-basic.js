@@ -41,7 +41,7 @@ async function queryModel(userPrompt, modelName = "gemini-2.5-flash", temperatur
     return response.text();
 }
 
-const userPrompt = "How many tokens is your context window?";
+const userPrompt = "How many tokens are in your context window?";
 
 console.log("=== Basic model  ===");
 console.log("User:", userPrompt);

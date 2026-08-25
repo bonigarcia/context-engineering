@@ -52,7 +52,7 @@ async function queryModel(userPrompt, model = ollamaModel, temperature = 0) {
     return result.response.trim();
 }
 
-const userPrompt = 'How many tokens is your context window?';
+const userPrompt = 'How many tokens are in your context window?';
 
 console.log('User:', userPrompt);
 const response = await queryModel(userPrompt);

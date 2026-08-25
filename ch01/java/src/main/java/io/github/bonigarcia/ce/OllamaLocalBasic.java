@@ -94,7 +94,7 @@ public class OllamaLocalBasic {
         String model = getEnvOrDefault("OLLAMA_MODEL", DEFAULT_MODEL);
         OllamaLocalBasic ollama = new OllamaLocalBasic(host, model);
 
-        String prompt = "How many tokens is your context window?";
+        String prompt = "How many tokens are in your context window?";
         System.out.println("User: " + prompt);
         String response = ollama.queryModel(prompt);
         System.out.println("Local LLM: " + response);

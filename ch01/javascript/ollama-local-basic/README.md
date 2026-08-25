@@ -35,7 +35,7 @@ npm start
 When you run the script, it sends a prompt to a local model through Ollama and prints latency and token counts returned by the local API.
 
 ```
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Model: gemma3:4b
         Latency: 10.746 seconds
         Input tokens: 17

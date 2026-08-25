@@ -41,7 +41,7 @@ When you run the script, it will send a user prompt to a Gemini model (`gemini-2
 
 ```
 === Basic model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Latency: 2.679 seconds
         Prompt tokens: 9
         Output tokens: 96
@@ -52,7 +52,7 @@ Gemini-2.5: As a large language model, I don't have a "context window" in the tr
 This information is proprietary and not something I can disclose. However, I am designed to handle substantial amounts of text and maintain context over lengthy conversations.
 
 === Advanced model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Latency: 1.430 seconds
         Prompt tokens: 9
         Output tokens: 93

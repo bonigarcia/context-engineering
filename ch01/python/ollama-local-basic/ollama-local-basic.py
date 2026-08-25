@@ -53,7 +53,7 @@ def query_model(prompt: str,
 
 
 if __name__ == "__main__":
-    prompt = "How many tokens is your context window?"
+    prompt = "How many tokens are in your context window?"
 
     print("User:", prompt)
     response = query_model(prompt)

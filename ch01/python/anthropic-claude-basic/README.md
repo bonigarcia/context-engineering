@@ -41,7 +41,7 @@ When you run the script, it will send a user prompt to a Claude model (`claude-3
 
 ```
 === Basic model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Model: claude-3-haiku-20240307
         Latency: 3.908 seconds
         Input tokens: 15
@@ -49,7 +49,7 @@ User: How many tokens is your context window?
 Claude3: I do not actually have a fixed context window size. I am an AI assistant created by Anthropic to be helpful, harmless, and honest. I don't have the same architectural details as language models that use a sliding context window. My responses are generated based on my training by Anthropic, not a fixed-size input context.
 
 === Advanced model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Model: claude-sonnet-4-20250514
         Latency: 5.787 seconds
         Input tokens: 44

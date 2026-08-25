@@ -30,7 +30,7 @@ When you run the script, it will send a user prompt to a Gemini model (`gemini-2
 
 ```
 === Basic model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Latency: 4.481 seconds
         Prompt tokens: 9
         Output tokens: 306
@@ -52,7 +52,7 @@ However, the models I am based on (like various versions of Google's Gemini mode
 
 For most conversational interactions, the effective context is managed to ensure a coherent and relevant discussion, even if the underlying model can handle much larger inputs.
 === Advanced model  ===
-User: How many tokens is your context window?
+User: How many tokens are in your context window?
         Latency: 1.295 seconds
         Prompt tokens: 9
         Output tokens: 93

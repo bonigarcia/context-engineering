@@ -48,7 +48,7 @@ function isGpt5OrAbove(model) {
     return /^gpt-[5-9].*/i.test(model);
 }
 
-const userPrompt = "How many tokens is your context window?";
+const userPrompt = "How many tokens are in your context window?";
 
 console.log("=== Basic model  ===");
 console.log("User:", userPrompt);

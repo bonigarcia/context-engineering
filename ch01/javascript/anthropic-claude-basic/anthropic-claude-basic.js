@@ -52,7 +52,7 @@ async function queryModel(userPrompt, model = "claude-3-haiku-20240307", maxToke
     return responseText;
 }
 
-const userPrompt = "How many tokens is your context window?";
+const userPrompt = "How many tokens are in your context window?";
 
 console.log("=== Basic model  ===");
 console.log("User:", userPrompt);

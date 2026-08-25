@@ -54,7 +54,7 @@ def is_gpt5_or_above(model: str) -> bool:
 
 
 if __name__ == "__main__":
-    prompt = "How many tokens is your context window?"
+    prompt = "How many tokens are in your context window?"
 
     print("=== Basic model ===")
     print("User:", prompt)

@@ -75,7 +75,7 @@ public class GoogleGeminiBasic implements AutoCloseable {
         int thinkingBudget = 1024;
         try (GoogleGeminiBasic gemini = new GoogleGeminiBasic(model,
                 temperature, thinkingBudget)) {
-            String prompt = "How many tokens is your context window?";
+            String prompt = "How many tokens are in your context window?";
             System.out.println("=== Basic model ===");
             System.out.println("User: " + prompt);
             String response = gemini.queryModel(prompt);
