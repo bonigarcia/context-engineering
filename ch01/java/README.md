@@ -15,6 +15,7 @@ This folder contains Java examples for interacting with OpenAI, Anthropic, Googl
 - `AnthropicClaudeBasic.java`: Basic interaction with Anthropic Claude models.
 - `GoogleGeminiBasic.java`: Basic interaction with Google Gemini models.
 - `OllamaLocalBasic.java`: Basic interaction with a local LLM using Ollama.
+- `OllamaLocalStreaming.java`: Streaming responses from a local LLM using Ollama.
 
 ## Running the examples
 
@@ -25,4 +26,5 @@ mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OpenAiGptBasic"
 mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.AnthropicClaudeBasic"
 mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.GoogleGeminiBasic"
 mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalBasic"
+mvn compile exec:java -Dexec.mainClass="io.github.bonigarcia.ce.OllamaLocalStreaming"
 ```

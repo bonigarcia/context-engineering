@@ -8,6 +8,7 @@ This folder contains Jupyter Notebook examples for interacting with OpenAI, Anth
 - `anthropic-claude-basic.ipynb`: Basic interaction with Anthropic Claude models.
 - `google-gemini-basic.ipynb`: Basic interaction with Google Gemini models.
 - `ollama-local-basic.ipynb`: Basic interaction with a local LLM using Ollama.
+- `ollama-local-streaming.ipynb`: Streaming responses from a local LLM using Ollama.
 
 ## How to use
 

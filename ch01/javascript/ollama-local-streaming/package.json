@@ -1,0 +1,13 @@
+{
+  "name": "ollama-local-streaming",
+  "version": "1.0.0",
+  "description": "Streaming responses from a local LLM using Ollama",
+  "main": "ollama-local-streaming.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ollama-local-streaming.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -14,6 +14,7 @@ This folder contains Python examples for interacting with OpenAI, Anthropic, Goo
 - `anthropic-claude-basic/`: Basic interaction with Anthropic Claude models.
 - `google-gemini-basic/`: Basic interaction with Google Gemini models.
 - `ollama-local-basic/`: Basic interaction with a local LLM using Ollama.
+- `ollama-local-streaming/`: Streaming responses from a local LLM using Ollama.
 
 ## Running the examples
 
