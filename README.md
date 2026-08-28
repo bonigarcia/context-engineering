@@ -4,7 +4,7 @@
 
 Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging discipline. Since then, I've been working on a book entitled **Context Engineering: Build Consistent, Accurate, Predictable AI Systems**, published by Manning. Currently, the early access version of the book is available, and you can get it [here](https://hubs.la/Q04ksQ8J0). 
 
-[![Context Engineering](/docs/img/context-engineering-MEAP-cover.png)](https://hubs.la/Q04ksQ8J0)
+[![Context Engineering](./docs/img/context-engineering-MEAP-cover.png)](https://hubs.la/Q04ksQ8J0)
 
 This GitHub repository is intended to be a companion resource for this book and a reference for practitioners looking to understand and adopt the context engineering principles.
 
@@ -36,11 +36,15 @@ This repository organizes examples by chapter to help you explore context engine
 #### Chapter 1. Introduction to context engineering
 This chapter provides the foundations for interacting with different model providers:
 - Basic interaction (OpenAI): [Python](./ch01/python/openai-gpt-basic) · [Jupyter](./ch01/jupyter/openai-gpt-basic.ipynb) · [JavaScript](./ch01/javascript/openai-gpt-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptBasic.java)
+- Streaming (OpenAI): [Python](./ch01/python/openai-gpt-streaming) · [Jupyter](./ch01/jupyter/openai-gpt-streaming.ipynb) · [JavaScript](./ch01/javascript/openai-gpt-streaming) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptStreaming.java)
 - Basic interaction (Anthropic): [Python](./ch01/python/anthropic-claude-basic) · [Jupyter](./ch01/jupyter/anthropic-claude-basic.ipynb) · [JavaScript](./ch01/javascript/anthropic-claude-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeBasic.java)
+- Streaming (Anthropic): [Python](./ch01/python/anthropic-claude-streaming) · [Jupyter](./ch01/jupyter/anthropic-claude-streaming.ipynb) · [JavaScript](./ch01/javascript/anthropic-claude-streaming) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeStreaming.java)
 - Basic interaction (Google): [Python](./ch01/python/google-gemini-basic) · [Jupyter](./ch01/jupyter/google-gemini-basic.ipynb) · [JavaScript](./ch01/javascript/google-gemini-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiBasic.java)
+- Streaming (Google): [Python](./ch01/python/google-gemini-streaming) · [Jupyter](./ch01/jupyter/google-gemini-streaming.ipynb) · [JavaScript](./ch01/javascript/google-gemini-streaming) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/GoogleGeminiStreaming.java)
 - Basic interaction (Ollama): [Python](./ch01/python/ollama-local-basic) · [Jupyter](./ch01/jupyter/ollama-local-basic.ipynb) · [JavaScript](./ch01/javascript/ollama-local-basic) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalBasic.java)
+- Streaming (Ollama): [Python](./ch01/python/ollama-local-streaming) · [Jupyter](./ch01/jupyter/ollama-local-streaming.ipynb) · [JavaScript](./ch01/javascript/ollama-local-streaming) · [Java](./ch01/java/src/main/java/io/github/bonigarcia/ce/OllamaLocalStreaming.java)
 
-#### Chapter 2. Instructions in AI agents
+#### Chapter 2. Instructions for AI agents
 This chapter covers the definition and usage of instructions (system prompts, agent skills, instructions artifacts) as a foundation layer to shape the model behavior:
 - System prompts (OpenAI): [Python](./ch02/python/openai-gpt-system-prompt) · [Jupyter](./ch02/jupyter/openai_gpt_system_prompt.ipynb) · [JavaScript](./ch02/javascript/openai-gpt-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/OpenAiGptSystemPrompt.java)
 - System prompts (Anthropic): [Python](./ch02/python/anthropic-claude-system-prompt) · [Jupyter](./ch02/jupyter/anthropic_claude_system_prompt.ipynb) · [JavaScript](./ch02/javascript/anthropic-claude-system-prompt) · [Java](./ch02/java/src/main/java/io/github/bonigarcia/ce/AnthropicClaudeSystemPrompt.java)
@@ -51,9 +55,9 @@ This chapter covers the definition and usage of instructions (system prompts, ag
 
 #### Chapter 3. External knowledge and retrieval
 This chapter explores different patterns for providing external knowledge to a model:
-- Retrieval-Augmented Generation (RAG): [Python](./ch03/python/rag-openai) · [Jupyter](./ch03/jupyter/rag_openai.ipynb)
-- Advanced RAG: [LangChain](./ch03/python/agentic-rag) · [Qdrant](./ch03/python/local-rag) · [PageIndex](./ch03/python/vectorless-rag-pageindex) · [RAGFlow](./ch03/python/ragflow-basic)
-- Context stuffing: [Python](./ch03/python/context-stuffing-system-prompt) · [Jupyter](./ch03/jupyter/context_stuffing_system_prompt.ipynb)
+- Retrieval-Augmented Generation (RAG): [OpenAI (Python)](./ch03/python/rag-openai) · [OpenAI (Jupyter)](./ch03/jupyter/rag_openai.ipynb) · [Hugging Face (Python)](./ch03/python/rag-hugging-face) · [Hugging Face (Jupyter)](./ch03/jupyter/rag_hugging_face.ipynb)
+- Advanced RAG: [LangChain](./ch03/python/agentic-rag) · [Qdrant](./ch03/python/local-rag) · [PageIndex (Python)](./ch03/python/vectorless-rag-pageindex) · [PageIndex (Jupyter)](./ch03/jupyter/vectorless_rag_pageindex.ipynb) · [RAGFlow](./ch03/python/ragflow-basic)
+- Context stuffing: [System prompt (Python)](./ch03/python/context-stuffing-system-prompt) · [System prompt (Jupyter)](./ch03/jupyter/context_stuffing_system_prompt.ipynb) · [User prompt (Python)](./ch03/python/context-stuffing-user-prompt) · [User prompt (Jupyter)](./ch03/jupyter/context_stuffing_user_prompt.ipynb)
 - Cache-Augmented Generation (CAG): [Python](./ch03/python/cag) · [Jupyter](./ch03/jupyter/cag.ipynb)
  
 #### Chapter 4. Tools in AI agents
@@ -110,27 +114,25 @@ This chapter covers governance, human oversight, and operational patterns for co
 #### Chapter 10. AI frameworks for context engineering
 This chapter covers specific AI frameworks that facilitate context engineering, including application frameworks, agent orchestration frameworks, and AI application platforms:
 
-- AI application frameworks: [LangChain](./ch10/langchain) · [LlamaIndex](./ch10/llamaindex) · [Haystack](./ch10/haystack) · [AI SDK](./ch10/ai_sdk) · [Spring AI](./ch10/spring_ai) · [Pydantic AI](./ch10/pydantic_ai) · [DSPy](./ch10/dspy)
-- Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [DeepAgents](./ch10/deepagents) · [Agno](./ch10/agno) · [Parlant](./ch10/parlant) · [Semantic Kernel](./ch10/semantic_kernel) · [Agent Development Kit](./ch10/agent_development_kit) · [Microsoft Agent Framework](./ch10/agent_framework)
-- AI application platforms: [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw) · [Temporal](./ch10/temporal)
+- AI application frameworks: [LangChain](./ch10/langchain) · [LlamaIndex](./ch10/llamaindex) · [Haystack](./ch10/haystack) · [Spring AI](./ch10/spring_ai) · [DSPy](./ch10/dspy) · [AI SDK](./ch10/ai_sdk) · [Pydantic AI](./ch10/pydantic_ai)
+- Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [Agent Development Kit](./ch10/adk) · [Microsoft Agent Framework](./ch10/agent_framework) · [Semantic Kernel](./ch10/semantic_kernel) · [Agno](./ch10/agno) · [Parlant](./ch10/parlant) · [DeepAgents](./ch10/deepagents) · [Claude Agent SDK](./ch10/claude_agent_sdk)
+- AI application platforms: [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw) · [Temporal](./ch10/temporal) · [Amazon Bedrock AgentCore](./ch10/bedrock_agentcore) · [Vertex AI Agent Engine](./ch10/vertex_agent_engine)
 
 #### Chapter 11. Context engineering for software development
 This chapter shows how context engineering supports the software development lifecycle (SDLC) through reusable skills, instruction artifacts, external documentation retrieval, orchestration layers, and specialized agents:
 
-- Agent skills: [agent-skills](./ch11/claude-code-agent-skills)
-- Instructions artifact: [karpathy-instructions-cursor](./ch11/karpathy-instructions-cursor)
-- Documentation retrieval: [Context7](./ch11/codex-context7)
-- SDLC prompt library: [Web page](./ch11/sdlc-prompt-library)
+- Agent skills: [Claude Code](./ch11/claude-code-agent-skills)
+- Instructions artifact: [Cursor rules](./ch11/karpathy-instructions-cursor)
+- Documentation retrieval: [Codex with Context7](./ch11/codex-context7)
+- SDLC prompt library: [SDLC prompt library](./ch11/sdlc-prompt-library)
 - Specification-driven development: [Spec Kit](./ch11/spec-kit-sdd)
-- Orchestration: [Superpowers](./ch11/opencode-superpowers)
-- Orchestration: [Open GSD](./ch11/antigravity-open-gsd)
-- Orchestration: [BMAD](./ch11/bmad-specialized-agents)
+- Orchestration: [OpenCode Superpowers](./ch11/opencode-superpowers) · [Antigravity Open GSD](./ch11/antigravity-open-gsd) · [BMAD specialized agents](./ch11/bmad-specialized-agents)
 
-#### Chapter 12. State of the art on context engineering
+#### Chapter 12. The state of the art in context engineering
 This chapter covers mathematical foundations, open research challenges, technical innovation frontiers, domain-specific applications, and future directions:
 
-- Technology radar: [Web page](./ch12/context_engineering_radar)
-- Base knowledge: [Graphify](./ch12/base_knowledge)
+- Technology radar: [Context engineering radar](./ch12/context_engineering_radar)
+- Base knowledge: [Graphify base knowledge](./ch12/base_knowledge)
 
 ## Online resources
 
