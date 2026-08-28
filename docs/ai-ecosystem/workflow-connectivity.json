@@ -39,13 +39,24 @@
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "Slack MCP Server",
+          "name": "Fetch MCP Server",
           "url": "https://github.com/modelcontextprotocol/servers/",
-          "description": "MCP server that connects Slack workspaces to AI agents.",
+          "description": "MCP server that retrieves web content and converts it for model consumption.",
           "features": [
-            "Retrieval of messages and channel history.",
-            "Enables agents to act on team communication.",
-            "Supports integration with collaboration systems."
+            "Fetches a URL and returns the page as markdown rather than raw HTML.",
+            "Supports partial reads for long pages, which limits how much enters the context window.",
+            "Provides a minimal grounding path without a full search stack."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Memory MCP Server",
+          "url": "https://github.com/modelcontextprotocol/servers/",
+          "description": "MCP server that gives an agent a persistent knowledge graph of entities, relations, and observations.",
+          "features": [
+            "Explicit tools for creating, reading, and deleting graph elements.",
+            "Persistence across sessions, independent of any single conversation.",
+            "A reference implementation of memory as a tool rather than as a framework module."
           ],
           "pricing": "Open-source and free to use."
         }
@@ -148,15 +159,15 @@
           "pricing": "Free tier available for developers; usage-based pricing for professional and enterprise plans."
         },
         {
-          "name": "Martian",
-          "url": "https://withmartian.com/",
-          "description": "Dynamic router that automatically sends prompts to the best model based on cost and performance.",
+          "name": "OpenRouter",
+          "url": "https://openrouter.ai/",
+          "description": "Hosted gateway that exposes hundreds of models from many providers behind a single OpenAI-compatible endpoint.",
           "features": [
-            "Model-agnostic routing to optimize for quality or cost.",
-            "Continuous evaluation of model performance across tasks.",
-            "Simplified integration with a single API endpoint."
+            "One API key and one endpoint for models across competing providers.",
+            "Automatic fallback across providers when one is unavailable or rate-limited.",
+            "Per-request routing preferences for price, latency, or throughput, with unified usage accounting."
           ],
-          "pricing": "Usage-based pricing based on routed requests."
+          "pricing": "Pass-through model pricing plus a small service fee, with a free tier for a subset of models."
         }
       ]
     },
@@ -175,9 +186,9 @@
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "GSD Core",
-          "url": "https://github.com/open-gsd/gsd-core",
-          "description": "Meta-prompting and context engineering system designed for spec-driven development. Originally called 'Get Shit Done'",
+          "name": "Open GSD",
+          "url": "https://opengsd.net/",
+          "description": "Meta-prompting and context engineering system designed for spec-driven development. Originally called Get Shit Done.",
           "features": [
             "Spec-driven development with structured phases including planning and execution.",
             "Multi-agent orchestration using sub-agents with isolated context windows.",

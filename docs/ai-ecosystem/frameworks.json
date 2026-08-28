@@ -88,15 +88,26 @@
       "title": "Agent orchestration frameworks",
       "items": [
         {
-          "name": "Agent Development Kit",
-          "url": "https://developers.google.com/ai/agent",
-          "description": "Agent-focused development kit for building and operating AI agents within the Google ecosystem.",
+          "name": "LangGraph",
+          "url": "https://www.langchain.com/langgraph",
+          "description": "Graph-based runtime for stateful agents and workflows, built alongside LangChain, which supplies the application components.",
           "features": [
-            "Native integration with Google models and cloud services.",
-            "Tool use, planning, and agent lifecycle management.",
-            "Emphasis on production deployment and platform integration."
+            "Explicit nodes and edges, where each node can be a model call, a tool call, a router, a validation step, or a review point.",
+            "A state object that carries messages, intermediate artifacts, tool results, and control variables across the workflow.",
+            "Durable execution, streaming, checkpointing, and human-in-the-loop interruption."
           ],
-          "pricing": "Pricing depends on underlying Google Cloud services and model usage."
+          "pricing": "Open-source and free to use. Managed deployment and tracing available through LangSmith."
+        },
+        {
+          "name": "Agent Development Kit",
+          "url": "https://adk.dev/",
+          "description": "Open-source agent framework from Google for building, debugging, and deploying agents, with a direct path into the Google Cloud runtime.",
+          "features": [
+            "Implementations for Python, TypeScript, Java, Go, and Kotlin.",
+            "Tool use, planning, and agent lifecycle management.",
+            "Direct deployment to Vertex AI Agent Engine."
+          ],
+          "pricing": "Open-source and free to use. Runtime costs depend on the underlying Google Cloud services and model usage."
         },
         {
           "name": "Microsoft Agent Framework",
@@ -152,6 +163,17 @@
             "Middleware-based architecture with capabilities such as summarization."
           ],
           "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Claude Agent SDK",
+          "url": "https://docs.claude.com/en/api/agent-sdk/overview",
+          "description": "Library that packages the agent loop behind Claude Code, so an application can reuse the same harness instead of assembling one.",
+          "features": [
+            "Built-in tools for file operations, command execution, and codebase search.",
+            "A permission model for approving sensitive actions before they run.",
+            "Subagents that isolate complex subtasks in dedicated context windows, plus file-based skills and memory."
+          ],
+          "pricing": "Free to use, with usage billed through the Claude API."
         }
       ]
     },
@@ -234,6 +256,28 @@
             "Language-native workflow definitions for production software systems."
           ],
           "pricing": "Open-source and free to use; paid cloud and enterprise plans available."
+        },
+        {
+          "name": "Amazon Bedrock AgentCore",
+          "url": "https://aws.amazon.com/bedrock/agentcore/",
+          "description": "Managed service for running agents in production on AWS, largely framework-agnostic, so it usually hosts an agent written with one of the frameworks described earlier.",
+          "features": [
+            "Serverless runtime with session isolation and managed memory.",
+            "A gateway that turns existing APIs into tools, plus credential brokering.",
+            "Sandboxed browser and code interpreter tools with built-in observability."
+          ],
+          "pricing": "Consumption-based pricing tied to AWS usage."
+        },
+        {
+          "name": "Vertex AI Agent Engine",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview",
+          "description": "Managed agent runtime in Google Cloud, and the deployment target for agents built with the Agent Development Kit.",
+          "features": [
+            "Managed sessions and a memory bank for information that persists across conversations.",
+            "Tracing and evaluation paths into the surrounding Vertex AI services.",
+            "Support for agents built with other frameworks as well."
+          ],
+          "pricing": "Consumption-based pricing tied to Google Cloud usage."
         }
       ]
     }

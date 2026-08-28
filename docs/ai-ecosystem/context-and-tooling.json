@@ -29,7 +29,7 @@
         },
         {
           "name": "llama.cpp",
-          "url": "https://github.com/ggerganov/llama.cpp",
+          "url": "https://github.com/ggml-org/llama.cpp",
           "description": "LLM inference implementation in pure C/C++ for high-performance execution on a variety of hardware.",
           "features": [
             "Minimal dependencies and high portability across CPUs and GPUs.",
@@ -50,15 +50,15 @@
           "pricing": "Free for personal use."
         },
         {
-          "name": "Text Generation Inference (TGI)",
-          "url": "https://github.com/huggingface/text-generation-inference",
-          "description": "A toolkit for deploying and serving LLMs developed by Hugging Face.",
+          "name": "SGLang",
+          "url": "https://github.com/sgl-project/sglang",
+          "description": "High-performance serving framework for language and multimodal models, maintained by LMSYS and widely deployed for agent workloads with heavy prompt reuse.",
           "features": [
-            "Optimized for production deployments with support for many model architectures.",
-            "Features including tensor parallelism and token streaming.",
-            "Integrated with the Hugging Face ecosystem for model discovery."
+            "RadixAttention, which enables prefix caching across requests that share a common prompt prefix.",
+            "Prefill and decode disaggregation, speculative decoding, and a zero-overhead CPU scheduler.",
+            "Structured output support and a broad range of quantization formats."
           ],
-          "pricing": "Open-source and free to use under the HFOIL license."
+          "pricing": "Open-source and free to use."
         }
       ]
     },
@@ -75,17 +75,6 @@
             "Production deployment tools with performance monitoring."
           ],
           "pricing": "Free tier for small projects; paid plans based on usage and team seats."
-        },
-        {
-          "name": "PromptPerfect",
-          "url": "https://promptperfect.jina.ai",
-          "description": "Prompt optimization tool that refines and compresses prompts for efficiency and accuracy across models.",
-          "features": [
-            "Automatic prompt tuning for different LLMs.",
-            "Reduces token count while maintaining quality.",
-            "Integrates via API for programmatic optimization."
-          ],
-          "pricing": "Free tier available; subscription plans for professional and enterprise users."
         },
         {
           "name": "OpenAI Playground",
@@ -114,7 +103,7 @@
           "url": "https://platform.claude.com/",
           "description": "Web-based interface for experimenting with Claude models and optimizing prompts.",
           "features": [
-            "Prompt experimentation with the Claude 4 and Claude 5 models.",
+            "Prompt experimentation with the current Claude 5 generation.",
             "Adjustable system prompts and context size.",
             "Conversation history and export for reproducible tests."
           ],
@@ -171,7 +160,7 @@
         },
         {
           "name": "Lilypad",
-          "url": "https://www.lilypad.tech",
+          "url": "https://github.com/Mirascope/lilypad",
           "description": "Prompt operations and observability platform focused on tracing and evaluating prompts.",
           "features": [
             "Prompt tracing with full request and response context.",
@@ -291,27 +280,29 @@
           "pricing": "API-based pricing per 1 million tokens; pay-as-you-go usage."
         },
         {
-          "name": "Cohere Embed v3",
+          "name": "Cohere Embed v4",
           "url": "https://docs.cohere.com/docs/embed",
           "description": "A multilingual embedding model optimized for enterprise search and RAG pipelines.",
           "features": [
-            "Very strong multilingual performance.",
-            "Long-context input support.",
-            "Optimized for high-recall search."
+            "Very strong multilingual performance across more than 100 languages.",
+            "Long-context input support of up to 128k tokens, which suits whole documents rather than small chunks.",
+            "Optimized for high-recall search.",
+            "Deployable through the API, in a virtual private cloud, or on-premises."
           ],
           "lens": "API-hosted multilingual model aimed at enterprise search.",
           "pricing": "API usage pricing per 1 million tokens; enterprise plans available."
         },
         {
-          "name": "BGE-large",
-          "url": "https://huggingface.co/BAAI/bge-large-en",
-          "description": "Open-source embedding models known for high retrieval accuracy.",
+          "name": "BGE-M3",
+          "url": "https://huggingface.co/BAAI/bge-m3",
+          "description": "Open-source embedding family from BAAI known for high retrieval accuracy, widely used in self-hosted RAG systems.",
           "features": [
-            "Excellent performance among open-source models.",
+            "Multi-functional retrieval that produces dense, sparse, and multi-vector representations from a single model.",
+            "Multilingual coverage and inputs of up to 8,192 tokens.",
             "Suitable for local and privacy-sensitive workloads.",
-            "Strong semantic retrieval with a small footprint."
+            "Earlier BGE releases remain available in base, small, and large sizes."
           ],
-          "lens": "Self-hostable open model family commonly used for English retrieval.",
+          "lens": "Self-hostable open model family commonly used for hybrid retrieval and privacy-sensitive deployments.",
           "pricing": "Open-source and free to use."
         },
         {
@@ -319,12 +310,37 @@
           "url": "https://huggingface.co/jinaai/jina-embeddings-v3",
           "description": "Open-source embedding model designed for long-context documents and multilingual tasks.",
           "features": [
-            "Long-context support up to approximately 64k tokens.",
+            "Inputs of up to 8,192 tokens, with task-specific adapters for retrieval, classification, and clustering.",
             "Multilingual embeddings with consistent quality.",
             "Optimized for generative search and RAG."
           ],
           "lens": "Self-hostable or API-hosted multilingual model with long-input support.",
           "pricing": "Open-source and free to use; optional hosted API available."
+        },
+        {
+          "name": "Qwen3-Embedding",
+          "url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+          "description": "Open-weight embedding family from Alibaba that currently leads the multilingual MTEB leaderboard.",
+          "features": [
+            "Sizes from 0.6B to 8B parameters, so quality can be traded against serving cost.",
+            "Inputs of up to 32k tokens and coverage of more than 100 languages.",
+            "Instruction-aware embeddings, where a task description can be prepended to steer the representation.",
+            "Paired reranker models for a two-stage retrieval pipeline."
+          ],
+          "lens": "Self-hostable multilingual model family for teams that want leaderboard-level quality without an API dependency.",
+          "pricing": "Open-source and free to use under Apache 2.0."
+        },
+        {
+          "name": "Gemini Embedding",
+          "url": "https://ai.google.dev/gemini-api/docs/embeddings",
+          "description": "Google's API-hosted embedding model, trained alongside the Gemini family and aimed at general-purpose retrieval.",
+          "features": [
+            "Strong retrieval quality across general and code-heavy corpora.",
+            "Matryoshka representation learning, so output dimensions can be truncated to trade accuracy for storage.",
+            "Task-type hints that adapt the embedding to retrieval, classification, or similarity."
+          ],
+          "lens": "API-hosted general-purpose model for teams already building on the Gemini API.",
+          "pricing": "API-based pricing per 1 million tokens, with a free tier for prototyping."
         }
       ]
     },
@@ -475,7 +491,7 @@
         },
         {
           "name": "MemPalace",
-          "url": "https://github.com/milla-jovovich/mempalace",
+          "url": "https://github.com/MemPalace/mempalace",
           "description": "Memory management framework designed to structure and retrieve contextual information for AI systems.",
           "features": [
             "Organizes context into structured and hierarchical memory spaces.",

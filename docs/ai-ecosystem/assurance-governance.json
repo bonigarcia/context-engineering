@@ -70,6 +70,28 @@
             "Designed to reflect realistic RAG workflows."
           ],
           "usage": "Comparative analysis of RAG pipeline designs."
+        },
+        {
+          "name": "SWE-bench",
+          "url": "https://www.swebench.com/",
+          "description": "Benchmark built from real GitHub issues, where a system must produce a patch that makes the repository's tests pass.",
+          "features": [
+            "Measures end-to-end task completion rather than isolated code generation.",
+            "Requires navigating a large codebase, so results depend heavily on how context is selected.",
+            "The Verified subset is human-validated and is the variant most often reported."
+          ],
+          "usage": "Evaluation of coding agents and of the context strategies behind them."
+        },
+        {
+          "name": "Terminal-Bench",
+          "url": "https://www.tbench.ai/",
+          "description": "Benchmark that evaluates agents on tasks completed inside a real terminal environment.",
+          "features": [
+            "Tasks span builds, debugging, system administration, and data manipulation.",
+            "Execution in a sandboxed container, with success measured by verifiable end state.",
+            "Stresses tool use and recovery from failed commands."
+          ],
+          "usage": "Comparison of agent harnesses and of tool-use reliability."
         }
       ]
     },
@@ -108,6 +130,17 @@
             "Supports tracing and dataset versioning for reproducible testing."
           ],
           "pricing": "Open-source and free to use for self-hosting; managed enterprise plans available."
+        },
+        {
+          "name": "Promptfoo",
+          "url": "https://www.promptfoo.dev/",
+          "description": "Open-source command-line tool for declarative evaluation and red-teaming of prompts, models, and agents.",
+          "features": [
+            "Test cases declared in YAML and run from the command line or in continuous integration.",
+            "Side-by-side comparison of prompts and models over the same dataset.",
+            "Built-in assertions, LLM-as-judge graders, and a red-teaming suite for adversarial inputs."
+          ],
+          "pricing": "Open-source and free to use, with a paid enterprise offering available."
         }
       ]
     },
@@ -432,7 +465,7 @@
         },
         {
           "name": "Scale AI",
-          "url": "https://www.scaleai.ca/",
+          "url": "https://scale.com/",
           "description": "Enterprise data labeling platform supporting human oversight operations.",
           "features": [
             "Managed annotation services.",

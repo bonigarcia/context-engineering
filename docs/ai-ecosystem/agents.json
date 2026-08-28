@@ -15,7 +15,7 @@
             "Contextual understanding and memory in conversations.",
             "Multilingual support, voice mode, and web search capabilities."
           ],
-          "models": "GPT-4, GPT-4o, GPT-4o mini, GPT-5, GPT-5.5, and specialized o-series models.",
+          "models": "GPT-4o, the GPT-5 family up to GPT-5.6 Sol, the Codex models for agentic coding, and the earlier o-series reasoning models.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -27,7 +27,7 @@
             "A very long context window for processing large amounts of information.",
             "Integration with Google applications such as Gmail, Docs, and Sheets."
           ],
-          "models": "Gemini Ultra, Gemini Pro, Gemini Flash, and Gemini Nano, including the latest 3.5 series.",
+          "models": "The Gemini 3 generation, including Gemini 3.1 Pro, Gemini 3.7 Flash, and Gemini 3.5 Flash-Lite, plus Gemini Nano on supported devices.",
           "pricing": "Free plan; paid plans starting at $19.99/month; API usage-based pricing."
         },
         {
@@ -39,7 +39,7 @@
             "A large context window for processing and analyzing long documents.",
             "Vision capabilities for analyzing images, charts, and graphs."
           ],
-          "models": "Claude 3.5 Haiku, Claude 5 Sonnet, Claude 5.5 Sonnet, and Claude Opus 5.",
+          "models": "Claude Opus 5, Claude Sonnet 5, Claude Fable 5, and Claude Haiku 4.5.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -51,7 +51,7 @@
             "AI-powered search and personalized recommendations.",
             "Real-time voice conversations and integration with Meta services."
           ],
-          "models": "The Llama family of models, including Llama 4 and Llama 5 series.",
+          "models": "The Muse Spark family, which replaced the earlier Llama models as the assistant's backend in 2026.",
           "pricing": "Free plan; Meta AI+ subscription at $10/month; API usage-based pricing."
         },
         {
@@ -64,7 +64,7 @@
             "Provides clickable citations for verification.",
             "Focus modes to refine search results, including academic papers or news."
           ],
-          "models": "Access to advanced AI models including GPT-5.5, Claude 5.5 Sonnet, and proprietary Sonar models.",
+          "models": "Access to advanced AI models including the GPT-5 family, Claude Opus 5 and Sonnet 5, and the proprietary Sonar models.",
           "pricing": "Free plan; paid plans starting at $20/month."
         },
         {
@@ -88,7 +88,7 @@
             "Enterprise data protection and Microsoft Graph grounding.",
             "Image generation capabilities."
           ],
-          "models": "OpenAI's advanced LLMs such as the GPT-4, GPT-5, and GPT-5.5 series.",
+          "models": "OpenAI's advanced LLMs, currently the GPT-5 series, together with Microsoft's own in-house models.",
           "pricing": "Free version for eligible M365 users; paid plans starting at $20/month."
         }
       ]
@@ -121,35 +121,36 @@
         {
           "name": "ForgeCode",
           "url": "https://forgecode.dev/",
-          "description": "Developer-focused AI CLI that integrates with your local environment to assist with coding and debugging.",
+          "description": "Open-source coding harness that runs inside the shell and routes work across specialized sub-agents.",
           "features": [
-            "Local-first coding assistant with shell integration.",
-            "Supports context sharing between files and commands.",
-            "Plugin system for custom workflows."
+            "Shell-native invocation that leaves existing aliases and plugins untouched.",
+            "Sub-agents that separate research, planning, and execution.",
+            "Model-agnostic backend, so the same harness can run against different providers."
           ],
-          "pricing": "Free tier available with limited usage; paid plans for advanced features."
+          "pricing": "Open-source and free to use. API key required for external LLMs."
         },
         {
           "name": "Codex CLI",
-          "url": "https://developers.openai.com/codex/cli/",
-          "description": "Command-line interface for OpenAI's Codex models offering code generation and completion in the terminal.",
+          "url": "https://learn.chatgpt.com/docs/codex/cli",
+          "description": "Open-source agentic coding tool from OpenAI that inspects repositories, edits files, and runs commands from the terminal.",
           "features": [
-            "Autocompletion and inline code generation.",
-            "Natural language to shell command translation.",
-            "Integration with editors and REPLs."
+            "Interactive and scripted modes, the latter through the codex exec command.",
+            "Subagents that isolate focused investigations in their own context windows.",
+            "Plugins and skills for connecting team tooling, plus code review against uncommitted changes or a branch.",
+            "Permission boundaries that require explicit authorization for edits and command execution."
           ],
-          "pricing": "Pay-as-you-go via OpenAI API; free credits available for new accounts."
+          "pricing": "Included with paid ChatGPT plans, plus pay-as-you-go via the OpenAI API."
         },
         {
           "name": "OpenCode",
           "url": "https://opencode.ai/",
-          "description": "AI-powered coding platform designed to assist with software development through structured workflows.",
+          "description": "Open-source, model-agnostic coding agent available in the terminal, on the desktop, and as an IDE extension. It is one of the most widely adopted open-source coding harnesses.",
           "features": [
             "Supports code generation, editing, and refactoring across projects.",
             "Operates over full repositories with awareness of project structure.",
             "Enables multi-step workflows, including planning and reviewing code."
           ],
-          "pricing": "Free tier available; paid plans for advanced features."
+          "pricing": "Open-source and free to use. API key required for external LLMs."
         },
         {
           "name": "Antigravity",
@@ -172,6 +173,28 @@
             "Context-aware understanding of code structure and dependencies."
           ],
           "pricing": "Free tier available; paid plans for extended usage and advanced models."
+        },
+        {
+          "name": "GitHub Copilot",
+          "url": "https://github.com/features/copilot",
+          "description": "Coding assistant from GitHub that spans inline completion, chat, an agent mode, and a command-line interface, distributed through the editors and the platform that developers already use.",
+          "features": [
+            "Inline completion and chat inside major editors, plus an agent mode that edits across files.",
+            "Coding agent that works from a GitHub issue and opens a pull request for review.",
+            "Custom instruction files and MCP support for supplying project context."
+          ],
+          "pricing": "Free tier with monthly completion and chat limits, plus paid individual, business, and enterprise plans."
+        },
+        {
+          "name": "Cline",
+          "url": "https://github.com/cline/cline",
+          "description": "Open-source coding agent distributed as an editor extension and a CLI, with an explicit plan and act separation.",
+          "features": [
+            "Plan mode for reasoning about a change before any file is written.",
+            "Model-agnostic, so the same agent can run against different providers.",
+            "MCP support for adding tools and external context sources."
+          ],
+          "pricing": "Open-source and free to use. API key required for external LLMs."
         }
       ]
     }
