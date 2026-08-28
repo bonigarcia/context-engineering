@@ -18,7 +18,7 @@ def main() -> None:
     researcher = Agent(
         role="Researcher",
         goal="Gather concise facts about {topic}",
-        backstory="You are a careful researcher who collects only the most relevant context.",
+        backstory="You are a careful researcher.",
         verbose=True,
     )
 
@@ -30,8 +30,8 @@ def main() -> None:
     )
 
     research_task = Task(
-        description="Research {topic} and list the key points needed for a short summary.",
-        expected_output="A brief research note with the key points about the topic.",
+        description="Research {topic} and list the key points.",
+        expected_output="A brief research note with the key points.",
         agent=researcher,
     )
 

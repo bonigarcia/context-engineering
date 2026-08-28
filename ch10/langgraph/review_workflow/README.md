@@ -1,6 +1,6 @@
 # LangGraph review workflow
 
-This example keeps the state visible as the graph drafts an answer, reviews it, and finalizes it.
+This example keeps the state visible as the graph drafts an answer with a model call, routes it through a conditional edge, and sends it to review when the request mentions a payment.
 
 ## Requirements
 
@@ -37,10 +37,11 @@ python review_workflow.py
 
 ## What it demonstrates
 
-- Explicit `draft`, `review`, and `final` state fields
-- A fixed draft -> review -> finalize flow
+- Explicit `input`, `draft`, and `needs_review` state fields
+- A drafting node that calls the model and writes its reply into the state
+- A conditional edge that routes to human review or to the end of the graph
 - Intermediate state preserved in the graph output
 
 ## Output
 
-When you run the script, it will print the results to the terminal.
+When you run the script, it will print the final state of two runs. The first request ends after the drafting node, and the second one mentions a payment, so it also passes through the review node and its draft is prefixed with *Reviewed:*.

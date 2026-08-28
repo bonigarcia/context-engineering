@@ -18,7 +18,7 @@ class ReplySummary(BaseModel):
 reply_agent = Agent(
     "openai:gpt-5-mini",
     output_type=ReplySummary,
-    instructions="Return a concise, structured summary of the support request.",
+    instructions="Return a concise, structured summary.",
 )
 
 

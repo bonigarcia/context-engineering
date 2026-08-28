@@ -10,6 +10,7 @@ This folder contains examples demonstrating application development with LangCha
 ## Examples
 
 - `basic_llm_interaction/`: Setting up a basic LLM invocation.
+- `structured_output/`: Binding an output schema so the model returns a validated object.
 - `tool_calling/`: Equipping LangChain chains with tool call support.
 - `conversational_memory/`: Storing and managing conversational history.
 - `context_compression/`: Compressing input documents to retrieve relevant parts.

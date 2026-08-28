@@ -12,10 +12,10 @@ limitations under the License.
 """
 
 import os
+
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
+from langchain.chat_models import init_chat_model
+from pydantic import BaseModel, Field
 
 # Load environment variables from .env file
 load_dotenv()
@@ -25,22 +25,19 @@ api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise ValueError("OPENAI_API_KEY not found in .env file")
 
+
+# Define the structure expected from the model
+class CityAnswer(BaseModel):
+    city: str = Field(description="Name of the capital city")
+    country: str = Field(description="Country the city belongs to")
+
+
 if __name__ == "__main__":
-    # Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
+    # Initialize the chat model through the provider-agnostic factory
+    model = init_chat_model("openai:gpt-5-mini", temperature=0)
 
-    # Define a chat prompt template with a system message and user input
-    prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful AI assistant. Your name is {name}."),
-        ("user", "{input}")
-    ])
+    # Bind the schema so the model returns a validated object
+    structured_model = model.with_structured_output(CityAnswer)
+    answer = structured_model.invoke("What is the capital of France?")
 
-    # Define an output parser to get a string response
-    output_parser = StrOutputParser()
-
-    # Create a chain combining the prompt, LLM, and output parser
-    chain = prompt | llm | output_parser
-
-    # Invoke the chain with specific inputs
-    response = chain.invoke({"name": "Bob", "input": "What is the capital of France?"})
-    print(response)
+    print(answer)
