@@ -442,7 +442,8 @@
           { value: 'reviewer', label: '4. Reviewer' },
           { value: 'refactorer', label: '5. Refactorer' },
           { value: 'tester', label: '6. Tester' },
-          { value: 'documenter', label: '7. Documenter' }
+          { value: 'documenter', label: '7. Documenter' },
+          { value: 'maintainer', label: '8. Maintainer' }
         ];
         options.forEach(o => {
           const opt = document.createElement('option');
@@ -457,7 +458,7 @@
       const SAMPLE_FILES = {
         architect: '01_architect.json', developer: '02_developer.json', debugger: '03_debugger.json',
         reviewer: '04_reviewer.json', refactorer: '05_refactorer.json', tester: '06_tester.json',
-        documenter: '07_documenter.json'
+        documenter: '07_documenter.json', maintainer: '08_maintainer.json'
       };
       const SAMPLE_BASE_PATH = 'sdlc_prompt_library/';
       const sampleCache = {};
