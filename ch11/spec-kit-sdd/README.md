@@ -10,10 +10,14 @@ The files in `artifacts/spec.md`, `artifacts/plan.md`, and `artifacts/tasks.md` 
 specify init .
 /speckit.constitution
 /speckit.specify
+/speckit.clarify
 /speckit.plan
 /speckit.tasks
+/speckit.analyze
 /speckit.implement
 ```
+
+`/speckit.clarify` and `/speckit.analyze` are optional in Spec Kit, but both are included here because they are where ambiguity is removed. `clarify` asks targeted questions about the underspecified parts of the spec and records the answers in `artifacts/spec.md`. `analyze` cross-checks the spec, the plan, and the task list for gaps and contradictions before any code is written.
 
 ## Example Feature Request
 

@@ -19,6 +19,14 @@ Use this formula:
 
 `impact * 5 + strategic_fit * 3 - effort * 2`
 
+## Clarifications
+
+Recorded from the `/speckit.clarify` step:
+
+- Are non-integer numeric inputs such as `4.0` accepted? No. Only the `int` type is valid, so `4.0` is rejected.
+- Can the final score be negative? Yes. A high-effort, low-impact idea can score below zero, and that result is kept as is.
+- What happens on invalid input? A `ValueError` is raised naming the first failing field, and no score is returned.
+
 ## Acceptance Criteria
 
 - The feature returns the weighted score for valid inputs.
