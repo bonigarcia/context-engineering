@@ -10,6 +10,7 @@ This folder contains examples demonstrating how an agent is hosted on the manage
 ## Examples
 
 - `hosted_agent/`: Exposing an agent through the AgentCore Runtime entrypoint.
+- `code_review_agent/`: A code review agent that accepts a diff and returns structured feedback.
 
 ## Running the examples
 

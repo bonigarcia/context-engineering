@@ -10,6 +10,7 @@ This folder contains examples demonstrating how an agent is hosted on the manage
 ## Examples
 
 - `deploy_adk_agent/`: Deploying an Agent Development Kit agent to the managed runtime and querying it.
+- `dev_agent/`: A development agent that reads a spec and generates implementation code with tests.
 
 ## Running the examples
 
