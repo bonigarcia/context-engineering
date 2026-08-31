@@ -8,7 +8,7 @@
     "start": "node openai-gpt-streaming.js"
   },
   "dependencies": {
-    "openai": "^7.5.0"
+    "openai": "^7.8.0"
   },
   "engines": {
     "node": ">=18"
