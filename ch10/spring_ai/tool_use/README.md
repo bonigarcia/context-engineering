@@ -27,5 +27,6 @@ mvn spring-boot:run
 ## Output
 
 ```
-{"operator":"plus", "parameters": {"left": "12", "right": "30"}}
+User: What is 12 plus 30? Reply with just the number.
+Model: The result of 12 plus 30 is 42.
 ```
