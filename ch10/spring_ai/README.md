@@ -11,9 +11,12 @@ This folder contains Java examples demonstrating application development using S
 ## Examples
 
 - `basic_assistant/`: Single prompt-response with local model.
-- `tool_use/`: Local math solver tool integration.
+- `chat_memory/`: Conversation history across turns.
+- `combined_context/`: Instructions, tools, RAG, and memory together.
 - `rag_retrieval/`: In-memory retrieval-augmented generation.
 - `structured_output/`: Generating and parsing response objects to Java records.
+- `system_instructions/`: System prompt persona and constraints.
+- `tool_use/`: Local math solver tool integration.
 
 ## Running the examples
 
