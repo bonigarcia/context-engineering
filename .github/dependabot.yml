@@ -18,8 +18,11 @@ updates:
     - "/ch10/langchain4j/structured_output"
     - "/ch10/langchain4j/tool_use"
     - "/ch10/spring_ai/basic_assistant"
+    - "/ch10/spring_ai/chat_memory"
+    - "/ch10/spring_ai/combined_context"
     - "/ch10/spring_ai/rag_retrieval"
     - "/ch10/spring_ai/structured_output"
+    - "/ch10/spring_ai/system_instructions"
     - "/ch10/spring_ai/tool_use"
   schedule:
     interval: daily
