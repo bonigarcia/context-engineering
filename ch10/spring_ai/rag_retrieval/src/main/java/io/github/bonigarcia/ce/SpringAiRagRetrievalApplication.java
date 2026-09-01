@@ -17,11 +17,12 @@
 package io.github.bonigarcia.ce;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.SimpleVectorStore;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.boot.CommandLineRunner;
@@ -51,9 +52,14 @@ public class SpringAiRagRetrievalApplication {
         ChatClient chatClient = chatClientBuilder.build();
 
         return args -> {
+            String question = "How do I reset my password?";
+            List<Document> documents = vectorStore.similaritySearch(
+                    SearchRequest.builder().query(question).topK(2).build());
+            String context = documents.stream().map(Document::getText)
+                    .collect(Collectors.joining("\n"));
+
             String answer = chatClient.prompt()
-                    .advisors(QuestionAnswerAdvisor.builder(vectorStore).build())
-                    .user("How do I reset my password?")
+                    .user("Context:\n" + context + "\n\nQuestion: " + question)
                     .call()
                     .content();
 
