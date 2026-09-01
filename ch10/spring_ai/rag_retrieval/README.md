@@ -29,5 +29,22 @@ mvn spring-boot:run
 ## Output
 
 ```
-If you're having trouble finding this option or need help with the process, I'd be happy to try and assist you further. However, without more specific information about your situation, I'll need to inform you that I don't know what you're referring to by "invoice copy" or "VPN access". Could you provide more context or clarify what you're trying to reset?
+User: How do I reset my password?
+Model: It seems like you're trying to reset your password using the self-service portal and then sign in again. Here's a step-by-step guide to help you with that:
+
+**Resetting your password using the self-service portal:**
+
+1. Go to the [Company Website](http://www.companywebsite.com) or [Your Company's Self-Service Portal](http://yourcompanyportal.com).
+2. Log in to your account using your username and password.
+3. Click on the "Forgot Password" or "Reset Password" link.
+4. Enter your email address or username and click "Submit".
+5. Follow the prompts to reset your password. You may be asked to provide additional security questions or confirm your new password.
+
+**Signing in again after resetting your password:**
+
+1. Go back to the self-service portal (or your company's portal).
+2. Enter your new password and confirm it.
+3. Click "Sign In" to access your account.
+
+Alternatively, if you're trying to sign in using the local VPN client, make sure you have the correct login credentials and have previously configured your VPN settings to use the office profile.
 ```

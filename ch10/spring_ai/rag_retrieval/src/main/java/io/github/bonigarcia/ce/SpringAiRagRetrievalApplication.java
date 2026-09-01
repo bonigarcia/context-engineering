@@ -52,18 +52,19 @@ public class SpringAiRagRetrievalApplication {
         ChatClient chatClient = chatClientBuilder.build();
 
         return args -> {
-            String question = "How do I reset my password?";
+            String prompt = "How do I reset my password?";
             List<Document> documents = vectorStore.similaritySearch(
-                    SearchRequest.builder().query(question).topK(2).build());
+                    SearchRequest.builder().query(prompt).topK(2).build());
             String context = documents.stream().map(Document::getText)
                     .collect(Collectors.joining("\n"));
 
-            String answer = chatClient.prompt()
-                    .user("Context:\n" + context + "\n\nQuestion: " + question)
+            String response = chatClient.prompt()
+                    .user("Context:\n" + context + "\n\nQuestion: " + prompt)
                     .call()
                     .content();
 
-            System.out.println(answer);
+            System.out.println("User: " + prompt);
+            System.out.println("Model: " + response);
         };
     }
 }

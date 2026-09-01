@@ -27,5 +27,6 @@ mvn spring-boot:run
 ## Output
 
 ```
-Spring AI is a technology that enables businesses to improve customer experience by automating and personalizing interactions through chatbots, virtual assistants, and other conversational interfaces.
+User: Reply with one short sentence about what Spring AI does.
+Model: Spring AI is a research framework that enables developers to build and deploy AI models using machine learning algorithms and models.
 ```

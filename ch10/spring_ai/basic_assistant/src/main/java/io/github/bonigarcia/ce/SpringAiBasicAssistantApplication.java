@@ -33,14 +33,15 @@ public class SpringAiBasicAssistantApplication {
     @Bean
     CommandLineRunner run(ChatModel chatModel) {
         ChatClient chatClient = ChatClient.builder(chatModel).build();
-
         return args -> {
+            String prompt = "Reply with one short sentence about what Spring AI does.";
             String response = chatClient.prompt()
-                    .user("Reply with one short sentence about what Spring AI does.")
+                    .user(prompt)
                     .call()
                     .content();
 
-            System.out.println(response);
+            System.out.println("User: " + prompt);
+            System.out.println("Model: " + response);
         };
     }
 }
