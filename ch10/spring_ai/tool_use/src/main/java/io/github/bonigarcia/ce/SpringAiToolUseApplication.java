@@ -36,18 +36,19 @@ public class SpringAiToolUseApplication {
         ChatClient chatClient = chatClientBuilder.build();
 
         return args -> {
+            String prompt = "What is 12 plus 30? Reply with just the number.";
             String response = chatClient.prompt()
                     .tools(new MathTools())
-                    .user("What is 12 plus 30? Reply with just the number.")
+                    .user(prompt)
                     .call()
                     .content();
 
-            System.out.println(response);
+            System.out.println("User: " + prompt);
+            System.out.println("Model: " + response);
         };
     }
 
     static class MathTools {
-
         @Tool(description = "Add two whole numbers and return the sum")
         int add(
                 @ToolParam(description = "first whole number") int a,

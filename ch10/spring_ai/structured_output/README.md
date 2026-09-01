@@ -27,5 +27,6 @@ mvn spring-boot:run
 ## Output
 
 ```
-ReleaseSummary[title=Release Readiness Check, priority=High, nextStep=Automated]
+User: Return a JSON object with title, priority, and nextStep for a release readiness check.
+Model: ReleaseSummary[title=Release Readiness Check, priority=medium, nextStep=review]
 ```

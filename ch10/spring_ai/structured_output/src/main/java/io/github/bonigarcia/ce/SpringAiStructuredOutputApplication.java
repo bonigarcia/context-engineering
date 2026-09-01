@@ -34,14 +34,17 @@ public class SpringAiStructuredOutputApplication {
         ChatClient chatClient = chatClientBuilder.build();
 
         return args -> {
-            ReleaseSummary summary = chatClient.prompt()
-                    .user("Return a JSON object with title, priority, and nextStep for a release readiness check.")
+            String prompt = "Return a JSON object with title, priority, and nextStep for a release readiness check.";
+            ReleaseSummary response = chatClient.prompt()
+                    .user(prompt)
                     .call()
                     .entity(ReleaseSummary.class);
 
-            System.out.println(summary);
+            System.out.println("User: " + prompt);
+            System.out.println("Model: " + response);
         };
     }
 
-    record ReleaseSummary(String title, String priority, String nextStep) {}
+    record ReleaseSummary(String title, String priority, String nextStep) {
+    }
 }
