@@ -50,6 +50,28 @@
           "pricing": "Open-source and free to use."
         },
         {
+          "name": "LangChain4j",
+          "url": "https://docs.langchain4j.dev/",
+          "description": "Idiomatic Java library for building LLM-powered applications on the JVM, with a unified API over model providers and vector stores.",
+          "features": [
+            "AI services where a Java interface declares the instructions and the output type as annotations.",
+            "Chat memory, content retrievers, tool calling, and Model Context Protocol client support.",
+            "Starters for Quarkus and Spring Boot, and plain JVM usage without a framework."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
+          "name": "Pydantic AI",
+          "url": "https://github.com/pydantic/pydantic-ai",
+          "description": "Python framework for building production-grade AI applications and agents using typed models and validation based on Pydantic.",
+          "features": [
+            "Strongly-typed interfaces for inputs and outputs using Pydantic models.",
+            "Model-agnostic architecture supporting multiple LLM providers.",
+            "Designed for building reliable and production-ready AI workflows."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
           "name": "DSPy",
           "url": "https://dspy.ai/",
           "description": "Declarative framework for building LLM applications using modular Python programs, replacing manual prompt engineering with structured pipelines.",
@@ -70,17 +92,6 @@
             "Integration with modern web frameworks such as Next.js."
           ],
           "pricing": "Open-source and free to use."
-        },
-        {
-          "name": "Pydantic AI",
-          "url": "https://github.com/pydantic/pydantic-ai",
-          "description": "Python framework for building production-grade AI applications and agents using typed models and validation based on Pydantic.",
-          "features": [
-            "Strongly-typed interfaces for inputs and outputs using Pydantic models.",
-            "Model-agnostic architecture supporting multiple LLM providers.",
-            "Designed for building reliable and production-ready AI workflows."
-          ],
-          "pricing": "Open-source and free to use."
         }
       ]
     },
@@ -97,6 +108,17 @@
             "Durable execution, streaming, checkpointing, and human-in-the-loop interruption."
           ],
           "pricing": "Open-source and free to use. Managed deployment and tracing available through LangSmith."
+        },
+        {
+          "name": "CrewAI",
+          "url": "https://www.crewai.com",
+          "description": "Framework for orchestrating collaborative, role-based AI agents working toward shared goals.",
+          "features": [
+            "Explicit roles, goals, and task delegation between agents.",
+            "Emphasis on coordination and collaboration patterns.",
+            "Designed for building agent teams with clear responsibilities."
+          ],
+          "pricing": "Open-source and free to use; paid plans for hosted and enterprise features."
         },
         {
           "name": "Agent Development Kit",
@@ -121,17 +143,6 @@
           "pricing": "Open-source and free to use."
         },
         {
-          "name": "CrewAI",
-          "url": "https://www.crewai.com",
-          "description": "Framework for orchestrating collaborative, role-based AI agents working toward shared goals.",
-          "features": [
-            "Explicit roles, goals, and task delegation between agents.",
-            "Emphasis on coordination and collaboration patterns.",
-            "Designed for building agent teams with clear responsibilities."
-          ],
-          "pricing": "Open-source and free to use; paid plans for hosted and enterprise features."
-        },
-        {
           "name": "Agno",
           "url": "https://www.agno.com/",
           "description": "Open-source framework and runtime for building and managing multi-agent AI systems with memory and tools.",
@@ -141,6 +152,17 @@
             "Includes a production runtime and control plane for managing agents."
           ],
           "pricing": "Open-source and free to use; enterprise features available via hosted offerings."
+        },
+        {
+          "name": "Embabel",
+          "url": "https://www.embabel.com/",
+          "description": "Agent framework for the JVM written in Kotlin, where the plan is computed from typed domain objects instead of being prompted.",
+          "features": [
+            "Actions declare typed inputs and outputs, and a goal-oriented planner derives the sequence of steps.",
+            "Replanning after every step, with action costs guiding which route the planner takes.",
+            "Built on Spring, so agents reuse the dependency injection, configuration, and testing of the host application."
+          ],
+          "pricing": "Open-source and free to use."
         },
         {
           "name": "Parlant",
@@ -180,17 +202,6 @@
     {
       "title": "AI application platforms",
       "items": [
-        {
-          "name": "OpenClaw",
-          "url": "https://github.com/openclaw/openclaw",
-          "description": "Open-source autonomous AI agent platform that runs locally and connects language models to external tools.",
-          "features": [
-            "Local-first execution with integrations across messaging platforms.",
-            "Autonomous task execution, including web browsing and code execution.",
-            "Extensible skills system allowing agents to acquire new capabilities."
-          ],
-          "pricing": "Open-source and free to use."
-        },
         {
           "name": "Dify",
           "url": "https://github.com/langgenius/dify",
@@ -245,6 +256,17 @@
             "Control over data flow and execution logic."
           ],
           "pricing": "Open-source and free to use for self-hosting; paid plans for managed offerings."
+        },
+        {
+          "name": "OpenClaw",
+          "url": "https://github.com/openclaw/openclaw",
+          "description": "Open-source autonomous AI agent platform that runs locally and connects language models to external tools.",
+          "features": [
+            "Local-first execution with integrations across messaging platforms.",
+            "Autonomous task execution, including web browsing and code execution.",
+            "Extensible skills system allowing agents to acquire new capabilities."
+          ],
+          "pricing": "Open-source and free to use."
         },
         {
           "name": "Temporal",
