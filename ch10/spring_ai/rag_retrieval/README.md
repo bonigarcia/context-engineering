@@ -10,6 +10,7 @@ It indexes a few short notes, retrieves the best match, and asks the chat model 
 * [Maven](https://maven.apache.org/) 3.9+
 * [Ollama](https://ollama.com/) installed locally
 * A pulled chat model such as `llama3.2:1b`
+* A pulled embedding model such as `nomic-embed-text`
 
 ## Steps for running this example in the shell
 
@@ -17,6 +18,7 @@ It indexes a few short notes, retrieves the best match, and asks the chat model 
 ```bash
 ollama serve
 ollama pull llama3.2:1b
+ollama pull nomic-embed-text
 ```
 
 2. Run the application:
