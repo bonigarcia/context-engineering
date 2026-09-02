@@ -16,7 +16,7 @@ from google.genai import types
 
 def query_model(instructions: str | None,
                 prompt: str,
-                model: str = "gemini-2.0-flash") -> str:
+                model: str = "gemini-3.5-flash-lite") -> str:
     """Send a text prompt to a Google Gemini model and return the text response."""
 
     client = genai.Client()  # GOOGLE_API_KEY should be set as an environment variable

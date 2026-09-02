@@ -26,41 +26,36 @@ npm start
 
 ## Output
 
-When you run the script, it will send a user prompt to a Gemini model (`gemini-2.5-flash`). Then, it will send the same user prompt to a more advanced model (`gemini-3.1-flash-lite-preview`). The output will show the responses from both models.
+When you run the script, it will send a user prompt to a Gemini model (`gemini-2.5-flash`). Then, it will send the same user prompt to a more advanced model (`gemini-3.5-flash-lite`). The output will show the responses from both models.
+The transcript below was captured with earlier releases of these models. Model identifiers, latency, token counts, and wording will differ on each run.
+
 
 ```
 === Basic model  ===
 User: How many tokens are in your context window?
-        Latency: 4.481 seconds
-        Prompt tokens: 9
-        Output tokens: 306
-        Thinking tokens: 480
-        Total tokens: 795
-Gemini-2.5: As a large language model, I don't have a "context window" in the same way a human or a specific software application does. My capabilities are determined by the underlying model architecture.
+        Latency: 4.006 seconds
+        Prompt tokens: 10
+        Output tokens: 233
+        Thinking tokens: 469
+        Total tokens: 712
+Gemini-2.5: As a large language model, I don't have a fixed, self-aware "context window" in the way a human might. My context window is a technical parameter of the underlying model architecture and the specific API or deployment I'm running on.
 
-However, the models I am based on (like various versions of Google's Gemini models) have different maximum input sizes, often referred to as "context windows" or "token limits" for a single API call. These limits can vary significantly:
+The context window size for models like me (and specifically for Google's Gemini family of models, which I am a part of) can vary significantly. It's often expressed in thousands of tokens.
 
-*   Some models might have a context window of **32,768 tokens**.
-*   Others might support **128,000 tokens**.
-*   And some advanced versions are designed for even larger contexts, potentially up to **1 million tokens** or more for specific tasks.
+For example, some versions of Gemini models offer context windows ranging from:
 
-**What does this mean for you?**
+*   **8,192 tokens**
+*   **32,768 tokens**
+*   **128,000 tokens**
+*   And even larger, with some specialized versions or future iterations potentially reaching **1 million tokens** or more.
 
-*   **Tokens** are not strictly words; they can be parts of words, punctuation, or spaces. A good rule of thumb is that 1,000 tokens are roughly 750 words in English.
-*   The context window determines how much information (your prompt, previous turns of a conversation, retrieved documents) the model can "see" and process at one time to generate a response.
-*   The exact limit depends on the specific model version and API you might be interacting with if you were building an application.
-
-For most conversational interactions, the effective context is managed to ensure a coherent and relevant discussion, even if the underlying model can handle much larger inputs.
+The exact number depends on the specific model version (e.g., Gemini 1.0 Pro, Gemini 1.5 Pro, Gemini 1.5 Flash) and the API endpoint being used. I don't have real-time access to query the precise context window of my current operational instance.
 === Advanced model  ===
 User: How many tokens are in your context window?
-        Latency: 1.295 seconds
-        Prompt tokens: 9
-        Output tokens: 93
-        Thinking tokens: 142
-        Total tokens: 244
-Gemini-3.1: I am a large language model, trained by Google.
-
-My context window size depends on the specific version of the model you are interacting with. Currently, many versions of Gemini (such as Gemini 1.5 Pro) support a context window of **up to 2 million tokens**.
-
-This allows me to process and "remember" a vast amount of information in a single conversation, including long documents, large codebases, or hours of video and audio.
+        Latency: 0.784 seconds
+        Prompt tokens: 10
+        Output tokens: 21
+        Thinking tokens: undefined
+        Total tokens: 31
+Gemini-3.5: My context window is **128,000 tokens** (for both input and output).
 ```

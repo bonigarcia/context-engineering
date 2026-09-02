@@ -15,7 +15,7 @@ import { performance } from 'perf_hooks';
 
 const client = new Anthropic(); //  ANTHROPIC_API_KEY should be set as an environment variable
 
-async function queryModel(userPrompt, model = "claude-3-haiku-20240307", maxTokens = 2048, temperature = 0, thinkingBudget = 0) {
+async function queryModel(userPrompt, model = "claude-haiku-4-5-20251001", maxTokens = 2048, thinkingBudget = 0) {
     const params = {
         model: model,
         max_tokens: maxTokens,
@@ -23,13 +23,13 @@ async function queryModel(userPrompt, model = "claude-3-haiku-20240307", maxToke
             { role: "user", content: userPrompt }
         ]
     };
+    // Sampling parameters such as temperature are no longer used by
+    // current Claude models, so only the thinking budget is set here
     if (thinkingBudget > 0) {
         params.thinking = {
             type: "enabled",
             budget_tokens: thinkingBudget
         };
-    } else {
-        params.temperature = temperature;
     }
 
     const start = performance.now();
@@ -57,9 +57,9 @@ const userPrompt = "How many tokens are in your context window?";
 console.log("=== Basic model  ===");
 console.log("User:", userPrompt);
 var response = await queryModel(userPrompt);
-console.log("Claude3:", response);
+console.log("Claude Haiku:", response);
 
 console.log("=== Advanced model  ===");
 console.log("User:", userPrompt);
-response = await queryModel(userPrompt, "claude-sonnet-4-20250514", 2048, 0, 1024);
-console.log("Claude4:", response);
+response = await queryModel(userPrompt, "claude-sonnet-4-6", 2048, 1024);
+console.log("Claude Sonnet:", response);

@@ -15,7 +15,7 @@ import { performance } from 'perf_hooks';
 
 const client = new Anthropic(); // ANTHROPIC_API_KEY should be set as an environment variable
 
-async function queryModel(userPrompt, model = "claude-haiku-4-5", maxTokens = 2048, temperature = 0) {
+async function queryModel(userPrompt, model = "claude-haiku-4-5", maxTokens = 2048) {
     const start = performance.now();
     let firstToken = null;
     let answer = '';
@@ -23,7 +23,6 @@ async function queryModel(userPrompt, model = "claude-haiku-4-5", maxTokens = 20
     const stream = client.messages.stream({
         model: model,
         max_tokens: maxTokens,
-        temperature: temperature,
         messages: [
             { role: "user", content: userPrompt }
         ],

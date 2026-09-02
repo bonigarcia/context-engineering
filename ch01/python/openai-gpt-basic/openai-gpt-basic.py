@@ -19,7 +19,7 @@ client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
 
 def query_model(prompt: str,
                 model: str = "gpt-4o-mini",
-                max_tokens: int = 1024,
+                max_tokens: int = 4096,
                 temperature: float = 0,
                 reasoning: str = "low") -> str:
     """Send a user prompt to an OpenAI model and return the text response."""

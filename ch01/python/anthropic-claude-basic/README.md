@@ -37,7 +37,9 @@ python anthropic-claude-basic.py
 
 ## Output
 
-When you run the script, it will send a user prompt to a Claude model (`claude-3-haiku-20240307`) using the `temperature` parameter. Then, it will send the same user prompt to a more advanced model (`claude-sonnet-4-20250514`) using reasoning. The output will show the responses from both models.
+When you run the script, it will send a user prompt to a Claude model (`claude-haiku-4-5-20251001`). Then, it will send the same user prompt to a more advanced model (`claude-sonnet-4-6`) using extended thinking. The output will show the responses from both models.
+The transcript below was captured with earlier releases of these models. Model identifiers, latency, token counts, and wording will differ on each run.
+
 
 ```
 === Basic model  ===

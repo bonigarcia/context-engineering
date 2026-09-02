@@ -4,7 +4,7 @@ This hands-on example demonstrates how to build a persistent *Base Knowledge Lay
 
 ## Corpus of Literature
 
-This example compiles structured knowledge extracted by the open-source tool Graphify(https://graphify.net/) from six papers reviewed in Chapter 12:
+This example compiles structured knowledge extracted by the open-source tool Graphify(https://graphifylabs.ai/) from six papers reviewed in Chapter 12:
 
 1. *Meta Context Engineering via Agentic Skill Evolution* (Ye et al., 2026)
 2. *Context Engineering 2.0: The Context of Context Engineering* (Hua et al., 2025)

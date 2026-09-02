@@ -37,7 +37,9 @@ python google-gemini-basic.py
 
 ## Output
 
-When you run the script, it will send a user prompt to a Gemini model (`gemini-2.5-flash`). Then, it will send the same user prompt to a more advanced model (`gemini-3.1-flash-lite-preview`). The output will show the responses from both models.
+When you run the script, it will send a user prompt to a Gemini model (`gemini-2.5-flash`). Then, it will send the same user prompt to a more advanced model (`gemini-3.5-flash-lite`). The output will show the responses from both models.
+The transcript below was captured with earlier releases of these models. Model identifiers, latency, token counts, and wording will differ on each run.
+
 
 ```
 === Basic model  ===

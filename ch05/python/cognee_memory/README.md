@@ -2,6 +2,10 @@
 
 This example demonstrates how to set up [Cognee](https://cognee.ai/) to build a persistent memory layer using a knowledge engine approach (Vector search + Knowledge Graph).
 
+## A note on the Cognee API
+
+This example uses `add()`, `cognify()`, `search()`, and the `prune` helpers, which is the API surface described in Chapter 5. Recent Cognee releases also expose a higher-level surface built around `remember()`, `recall()`, `forget()`, and `improve()`, which wraps the same ingestion and retrieval pipeline behind fewer calls. Both work with the pinned dependency. The lower-level calls are kept here because they make each stage of the memory pipeline visible, which is the point of the example.
+
 ## Requirements
 
 * [Python](https://www.python.org/) 3.10+

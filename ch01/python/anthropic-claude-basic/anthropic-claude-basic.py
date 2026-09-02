@@ -17,10 +17,9 @@ client = Anthropic()  # ANTHROPIC_API_KEY should be set as an environment variab
 
 
 def query_model(prompt: str,
-                model: str = "claude-3-haiku-20240307",
+                model: str = "claude-haiku-4-5-20251001",
                 max_tokens: int = 2048,
-                temperature: float = 0,
-                thinking_budget: int = 0, ) -> str:
+                thinking_budget: int = 0) -> str:
     """Send a user prompt to an Anthropic model and return the text response."""
     params = {
         "model": model,
@@ -29,13 +28,13 @@ def query_model(prompt: str,
             {"role": "user", "content": prompt}
         ]
     }
+    # Sampling parameters such as temperature were removed from
+    # messages.create() in version 1.0 of the Anthropic Python SDK
     if thinking_budget > 0:
         params["thinking"] = {
             "type": "enabled",
             "budget_tokens": thinking_budget
         }
-    else:
-        params["temperature"] = temperature
 
     start = time.perf_counter()
     response = client.messages.create(**params)
@@ -61,9 +60,10 @@ if __name__ == "__main__":
     print("=== Basic model ===")
     print("User:", prompt)
     response = query_model(prompt)
-    print("Claude3:", response)
+    print("Claude Haiku:", response)
 
     print("=== Advanced model ===")
     print("User:", prompt)
-    response = query_model(prompt, model="claude-sonnet-4-20250514", thinking_budget=1024)
-    print("Claude4:", response)
+    response = query_model(prompt, model="claude-sonnet-4-6",
+                           thinking_budget=1024)
+    print("Claude Sonnet:", response)

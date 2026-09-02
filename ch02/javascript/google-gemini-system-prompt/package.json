@@ -8,6 +8,6 @@
     "start": "node google-gemini-system-prompt.js"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1"
+    "@google/genai": "^2.20.0"
   }
 }

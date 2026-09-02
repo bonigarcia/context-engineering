@@ -52,7 +52,7 @@ public class GoogleGeminiSystemPrompt implements AutoCloseable {
 
     public static void main(String[] args) {
         try (GoogleGeminiSystemPrompt demo = new GoogleGeminiSystemPrompt(
-                "gemini-2.5-flash")) {
+                "gemini-3.5-flash-lite")) {
             String instructions = """
                     You are a strict grammar teacher.
                     Always respond in one sentence and correct any mistakes.

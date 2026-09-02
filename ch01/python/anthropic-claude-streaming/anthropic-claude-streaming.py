@@ -18,8 +18,7 @@ client = Anthropic()  # ANTHROPIC_API_KEY should be set as an environment variab
 
 def query_model(prompt: str,
                 model: str = "claude-haiku-4-5",
-                max_tokens: int = 2048,
-                temperature: float = 0) -> str:
+                max_tokens: int = 2048) -> str:
     """Stream the response of an Anthropic model."""
     start = time.perf_counter()
     first_token = None
@@ -28,7 +27,6 @@ def query_model(prompt: str,
     with client.messages.stream(
         model=model,
         max_tokens=max_tokens,
-        temperature=temperature,
         messages=[
             {"role": "user", "content": prompt}
         ],

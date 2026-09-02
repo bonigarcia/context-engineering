@@ -15,7 +15,7 @@ import { performance } from 'perf_hooks';
 
 const client = new OpenAI(); // OPENAI_API_KEY should be set as an environment variable
 
-async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 1024, temperature = 0, reasoning = "low") {
+async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 4096, temperature = 0, reasoning = "low") {
     const params = {
         model: model,
         input: userPrompt,
@@ -57,5 +57,5 @@ console.log("AI:", response);
 
 console.log("=== Advanced model  ===");
 console.log("User:", userPrompt);
-response = await queryModel(userPrompt, "gpt-5", 1024, 0, "medium");
+response = await queryModel(userPrompt, "gpt-5", 4096, 0, "medium");
 console.log("AI:", response);

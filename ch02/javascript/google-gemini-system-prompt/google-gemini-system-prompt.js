@@ -10,24 +10,22 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 
-async function queryModel(instructions, userPrompt, modelName = "gemini-2.0-flash") {
-    // GOOGLE_API_KEY should be set as an environment variable
-    const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-    const config = {
-        model: modelName,
-        generationConfig: {
-        }
-    };
+const ai = new GoogleGenAI({}); // GOOGLE_API_KEY should be set as an environment variable
+
+async function queryModel(instructions, userPrompt, modelName = "gemini-3.5-flash-lite") {
+    const config = {};
     if (instructions) {
         config.systemInstruction = instructions;
     }
-    const model = genAI.getGenerativeModel(config);
 
-    const result = await model.generateContent(userPrompt);
-    const response = await result.response;
-    return response.text();
+    const response = await ai.models.generateContent({
+        model: modelName,
+        contents: userPrompt,
+        config: config,
+    });
+    return response.text;
 }
 
 const instructions = "You are a strict grammar teacher. Always respond in one sentence and correct any mistakes.";

@@ -15,7 +15,7 @@ import re
 from typing import List, Dict
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import pipeline
 
 # 1. Knowledge base
 DOCUMENTS = [
@@ -97,16 +97,14 @@ def retrieve(query: str, k: int = 3) -> List[Dict]:
 
 # 4. Generation (Hugging Face)
 GENERATION_MODEL = "google/flan-t5-base"
-tokenizer = AutoTokenizer.from_pretrained(GENERATION_MODEL)
-model = AutoModelForSeq2SeqLM.from_pretrained(
-    GENERATION_MODEL,
-    device_map="auto",
+
+generator = pipeline(
+    task="text2text-generation",
+    model=GENERATION_MODEL,
 )
 
 def gen(prompt, max_new_tokens=200):
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    outputs = model.generate(**inputs, max_new_tokens=max_new_tokens)
-    return [{"generated_text": tokenizer.decode(outputs[0], skip_special_tokens=True)}]
+    return generator(prompt, max_new_tokens=max_new_tokens)
 
 SYSTEM_MSG = (
     "You are a helpful assistant. Use ONLY the context to answer the question. "

@@ -1,4 +1,4 @@
-ragas
+ragas==0.4.3
 langchain
 langchain-openai
 langchain-community
