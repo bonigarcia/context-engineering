@@ -81,15 +81,15 @@ public class SpringAiCombinedContextApplication {
             String context = docs.stream().map(Document::getText)
                     .collect(Collectors.joining("\n"));
             String answer1 = chatClient.prompt()
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, CONVERSATION_ID))
+                    .advisors(a -> a.param("chat_memory_conversation_id", CONVERSATION_ID))
                     .user("Context:\n" + context + "\n\nQuestion: " + question1).call()
                     .content();
             System.out.println("User: " + question1);
             System.out.println("Model: " + answer1);
 
-            String question2 = "What is 12 plus 30?";
+            String question2 = "What is 12 + 30?";
             String answer2 = chatClient.prompt()
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, CONVERSATION_ID))
+                    .advisors(a -> a.param("chat_memory_conversation_id", CONVERSATION_ID))
                     .tools(new ItTools())
                     .user(question2).call().content();
             System.out.println("User: " + question2);
@@ -97,7 +97,7 @@ public class SpringAiCombinedContextApplication {
 
             String question3 = "What was my first question?";
             String answer3 = chatClient.prompt()
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, CONVERSATION_ID))
+                    .advisors(a -> a.param("chat_memory_conversation_id", CONVERSATION_ID))
                     .user(question3).call().content();
             System.out.println("User: " + question3);
             System.out.println("Model: " + answer3);

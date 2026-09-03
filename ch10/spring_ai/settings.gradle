@@ -1,0 +1,9 @@
+rootProject.name = 'spring-ai'
+
+include 'basic_assistant'
+include 'chat_memory'
+include 'combined_context'
+include 'rag_retrieval'
+include 'structured_output'
+include 'system_instructions'
+include 'tool_use'

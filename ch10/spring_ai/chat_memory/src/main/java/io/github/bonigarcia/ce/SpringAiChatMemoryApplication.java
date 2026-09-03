@@ -52,14 +52,14 @@ public class SpringAiChatMemoryApplication {
         return args -> {
             String prompt1 = "My name is John Snow.";
             String response1 = chatClient.prompt()
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, CONVERSATION_ID))
+                    .advisors(a -> a.param("chat_memory_conversation_id", CONVERSATION_ID))
                     .user(prompt1).call().content();
             System.out.println("User: " + prompt1);
             System.out.println("Model: " + response1);
 
             String prompt2 = "What is my name?";
             String response2 = chatClient.prompt()
-                    .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, CONVERSATION_ID))
+                    .advisors(a -> a.param("chat_memory_conversation_id", CONVERSATION_ID))
                     .user(prompt2).call().content();
             System.out.println("User: " + prompt2);
             System.out.println("Model: " + response2);

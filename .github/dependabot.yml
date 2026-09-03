@@ -17,25 +17,20 @@ updates:
     - "/ch10/langchain4j/rag_retrieval"
     - "/ch10/langchain4j/structured_output"
     - "/ch10/langchain4j/tool_use"
-    - "/ch10/spring_ai/basic_assistant"
-    - "/ch10/spring_ai/chat_memory"
-    - "/ch10/spring_ai/combined_context"
-    - "/ch10/spring_ai/rag_retrieval"
-    - "/ch10/spring_ai/structured_output"
-    - "/ch10/spring_ai/system_instructions"
-    - "/ch10/spring_ai/tool_use"
+    - "/ch10/spring_ai"
   schedule:
     interval: daily
     time: '06:00'
-  open-pull-requests-limit: 99
+  open-pull-requests-limit: 10
 
 - package-ecosystem: gradle
   directories:
     - "/ch04/java/mcp_server"
+    - "/ch10/spring_ai"
   schedule:
     interval: daily
     time: '06:00'
-  open-pull-requests-limit: 99
+  open-pull-requests-limit: 10
 
 - package-ecosystem: npm
   directories:
@@ -64,11 +59,11 @@ updates:
   schedule:
     interval: daily
     time: '06:00'
-  open-pull-requests-limit: 99
+  open-pull-requests-limit: 10
 
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
     interval: daily
     time: '06:00'
-  open-pull-requests-limit: 99
+  open-pull-requests-limit: 10

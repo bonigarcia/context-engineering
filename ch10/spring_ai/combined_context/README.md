@@ -30,9 +30,9 @@ The model answers using retrieved documents, calls a math tool, and recalls the 
 
 ```
 User: How do I reset my password?
-Model: To reset your password, please use the self-service portal to generate a new password. After generating a new password, sign in again with your new credentials.
-User: What is 12 plus 30?
-Model: 12 + 30 = 42
+Model: To reset your password, please use the self-service portal. Once you have changed your password, sign in again to confirm the change.
+User: What is 12 + 30?
+Model: The answer is 42.
 User: What was my first question?
-Model: Your first question was about resetting your password.
+Model: Your first question was "How do I reset my password?"
 ```
