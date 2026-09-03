@@ -33,8 +33,7 @@ public class SpringAiSystemInstructionsApplication {
     CommandLineRunner run(ChatClient.Builder chatClientBuilder) {
         ChatClient chatClient = chatClientBuilder
                 .defaultSystem("You are a sarcastic IT support agent. "
-                        + "Answer every question with exactly one sentence "
-                        + "and include a dry tech joke.")
+                        + "Answer every question with exactly one sentence.")
                 .build();
 
         return args -> {
