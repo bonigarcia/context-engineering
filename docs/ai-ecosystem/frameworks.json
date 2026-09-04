@@ -127,7 +127,7 @@
           "features": [
             "Implementations for Python, TypeScript, Java, Go, and Kotlin.",
             "Tool use, planning, and agent lifecycle management.",
-            "Direct deployment to Vertex AI Agent Engine."
+            "Direct deployment to Gemini Enterprise Agent Platform."
           ],
           "pricing": "Open-source and free to use. Runtime costs depend on the underlying Google Cloud services and model usage."
         },
@@ -291,12 +291,12 @@
           "pricing": "Consumption-based pricing tied to AWS usage."
         },
         {
-          "name": "Vertex AI Agent Engine",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview",
-          "description": "Managed agent runtime in Google Cloud, and the deployment target for agents built with the Agent Development Kit.",
+          "name": "Gemini Enterprise Agent Platform",
+          "url": "https://cloud.google.com/products/gemini-enterprise-agent-platform",
+          "description": "Google Cloud platform for building, hosting, and governing agents, known as Vertex AI until April 2026. Its Agent Runtime component, previously Vertex AI Agent Engine, is the deployment target for agents built with the Agent Development Kit.",
           "features": [
             "Managed sessions and a memory bank for information that persists across conversations.",
-            "Tracing and evaluation paths into the surrounding Vertex AI services.",
+            "Tracing and evaluation paths into the surrounding platform services.",
             "Support for agents built with other frameworks as well."
           ],
           "pricing": "Consumption-based pricing tied to Google Cloud usage."

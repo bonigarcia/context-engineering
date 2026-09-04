@@ -1,11 +1,11 @@
-# Deploying an ADK agent to Vertex AI Agent Engine
+# Deploying an ADK agent to Gemini Enterprise Agent Platform
 
-This example deploys an agent built with the [Agent Development Kit](https://google.github.io/adk-docs/) to the managed runtime of [Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview), which hosts the agent together with managed sessions and memory. The agent definition stays portable, and only the deployment call is specific to the service.
+This example deploys an agent built with the [Agent Development Kit](https://google.github.io/adk-docs/) to the Agent Runtime of [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform), which hosts the agent together with managed sessions and memory. The platform was called Vertex AI until April 2026, and its Agent Runtime component was called Vertex AI Agent Engine, which is why the Python client still uses the `agent_engines` module. The agent definition stays portable, and only the deployment call is specific to the service.
 
 ## Requirements
 
 * [Python](https://www.python.org/) 3.10+
-* A Google Cloud project with the Vertex AI API enabled
+* A Google Cloud project with the Gemini Enterprise Agent Platform API (`aiplatform.googleapis.com`) enabled
 * Application Default Credentials configured (`gcloud auth application-default login`)
 * A Cloud Storage bucket used for staging
 

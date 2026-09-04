@@ -1,13 +1,13 @@
-# Development Agent with Vertex AI Agent Engine
+# Development Agent with Gemini Enterprise Agent Platform
 
-This example deploys a software development agent built with the [Agent Development Kit](https://google.github.io/adk-docs/) to the managed runtime of [Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/overview). The agent reads a feature spec, generates implementation code, and writes tests—all within a single managed session.
+This example deploys a software development agent built with the [Agent Development Kit](https://google.github.io/adk-docs/) to the Agent Runtime of [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform). The agent reads a feature spec, generates implementation code, and writes tests, all within a single managed session.
 
 The agent definition stays portable, and only the deployment call is specific to the service. The managed runtime provides session isolation and memory across turns.
 
 ## Requirements
 
 - [Python](https://www.python.org/) 3.10+
-- A Google Cloud project with the Vertex AI API enabled
+- A Google Cloud project with the Gemini Enterprise Agent Platform API (`aiplatform.googleapis.com`) enabled
 - Application Default Credentials configured (`gcloud auth application-default login`)
 - A Cloud Storage bucket used for staging
 
