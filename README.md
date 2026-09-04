@@ -115,7 +115,7 @@ This chapter covers governance, human oversight, and operational patterns for co
 This chapter covers specific AI frameworks that facilitate context engineering, including application frameworks, agent orchestration frameworks, and AI application platforms:
 
 - AI application frameworks: [LangChain](./ch10/langchain) · [LlamaIndex](./ch10/llamaindex) · [Haystack](./ch10/haystack) · [Spring AI](./ch10/spring_ai) · [LangChain4j](./ch10/langchain4j) · [Pydantic AI](./ch10/pydantic_ai) · [DSPy](./ch10/dspy) · [AI SDK](./ch10/ai_sdk)
-- Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [Agent Development Kit](./ch10/adk) · [Microsoft Agent Framework](./ch10/agent_framework) · [Semantic Kernel](./ch10/semantic_kernel) · [Agno](./ch10/agno) · [Embabel](./ch10/embabel) · [Parlant](./ch10/parlant) · [DeepAgents](./ch10/deepagents) · [Claude Agent SDK](./ch10/claude_agent_sdk)
+- Agent orchestration frameworks: [LangGraph](./ch10/langgraph) · [CrewAI](./ch10/crewai) · [Agent Development Kit](./ch10/adk) · [Microsoft Agent Framework](./ch10/agent_framework) · [Agno](./ch10/agno) · [Embabel](./ch10/embabel) · [Parlant](./ch10/parlant) · [DeepAgents](./ch10/deepagents) · [Claude Agent SDK](./ch10/claude_agent_sdk)
 - AI application platforms: [Zapier](./ch10/zapier) · [n8n](./ch10/n8n) · [OpenClaw](./ch10/openclaw) · [Temporal](./ch10/temporal) · [Amazon Bedrock AgentCore](./ch10/bedrock_agentcore) · [Gemini Enterprise Agent Platform](./ch10/gemini_agent_platform)
 
 #### Chapter 11. Context engineering for software development
