@@ -19,8 +19,13 @@
         <module>basic_assistant</module>
         <module>chat_memory</module>
         <module>combined_context</module>
+        <module>context_compression</module>
+        <module>evaluation</module>
         <module>rag_retrieval</module>
+        <module>route_to_specialist</module>
+        <module>stateful_ticket</module>
         <module>structured_output</module>
+        <module>observability</module>
         <module>system_instructions</module>
         <module>tool_use</module>
     </modules>
