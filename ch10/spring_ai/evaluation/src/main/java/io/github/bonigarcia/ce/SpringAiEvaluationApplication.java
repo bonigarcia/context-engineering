@@ -16,7 +16,14 @@
  */
 package io.github.bonigarcia.ce;
 
+import java.util.List;
+
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.evaluation.FactCheckingEvaluator;
+import org.springframework.ai.chat.evaluation.RelevancyEvaluator;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.evaluation.EvaluationRequest;
+import org.springframework.ai.evaluation.EvaluationResponse;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,40 +38,32 @@ public class SpringAiEvaluationApplication {
 
     @Bean
     CommandLineRunner run(ChatClient.Builder builder) {
-        ChatClient judge = builder
-                .defaultSystem("You are a strict evaluator. "
-                        + "Score the answer on relevance, correctness, and completeness "
-                        + "on a scale of 1-10. Provide brief notes.")
+        FactCheckingEvaluator factCheck = FactCheckingEvaluator.builder(builder)
                 .build();
+        RelevancyEvaluator relevancy = RelevancyEvaluator.builder().build();
 
         return args -> {
             String question = "How do I reset my password?";
             String context = "Password reset: use the self-service portal, then sign in again.";
             String answer = "Use the self-service portal.";
+            List<Document> docs = List.of(new Document(context));
 
-            EvalResult result = judge.prompt()
-                    .user("Question: " + question + "\nContext: " + context
-                            + "\nAnswer: " + answer
-                            + "\n\nReturn a JSON object with fields: "
-                            + "relevance (int 1-10), correctness (int 1-10), "
-                            + "completeness (int 1-10), notes (string).")
-                    .call().entity(EvalResult.class);
+            EvaluationRequest request = new EvaluationRequest(question,
+                    docs, answer);
+
+            EvaluationResponse factResult = factCheck.evaluate(request);
+            EvaluationResponse relResult = relevancy.evaluate(request);
 
             System.out.println("Question: " + question);
             System.out.println("Answer: " + answer);
             System.out.println("Context: " + context);
             System.out.println("---");
-            System.out.println("Evaluation:");
-            System.out.println("  relevance:    " + result.relevance() + "/10");
-            System.out.println("  correctness:  " + result.correctness()
-                    + "/10");
-            System.out.println("  completeness: " + result.completeness()
-                    + "/10");
-            System.out.println("  notes: " + result.notes());
+            System.out.println("FactCheck:  "
+                    + (factResult.isPass() ? "PASS" : "FAIL")
+                    + " — " + factResult.getFeedback());
+            System.out.println("Relevancy:  "
+                    + (relResult.isPass() ? "PASS" : "FAIL")
+                    + " — " + relResult.getFeedback());
         };
-    }
-
-    record EvalResult(int relevance, int correctness, int completeness,
-            String notes) {
     }
 }

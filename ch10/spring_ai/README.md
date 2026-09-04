@@ -2,20 +2,21 @@
 
 This folder contains Java examples demonstrating application development using Spring AI.
 
-This project contains twelve modules:
+This project contains 13 modules:
 
 1. `basic_assistant/`: Single prompt-response with local model.
 2. `chat_memory/`: Conversation history across turns.
 3. `combined_context/`: Instructions, tools, RAG, and memory together.
-4. `context_compression/`: Summarization-based context compression.
-5. `evaluation/`: LLM-as-judge scoring via structured output.
-6. `observability/`: Micrometer metrics and Actuator endpoints.
+4. `context_compression/`: Token-aware text splitting and compression.
+5. `evaluation/`: Fact-checking and relevancy evaluation via Spring AI's Evaluator API.
+6. `observability/`: Micrometer metrics for AI call telemetry.
 7. `rag_retrieval/`: In-memory retrieval-augmented generation.
 8. `route_to_specialist/`: Multi-agent routing via supervisor tool dispatch.
-9. `stateful_ticket/`: Session-scoped ticket state across turns.
-10. `structured_output/`: Generating and parsing response objects to Java records.
-11. `system_instructions/`: System prompt persona and constraints.
-12. `tool_use/`: Local math solver tool integration.
+9. `safe_guard/`: Content filtering governance with SafeGuardAdvisor.
+10. `stateful_ticket/`: Session-scoped ticket state across turns.
+11. `structured_output/`: Generating and parsing response objects to Java records.
+12. `system_instructions/`: System prompt persona and constraints.
+13. `tool_use/`: Local math solver tool integration.
 
 ## Requirements
 

@@ -23,6 +23,7 @@
         <module>evaluation</module>
         <module>rag_retrieval</module>
         <module>route_to_specialist</module>
+        <module>safe_guard</module>
         <module>stateful_ticket</module>
         <module>structured_output</module>
         <module>observability</module>

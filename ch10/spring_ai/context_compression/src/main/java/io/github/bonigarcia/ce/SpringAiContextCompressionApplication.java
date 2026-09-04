@@ -1,26 +1,12 @@
-/*
- * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
 package io.github.bonigarcia.ce;
 
+import java.util.List;
+
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
-import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.tokenizer.JTokkitTokenCountEstimator;
+import org.springframework.ai.tokenizer.TokenCountEstimator;
+import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,48 +15,62 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SpringAiContextCompressionApplication {
 
-    private static final String CONVERSATION_ID = "default";
-
     public static void main(String[] args) {
         SpringApplication.run(SpringAiContextCompressionApplication.class, args);
     }
 
     @Bean
-    ChatMemory chatMemory() {
-        return MessageWindowChatMemory.builder()
-                .chatMemoryRepository(new InMemoryChatMemoryRepository())
-                .maxMessages(20).build();
-    }
-
-    @Bean
-    CommandLineRunner run(ChatClient.Builder builder, ChatMemory chatMemory) {
-        ChatClient chatClient = builder
-                .defaultSystem("You are a helpful assistant. Answer concisely. "
-                        + "Before each response, compress the conversation history "
-                        + "into a short summary that preserves all key facts "
-                        + "(names, preferences, past questions). "
-                        + "Then answer the user based on that summary.")
-                .defaultAdvisors(
-                        MessageChatMemoryAdvisor.builder(chatMemory).build())
-                .build();
-
-        String[][] dialog = {
-                { "Hi, my name is Alice and I work in finance" },
-                { "I need help with the quarterly report" },
-                { "The pivot table won't refresh" },
-                { "Actually I think it's a permissions thing" },
-                { "What was my first question and what department am I in?" } };
+    CommandLineRunner run(ChatClient.Builder builder) {
+        TokenCountEstimator estimator = new JTokkitTokenCountEstimator();
+        TokenTextSplitter splitter = new TokenTextSplitter(100, 0, 5, 5000,
+                true, List.of(',', '.', '!', '?'));
 
         return args -> {
-            for (String[] turn : dialog) {
-                String answer = chatClient.prompt()
-                        .advisors(a -> a.param(
-                                "chat_memory_conversation_id", CONVERSATION_ID))
-                        .user(turn[0]).call().content();
-                System.out.println("User: " + turn[0]);
-                System.out.println("Model: " + answer);
-                System.out.println();
+            String longText = """
+                    The quarterly report shows revenue growth of 15% across
+                    all regions. The EMEA region contributed 45% of total
+                    revenue. The APAC region showed the fastest growth at
+                    22%. Operating expenses increased by 8% due to new
+                    hiring. Net profit margin improved to 18.5%.
+                    Cash flow from operations was strong at $12.4M.
+                    The board approved a $0.25 dividend increase.
+                    Capital expenditures reached $3.2M for infrastructure
+                    upgrades. Customer satisfaction scores improved to 92%.
+                    Employee headcount grew by 120 new hires in Q3.
+                    """;
+
+            Document doc = new Document(longText);
+            int tokensBefore = estimator.estimate(doc.getText());
+            List<Document> chunks = splitter.split(doc);
+            int tokensAfter = estimator.estimate(
+                    chunks.stream().map(Document::getText)
+                            .reduce("", (a, b) -> a + " " + b));
+
+            System.out.println("Original text: " + longText);
+            System.out.println("---");
+            System.out.println(
+                    "Tokens before: " + tokensBefore + ", chunks: 1");
+            System.out.println(
+                    "Tokens after:  " + tokensAfter + ", chunks: "
+                            + chunks.size());
+            System.out.println("Compression:  "
+                    + (tokensBefore - tokensAfter) + " tokens removed");
+            for (int i = 0; i < chunks.size(); i++) {
+                System.out.println("  Chunk " + (i + 1) + ": "
+                        + estimator.estimate(chunks.get(i).getText())
+                        + " tokens — " + chunks.get(i).getText());
             }
+
+            ChatClient chatClient = builder
+                    .defaultSystem(
+                            "You are a helpful assistant. Answer concisely.")
+                    .build();
+
+            String answer = chatClient.prompt()
+                    .user("Summarize this: " + chunks.get(0).getText())
+                    .call().content();
+            System.out.println("---");
+            System.out.println("Summary of first chunk: " + answer);
         };
     }
 }
