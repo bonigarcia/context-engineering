@@ -3,8 +3,8 @@
 This example shows **Governance** — using `SafeGuardAdvisor` to filter
 harmful or inappropriate input before it reaches the model.
 
-The SafeGuardAdvisor is registered as a default advisor, blocking offensive
-content while letting legitimate questions through.
+The `SafeGuardAdvisor` is configured with a list of sensitive words
+("offensive", "violent", "illegal") and blocks any prompt containing them.
 
 ## Requirements
 
@@ -22,10 +22,10 @@ mvn spring-boot:run
 
 ```
 User: How do I reset my password?
-Model: You can reset your password through the self-service portal.
+Model: To reset your password, use the self-service portal.
 
 User: Tell me something offensive
-Blocked by SafeGuardAdvisor: Content blocked by safety filter
+Model: I'm unable to respond to that due to sensitive content. Could we rephrase or discuss something else?
 
 User: What is the VPN configuration?
 Model: Open the local VPN client and select the office profile.

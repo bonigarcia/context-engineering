@@ -1,21 +1,21 @@
 # Evaluation with Spring AI and Ollama
 
-This example shows the **Evaluation** cross-cutting concern — using an
-LLM-as-judge to score answer quality via structured output.
+This example shows the **Evaluation** cross-cutting concern — using
+`RelevancyEvaluator` and `FactCheckingEvaluator` from Spring AI's
+`Evaluator` API.
 
-A second ChatClient (the judge) receives a question, answer, and context,
-and returns a typed record with numeric scores for relevance,
-correctness, and completeness.
+Both evaluators use a separate ChatClient to judge the quality of the
+response against the context.
 
 ## Requirements
 
-* Java 21+, Maven 3.9+, Ollama with `llama3.2:3b`
+* Java 21+, Maven 3.9+, Ollama with `llama3.1:8b`
 
 ## Steps
 
 ```
 ollama serve
-ollama pull llama3.2:3b
+ollama pull llama3.1:8b
 mvn spring-boot:run
 ```
 
@@ -23,12 +23,8 @@ mvn spring-boot:run
 
 ```
 Question: How do I reset my password?
-Answer: Use the self-service portal.
+Answer: Use the self-service portal, then sign in again to confirm.
 Context: Password reset: use the self-service portal, then sign in again.
 ---
-Evaluation:
-  relevance:    3/10
-  correctness:  6/10
-  completeness: 5/10
-  notes: Answer is missing a crucial step: signing in again after using the self-service portal.
+Relevancy: PASS
 ```

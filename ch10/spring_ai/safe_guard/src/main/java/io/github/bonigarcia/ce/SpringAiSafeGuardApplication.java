@@ -16,6 +16,8 @@
  */
 package io.github.bonigarcia.ce;
 
+import java.util.List;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.boot.CommandLineRunner;
@@ -34,7 +36,8 @@ public class SpringAiSafeGuardApplication {
     CommandLineRunner run(ChatClient.Builder builder) {
         ChatClient chatClient = builder
                 .defaultSystem("You are a helpful IT support assistant. Answer concisely.")
-                .defaultAdvisors(SafeGuardAdvisor.builder().build())
+                .defaultAdvisors(new SafeGuardAdvisor(
+                        List.of("offensive", "violent", "illegal")))
                 .build();
 
         return args -> {
@@ -44,13 +47,12 @@ public class SpringAiSafeGuardApplication {
                     "What is the VPN configuration?" };
 
             for (String prompt : prompts) {
+                System.out.println("User: " + prompt);
                 try {
                     String response = chatClient.prompt().user(prompt)
                             .call().content();
-                    System.out.println("User: " + prompt);
                     System.out.println("Model: " + response);
                 } catch (Exception e) {
-                    System.out.println("User: " + prompt);
                     System.out.println("Blocked by SafeGuardAdvisor: "
                             + e.getMessage());
                 }
