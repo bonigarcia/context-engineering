@@ -1,3 +1,19 @@
+/*
+ * (C) Copyright 2026 Boni Garcia (https://bonigarcia.github.io/)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
 package io.github.bonigarcia.ce;
 
 import java.util.List;
@@ -40,26 +56,20 @@ public class SpringAiContextCompressionApplication {
                     """;
 
             Document doc = new Document(longText);
-            int tokensBefore = estimator.estimate(doc.getText());
+            int totalTokens = estimator.estimate(doc.getText());
             List<Document> chunks = splitter.split(doc);
-            int tokensAfter = estimator.estimate(
-                    chunks.stream().map(Document::getText)
-                            .reduce("", (a, b) -> a + " " + b));
 
-            System.out.println("Original text: " + longText);
-            System.out.println("---");
-            System.out.println(
-                    "Tokens before: " + tokensBefore + ", chunks: 1");
-            System.out.println(
-                    "Tokens after:  " + tokensAfter + ", chunks: "
-                            + chunks.size());
-            System.out.println("Compression:  "
-                    + (tokensBefore - tokensAfter) + " tokens removed");
+            System.out.println("Original text (" + totalTokens + " tokens, "
+                    + chunks.size() + " chunks):");
+
             for (int i = 0; i < chunks.size(); i++) {
-                System.out.println("  Chunk " + (i + 1) + ": "
-                        + estimator.estimate(chunks.get(i).getText())
+                int chunkTokens = estimator
+                        .estimate(chunks.get(i).getText());
+                System.out.println("  Chunk " + (i + 1) + ": " + chunkTokens
                         + " tokens — " + chunks.get(i).getText());
             }
+            System.out.println(
+                    "  (Total: " + chunks.size() + " chunks of ≤100 tokens)");
 
             ChatClient chatClient = builder
                     .defaultSystem(
@@ -69,8 +79,7 @@ public class SpringAiContextCompressionApplication {
             String answer = chatClient.prompt()
                     .user("Summarize this: " + chunks.get(0).getText())
                     .call().content();
-            System.out.println("---");
-            System.out.println("Summary of first chunk: " + answer);
+            System.out.println("\nSummary of first chunk: " + answer);
         };
     }
 }
