@@ -25,6 +25,7 @@
         <module>route_to_specialist</module>
         <module>safe_guard</module>
         <module>stateful_ticket</module>
+        <module>streaming</module>
         <module>structured_output</module>
         <module>observability</module>
         <module>system_instructions</module>

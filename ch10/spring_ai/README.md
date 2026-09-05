@@ -14,9 +14,10 @@ This project contains 13 modules:
 8. `route_to_specialist/`: Multi-agent routing via supervisor tool dispatch.
 9. `safe_guard/`: Content filtering governance with SafeGuardAdvisor.
 10. `stateful_ticket/`: Session-scoped ticket state across turns.
-11. `structured_output/`: Generating and parsing response objects to Java records.
-12. `system_instructions/`: System prompt persona and constraints.
-13. `tool_use/`: Local math solver tool integration.
+11. `streaming/`: Token-by-token streaming response.
+12. `structured_output/`: Generating and parsing response objects to Java records.
+13. `system_instructions/`: System prompt persona and constraints.
+14. `tool_use/`: Local math solver tool integration.
 
 ## Requirements
 

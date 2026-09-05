@@ -16,6 +16,8 @@
  */
 package io.github.bonigarcia.ce;
 
+import reactor.core.Disposable;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,24 +25,31 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class SpringAiBasicAssistantApplication {
+public class SpringAiStreamingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringAiBasicAssistantApplication.class, args);
+        SpringApplication.run(SpringAiStreamingApplication.class, args);
     }
 
     @Bean
     CommandLineRunner run(ChatClient.Builder builder) {
         ChatClient chatClient = builder.build();
-        return args -> {
-            String prompt = "Reply with one short sentence about what Spring AI does.";
-            String response = chatClient.prompt()
-                    .user(prompt)
-                    .call()
-                    .content();
 
+        return args -> {
+            String prompt = "Tell me a short joke about programming.";
             System.out.println("User: " + prompt);
-            System.out.println("Model: " + response);
+            System.out.print("Model: ");
+
+            Disposable subscription = chatClient.prompt()
+                    .user(prompt)
+                    .stream()
+                    .content()
+                    .subscribe(System.out::print,
+                            error -> System.err.println("Error: " + error),
+                            () -> System.out.println());
+
+            Thread.sleep(10000);
+            subscription.dispose();
         };
     }
 }
