@@ -16,6 +16,9 @@
  */
 package io.github.bonigarcia.ce;
 
+import java.util.Scanner;
+import java.util.concurrent.CountDownLatch;
+
 import reactor.core.Disposable;
 
 import org.springframework.ai.chat.client.ChatClient;
@@ -36,20 +39,26 @@ public class SpringAiStreamingApplication {
         ChatClient chatClient = builder.build();
 
         return args -> {
-            String prompt = "Tell me a short joke about programming.";
-            System.out.println("User: " + prompt);
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter your prompt: ");
+            String prompt = scanner.nextLine();
+            scanner.close();
+
             System.out.print("Model: ");
+            CountDownLatch latch = new CountDownLatch(1);
 
             Disposable subscription = chatClient.prompt()
                     .user(prompt)
                     .stream()
                     .content()
                     .subscribe(System.out::print,
-                            error -> System.err.println("Error: " + error),
-                            () -> System.out.println());
+                            error -> {
+                                System.err.println("Error: " + error);
+                                latch.countDown();
+                            },
+                            latch::countDown);
 
-            Thread.sleep(10000);
-            subscription.dispose();
+            latch.await();
         };
     }
 }
