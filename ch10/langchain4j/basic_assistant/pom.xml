@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-        <langchain4j.version>1.19.0</langchain4j.version>
+        <langchain4j.version>1.20.0</langchain4j.version>
         <exec-maven-plugin.version>3.6.3</exec-maven-plugin.version>
         <exec.mainClass>io.github.bonigarcia.ce.BasicAssistant</exec.mainClass>
     </properties>
