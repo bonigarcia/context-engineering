@@ -824,9 +824,9 @@
   },
   {
     "Title": "Using Claude Code: The unreasonable effectiveness of HTML",
-    "Author": "Claude Blog",
+    "Author": "Thariq Shihipar",
     "Year": 2026,
-    "URL": "https://addyosmani.com/blog/orchestration-tax/",
+    "URL": "https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html",
     "Description": "AI agents communicate more effectively when they generate interactive HTML artifacts instead of plain Markdown documents.",
     "Keywords": "AI agents"
   }
