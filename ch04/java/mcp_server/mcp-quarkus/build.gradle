@@ -16,5 +16,5 @@ java {
 dependencies {
     implementation enforcedPlatform("io.quarkus.platform:quarkus-bom:3.39.3")
     implementation "io.quarkiverse.mcp:quarkus-mcp-server-stdio:2.0.0"
-    implementation "org.seleniumhq.selenium:selenium-java:4.48.0"
+    implementation "org.seleniumhq.selenium:selenium-java:4.49.0"
 }
