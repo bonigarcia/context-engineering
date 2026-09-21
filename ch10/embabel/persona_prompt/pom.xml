@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
-        <embabel-agent.version>1.5.1</embabel-agent.version>
+        <embabel-agent.version>1.5.2</embabel-agent.version>
     </properties>
 
     <dependencyManagement>
