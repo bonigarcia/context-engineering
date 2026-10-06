@@ -181,6 +181,20 @@
           "pricing": "Open-source and free to use."
         },
         {
+          "name": "TraceVerde",
+          "url": "https://github.com/Mandark-droid/genai_otel_instrument",
+          "description": "OpenTelemetry auto-instrumentation library for GenAI applications that captures traces, metrics, and costs across 26+ LLM providers and multi-agent frameworks with zero-code setup.",
+          "features": [
+            "Zero-code setup — instrument with a single import and no wrappers or decorators.",
+            "Automatic cost tracking across 1,700+ models with per-request breakdown.",
+            "GPU metrics for both NVIDIA and AMD with real-time utilization, memory, and temperature.",
+            "Multi-agent tracing with full span hierarchy for CrewAI, LangGraph, Google ADK, AutoGen, and more.",
+            "Built-in evaluation with 6 detectors for PII, toxicity, bias, hallucination, prompt injection, and restricted topics.",
+            "MCP tool instrumentation covering databases, caches, vector DBs, and queues."
+          ],
+          "pricing": "Open-source and free to use."
+        },
+        {
           "name": "LangSmith",
           "url": "https://www.langchain.com/langsmith",
           "description": "Observability and debugging platform integrated with the LangChain ecosystem.",
