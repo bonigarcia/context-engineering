@@ -8,6 +8,6 @@
     "start": "node few-shot-ticket-normalizer.js"
   },
   "dependencies": {
-    "openai": "^7.32.0"
+    "openai": "^7.34.0"
   }
 }
