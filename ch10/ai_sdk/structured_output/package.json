@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "ai": "^7.0.143",
+    "ai": "^7.0.146",
     "zod": "^4.6.7"
   }
 }
