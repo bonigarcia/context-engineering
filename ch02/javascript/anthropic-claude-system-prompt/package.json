@@ -8,6 +8,6 @@
     "start": "node anthropic-claude-system-prompt.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.135.0"
+    "@anthropic-ai/sdk": "^1.1.0"
   }
 }
