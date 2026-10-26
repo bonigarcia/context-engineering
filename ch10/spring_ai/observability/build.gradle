@@ -5,7 +5,7 @@ plugins {
 }
 java { sourceCompatibility = JavaVersion.VERSION_21; targetCompatibility = JavaVersion.VERSION_21 }
 repositories { mavenCentral(); maven { url 'https://repo.spring.io/milestone' } }
-dependencyManagement { imports { mavenBom 'org.springframework.ai:spring-ai-bom:2.0.1' } }
+dependencyManagement { imports { mavenBom 'org.springframework.ai:spring-ai-bom:2.0.2' } }
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
