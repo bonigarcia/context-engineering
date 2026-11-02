@@ -30,5 +30,5 @@ tasks.jar {
 dependencies {
     implementation platform('io.modelcontextprotocol.sdk:mcp-bom:2.1.0')
     implementation 'io.modelcontextprotocol.sdk:mcp'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.51.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.52.0'
 }
