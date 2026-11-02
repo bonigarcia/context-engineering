@@ -134,7 +134,7 @@
         {
           "name": "Microsoft Agent Framework",
           "url": "https://github.com/microsoft/agent-framework",
-          "description": "Open-source framework for building modular, agent-driven AI systems. Microsoft maintains this tool as an evolution of AutoGen.",
+          "description": "Open-source framework for building modular, agent-driven AI systems. Microsoft maintains this tool as the successor to both AutoGen and Semantic Kernel.",
           "features": [
             "Modular agent abstractions enabling reusable behaviors.",
             "Integration patterns for tools, models, and memory components.",

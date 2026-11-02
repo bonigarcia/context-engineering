@@ -13,7 +13,7 @@
             "State-of-the-art performance across a wide range of natural language tasks.",
             "Strong reasoning, coding, and creative text generation capabilities."
           ],
-          "models": "GPT-4o, the GPT-5 family up to GPT-5.6 Sol, the GPT-5-Codex variants tuned for agentic coding, and the earlier o-series reasoning models.",
+          "models": "The GPT-6 family, led by GPT-6 Astra and GPT-6.1 Sol, with GPT-6 Luna as the low-cost option, following the GPT-5 family, GPT-4o, and the earlier o-series reasoning models.",
           "license": "Proprietary, accessible via a paid API. OpenAI also publishes the open-weight gpt-oss models (120B and 20B) under Apache 2.0."
         },
         {
@@ -25,7 +25,7 @@
             "Strong performance in conversational, coding, and long-document tasks.",
             "Emphasis on constitutional AI and safety."
           ],
-          "models": "Claude 3 (Haiku, Sonnet, Opus), the Claude 4 series, and the Claude 5 generation, which includes Opus 5, Sonnet 5, and Fable 5, alongside the smaller Haiku 4.5.",
+          "models": "The Claude 5 generation, which includes Opus 5.5, Sonnet 5.5, and Haiku 5.5, alongside Fable 5.1 and Mythos 5.1, the latter available only to verified organizations. Earlier generations include Claude 3 and the Claude 4 series.",
           "license": "Proprietary, accessible via a paid API."
         },
         {
@@ -35,10 +35,10 @@
           "features": [
             "Natively multimodal capabilities, allowing for joint understanding of different data types.",
             "Advanced reasoning and coding abilities.",
-            "Substantial context windows of around 1 million input tokens in the current Pro and Flash tiers.",
+            "Substantial context windows of around 1 million tokens, shared between input and output in Gemini 4 Argon.",
             "Tiers aimed at different applications, including Pro for complex tasks, Flash and Flash-Lite for high-throughput interactions, and Nano for on-device use."
           ],
-          "models": "The Gemini 3 generation, including Gemini 3.1 Pro, Gemini 3.7 Flash, and Gemini 3.5 Flash-Lite, following the earlier 1.0, 1.5, and 2.0 generations.",
+          "models": "The Gemini 4 generation, which includes Gemini 4 Argon, a natively multimodal reasoning model, alongside Gemini 3 models such as Gemini 3.8 Flash, following the earlier 1.0, 1.5, and 2.0 generations.",
           "license": "Proprietary."
         },
         {
@@ -47,22 +47,22 @@
           "description": "LLM from xAI, with a focus on real-time information access.",
           "features": [
             "Grok-1 was released as open-source, and later generations are proprietary.",
-            "The Grok 4 line spans reasoning and agentic coding variants with context windows between 500k and 1 million tokens.",
+            "The Grok 4 line spans reasoning and agentic coding variants, and Grok 4.7 focuses on reasoning, agentic coding, and tool use with a 500k token context window.",
             "Access to proprietary models is available through paid subscriptions on the X platform and via an API."
           ],
-          "models": "Grok-1 (open-source), and the proprietary Grok-2, Grok-3, and Grok 4 generations, the latter including Grok 4 Heavy, Grok 4.1, Grok 4.3, Grok 4.5, and Grok 4.6.",
+          "models": "Grok-1 (open-source), and the proprietary Grok-2, Grok-3, and Grok 4 generations, the latter including Grok 4 Heavy, Grok 4.1, Grok 4.3, Grok 4.5, Grok 4.6, and Grok 4.7.",
           "license": "A hybrid approach where Grok-1 is under the Apache 2.0 license, and newer models are proprietary."
         },
         {
           "name": "Muse Spark",
           "url": "https://ai.meta.com/blog/introducing-muse-spark-msl/",
-          "description": "Multimodal reasoning model family from Meta Superintelligence Labs, released in April 2026 as the model behind the Meta AI assistant and as Meta's first closed frontier model.",
+          "description": "Multimodal reasoning model family from Meta Superintelligence Labs that powers the Meta AI assistant. Muse Spark, released in April 2026, was Meta's first closed frontier model.",
           "features": [
             "Multimodal reasoning with thought compression to limit the cost of intermediate reasoning tokens.",
             "Parallel agent execution for tasks that decompose into concurrent subtasks.",
-            "Marks a shift away from the open-weight Llama line for Meta's frontier releases."
+            "Muse Wonder, released in October 2026, is the most capable model in the family."
           ],
-          "models": "Muse Spark and Muse Spark 1.1.",
+          "models": "Muse Spark (up to Muse Spark 1.3) and Muse Wonder. The open-weight Muse Spark Open is listed with the open-weight models.",
           "license": "Proprietary, accessible via a paid API."
         }
       ]
@@ -85,14 +85,15 @@
         {
           "name": "Llama",
           "url": "https://ai.meta.com/llama/",
-          "description": "A family of open-weight LLMs from Meta. Llama 4 is the last generation of the line, since Meta moved its frontier work to the proprietary Muse Spark family in April 2026.",
+          "description": "A family of open-weight LLMs from Meta, currently represented by Llama 4, as Meta expands its frontier AI work through the Muse family, including the open-weight Muse Spark Open.",
           "features": [
             "Llama 4 introduces a MoE architecture and accepts text and image input across twelve languages.",
             "Very long context windows, reaching 10 million tokens in Llama 4 Scout and 1 million in Llama 4 Maverick.",
-            "A community license that allows for free use and modification up to a certain scale."
+            "A community license that allows for free use and modification up to a certain scale.",
+            "Muse Spark Open, released in October 2026, is a multimodal MoE with 816B total and 42B active parameters and a 1 million token context window."
           ],
-          "models": "Llama 3 (8B, 70B), Llama 3.1, and Llama 4 (Scout, Maverick, Behemoth).",
-          "license": "Meta Llama Community License Agreement."
+          "models": "Llama 3 (8B, 70B), Llama 3.1, and Llama 4 (Scout, Maverick), plus Muse Spark Open.",
+          "license": "Meta Llama Community License Agreement for Llama, and the Muse Model License for Muse Spark Open."
         },
         {
           "name": "DeepSeek",
@@ -103,7 +104,7 @@
             "A MoE architecture for enhanced performance.",
             "Open-weight models that can be run locally."
           ],
-          "models": "The DeepSeek-V4 series (V4-Pro, V4-Flash, and the multimodal V4-Flash-Vision) with 1 million token context windows, the earlier V3 and R1 series, and specialized models for vision (DeepSeek-VL2), coding (DeepSeek-Coder), and math (DeepSeek-Math).",
+          "models": "DeepSeek-V4.1-Flash, which supports multimodal input and a 1 million token context window and replaces V4-Flash and V4-Flash-Vision, together with V4-Pro, the earlier V3 and R1 series, and specialized models for vision (DeepSeek-VL2), coding (DeepSeek-Coder), and math (DeepSeek-Math).",
           "license": "MIT for the code and for R1 and several recent V-series releases, with the DeepSeek License applying to some earlier weights."
         },
         {
@@ -123,35 +124,35 @@
           "description": "A comprehensive family of LLMs from Alibaba Cloud.",
           "features": [
             "Many models are released under the permissive Apache 2.0 license, which makes the family a common baseline for self-hosted deployments.",
-            "The Max tier is hosted, and its weights, when published, carry bespoke revenue-share terms.",
+            "The Max tier carries bespoke revenue-share terms, including the open-weight Qwen3.8-Max release under the Qwen3.8-Max License.",
             "Broad coverage beyond text, including omni-modal, audio, image, and coding-specialized variants."
           ],
           "models": "The Qwen3 line and its successors, including the open-weight Qwen3.5, Qwen3.6, and Qwen3.8 releases and the hosted Qwen3.8-Max tier, plus specialized variants such as Qwen3-Coder and Qwen3-Embedding.",
-          "license": "A mix of Apache 2.0 for most open-weight releases and proprietary or revenue-share terms for the Max tier."
+          "license": "Various licenses: Apache 2.0 for most open-weight releases, such as Qwen3.8-27B, and custom revenue-share terms for the Max tier."
         },
         {
           "name": "Kimi",
           "url": "https://github.com/MoonshotAI/",
           "description": "Open-weight language models from Moonshot AI designed for high-end reasoning, tool use, and agentic workflows. Kimi K3 was released in July 2026 and narrowed much of the gap with proprietary frontier models.",
           "features": [
-            "MoE architecture with approximately 2.8 trillion total parameters and around 50 billion active per token, routed across 896 experts.",
+            "MoE architecture with approximately 2.8 trillion total parameters and around 104 billion active per token, routed across 896 experts with 16 active.",
             "A 1 million token context window and native vision input.",
             "Architectural work aimed at long-context efficiency, including a hybrid linear attention mechanism and MXFP4 quantization that lowers the cost of serving the weights."
           ],
           "models": "The Kimi K3 family and the earlier K2 releases, in base, instruct, and thinking variants.",
-          "license": "Modified MIT license allowing open-weight distribution under model-specific terms."
+          "license": "Kimi K3 License, a custom license with commercial thresholds. The earlier K2 releases use a modified MIT license."
         },
         {
           "name": "GLM",
           "url": "https://z.ai/",
           "description": "Open-weight model family from Zhipu AI (Z.ai) that has become one of the strongest options for self-hosted frontier-class reasoning and long-running coding agents.",
           "features": [
-            "MoE architecture at frontier scale, released under a permissive license.",
+            "MoE architecture at frontier scale.",
             "Context windows around 1 million tokens in the most recent releases.",
             "Post-training aimed at sustained agentic work, including multi-hour tool-use sessions."
           ],
-          "models": "The GLM-5 series, including GLM-5, GLM-5.1, and GLM-5.2, following the earlier GLM-4 generation.",
-          "license": "MIT."
+          "models": "The GLM-5 series, including GLM-5, GLM-5.1, GLM-5.2, GLM-5.3, and the smaller GLM-5.3-Flash, following the earlier GLM-4 generation.",
+          "license": "Various licenses: MIT for most releases, including GLM-5.3-Flash, and a custom license for GLM-5.3."
         },
         {
           "name": "MiniMax",

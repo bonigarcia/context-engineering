@@ -15,7 +15,7 @@
             "Contextual understanding and memory in conversations.",
             "Multilingual support, voice mode, and web search capabilities."
           ],
-          "models": "GPT-4o, the GPT-5 family up to GPT-5.6 Sol, the Codex models for agentic coding, and the earlier o-series reasoning models.",
+          "models": "The GPT-6 family, led by GPT-6 Astra and GPT-6.1 Sol, with GPT-6 Luna as the low-cost option, plus the Codex models for agentic coding.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -27,7 +27,7 @@
             "A very long context window for processing large amounts of information.",
             "Integration with Google applications such as Gmail, Docs, and Sheets."
           ],
-          "models": "The Gemini 3 generation, including Gemini 3.1 Pro, Gemini 3.7 Flash, and Gemini 3.5 Flash-Lite, plus Gemini Nano on supported devices.",
+          "models": "The Gemini 4 generation, including Gemini 4 Argon, alongside Gemini 3 models such as Gemini 3.8 Flash, plus Gemini Nano on supported devices.",
           "pricing": "Free plan; paid plans starting at $19.99/month; API usage-based pricing."
         },
         {
@@ -39,7 +39,7 @@
             "A large context window for processing and analyzing long documents.",
             "Vision capabilities for analyzing images, charts, and graphs."
           ],
-          "models": "Claude Opus 5, Claude Sonnet 5, Claude Fable 5, and Claude Haiku 4.5.",
+          "models": "Claude Opus 5.5, Claude Sonnet 5.5, Claude Haiku 5.5, and Claude Fable 5.1.",
           "pricing": "Free plan; paid plans starting at $20/month; API usage-based pricing."
         },
         {
@@ -51,7 +51,7 @@
             "AI-powered search and personalized recommendations.",
             "Real-time voice conversations and integration with Meta services."
           ],
-          "models": "The Muse Spark family, which replaced the earlier Llama models as the assistant's backend in 2026.",
+          "models": "The Muse family, including Muse Spark and Muse Wonder, which replaced the earlier Llama models as the assistant's backend in 2026.",
           "pricing": "Free plan; Meta AI+ subscription at $10/month; API usage-based pricing."
         },
         {
@@ -64,7 +64,7 @@
             "Provides clickable citations for verification.",
             "Focus modes to refine search results, including academic papers or news."
           ],
-          "models": "Access to advanced AI models including the GPT-5 family, Claude Opus 5 and Sonnet 5, and the proprietary Sonar models.",
+          "models": "Access to frontier models from providers such as OpenAI and Anthropic, and the proprietary Sonar models.",
           "pricing": "Free plan; paid plans starting at $20/month."
         },
         {
@@ -88,7 +88,7 @@
             "Enterprise data protection and Microsoft Graph grounding.",
             "Image generation capabilities."
           ],
-          "models": "OpenAI's advanced LLMs, currently the GPT-5 series, together with Microsoft's own in-house models.",
+          "models": "OpenAI's advanced LLMs, together with Microsoft's own in-house models.",
           "pricing": "Free version for eligible M365 users; paid plans starting at $20/month."
         }
       ]
@@ -165,7 +165,7 @@
         },
         {
           "name": "Cursor",
-          "url": "https://cursor.sh/",
+          "url": "https://cursor.com/",
           "description": "AI-native code editor with agent capabilities that can understand, modify, and navigate entire codebases.",
           "features": [
             "Deep integration with the code editor for inline edits and multi-file changes.",

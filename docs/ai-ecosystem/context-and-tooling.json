@@ -82,7 +82,7 @@
           "description": "Interactive web interface to experiment with OpenAI models and test prompts.",
           "features": [
             "Real-time prompt testing with adjustable parameters.",
-            "Supports GPT-5.5 and fine-tuned models.",
+            "Supports the GPT-6 models and fine-tuned models.",
             "Integrated API preview and token usage display."
           ],
           "pricing": "Free access with an OpenAI account; pay-as-you-go billing for API requests."
@@ -320,14 +320,14 @@
         {
           "name": "Qwen3-Embedding",
           "url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
-          "description": "Open-weight embedding family from Alibaba that currently leads the multilingual MTEB leaderboard.",
+          "description": "Open-weight, instruction-aware embedding family from Alibaba with strong multilingual retrieval quality.",
           "features": [
             "Sizes from 0.6B to 8B parameters, so quality can be traded against serving cost.",
             "Inputs of up to 32k tokens and coverage of more than 100 languages.",
             "Instruction-aware embeddings, where a task description can be prepended to steer the representation.",
             "Paired reranker models for a two-stage retrieval pipeline."
           ],
-          "lens": "Self-hostable multilingual model family for teams that want leaderboard-level quality without an API dependency.",
+          "lens": "Self-hostable multilingual model family for teams that want high retrieval quality without an API dependency.",
           "pricing": "Open-source and free to use under Apache 2.0."
         },
         {
