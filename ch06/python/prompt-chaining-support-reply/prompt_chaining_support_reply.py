@@ -21,7 +21,7 @@ from typing import Dict
 from openai import OpenAI
 
 
-DEFAULT_MODEL = os.getenv("MODEL", "gpt-4o-mini")
+DEFAULT_MODEL = os.getenv("MODEL", "gpt-6-luna")
 
 
 def analyze_inquiry(client: OpenAI, model: str, message: str) -> Dict[str, str]:
@@ -45,6 +45,7 @@ def analyze_inquiry(client: OpenAI, model: str, message: str) -> Dict[str, str]:
                 "content": f"Customer inquiry:\n{message}\n\nReturn only JSON.",
             },
         ],
+        reasoning_effort="none",  # temperature requires no reasoning
         temperature=0,
         response_format={"type": "json_object"},
     )
@@ -131,6 +132,7 @@ def draft_reply(
                 "content": context_prompt,
             },
         ],
+        reasoning_effort="none",
         temperature=0.2,
     )
     return response.choices[0].message.content or ""

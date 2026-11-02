@@ -91,7 +91,7 @@ def build_agent():
         raise RuntimeError("deepagents.create_deep_agent is unavailable; install ../requirements.txt")
 
     return create_deep_agent(
-        model="openai:gpt-5.4",
+        model="openai:gpt-6-luna",
         memory=[MEMORIES_PATH],
         backend=build_backend(),
         store=build_store(),

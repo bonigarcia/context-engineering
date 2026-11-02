@@ -18,7 +18,7 @@ from openai import OpenAI
 from prompt_engine import load_cases, load_template, render_prompt
 
 
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
 
 PROMPT_CONTEXT = {
     "role": "support triage assistant",
@@ -32,6 +32,7 @@ def classify_ticket(client: OpenAI, template: str, ticket: str) -> str:
     prompt = render_prompt(template, {**PROMPT_CONTEXT, "ticket": ticket})
     response = client.chat.completions.create(
         model=MODEL,
+        reasoning_effort="none",  # temperature requires no reasoning
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )

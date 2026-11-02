@@ -29,11 +29,11 @@ python litellm_gateway.py
 ## Output
 
 ```text
-[INFO] Primary path selected: openai/gpt-4o-mini
+[INFO] Primary path selected: openai/gpt-6-luna
 [INFO] Response: Primary provider answer.
 
 Provider List: https://docs.litellm.ai/docs/providers
 
-[INFO] Fallback path selected: anthropic/claude-3-haiku
+[INFO] Fallback path selected: anthropic/claude-haiku-4-5
 [INFO] Response: Fallback provider answer.
 ```

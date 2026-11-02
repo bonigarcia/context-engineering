@@ -5,7 +5,7 @@ import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 
 const client = new OpenAI();
-const model = process.env.MODEL || "gpt-5";
+const model = process.env.MODEL || "gpt-6-luna";
 const stateFile = path.resolve(process.env.STATE_FILE || ".workflow_state_handoff.json");
 
 function newState() {

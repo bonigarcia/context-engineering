@@ -17,7 +17,7 @@ from openai import OpenAI
 client = OpenAI()
 
 def query_model(prompt: str,
-                model: str = "gpt-4o-mini",
+                model: str = "gpt-6-luna",
                 max_output_tokens: int = 1024) -> str:
     """Send a plain text prompt to an OpenAI model using the Responses API."""
     response = client.responses.create(

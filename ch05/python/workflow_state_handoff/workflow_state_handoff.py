@@ -169,7 +169,7 @@ def apply_executor_result(state: WorkflowState, payload: Dict[str, Any]) -> None
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Shared workflow state demo")
-    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-5"), help="OpenAI model")
+    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"), help="OpenAI model")
     parser.add_argument("--state-file", default=os.getenv("STATE_FILE", ".workflow_state_handoff.json"), help="JSON file for shared state")
     args = parser.parse_args()
 

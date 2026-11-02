@@ -317,7 +317,7 @@ public class Mem0Chat {
         String baseUrl = System.getenv().getOrDefault("MEM0_BASE_URL", "http://localhost:8888");
         String apiKey = System.getenv().getOrDefault("MEM0_API_KEY", "");
         String userId = System.getenv().getOrDefault("USER_ID", "alice");
-        ChatModel model = ChatModel.GPT_5;
+        ChatModel model = ChatModel.of("gpt-6-luna");
         Mem0RestClient mem0Client = new Mem0RestClient(baseUrl, apiKey);
         new Mem0Chat(model, userId, mem0Client).run();
     }

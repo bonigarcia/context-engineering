@@ -219,6 +219,6 @@ public class SessionStateChat {
     }
 
     public static void main(String[] args) throws Exception {
-        new SessionStateChat(ChatModel.GPT_5).run();
+        new SessionStateChat(ChatModel.of("gpt-6-luna")).run();
     }
 }

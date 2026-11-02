@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 2. Run the script:
 ```bash
-python session_state_chat.py --model gpt-5
+python session_state_chat.py --model gpt-6-luna
 ```
 
 Inside the chat:

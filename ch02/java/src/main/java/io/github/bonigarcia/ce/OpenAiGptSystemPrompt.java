@@ -53,7 +53,7 @@ public class OpenAiGptSystemPrompt implements AutoCloseable {
 
     public static void main(String[] args) {
         try (OpenAiGptSystemPrompt demo = new OpenAiGptSystemPrompt(
-                ChatModel.GPT_4_1_MINI)) {
+                ChatModel.of("gpt-6-luna"))) {
             String instructions = """
                     You are a strict grammar teacher.
                     Always respond in one sentence and correct any mistakes.

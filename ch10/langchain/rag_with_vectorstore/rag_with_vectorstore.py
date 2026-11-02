@@ -72,7 +72,8 @@ if __name__ == "__main__":
     Question: {input}""")
 
     # 6. Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-6-luna", reasoning_effort="none",
+                     temperature=0)
 
     # 7. Build the generation step with LangChain Expression Language. The
     # retrieved documents are flattened into a single string before they reach

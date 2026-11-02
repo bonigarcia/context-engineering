@@ -15,7 +15,7 @@ from openai import OpenAI
 
 def query_model(instructions: str | None,
                 prompt: str,
-                model: str = "gpt-4o-mini") -> str:
+                model: str = "gpt-6-luna") -> str:
     """Send a text prompt to an OpenAI model and return the text response."""
 
     client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable

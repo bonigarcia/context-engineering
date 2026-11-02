@@ -32,7 +32,7 @@ if os.getenv("OPENAI_API_KEY") is None:
 # 1. Define dummy data and a simple RAG pipeline
 documents = SimpleDirectoryReader(input_files=["data.txt"]).load_data()
 index = VectorStoreIndex.from_documents(documents)
-query_engine = index.as_query_engine(llm=OpenAI(model="gpt-5-mini"))
+query_engine = index.as_query_engine(llm=OpenAI(model="gpt-6-luna"))
 
 # 2. Define a small, pre-defined dataset for evaluation
 # In a real scenario, you would use RagDatasetGenerator for synthetic data or a manually curated dataset.
@@ -53,7 +53,7 @@ for question in eval_questions:
     })
 
 # 3. Initialize evaluators
-llm = OpenAI(model="gpt-5-mini")
+llm = OpenAI(model="gpt-6-luna")
 embed_model = OpenAIEmbedding(model="text-embedding-ada-002")
 
 answer_relevancy_evaluator = AnswerRelevancyEvaluator(llm=llm)

@@ -15,7 +15,7 @@ import { performance } from 'perf_hooks';
 
 const client = new OpenAI(); // OPENAI_API_KEY should be set as an environment variable
 
-async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 1024, temperature = 0) {
+async function queryModel(userPrompt, model = "gpt-6-luna", maxTokens = 1024, temperature = 0) {
     const start = performance.now();
     let firstToken = null;
     let answer = '';
@@ -26,6 +26,7 @@ async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 1024, t
         model: model,
         input: userPrompt,
         max_output_tokens: maxTokens,
+        reasoning: { effort: 'none' }, // temperature requires no reasoning
         temperature: temperature,
         stream: true,
     });

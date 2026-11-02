@@ -21,6 +21,8 @@ import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.core.http.StreamResponse;
 import com.openai.helpers.ResponseAccumulator;
 import com.openai.models.ChatModel;
+import com.openai.models.Reasoning;
+import com.openai.models.ReasoningEffort;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 import com.openai.models.responses.ResponseStreamEvent;
@@ -42,7 +44,11 @@ public class OpenAiGptStreaming implements AutoCloseable {
 
     public String queryModel(String prompt) {
         ResponseCreateParams params = ResponseCreateParams.builder()
-                .model(model).input(prompt).temperature(temperature).build();
+                .model(model).input(prompt)
+                // temperature requires no reasoning
+                .reasoning(Reasoning.builder()
+                        .effort(ReasoningEffort.NONE).build())
+                .temperature(temperature).build();
 
         StringBuilder answer = new StringBuilder();
         ResponseAccumulator accumulator = ResponseAccumulator.create();
@@ -87,7 +93,7 @@ public class OpenAiGptStreaming implements AutoCloseable {
 
     public static void main(String[] args) {
         try (OpenAiGptStreaming gpt = new OpenAiGptStreaming(
-                ChatModel.GPT_4O_MINI, 0)) {
+                ChatModel.of("gpt-6-luna"), 0)) {
             String prompt = "How many tokens are in your context window?";
             System.out.println("User: " + prompt);
             System.out.print("AI: ");

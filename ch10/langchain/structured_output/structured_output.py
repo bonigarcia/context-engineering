@@ -34,7 +34,7 @@ class CityAnswer(BaseModel):
 
 if __name__ == "__main__":
     # Initialize the chat model through the provider-agnostic factory
-    model = init_chat_model("openai:gpt-5-mini", temperature=0)
+    model = init_chat_model("openai:gpt-6-luna")
 
     # Bind the schema so the model returns a validated object
     structured_model = model.with_structured_output(CityAnswer)

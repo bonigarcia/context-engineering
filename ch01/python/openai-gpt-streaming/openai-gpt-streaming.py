@@ -17,7 +17,7 @@ client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
 
 
 def query_model(prompt: str,
-                model: str = "gpt-4o-mini",
+                model: str = "gpt-6-luna",
                 max_tokens: int = 1024,
                 temperature: float = 0) -> str:
     """Stream the response of an OpenAI model."""
@@ -31,6 +31,7 @@ def query_model(prompt: str,
         model=model,
         input=prompt,
         max_output_tokens=max_tokens,
+        reasoning={"effort": "none"},  # temperature requires no reasoning
         temperature=temperature,
         stream=True,
     )

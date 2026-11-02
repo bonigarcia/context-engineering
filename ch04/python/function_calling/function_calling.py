@@ -86,7 +86,7 @@ def route_function_call(name: str, arguments: Dict[str, Any]) -> Any:
     raise ValueError(f"Unknown function requested by model: {name}")
 
 
-def query_model(prompt: str, model: str = "gpt-4o-mini") -> str:
+def query_model(prompt: str, model: str = "gpt-6-luna") -> str:
     """
     Send a user prompt with tools to an OpenAI model and return the text response.
     """

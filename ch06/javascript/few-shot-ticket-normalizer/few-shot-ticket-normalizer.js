@@ -13,7 +13,7 @@ limitations under the License.
 import OpenAI from 'openai';
 
 const client = new OpenAI();
-const DEFAULT_MODEL = process.env.MODEL || 'gpt-4o-mini';
+const DEFAULT_MODEL = process.env.MODEL || 'gpt-6-luna';
 
 function buildMessages(report) {
     return [
@@ -60,6 +60,7 @@ async function normalizeReport(model, report) {
     const response = await client.chat.completions.create({
         model,
         messages: buildMessages(report),
+        reasoning_effort: 'none', // temperature requires no reasoning
         temperature: 0,
         response_format: { type: 'json_object' },
     });

@@ -27,7 +27,7 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY not found in .env file")
 
 # Initialize the chat model used by the drafting node
-model = init_chat_model("openai:gpt-5-mini", temperature=0)
+model = init_chat_model("openai:gpt-6-luna")
 
 
 class GraphState(TypedDict):

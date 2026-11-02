@@ -113,7 +113,7 @@ new state instead of assuming older context is still correct.
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Structured session state demo")
-    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-5"), help="OpenAI model")
+    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"), help="OpenAI model")
     args = parser.parse_args()
 
     if not os.getenv("OPENAI_API_KEY"):

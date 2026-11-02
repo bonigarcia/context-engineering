@@ -32,7 +32,7 @@ Optional `.env` file:
 
 ```bash
 OPENAI_API_KEY=your_key_here
-MODEL=gpt-5
+MODEL=gpt-6-luna
 MAX_TURNS=8
 REFRESH_EVERY=4
 SESSION_ID=support_demo

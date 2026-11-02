@@ -38,7 +38,7 @@ python evaluate_prompt.py
 When the prompt behaves as expected, the script prints one line per case and exits with status code `0`.
 
 ```text
-[INFO] Evaluating prompt template with gpt-4o-mini...
+[INFO] Evaluating prompt template with gpt-6-luna...
 [PASS] checkout outage: expected=urgent, actual=urgent
 [PASS] password reset: expected=normal, actual=normal
 [PASS] double charge: expected=urgent, actual=urgent

@@ -184,7 +184,7 @@ class SummarizingSession(SessionABC):
 
         summarizer = Agent(
             name="Summarizer",
-            model=os.getenv("SUMMARY_MODEL", os.getenv("MODEL", "gpt-5")),
+            model=os.getenv("SUMMARY_MODEL", os.getenv("MODEL", "gpt-6-luna")),
             instructions="You produce accurate, compact summaries.",
         )
         result = await Runner.run(summarizer, prompt)
@@ -295,7 +295,7 @@ def main() -> int:
     parser.add_argument("--strategy", choices=["trim", "summarize"], default="trim")
     parser.add_argument("--max-turns", type=int, default=int(os.getenv("MAX_TURNS", "8")))
     parser.add_argument("--refresh-every", type=int, default=int(os.getenv("REFRESH_EVERY", "4")))
-    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-5"))
+    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"))
     parser.add_argument("--session-id", default=os.getenv("SESSION_ID", "support_demo"))
     args = parser.parse_args()
 

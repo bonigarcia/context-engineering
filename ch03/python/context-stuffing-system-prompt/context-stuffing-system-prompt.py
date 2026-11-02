@@ -18,7 +18,7 @@ client = OpenAI()
 
 def query_model(system_message: str,
                 user_message: str,
-                model: str = "gpt-4o-mini",
+                model: str = "gpt-6-luna",
                 max_tokens: int = 1024) -> str:
     """Send a system + user message pair to a model."""
     response = client.chat.completions.create(

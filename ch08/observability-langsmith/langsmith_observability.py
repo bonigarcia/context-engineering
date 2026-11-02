@@ -47,7 +47,8 @@ def main():
     if not os.getenv("LANGCHAIN_API_KEY"):
         raise RuntimeError("LANGCHAIN_API_KEY is not set (env var or .env).")
 
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0, api_key=api_key)
+    llm = ChatOpenAI(model="gpt-6-luna", reasoning_effort="none", temperature=0,
+                     api_key=api_key)
     prompt = ChatPromptTemplate.from_messages(
         [
             (

@@ -27,7 +27,7 @@ def build_db(root: Path) -> JsonDb:
 def build_agent(root: Path) -> Agent:
     return Agent(
         name="Session Memory",
-        model=OpenAIResponses(id="gpt-5-mini"),
+        model=OpenAIResponses(id="gpt-6-luna"),
         db=build_db(root),
         session_id="chapter-session-memory",
         read_chat_history=True,

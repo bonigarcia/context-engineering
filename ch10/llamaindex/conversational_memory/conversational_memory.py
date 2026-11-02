@@ -36,7 +36,7 @@ documents = [Document(text=d) for d in documents]
 index = VectorStoreIndex.from_documents(documents)
 
 # Initialize the LLM
-llm = OpenAI(model="gpt-3.5-turbo", temperature=0.0)
+llm = OpenAI(model="gpt-6-luna", reasoning_effort="none", temperature=0.0)
 
 # Create a chat engine with memory
 chat_engine = index.as_chat_engine(

@@ -16,7 +16,7 @@ from agent_framework.openai import OpenAIChatClient
 
 async def main():
     # Create client
-    client = OpenAIChatClient(model="gpt-5-mini")
+    client = OpenAIChatClient(model="gpt-6-luna")
 
     # Agent creation with factory method
     agent = client.as_agent(

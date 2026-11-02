@@ -45,7 +45,7 @@ index = VectorStoreIndex.from_documents(documents)
 
 # 3. Initialize an OpenAIAgent with a context_retriever and the custom tool
 # The context_retriever helps the agent to retrieve relevant information before acting
-llm = OpenAI(model="gpt-4")
+llm = OpenAI(model="gpt-6-luna")
 
 agent = OpenAIAgent.from_tools(
     tools=[weather_tool],

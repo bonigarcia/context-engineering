@@ -43,6 +43,7 @@ public class PromptChainingSupportReply {
     public JsonNode analyzeInquiry(String message) throws IOException, InterruptedException {
         ObjectNode body = MAPPER.createObjectNode();
         body.put("model", model);
+        body.put("reasoning_effort", "none"); // temperature requires no reasoning
         body.put("temperature", 0);
         body.set("response_format", MAPPER.createObjectNode().put("type", "json_object"));
 
@@ -115,6 +116,7 @@ public class PromptChainingSupportReply {
 
         ObjectNode body = MAPPER.createObjectNode();
         body.put("model", model);
+        body.put("reasoning_effort", "none");
         body.put("temperature", 0.2);
 
         ArrayNode messages = MAPPER.createArrayNode();
@@ -161,7 +163,7 @@ public class PromptChainingSupportReply {
                 """.strip();
 
         PromptChainingSupportReply example = new PromptChainingSupportReply(
-                System.getenv().getOrDefault("MODEL", "gpt-4o-mini"));
+                System.getenv().getOrDefault("MODEL", "gpt-6-luna"));
         JsonNode analysis = example.analyzeInquiry(message);
         JsonNode policy = example.resolvePolicy(analysis);
         String reply = example.draftReply(message, analysis, policy);

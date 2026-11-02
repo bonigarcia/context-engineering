@@ -29,45 +29,45 @@ Promptfoo prints a comparison matrix for both prompt variants and shows the mode
 
 ```
 Running 4 test cases (up to 4 at a time)...
+Evaluating [████████████████████████████████████████] 100% | 4/4 | openai:chat:gpt-6-luna "You are a " ticket=I was charged twice for order pol
 
-┌────────────────────────────────────┬────────────────────────────────────┬────────────────────────────────────┬────────────────────────────────────┐
-│ policy                             │ ticket                             │ [openai:chat:gpt-4o-mini]          │ [openai:chat:gpt-4o-mini]          │
-│                                    │                                    │ support-reply-baseline.txt: You    │ support-reply-guardrailed.txt: You │
-│                                    │                                    │ are a support assistant.           │ are a support assistant.           │
-│                                    │                                    │ Use only the policy to answer the  │ Use only the policy to answer the  │
-│                                    │                                    │ ticket.                            │ ticket.                            │
-│                                    │                                    │ If the policy is insufficient, say │ Do not promise refunds or account  │
-│                                    │                                    │ that a human review is needed.     │ changes unless the policy          │
-│                                    │                                    │ Ticket:                            │ explicitly allows it.              │
-│                                    │                                    │ {{ticket}}                         │ Ticket:                            │
-│                                    │                                    │ Policy:                            │ {{ticket}}                         │
-│                                    │                                    │ {{policy}}                         │ Policy:                            │
-│                                    │                                    │ Write a concis...                  │ {{polic...                         │
-├────────────────────────────────────┼────────────────────────────────────┼────────────────────────────────────┼────────────────────────────────────┤
-│ Duplicate charges must be          │ I was charged twice for order      │ [FAIL] Thank you for reaching out. │ [PASS] Thank you for reaching out. │
-│ acknowledged, escalated to         │                                    │ Your duplicate charge will be      │ I will escalate your concern       │
-│ billing, and verified before a     │                                    │ escalated to billing for           │ regarding the duplicate charges to │
-│ refund is promised.                │                                    │ verification, and a human review   │ our billing team for verification. │
-│                                    │                                    │ will be conducted to address your  │                                    │
-│                                    │                                    │ concern.                           │                                    │
-├────────────────────────────────────┼────────────────────────────────────┼────────────────────────────────────┼────────────────────────────────────┤
-│ Ask the user to request a fresh    │ My password reset link expired     │ [PASS] Please request a fresh      │ [PASS] Please request a fresh      │
-│ reset link and avoid claiming the  │ before I could use it.             │ password reset link, as expired    │ password reset link to proceed     │
-│ account was restored.              │                                    │ links cannot be reused. If you     │ with resetting your password.      │
-│                                    │                                    │ need further assistance, a human   │                                    │
-│                                    │                                    │ review may be necessary.           │                                    │
-└────────────────────────────────────┴────────────────────────────────────┴────────────────────────────────────┴────────────────────────────────────┘
-✓ Eval complete
+┌─────────────────────────────────────────────────┬─────────────────────────────────────────────────┬─────────────────────────────────────────────────┬─────────────────────────────────────────────────┐
+│ ticket                                          │ policy                                          │ [openai:chat:gpt-6-luna]                        │ [openai:chat:gpt-6-luna]                        │
+│                                                 │                                                 │ support-reply-baseline.txt: You are a support   │ support-reply-guardrailed.txt: You are a        │
+│                                                 │                                                 │ assistant.                                      │ support assistant.                              │
+│                                                 │                                                 │ Use only the policy to answer the ticket.       │ Use only the policy to answer the ticket.       │
+│                                                 │                                                 │ If the policy is insufficient, say that a human │ Do not promise refunds or account changes       │
+│                                                 │                                                 │ review is needed.                               │ unless the policy explicitly allows it.         │
+│                                                 │                                                 │ Ticket:                                         │ Ticket:                                         │
+│                                                 │                                                 │ {{ticket}}                                      │ {{ticket}}                                      │
+│                                                 │                                                 │ Policy:                                         │ Policy:                                         │
+│                                                 │                                                 │ {{policy}}                                      │ {{policy...                                     │
+│                                                 │                                                 │ Write a concise...                              │                                                 │
+├─────────────────────────────────────────────────┼─────────────────────────────────────────────────┼─────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│ I was charged twice for order                   │ Duplicate charges must be acknowledged,         │ [PASS] I’m sorry you were charged twice. I’ll   │ [PASS] I’m sorry you were charged twice. I’ll   │
+│                                                 │ escalated to billing, and verified before a     │ escalate this to billing to verify the charges; │ escalate this to our billing team to verify the │
+│                                                 │ refund is promised.                             │ we can’t promise a refund until they’ve         │ duplicate charge; we can discuss next steps     │
+│                                                 │                                                 │ reviewed it.                                    │ once it’s confirmed.                            │
+├─────────────────────────────────────────────────┼─────────────────────────────────────────────────┼─────────────────────────────────────────────────┼─────────────────────────────────────────────────┤
+│ My password reset link expired before I could   │ Ask the user to request a fresh reset link and  │ [PASS] Please request a fresh password reset    │ [PASS] Please request a fresh password reset    │
+│ use it.                                         │ avoid claiming the account was restored.        │ link and use it before it expires. I can’t      │ link and use it before it expires. I can’t      │
+│                                                 │                                                 │ confirm that your account has been restored.    │ confirm that your account has been restored.    │
+└─────────────────────────────────────────────────┴─────────────────────────────────────────────────┴─────────────────────────────────────────────────┴─────────────────────────────────────────────────┘
+✓ Eval complete (ID: eval-NZm-2026-11-02T09:34:43)
 
-Total Tokens: 1,433
-  Eval: 402 (308 prompt, 94 completion)
-  Grading: 1,031 (886 prompt, 145 completion)
+» View results: promptfoo view
+» Share with your team: https://promptfoo.app
+» Feedback: https://promptfoo.dev/feedback
+
+Total Tokens: 1,494
+  Provider: 429 (304 prompt, 125 completion)
+  Grading: 1,065 (901 prompt, 164 completion)
 
 Results:
-  ✓ 3 passed (75.00%)
-  ✗ 1 failed (25.00%)
+  ✓ 4 passed (100%)
+  0 failed (0%)
   0 errors (0%)
-Duration: 3s (concurrency: 4)
+Duration: 5s (concurrency: 4)
 ```
 
 ![Promptfoo UI](/docs/img/promptfoo-ui.png)

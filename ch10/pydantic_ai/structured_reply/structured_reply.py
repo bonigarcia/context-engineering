@@ -16,7 +16,7 @@ class ReplySummary(BaseModel):
 
 
 reply_agent = Agent(
-    "openai:gpt-5-mini",
+    "openai-chat:gpt-6-luna",
     output_type=ReplySummary,
     instructions="Return a concise, structured summary.",
 )

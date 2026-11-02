@@ -8,7 +8,7 @@ from pydantic_ai.models.function import AgentInfo, FunctionModel
 
 
 step_agent = Agent(
-    "openai:gpt-5-mini",
+    "openai-chat:gpt-6-luna",
     instructions="Answer in three short steps and keep the response concise.",
 )
 

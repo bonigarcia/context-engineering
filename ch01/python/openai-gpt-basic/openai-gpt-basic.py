@@ -11,26 +11,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 from openai import OpenAI
-import re
 import time
 
 client = OpenAI()  # OPENAI_API_KEY should be set as an environment variable
 
 
 def query_model(prompt: str,
-                model: str = "gpt-4o-mini",
+                model: str = "gpt-6-luna",
                 max_tokens: int = 4096,
                 temperature: float = 0,
-                reasoning: str = "low") -> str:
+                reasoning: str = "none") -> str:
     """Send a user prompt to an OpenAI model and return the text response."""
     params = {
         "model": model,
         "input": prompt,
         "max_output_tokens": max_tokens,
+        "reasoning": {"effort": reasoning},
     }
-    if is_gpt5_or_above(model):
-        params["reasoning"] = {"effort": reasoning}
-    else:
+    # Sampling controls such as temperature are accepted only without reasoning
+    if reasoning == "none":
         params["temperature"] = temperature
 
     start = time.perf_counter()
@@ -49,19 +48,15 @@ def query_model(prompt: str,
     return response.output_text
 
 
-def is_gpt5_or_above(model: str) -> bool:
-    return re.match(r"gpt-[5-9].*", model, re.IGNORECASE) is not None
-
-
 if __name__ == "__main__":
     prompt = "How many tokens are in your context window?"
 
-    print("=== Basic model ===")
+    print("=== Without reasoning ===")
     print("User:", prompt)
     response = query_model(prompt)
     print("AI:", response)
 
-    print("=== Advanced model ===")
+    print("=== With reasoning ===")
     print("User:", prompt)
-    response = query_model(prompt, model="gpt-5", reasoning="medium")
+    response = query_model(prompt, reasoning="medium")
     print("AI:", response)

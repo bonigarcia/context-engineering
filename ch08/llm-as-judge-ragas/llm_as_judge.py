@@ -78,7 +78,8 @@ def main():
     retriever = vectorstore.as_retriever()
 
     # LLM used for generating answers
-    llm = ChatOpenAI(model="gpt-4o", temperature=0, api_key=api_key)
+    llm = ChatOpenAI(model="gpt-6-luna", reasoning_effort="none", temperature=0,
+                     api_key=api_key)
 
     template = """Answer the question based only on the following context:
 {context}

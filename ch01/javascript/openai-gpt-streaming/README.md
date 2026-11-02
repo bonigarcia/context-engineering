@@ -26,4 +26,4 @@ npm start
 
 ## Output
 
-When you run the script, it sends a user prompt to a GPT model (`gpt-4o-mini`) and prints the answer as it is generated. Once the stream ends, it prints the model identifier, the time to first token, the total latency, and the token counts. Under streaming, the OpenAI Responses API delivers token usage on the final `response.completed` event, so the counts are only available once the stream ends.
+When you run the script, it sends a user prompt to a GPT model (`gpt-6-luna`) and prints the answer as it is generated. Once the stream ends, it prints the model identifier, the time to first token, the total latency, and the token counts. Under streaming, the OpenAI Responses API delivers token usage on the final `response.completed` event, so the counts are only available once the stream ends.

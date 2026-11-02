@@ -17,7 +17,7 @@ import dspy
 
 # 1. Setup
 # Make sure you have set the OPENAI_API_KEY environment variable
-lm = dspy.LM("openai/gpt-4o-mini")
+lm = dspy.LM("openai/gpt-6-luna")
 dspy.configure(lm=lm)
 
 

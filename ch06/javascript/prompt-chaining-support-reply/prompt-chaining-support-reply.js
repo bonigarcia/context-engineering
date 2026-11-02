@@ -13,7 +13,7 @@ limitations under the License.
 import OpenAI from 'openai';
 
 const client = new OpenAI();
-const DEFAULT_MODEL = process.env.MODEL || 'gpt-4o-mini';
+const DEFAULT_MODEL = process.env.MODEL || 'gpt-6-luna';
 
 async function analyzeInquiry(model, message) {
     const response = await client.chat.completions.create({
@@ -28,6 +28,7 @@ async function analyzeInquiry(model, message) {
                 content: `Customer inquiry:\n${message}\n\nReturn only JSON.`,
             },
         ],
+        reasoning_effort: 'none', // temperature requires no reasoning
         temperature: 0,
         response_format: { type: 'json_object' },
     });
@@ -90,6 +91,7 @@ Draft a professional, empathetic 3 to 4 sentence customer reply adhering to the 
                 content: contextPrompt,
             },
         ],
+        reasoning_effort: 'none',
         temperature: 0.2,
     });
 

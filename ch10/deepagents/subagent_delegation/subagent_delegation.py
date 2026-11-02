@@ -43,7 +43,7 @@ def build_agent():
     ]
 
     return create_deep_agent(
-        model="openai:gpt-5.4",
+        model="openai:gpt-6-luna",
         tools=[],
         subagents=subagents,
         system_prompt=(

@@ -20,7 +20,7 @@ from typing import Dict, List
 
 from openai import OpenAI
 
-DEFAULT_MODEL = os.getenv("MODEL", "gpt-4o-mini")
+DEFAULT_MODEL = os.getenv("MODEL", "gpt-6-luna")
 
 
 def build_messages(report: str) -> List[Dict[str, str]]:
@@ -85,6 +85,7 @@ def normalize_report(client: OpenAI, model: str, report: str) -> Dict[str, str]:
     response = client.chat.completions.create(
         model=model,
         messages=build_messages(report),
+        reasoning_effort="none",  # temperature requires no reasoning
         temperature=0,
         response_format={"type": "json_object"},
     )

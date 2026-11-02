@@ -55,7 +55,7 @@ custom_query_prompt = PromptTemplate(
 )
 
 # Configure the LLM
-llm = OpenAI(model="gpt-3.5-turbo", temperature=0.0)
+llm = OpenAI(model="gpt-6-luna", reasoning_effort="none", temperature=0.0)
 
 # Create a query engine with custom prompts
 query_engine = index.as_query_engine(

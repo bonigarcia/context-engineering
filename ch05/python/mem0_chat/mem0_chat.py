@@ -122,7 +122,7 @@ Behavior guidelines:
 # -----------------------------
 
 class GPT5:
-    def __init__(self, model: str = "gpt-5"):
+    def __init__(self, model: str = "gpt-6-luna"):
         self.client = OpenAI()
         self.model = model
 
@@ -158,7 +158,7 @@ def main() -> int:
 
     parser = argparse.ArgumentParser(description="GPT-5 + Mem0 + Qdrant memory-backed chat (CLI)")
     parser.add_argument("--user", default=os.getenv("USER_ID", "alice"), help="User ID for memory scoping")
-    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-5"), help="OpenAI model (default: gpt-5)")
+    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"), help="OpenAI model (default: gpt-6-luna)")
     parser.add_argument("--top-k", type=int, default=int(os.getenv("TOP_K", "6")), help="Memories to retrieve per turn")
     parser.add_argument("--window", type=int, default=int(os.getenv("WINDOW_TURNS", "8")),
                         help="In-session turns to keep (short-term context)")

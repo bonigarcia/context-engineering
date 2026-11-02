@@ -119,7 +119,8 @@ class MultiAgentRouter:
 
 if __name__ == "__main__":
     # Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-6-luna", reasoning_effort="none",
+                     temperature=0)
 
     # Create and run the multi-agent router
     router_workflow = MultiAgentRouter(llm)

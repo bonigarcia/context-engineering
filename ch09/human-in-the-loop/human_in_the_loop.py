@@ -51,7 +51,7 @@ def main():
         # Get AI's continuation
         print("\n... The AI is thinking ...\n")
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-6-luna",
             messages=messages
         )
         ai_paragraph = response.choices[0].message.content

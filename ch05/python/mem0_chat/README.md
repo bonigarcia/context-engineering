@@ -54,7 +54,7 @@ Create a `.env` file (optional):
 
 ```bash
 OPENAI_API_KEY=your_key_here
-MODEL=gpt-5
+MODEL=gpt-6-luna
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
 MEM0_COLLECTION=mem0_demo

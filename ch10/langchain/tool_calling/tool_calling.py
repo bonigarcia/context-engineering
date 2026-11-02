@@ -37,7 +37,8 @@ def lookup_policy(topic: str) -> str:
 
 if __name__ == "__main__":
     # Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-6-luna", reasoning_effort="none",
+                     temperature=0)
     llm_with_tools = llm.bind_tools([lookup_policy])
 
     # Define a chat prompt template with a system message and user input

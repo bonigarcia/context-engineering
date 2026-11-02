@@ -246,6 +246,7 @@ class LLM:
         resp = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "system", "content": system}] + messages,
+            reasoning_effort="none",  # temperature requires no reasoning
             temperature=temperature,
         )
         return resp.choices[0].message.content or ""
@@ -274,6 +275,7 @@ class LLM:
         resp = self.client.chat.completions.create(
             model=self.model,
             messages=[{"role": "system", "content": extraction_prompt}] + messages,
+            reasoning_effort="none",
             temperature=0.0,
             response_format={"type": "json_object"},
         )
@@ -364,7 +366,7 @@ def is_command(text: str) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Memory Coach (hands-on memory management demo)")
-    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-4.1-mini"), help="Chat model name")
+    parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"), help="Chat model name")
     parser.add_argument("--data-dir", default=os.getenv("DATA_DIR", ".memory_coach"), help="Directory for memory data")
     parser.add_argument("--max-turns", type=int, default=10, help="Short-term sliding window turns")
     parser.add_argument("--summarize-every", type=int, default=6, help="Summarize after this many turns")

@@ -27,7 +27,8 @@ if not api_key:
 
 if __name__ == "__main__":
     # Initialize the LLM
-    llm = ChatOpenAI(api_key=api_key, model="gpt-5-mini", temperature=0)
+    llm = ChatOpenAI(api_key=api_key, model="gpt-6-luna", reasoning_effort="none",
+                     temperature=0)
 
     # Define a chat prompt template with a system message and user input
     prompt = ChatPromptTemplate.from_messages([

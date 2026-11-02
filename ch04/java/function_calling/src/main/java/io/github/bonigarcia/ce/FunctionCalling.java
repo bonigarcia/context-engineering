@@ -77,7 +77,7 @@ public final class FunctionCalling {
                 .build()));
 
         ResponseCreateParams.Builder createParamsBuilder = ResponseCreateParams.builder()
-                .model(ChatModel.GPT_4O_MINI)
+                .model(ChatModel.of("gpt-6-luna"))
                 .maxOutputTokens(2048)
                 .addTool(GetWeather.class)
                 .input(ResponseCreateParams.Input.ofResponse(inputs));

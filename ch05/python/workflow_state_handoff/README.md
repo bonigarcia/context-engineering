@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 2. Run the script
 ```bash
-python workflow_state_handoff.py --model gpt-5
+python workflow_state_handoff.py --model gpt-6-luna
 ```
 
 By default, the shared state is stored in `.workflow_state_handoff.json`.

@@ -12,7 +12,7 @@ limitations under the License.
 */
 import OpenAI from 'openai';
 
-async function queryModel(instructions, userPrompt, model = "gpt-4o-mini") {
+async function queryModel(instructions, userPrompt, model = "gpt-6-luna") {
     // OPENAI_API_KEY should be set as an environment variable
     const client = new OpenAI();
 

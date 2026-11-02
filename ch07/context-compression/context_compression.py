@@ -125,7 +125,8 @@ def main():
     )
 
     llm = ChatOpenAI(
-        model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+        model=os.getenv("OPENAI_MODEL", "gpt-6-luna"),
+        reasoning_effort="none",  # temperature requires no reasoning
         temperature=0,
         api_key=api_key,
     )

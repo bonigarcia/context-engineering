@@ -26,26 +26,26 @@ npm start
 
 ## Output
 
-When you run the script, it will send a user prompt to a GPT model (`gpt-4o-mini`) using the `temperature` parameter. Then, it will send the same user prompt to a more advanced model (`gpt-5`) using reasoning. The output will show the responses from both models.
+When you run the script, it will send a user prompt to a GPT model (`gpt-6-luna`) with reasoning disabled, using the `temperature` parameter. Then, it will send the same user prompt to the same model with medium reasoning effort. The output will show both responses.
 
 ```
-=== Basic model  ===
+=== Without reasoning ===
 User: How many tokens are in your context window?
-        Model: gpt-4o-mini-2024-07-18
-        Latency: 1.695 seconds
+        Model: gpt-6-luna
+        Latency: 5.145 seconds
         Input tokens: 15
-        Output tokens: 39
+        Output tokens: 19
         Reasoning tokens: 0
-        Total tokens: 54
-AI: My context window can handle up to 8,192 tokens. This includes both the input and the output tokens. If you have any specific questions or need assistance, feel free to ask!
+        Total tokens: 34
+AI: I don’t have access to the exact context-window limit for this conversation.
 
-=== Advanced model  ===
+=== With reasoning ===
 User: How many tokens are in your context window?
-        Model: gpt-5-2025-08-07
-        Latency: 17.243 seconds
-        Input tokens: 14
-        Output tokens: 750
-        Reasoning tokens: 640
-        Total tokens: 764
-AI: It depends on the model. Most current ChatGPT models available here use a 128,000‑token context window (shared across your input and my output). If you tell me the specific model you’re using, I can confirm the exact limit.
+        Model: gpt-6-luna
+        Latency: 6.083 seconds
+        Input tokens: 15
+        Output tokens: 250
+        Reasoning tokens: 210
+        Total tokens: 265
+AI: I can’t see the exact limit configured for this chat. Some versions support up to 128,000 tokens, but the actual limit can vary by model and setup.
 ```

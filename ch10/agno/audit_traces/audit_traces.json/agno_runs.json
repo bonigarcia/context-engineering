@@ -1,0 +1,177 @@
+[
+  {
+    "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+    "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+    "run_type": "agent",
+    "agent_id": "audit-traces",
+    "team_id": null,
+    "workflow_id": null,
+    "user_id": null,
+    "parent_run_id": null,
+    "status": "COMPLETED",
+    "run_index": 0,
+    "run_data": {
+      "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+      "agent_id": "audit-traces",
+      "agent_name": "Audit Traces",
+      "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+      "content": "## Context used\n\n- **Your request:** \u201cSummarize the context used for this run.\u201d\n- **Run instructions:** Keep the run small, explain what context was used, and make the input, tool usage, and response auditable.\n- **Response format:** Use Markdown.\n\n**Tool usage:** None. No external sources or additional conversation context were used.",
+      "content_type": "str",
+      "model_provider_data": {
+        "response_id": "resp_0ba57513dec03a47006ae85cd72a5487d2a4a4ad1f7693406c"
+      },
+      "model": "gpt-6-luna",
+      "model_provider": "OpenAI",
+      "session_state": {},
+      "created_at": 1793613013,
+      "status": "COMPLETED",
+      "metrics": {
+        "input_tokens": 65,
+        "output_tokens": 180,
+        "total_tokens": 245,
+        "reasoning_tokens": 101,
+        "time_to_first_token": 2.284038400001009,
+        "duration": 4.817774799999825,
+        "details": {
+          "model": [
+            {
+              "input_tokens": 65,
+              "output_tokens": 180,
+              "total_tokens": 245,
+              "reasoning_tokens": 101,
+              "id": "gpt-6-luna",
+              "provider": "OpenAI Responses"
+            }
+          ]
+        }
+      },
+      "events": [
+        {
+          "created_at": 1793613013,
+          "event": "RunStarted",
+          "agent_id": "audit-traces",
+          "agent_name": "Audit Traces",
+          "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+          "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+          "nested_depth": 0,
+          "model": "gpt-6-luna",
+          "model_provider": "OpenAI"
+        },
+        {
+          "created_at": 1793613013,
+          "event": "ModelRequestStarted",
+          "agent_id": "audit-traces",
+          "agent_name": "Audit Traces",
+          "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+          "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+          "nested_depth": 0,
+          "model": "gpt-6-luna",
+          "model_provider": "OpenAI"
+        },
+        {
+          "created_at": 1793613018,
+          "event": "ModelRequestCompleted",
+          "agent_id": "audit-traces",
+          "agent_name": "Audit Traces",
+          "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+          "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+          "nested_depth": 0,
+          "model": "gpt-6-luna",
+          "model_provider": "OpenAI",
+          "input_tokens": 65,
+          "output_tokens": 180,
+          "total_tokens": 245,
+          "time_to_first_token": 3.7201692999988154,
+          "reasoning_tokens": 101,
+          "cache_read_tokens": 0,
+          "cache_write_tokens": 0
+        },
+        {
+          "created_at": 1793613018,
+          "event": "RunContentCompleted",
+          "agent_id": "audit-traces",
+          "agent_name": "Audit Traces",
+          "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+          "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+          "nested_depth": 0
+        },
+        {
+          "created_at": 1793613018,
+          "event": "RunCompleted",
+          "agent_id": "audit-traces",
+          "agent_name": "Audit Traces",
+          "run_id": "3934ed28-3446-4478-99a3-04b7ecd08b55",
+          "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+          "nested_depth": 0,
+          "content": "## Context used\n\n- **Your request:** \u201cSummarize the context used for this run.\u201d\n- **Run instructions:** Keep the run small, explain what context was used, and make the input, tool usage, and response auditable.\n- **Response format:** Use Markdown.\n\n**Tool usage:** None. No external sources or additional conversation context were used.",
+          "content_type": "str",
+          "model_provider_data": {
+            "response_id": "resp_0ba57513dec03a47006ae85cd72a5487d2a4a4ad1f7693406c"
+          },
+          "session_state": {},
+          "metrics": {
+            "input_tokens": 65,
+            "output_tokens": 180,
+            "total_tokens": 245,
+            "reasoning_tokens": 101,
+            "time_to_first_token": 2.284038400001009,
+            "duration": 4.817774799999825,
+            "details": {
+              "model": [
+                {
+                  "input_tokens": 65,
+                  "output_tokens": 180,
+                  "total_tokens": 245,
+                  "reasoning_tokens": 101,
+                  "id": "gpt-6-luna",
+                  "provider": "OpenAI Responses"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "messages": [
+        {
+          "id": "5ab4b124-0343-4d88-b3f5-5421834a8044",
+          "content": "Keep the run small and explain what context was used. The traces should make the input, tool usage, and response auditable after the run.\n\n<additional_information>\n- Use markdown to format your answers.\n</additional_information>",
+          "from_history": false,
+          "stop_after_tool_call": false,
+          "role": "system",
+          "created_at": 1793613013
+        },
+        {
+          "id": "3b7ac71d-17fc-4bc5-8af3-d0f3685c90df",
+          "content": "Summarize the context used for this run.",
+          "from_history": false,
+          "stop_after_tool_call": false,
+          "role": "user",
+          "created_at": 1793613013
+        },
+        {
+          "id": "6ec04d81-9dad-44b8-8aac-efb6e745a271",
+          "content": "## Context used\n\n- **Your request:** \u201cSummarize the context used for this run.\u201d\n- **Run instructions:** Keep the run small, explain what context was used, and make the input, tool usage, and response auditable.\n- **Response format:** Use Markdown.\n\n**Tool usage:** None. No external sources or additional conversation context were used.",
+          "from_history": false,
+          "stop_after_tool_call": false,
+          "role": "assistant",
+          "provider_data": {
+            "response_id": "resp_0ba57513dec03a47006ae85cd72a5487d2a4a4ad1f7693406c"
+          },
+          "metrics": {
+            "input_tokens": 65,
+            "output_tokens": 180,
+            "total_tokens": 245,
+            "reasoning_tokens": 101,
+            "time_to_first_token": 3.7201692999988154
+          },
+          "created_at": 1793613013
+        }
+      ],
+      "input": {
+        "input_content": "Summarize the context used for this run."
+      }
+    },
+    "created_at": 1793613013,
+    "updated_at": 1793613018
+  }
+]

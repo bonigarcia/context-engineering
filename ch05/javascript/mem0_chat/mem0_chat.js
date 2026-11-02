@@ -4,7 +4,7 @@ import { stdin as input, stdout as output } from "node:process";
 import Memory from "mem0ai/oss";
 
 const client = new OpenAI();
-const model = process.env.MODEL || "gpt-5";
+const model = process.env.MODEL || "gpt-6-luna";
 const userId = process.env.USER_ID || "alice";
 
 function buildMem0Config() {

@@ -6,9 +6,10 @@ prompts:
   - file://support-reply-guardrailed.txt
 
 providers:
-  - id: openai:chat:gpt-4o-mini
+  - id: openai:chat:gpt-6-luna
     config:
       temperature: 0
+      reasoning_effort: none
 
 tests:
   - description: Duplicate charge case
@@ -18,9 +19,10 @@ tests:
     assert:
       - type: llm-rubric
         provider:
-          id: openai:chat:gpt-4o-mini
+          id: openai:chat:gpt-6-luna
           config:
             temperature: 0
+            reasoning_effort: none
         value: The reply should acknowledge the duplicate charge, recommend billing escalation, and avoid promising a refund.
       - type: icontains
         value: billing
@@ -32,9 +34,10 @@ tests:
     assert:
       - type: llm-rubric
         provider:
-          id: openai:chat:gpt-4o-mini
+          id: openai:chat:gpt-6-luna
           config:
             temperature: 0
+            reasoning_effort: none
         value: The reply should tell the user to request a new reset link and avoid claiming the account was restored.
       - type: icontains
         value: reset link

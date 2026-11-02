@@ -41,3 +41,28 @@ python dspy_cot_vs_react.py
 ## Output
 
 When you run the script, it will execute both the Chain-of-Thought and ReAct strategies and print their results and reasoning/trajectory.
+
+```
+=== Chain-of-Thought prediction ===
+Question:
+A train travels 80 kilometers in 1 hour and 20 minutes.
+    What is its average speed in kilometers per hour?
+
+Reasoning:
+1 hour 20 minutes is \( \frac{4}{3} \) hours. Average speed is \(80 \div \frac{4}{3} = 60\).
+
+Answer:
+60
+
+=== ReAct prediction ===
+Question:
+A book costs 18 euros before tax. It is discounted by 15%,
+    and then you buy 3 copies at the discounted price.
+    What is the total amount you pay (ignoring tax), in euros?
+
+Answer:
+45.9
+
+=== ReAct trajectory ===
+{'thought_0': 'The discounted price per book is 18 × 0.85, and for 3 copies the total is 18 × 0.85 × 3.', 'tool_name_0': 'safe_calculator', 'tool_args_0': {'expression': '18*0.85*3'}, 'observation_0': '45.9', 'thought_1': 'The total for 3 discounted books is 45.9 euros.', 'tool_name_1': 'finish', 'tool_args_1': {}, 'observation_1': 'Completed.'}
+```

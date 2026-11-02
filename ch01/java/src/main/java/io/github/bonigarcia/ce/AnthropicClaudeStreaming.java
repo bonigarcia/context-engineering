@@ -33,11 +33,9 @@ public class AnthropicClaudeStreaming implements AutoCloseable {
     long maxTokens;
     double temperature;
 
-    public AnthropicClaudeStreaming(Model model, long maxTokens,
-            float temperature) {
+    public AnthropicClaudeStreaming(Model model, long maxTokens) {
         this.model = model;
         this.maxTokens = maxTokens;
-        this.temperature = temperature;
 
         // ANTHROPIC_API_KEY should be set as an environment variable
         client = AnthropicOkHttpClient.fromEnv();
@@ -45,8 +43,7 @@ public class AnthropicClaudeStreaming implements AutoCloseable {
 
     public String queryModel(String prompt) {
         MessageCreateParams params = MessageCreateParams.builder().model(model)
-                .maxTokens(maxTokens).temperature(temperature)
-                .addUserMessage(prompt).build();
+                .maxTokens(maxTokens).addUserMessage(prompt).build();
 
         StringBuilder answer = new StringBuilder();
         MessageAccumulator accumulator = MessageAccumulator.create();
@@ -91,7 +88,7 @@ public class AnthropicClaudeStreaming implements AutoCloseable {
 
     public static void main(String[] args) {
         try (AnthropicClaudeStreaming claude = new AnthropicClaudeStreaming(
-                Model.CLAUDE_HAIKU_4_5, 2048, 0)) {
+                Model.CLAUDE_HAIKU_4_5, 2048)) {
             String prompt = "How many tokens are in your context window?";
             System.out.println("User: " + prompt);
             System.out.print("Claude: ");

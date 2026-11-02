@@ -32,5 +32,5 @@ jobs:
       - name: Run prompt evaluation
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-4o-mini
+          OPENAI_MODEL: gpt-6-luna
         run: python evaluate_prompt.py

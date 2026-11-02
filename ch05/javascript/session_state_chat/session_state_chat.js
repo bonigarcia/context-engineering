@@ -3,7 +3,7 @@ import readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 
 const client = new OpenAI();
-const model = process.env.MODEL || "gpt-5";
+const model = process.env.MODEL || "gpt-6-luna";
 
 function newState() {
   return {

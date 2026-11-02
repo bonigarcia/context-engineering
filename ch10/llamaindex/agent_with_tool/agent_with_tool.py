@@ -38,7 +38,7 @@ def get_current_weather(city: str) -> str:
 weather_tool = FunctionTool.from_defaults(fn=get_current_weather)
 
 # Initialize the LLM
-llm = OpenAI(model="gpt-3.5-turbo", temperature=0.0)
+llm = OpenAI(model="gpt-6-luna", reasoning_effort="none", temperature=0.0)
 
 # Create an agent with the tool
 agent = FunctionAgent(tools=[weather_tool], llm=llm)

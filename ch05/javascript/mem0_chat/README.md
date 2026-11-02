@@ -10,7 +10,7 @@ This example demonstrates a practical Mem0-backed memory stack in JavaScript.
 
 ## Environment
 
-- `MODEL` - OpenAI model to use (default: `gpt-5`)
+- `MODEL` - OpenAI model to use (default: `gpt-6-luna`)
 - `USER_ID` - user scope for memory storage (default: `alice`)
 - `MEM0_COLLECTION` - Qdrant collection name (default: `mem0_demo`)
 - `QDRANT_HOST` / `QDRANT_PORT` - Qdrant connection settings

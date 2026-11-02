@@ -65,7 +65,7 @@ const FUNCTIONS = {
     "get_weather": ({ location }) => getWeather(location)
 };
 
-async function queryModel(prompt, model = "gpt-4o-mini") {
+async function queryModel(prompt, model = "gpt-6-luna") {
     let response = await client.responses.create({
         model: model,
         input: prompt,

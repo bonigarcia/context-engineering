@@ -37,14 +37,14 @@ pip install -r requirements.txt
 Set an API key for the model you are using. The script uses the OpenAI Python client and expects:
 
 - `OPENAI_API_KEY` to be set
-- `MODEL` (optional), default: `gpt-4.1-mini`
+- `MODEL` (optional), default: `gpt-6-luna`
 - `EMBEDDER` (optional), default: `sentence-transformers/all-MiniLM-L6-v2`
 
 Example:
 
 ```bash
 export OPENAI_API_KEY="..."
-export MODEL="gpt-4.1-mini"
+export MODEL="gpt-6-luna"
 ```
 
 ### 3) Run the assistant

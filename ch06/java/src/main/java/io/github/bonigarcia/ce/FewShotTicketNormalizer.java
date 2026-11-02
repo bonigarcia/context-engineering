@@ -44,6 +44,7 @@ public class FewShotTicketNormalizer {
     public JsonNode normalizeReport(String report) throws IOException, InterruptedException {
         ObjectNode body = MAPPER.createObjectNode();
         body.put("model", model);
+        body.put("reasoning_effort", "none"); // temperature requires no reasoning
         body.put("temperature", 0);
         body.set("response_format", MAPPER.createObjectNode().put("type", "json_object"));
         body.set("messages", buildMessages(report));
@@ -111,7 +112,7 @@ public class FewShotTicketNormalizer {
                 I already checked the password manager, and I have to sign in every time.
                 """.strip();
 
-        FewShotTicketNormalizer normalizer = new FewShotTicketNormalizer(System.getenv().getOrDefault("MODEL", "gpt-4o-mini"));
+        FewShotTicketNormalizer normalizer = new FewShotTicketNormalizer(System.getenv().getOrDefault("MODEL", "gpt-6-luna"));
         JsonNode ticket = normalizer.normalizeReport(report);
 
         System.out.println("=== Few-shot ticket normalizer ===");

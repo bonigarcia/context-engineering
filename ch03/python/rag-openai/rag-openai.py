@@ -78,7 +78,7 @@ def build_context(docs: List[Dict[str, Any]]) -> str:
     return "\n\n".join(parts)
 
 # 5. RAG Pipeline
-def query_model_with_rag(question: str, k: int = 3, model: str = "gpt-4o-mini", show_sources: bool = True) -> str:
+def query_model_with_rag(question: str, k: int = 3, model: str = "gpt-6-luna", show_sources: bool = True) -> str:
     """Answer a question using a simple RAG pipeline."""
     retrieved_docs = retrieve(question, k=k)
     context = build_context(retrieved_docs)

@@ -15,16 +15,16 @@ import { performance } from 'perf_hooks';
 
 const client = new OpenAI(); // OPENAI_API_KEY should be set as an environment variable
 
-async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 4096, temperature = 0, reasoning = "low") {
+async function queryModel(userPrompt, model = "gpt-6-luna", maxTokens = 4096, temperature = 0, reasoning = "none") {
     const params = {
         model: model,
         input: userPrompt,
         max_output_tokens: maxTokens,
+        reasoning: { effort: reasoning },
     };
 
-    if (isGpt5OrAbove(model)) {
-        params.reasoning = { effort: reasoning };
-    } else {
+    // Sampling controls such as temperature are accepted only without reasoning
+    if (reasoning === "none") {
         params.temperature = temperature;
     }
 
@@ -44,18 +44,14 @@ async function queryModel(userPrompt, model = "gpt-4o-mini", maxTokens = 4096, t
     return response.output_text;
 }
 
-function isGpt5OrAbove(model) {
-    return /^gpt-[5-9].*/i.test(model);
-}
-
 const userPrompt = "How many tokens are in your context window?";
 
-console.log("=== Basic model  ===");
+console.log("=== Without reasoning ===");
 console.log("User:", userPrompt);
 var response = await queryModel(userPrompt);
 console.log("AI:", response);
 
-console.log("=== Advanced model  ===");
+console.log("=== With reasoning ===");
 console.log("User:", userPrompt);
-response = await queryModel(userPrompt, "gpt-5", 4096, 0, "medium");
+response = await queryModel(userPrompt, "gpt-6-luna", 4096, 0, "medium");
 console.log("AI:", response);

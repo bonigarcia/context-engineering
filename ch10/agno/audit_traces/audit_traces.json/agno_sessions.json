@@ -1,0 +1,44 @@
+[
+  {
+    "session_id": "b4168886-f0af-44ef-b7ed-bb6080d9bee4",
+    "agent_id": "audit-traces",
+    "team_id": null,
+    "user_id": null,
+    "workflow_id": null,
+    "session_data": {
+      "session_state": {},
+      "session_metrics": {
+        "input_tokens": 65,
+        "output_tokens": 180,
+        "total_tokens": 245,
+        "reasoning_tokens": 101,
+        "details": {
+          "model": [
+            {
+              "input_tokens": 65,
+              "output_tokens": 180,
+              "total_tokens": 245,
+              "reasoning_tokens": 101,
+              "id": "gpt-6-luna",
+              "provider": "OpenAI Responses"
+            }
+          ]
+        }
+      }
+    },
+    "metadata": null,
+    "agent_data": {
+      "name": "Audit Traces",
+      "agent_id": "audit-traces",
+      "model": {
+        "provider": "OpenAI",
+        "name": "OpenAIResponses",
+        "id": "gpt-6-luna"
+      }
+    },
+    "summary": null,
+    "created_at": 1793613013,
+    "updated_at": 1793613013,
+    "session_type": "agent"
+  }
+]

@@ -38,8 +38,8 @@ class MockResponse:
     choices: list[MockChoice]
 
 
-PRIMARY_MODEL = "openai/gpt-4o-mini"
-FALLBACK_MODEL = "anthropic/claude-3-haiku"
+PRIMARY_MODEL = "openai/gpt-6-luna"
+FALLBACK_MODEL = "anthropic/claude-haiku-4-5"
 
 
 def gateway_completion(model: str, messages: list[dict[str, str]], mock_response: str):

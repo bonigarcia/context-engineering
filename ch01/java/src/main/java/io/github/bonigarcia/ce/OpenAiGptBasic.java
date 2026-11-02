@@ -47,11 +47,11 @@ public class OpenAiGptBasic implements AutoCloseable {
 
     public String queryModel(String prompt) {
         Builder modelBuilder = ResponseCreateParams.builder().model(model)
-                .input(prompt);
-        if (isGpt5OrAbove(model)) {
-            modelBuilder
-                    .reasoning(Reasoning.builder().effort(reasoning).build());
-        } else {
+                .input(prompt)
+                .reasoning(Reasoning.builder().effort(reasoning).build());
+        // Sampling controls such as temperature are accepted only without
+        // reasoning
+        if (ReasoningEffort.NONE.equals(reasoning)) {
             modelBuilder.temperature(temperature);
         }
 
@@ -77,30 +77,25 @@ public class OpenAiGptBasic implements AutoCloseable {
                 .collect(Collectors.joining());
     }
 
-    boolean isGpt5OrAbove(ChatModel model) {
-        return model.value().name().matches("GPT_[5-9].*");
-    }
-
     @Override
     public void close() {
         client.close();
     }
 
     public static void main(String[] args) {
-        ChatModel model = ChatModel.GPT_4O_MINI;
+        ChatModel model = ChatModel.of("gpt-6-luna");
         ReasoningEffort reasoning = ReasoningEffort.NONE;
         int temperature = 0;
         try (OpenAiGptBasic gpt = new OpenAiGptBasic(model, reasoning,
                 temperature)) {
             String prompt = "How many tokens are in your context window?";
-            System.out.println("=== Basic model ===");
+            System.out.println("=== Without reasoning ===");
             System.out.println("User: " + prompt);
             String response = gpt.queryModel(prompt);
             System.out.println("AI: " + response);
 
-            gpt.model = ChatModel.GPT_5;
             gpt.reasoning = ReasoningEffort.MEDIUM;
-            System.out.println("\n=== Advanced model ===");
+            System.out.println("\n=== With reasoning ===");
             System.out.println("User: " + prompt);
             response = gpt.queryModel(prompt);
             System.out.println("AI: " + response);

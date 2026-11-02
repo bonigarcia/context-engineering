@@ -26,7 +26,7 @@ npm start
 
 ## Output
 
-When you run the script, it will send a fixed user prompt (`What is the weather in San Francisco?`) to a GPT model (`gpt-4o-mini`). The model will determine that it needs to call the `get_weather` function to answer the question, and it will do so with the requested location. The application will execute the function, get the weather, and inject it back into the conversation as a `function_call_output` item. Finally, the model will produce a user-facing answer grounded in the tool result.
+When you run the script, it will send a fixed user prompt (`What is the weather in San Francisco?`) to a GPT model (`gpt-6-luna`). The model will determine that it needs to call the `get_weather` function to answer the question, and it will do so with the requested location. The application will execute the function, get the weather, and inject it back into the conversation as a `function_call_output` item. Finally, the model will produce a user-facing answer grounded in the tool result.
 
 ```
 User: What is the weather in San Francisco?

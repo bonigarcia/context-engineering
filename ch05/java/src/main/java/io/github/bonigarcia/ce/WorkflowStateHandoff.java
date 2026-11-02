@@ -314,6 +314,6 @@ public class WorkflowStateHandoff {
     public static void main(String[] args) throws Exception {
         Path statePath = Path.of(System.getenv().getOrDefault("STATE_FILE", ".workflow_state_handoff.json"))
                 .toAbsolutePath();
-        new WorkflowStateHandoff(ChatModel.GPT_5, statePath).run();
+        new WorkflowStateHandoff(ChatModel.of("gpt-6-luna"), statePath).run();
     }
 }

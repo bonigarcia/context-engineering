@@ -39,7 +39,7 @@ python context-stuffing-system-prompt.py
 
 ## Output
 
-When you run the script, it will send a user prompt to a GPT model (`gpt-4o-mini`) using a system prompt that includes a reference manual for an espresso machine. The model will use this manual to answer the user's question about error code E17.
+When you run the script, it will send a user prompt to a GPT model (`gpt-6-luna`) using a system prompt that includes a reference manual for an espresso machine. The model will use this manual to answer the user's question about error code E17.
 
 ```
 User: The machine shows error code E17 after I finished descaling. What should I do?

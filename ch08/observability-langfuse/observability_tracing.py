@@ -70,7 +70,8 @@ def main():
 
     # Model and tools
     llm = ChatOpenAI(
-        model="gpt-4o", temperature=0, api_key=os.getenv("OPENAI_API_KEY")
+        model="gpt-6-luna", reasoning_effort="none", temperature=0,
+        api_key=os.getenv("OPENAI_API_KEY")
     )
     tools = [lookup_language]
 

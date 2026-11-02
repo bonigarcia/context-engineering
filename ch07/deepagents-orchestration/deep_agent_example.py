@@ -19,7 +19,7 @@ def main():
     # DeepAgents are designed for long-horizon tasks with built-in planning and filesystem context
     # The virtual filesystem is enabled by default, providing tools like ls, read_file, and write_file.
     agent = create_deep_agent(
-        model="openai:gpt-4o",  # Replace with your preferred model
+        model="openai:gpt-6-luna",  # Replace with your preferred model
         tools=[],  # Add custom tools here; built-in filesystem tools are included by default
         system_prompt="You are a senior analyst capable of complex research and planning."
     )
