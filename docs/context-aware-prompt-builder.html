@@ -306,21 +306,29 @@
 
       // ---- Target models (no dates in labels) -----------------------------
       const MODELS = {
+        gpt6astra: { id: 'gpt6astra', name: 'GPT-6 Astra', display: 'GPT-6 Astra · 1.05M tokens', maxTokens: 1050000 },
+        gpt61sol: { id: 'gpt61sol', name: 'GPT-6.1 Sol', display: 'GPT-6.1 Sol · 1.05M tokens', maxTokens: 1050000 },
+        gpt6luna: { id: 'gpt6luna', name: 'GPT-6 Luna', display: 'GPT-6 Luna · 1.05M tokens', maxTokens: 1050000 },
         gpt56sol: { id: 'gpt56sol', name: 'GPT-5.6 Sol', display: 'GPT-5.6 Sol · 1.05M tokens', maxTokens: 1050000 },
         gpt56terra: { id: 'gpt56terra', name: 'GPT-5.6 Terra', display: 'GPT-5.6 Terra · 1.05M tokens', maxTokens: 1050000 },
         gpt55: { id: 'gpt55', name: 'GPT-5.5', display: 'GPT-5.5 · 1M tokens', maxTokens: 1000000 },
-        gpt51: { id: 'gpt51', name: 'GPT-5.1', display: 'GPT-5.1 · 400k tokens', maxTokens: 400000 },
+        claudefable51: { id: 'claudefable51', name: 'Claude Fable 5.1', display: 'Claude Fable 5.1 · 1M tokens', maxTokens: 1000000 },
+        claudeopus55: { id: 'claudeopus55', name: 'Claude Opus 5.5', display: 'Claude Opus 5.5 · 1M tokens', maxTokens: 1000000 },
+        claudesonnet55: { id: 'claudesonnet55', name: 'Claude Sonnet 5.5', display: 'Claude Sonnet 5.5 · 1M tokens', maxTokens: 1000000 },
+        claudehaiku55: { id: 'claudehaiku55', name: 'Claude Haiku 5.5', display: 'Claude Haiku 5.5 · 1M tokens', maxTokens: 1000000 },
         claudeopus5: { id: 'claudeopus5', name: 'Claude Opus 5', display: 'Claude Opus 5 · 1M tokens', maxTokens: 1000000 },
         claudesonnet5: { id: 'claudesonnet5', name: 'Claude Sonnet 5', display: 'Claude Sonnet 5 · 1M tokens', maxTokens: 1000000 },
         claudehaiku45: { id: 'claudehaiku45', name: 'Claude Haiku 4.5', display: 'Claude Haiku 4.5 · 200k tokens', maxTokens: 200000 },
-        gemini35pro: { id: 'gemini35pro', name: 'Gemini 3.5 Pro', display: 'Gemini 3.5 Pro · 2M tokens', maxTokens: 2000000 },
-        gemini35flash: { id: 'gemini35flash', name: 'Gemini 3.5 Flash', display: 'Gemini 3.5 Flash · 1M tokens', maxTokens: 1000000 },
+        gemini4argon: { id: 'gemini4argon', name: 'Gemini 4 Argon', display: 'Gemini 4 Argon · 1M tokens', maxTokens: 1048576 },
+        gemini38flash: { id: 'gemini38flash', name: 'Gemini 3.8 Flash', display: 'Gemini 3.8 Flash · 1M tokens', maxTokens: 1000000 },
+        grok47: { id: 'grok47', name: 'Grok 4.7', display: 'Grok 4.7 · 500k tokens', maxTokens: 500000 },
+        grok46: { id: 'grok46', name: 'Grok 4.6', display: 'Grok 4.6 · 500k tokens', maxTokens: 500000 },
         kimik3: { id: 'kimik3', name: 'Kimi K3', display: 'Kimi K3 · 1M tokens', maxTokens: 1048576 },
-        grok46: { id: 'grok46', name: 'Grok 4.6', display: 'Grok 4.6 · 500k tokens', maxTokens: 500000 }
+        deepseekv41flash: { id: 'deepseekv41flash', name: 'DeepSeek V4.1 Flash', display: 'DeepSeek V4.1 Flash · 1M tokens', maxTokens: 1048576 }
       };
 
       const DEFAULT_FRAMEWORK_ID = 'tenPart';
-      const DEFAULT_MODEL_ID = 'gpt56sol';
+      const DEFAULT_MODEL_ID = 'gpt61sol';
       const STORAGE_KEY = 'context-builder:v5';
 
       const savedStamp = document.getElementById('savedStamp');
