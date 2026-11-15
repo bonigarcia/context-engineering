@@ -118,10 +118,10 @@ Behavior guidelines:
 
 
 # -----------------------------
-# GPT-5 client (Responses API)
+# GPT client (Responses API)
 # -----------------------------
 
-class GPT5:
+class GPT:
     def __init__(self, model: str = "gpt-6-luna"):
         self.client = OpenAI()
         self.model = model
@@ -156,7 +156,7 @@ Commands:
 def main() -> int:
     console = Console()
 
-    parser = argparse.ArgumentParser(description="GPT-5 + Mem0 + Qdrant memory-backed chat (CLI)")
+    parser = argparse.ArgumentParser(description="GPT + Mem0 + Qdrant memory-backed chat (CLI)")
     parser.add_argument("--user", default=os.getenv("USER_ID", "alice"), help="User ID for memory scoping")
     parser.add_argument("--model", default=os.getenv("MODEL", "gpt-6-luna"), help="OpenAI model (default: gpt-6-luna)")
     parser.add_argument("--top-k", type=int, default=int(os.getenv("TOP_K", "6")), help="Memories to retrieve per turn")
@@ -169,7 +169,7 @@ def main() -> int:
         return 2
 
     mem0 = Memory.from_config(build_mem0_config())
-    llm = GPT5(model=args.model)
+    llm = GPT(model=args.model)
 
     # Short-term, in-session transcript (bounded)
     transcript: List[Dict[str, str]] = []
@@ -226,7 +226,7 @@ def main() -> int:
         retrieved_raw = mem0.search(user_text, user_id=args.user)
         retrieved = normalize_mem0_results(retrieved_raw, max_items=args.top_k)
 
-        # Prepare GPT-5 prompt
+        # Prepare GPT prompt
         instructions = build_instructions(args.user, retrieved)
 
         transcript.append({"role": "user", "content": user_text})
@@ -250,7 +250,7 @@ def main() -> int:
                     {"role": "assistant", "content": assistant_text},
                 ],
                 user_id=args.user,
-                metadata={"source": "cli", "ts": now_iso(), "app": "gpt5-mem0-qdrant"},
+                metadata={"source": "cli", "ts": now_iso(), "app": "gpt-mem0-qdrant"},
             )
         except Exception as e:
             console.print(f"[yellow]Warning:[/yellow] Memory write failed: {e}\n")

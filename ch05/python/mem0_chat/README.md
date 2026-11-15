@@ -2,17 +2,17 @@
 
 This example demonstrates a practical memory stack:
 
-- OpenAI GPT-5 is used as LLM.
+- OpenAI GPT is used as LLM.
 - [Mem0](https://mem0.ai/) stores and retrieves long-term memories extracted from the conversation.
 - [Qdrant](https://qdrant.tech/) is the vector database backend used by Mem0 for semantic retrieval.
 
-The key takeaway is architectural: GPT-5 remains stateless between runs, while Mem0+Qdrant provides durable, searchable memory that can be injected back into the model’s context on each turn.
+The key takeaway is architectural: GPT remains stateless between runs, while Mem0+Qdrant provides durable, searchable memory that can be injected back into the model’s context on each turn.
 
 ## What you build
 
 A CLI chat application that:
 1. Retrieves relevant long-term memories from Mem0/Qdrant for each user message
-2. Passes those memories to GPT-5 as part of the system instructions
+2. Passes those memories to GPT as part of the system instructions
 3. Stores the latest interaction back into Mem0 so it can influence future sessions
 
 ## Prerequisites
