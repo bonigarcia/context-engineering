@@ -6,7 +6,7 @@ Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [twe
 
 [![Context Engineering](./docs/img/context-engineering-MEAP-cover.png)](https://manning.com/books/context-engineering)
 
-> **v1.0** — This commit is the snapshot sent to the printer for the first print edition of the book. Subsequent updates will appear on the `main` branch.
+> **v1.0.0** — This commit is the snapshot sent to the printer for the first print edition of the book. Subsequent updates will appear on the `main` branch.
 
 This GitHub repository is intended to be a companion resource for this book and a reference for practitioners looking to understand and adopt the context engineering principles.
 
