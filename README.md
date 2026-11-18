@@ -2,9 +2,11 @@
 
 **Context engineering** can be defined as the practice of designing systems that provide a Large Language Model (LLM) and AI agents with all the necessary information to complete a task effectively. It goes beyond prompt engineering since it focuses on building a comprehensive and structured context from various sources like instructions, external knowledge, memory, tools, and state. The central idea is that the success of a complex LLM-based system depends more on the quality and completeness of the context provided than on the specific wording of the prompt itself.
 
-Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging discipline. Since then, I've been working on a book entitled **Context Engineering: Build Consistent, Accurate, Predictable AI Systems**, published by Manning. Currently, the early access version of the book is available, and you can get it [here](https://hubs.la/Q04ksQ8J0). 
+Tobi Lütke, the CEO of Shopify, coined the term _context engineering_ in a [tweet](https://x.com/tobi/status/1935533422589399127) on June 19, 2025. He defined context engineering as _the art of providing all the context for the task to be plausibly solvable by the LLM_. This novel concept captures the essence of the current evolution of LLM-based systems, inspiring others (like me) to understand and define this emerging discipline. Since then, I've been working on a book entitled **Context Engineering: Build Consistent, Accurate, Predictable AI Systems**, published by Manning.
 
-[![Context Engineering](./docs/img/context-engineering-MEAP-cover.png)](https://hubs.la/Q04ksQ8J0)
+[![Context Engineering](./docs/img/context-engineering-MEAP-cover.png)](https://manning.com/books/context-engineering)
+
+> **v1.0** — This commit is the snapshot sent to the printer for the first print edition of the book. Subsequent updates will appear on the `main` branch.
 
 This GitHub repository is intended to be a companion resource for this book and a reference for practitioners looking to understand and adopt the context engineering principles.
 
