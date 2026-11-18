@@ -1,0 +1,83 @@
+[
+  {
+    "name": "instruction-auditor",
+    "description": "Audits a system prompt or an instruction artifact (AGENTS.md, CLAUDE.md, GEMINI.md, .cursor/rules, copilot-instructions.md) and reports contradictions, vague or unenforceable rules, excessive size, and procedures that belong in a skill or a tool. Use when the user asks to review, audit, shorten, or improve agent instructions or a system prompt. Do not use for SKILL.md files (use skill-reviewer) or for user prompt templates (use prompt-reviewer).",
+    "chapter": "2",
+    "chapterTitle": "Instructions for AI agents",
+    "input": "A system prompt or an instruction artifact such as AGENTS.md or CLAUDE.md",
+    "output": "Findings on contradictions, vague rules, size, and misplaced procedures",
+    "path": "skills/instruction-auditor"
+  },
+  {
+    "name": "skill-reviewer",
+    "description": "Reviews an agent skill directory (a SKILL.md file plus its scripts, references, and assets) and reports problems with its frontmatter, activation conditions, procedure, and output contract. Use when the user asks to review, audit, lint, or improve a skill or a SKILL.md file. Do not use for instruction artifacts such as AGENTS.md or CLAUDE.md (use instruction-auditor) or for writing a new skill from scratch.",
+    "chapter": "2",
+    "chapterTitle": "Instructions for AI agents",
+    "input": "A skill directory with a SKILL.md file",
+    "output": "Frontmatter validation and findings against skill design practices",
+    "path": "skills/skill-reviewer"
+  },
+  {
+    "name": "retrieval-advisor",
+    "description": "Reviews how an LLM application brings external knowledge into the context: a RAG pipeline (ingestion, chunking, embeddings, retrieval, reranking) or a plan for one. Recommends RAG, cache-augmented generation (CAG), context stuffing, or a hybrid for the given corpus, and reports pipeline problems. Use when the user asks whether they need RAG, or asks to review or improve retrieval, chunking, or a knowledge base integration. Do not use for agent memory design (use memory-designer) or for general prompt review.",
+    "chapter": "3",
+    "chapterTitle": "External knowledge and retrieval",
+    "input": "A RAG pipeline (code and configuration) or a description of a knowledge source",
+    "output": "Recommendation among RAG, CAG, and context stuffing, plus pipeline findings",
+    "path": "skills/retrieval-advisor"
+  },
+  {
+    "name": "tool-reviewer",
+    "description": "Reviews the tools an agent can call: function-calling schemas (OpenAI, Anthropic, Gemini formats), MCP server tool definitions, or the code that implements them. Reports unclear names and descriptions, weak parameter schemas, overlapping tools, oversized outputs, and poor error messages. Use when the user asks to review, design, or improve agent tools, function definitions, or an MCP server. Do not use for security review of tool permissions (use governance-check).",
+    "chapter": "4",
+    "chapterTitle": "Tools in AI agents",
+    "input": "Function-calling tool schemas or an MCP server",
+    "output": "Findings on tool names, descriptions, parameter schemas, overlaps, and outputs",
+    "path": "skills/tool-reviewer"
+  },
+  {
+    "name": "memory-designer",
+    "description": "Designs or reviews how an agent remembers and tracks information: short-term (session) memory, long-term memory, session state, and workflow state. Proposes what goes where, what gets written, selected, compressed, or forgotten, and reports problems in the current design. Use when the user asks how their agent should remember things, persist progress, or why it forgets or repeats itself. Do not use for document retrieval design (use retrieval-advisor).",
+    "chapter": "5",
+    "chapterTitle": "Memory and state in agentic systems",
+    "input": "A description or the code of an agent",
+    "output": "A proposed split between memory and state, with findings on the current design",
+    "path": "skills/memory-designer"
+  },
+  {
+    "name": "prompt-reviewer",
+    "description": "Reviews user prompt templates, few-shot examples, and prompt chains used by an LLM application, and reports unclear tasks, unbalanced or inconsistent examples, missing output formats, and chains that pass too much or too little between steps. Use when the user asks to review, debug, or improve a prompt template or a sequence of prompts. Do not use for system prompts or agent instruction files (use instruction-auditor).",
+    "chapter": "6",
+    "chapterTitle": "User prompts for LLMs",
+    "input": "User prompt templates, few-shot examples, or prompt chains",
+    "output": "Findings on task clarity, examples, output format, and chaining",
+    "path": "skills/prompt-reviewer"
+  },
+  {
+    "name": "token-budget-auditor",
+    "description": "Measures how many tokens each context source (instructions, tools, external knowledge, memory and history, user input) contributes to an agent's model calls, compares the total with a token budget, and reports where to select, compress, or isolate context. Use when the user asks why their context is so large, how to cut token cost or latency, or how much of the context window their agent uses. Do not use to review the quality of the instructions themselves (use instruction-auditor).",
+    "chapter": "7",
+    "chapterTitle": "Context management and orchestration",
+    "input": "The files and prompts that make up an agent's context",
+    "output": "Token count per context source against a token budget, with reduction findings",
+    "path": "skills/token-budget-auditor"
+  },
+  {
+    "name": "eval-builder",
+    "description": "Builds an evaluation set for an LLM application or agent from its specification: happy-path, edge-case, policy-violation, and adversarial cases with deterministic assertions and LLM-as-judge rubrics, written as Promptfoo tests. Also reports gaps in the specification that make behavior impossible to evaluate. Use when the user asks for evals, test cases, a test set, or a rubric for a prompt or agent. Do not use to review existing code tests or to run evaluations.",
+    "chapter": "8",
+    "chapterTitle": "Evaluation and observability",
+    "input": "A description or the code of an agent or prompt",
+    "output": "Evaluation cases with assertions, plus gaps in the spec that block evaluation",
+    "path": "skills/eval-builder"
+  },
+  {
+    "name": "governance-check",
+    "description": "Checks an agent or LLM application for governance and security risks before it reaches production: prompt injection surfaces (direct and indirect), tools with excessive permissions or no approval step, data exfiltration paths, personal data in prompts and logs, and missing human oversight or audit trails. Use when the user asks for a security, privacy, or governance review of an agent, or whether it is safe to deploy. Do not use for general code security audits unrelated to LLMs, or for tool usability (use tool-reviewer).",
+    "chapter": "9",
+    "chapterTitle": "Governance and operations",
+    "input": "An agent's tools, instructions, and data flows",
+    "output": "Findings on prompt injection, tool permissions, personal data, and human oversight",
+    "path": "skills/governance-check"
+  }
+]

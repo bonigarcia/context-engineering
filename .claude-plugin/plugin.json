@@ -1,0 +1,13 @@
+{
+  "name": "context-engineering-skills",
+  "version": "1.0.0",
+  "description": "Agent skills that apply the methods of the book Context Engineering (Manning) to your own agents: instructions, skills, retrieval, tools, memory, prompts, token budget, evals, and governance.",
+  "author": {
+    "name": "Boni Garcia",
+    "url": "https://bonigarcia.dev/"
+  },
+  "homepage": "https://bonigarcia.dev/context-engineering/agent-skills.html",
+  "repository": "https://github.com/bonigarcia/context-engineering",
+  "license": "Apache-2.0",
+  "keywords": ["context-engineering", "agent-skills", "rag", "mcp", "evals", "governance"]
+}

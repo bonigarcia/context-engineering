@@ -335,3 +335,20 @@ input:focus, select:focus, textarea:focus {
 .text-muted { color: var(--muted); }
 .fw-bold { font-weight: 700; }
 .h5 { font-size: 1.25rem; }
+
+/* Agent skills page */
+.skills-install h2 { font-size: 1.1rem; margin: 0 0 8px; }
+.skills-install p { margin: 8px 0; }
+.skills-grid { text-align: left; }
+.skill-card { display: flex; flex-direction: column; gap: 8px; }
+.skill-card .btn { margin-top: auto; }
+.skill-name { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 1rem; color: var(--text); }
+.skill-facts { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+.skill-facts dt { font-weight: 600; color: var(--text); }
+.skill-facts dd { margin: 0; }
+.skill-install summary { cursor: pointer; font-weight: 600; color: #1f3a8a; }
+.skill-install-row { margin-top: 8px; }
+.skill-install-label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.skill-command { display: flex; gap: 8px; align-items: stretch; text-align: left; }
+.skill-command code { flex: 1; white-space: pre-wrap; word-break: break-all; padding: 8px 10px; background: #f6f8fa; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--text); }
+.copy-button { min-height: 0; padding: 6px 12px; }

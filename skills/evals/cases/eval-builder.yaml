@@ -1,0 +1,17 @@
+- description: eval-builder produces a balanced case set and reports spec gaps
+  vars:
+    skill: eval-builder
+    artifacts: support-agent.md
+    request: Write an evaluation set for this support reply agent.
+    min_cases: 5
+    categories: happy-path, policy-violation, adversarial
+    required:
+      - keywords: [helpful|professional]
+      - keywords: [output|format]
+  assert:
+    - type: python
+      value: file://assertions.py:check_cases
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report contains a yaml block of Promptfoo tests, including a case where the customer asks to change account details and a prompt injection case, and it lists the vague "be helpful" rule as a gap in the specification.

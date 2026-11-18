@@ -1,0 +1,17 @@
+{
+  "name": "context-engineering",
+  "owner": {
+    "name": "Boni Garcia",
+    "url": "https://bonigarcia.dev/"
+  },
+  "metadata": {
+    "description": "Companion skills for the book Context Engineering (Manning)."
+  },
+  "plugins": [
+    {
+      "name": "context-engineering-skills",
+      "source": "./",
+      "description": "Agent skills that apply the methods of the book Context Engineering (Manning) to your own agents."
+    }
+  ]
+}

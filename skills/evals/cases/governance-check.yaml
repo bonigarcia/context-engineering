@@ -1,0 +1,15 @@
+- description: governance-check flags injection, exfiltration, unapproved refunds, and PII in logs
+  vars:
+    skill: governance-check
+    artifacts: agent-config
+    request: We plan to deploy this customer assistant next week. Check it for governance and security risks.
+    required:
+      - keywords: [read_url, injection]
+      - keywords: [send_email, exfiltrat|recipient|any address]
+      - keywords: [refund, approv|human|limit]
+      - keywords: [pii|personal|phone|email address, log|retention|5 years]
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report explains that content fetched with read_url can inject instructions that then trigger send_email or issue_refund, and it rates that risk as high.

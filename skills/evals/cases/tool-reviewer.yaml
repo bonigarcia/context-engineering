@@ -1,0 +1,17 @@
+- description: tool-reviewer flags vague, overlapping, and underspecified tools
+  vars:
+    skill: tool-reviewer
+    artifacts: tools.json
+    request: These are the tools of our customer service agent. Review them.
+    required:
+      - keywords: [get_data]
+      - keywords: [search_orders, find_orders]
+      - keywords: [date, format|iso]
+    forbidden:
+      - keywords: [""]
+        location: get_customer
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report says search_orders and find_orders overlap and should be merged or clearly separated, and that the date parameter of create_refund needs an explicit format.

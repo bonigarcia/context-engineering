@@ -1,0 +1,31 @@
+- description: retrieval-advisor advises against RAG for a small stable handbook
+  vars:
+    skill: retrieval-advisor
+    artifacts: small-handbook
+    request: We built RAG for our HR assistant. Review the approach and the pipeline.
+    required:
+      - keywords: [chunk, overlap|boundar|sentence|200]
+    extra:
+      recommendation: [cag, context-stuffing]
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report recommends context stuffing or cache-augmented generation instead of RAG for this small, stable handbook, and explains why.
+
+- description: retrieval-advisor keeps RAG for a large changing ticket archive
+  vars:
+    skill: retrieval-advisor
+    artifacts: support-tickets
+    request: Review the retrieval step of our support copilot. Answers often suggest outdated fixes.
+    required:
+      - keywords: [limit|top_k|top-k|50]
+      - keywords: [rerank]
+      - keywords: [date|fresh|recen|version]
+    extra:
+      recommendation: rag
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report keeps RAG, says 50 retrieved tickets is too many, and recommends filtering or weighting by date or product version.

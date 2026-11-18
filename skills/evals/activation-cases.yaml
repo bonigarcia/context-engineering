@@ -1,0 +1,88 @@
+- description: activates skill-reviewer (1)
+  vars:
+    request: Review the SKILL.md in .claude/skills/release-notes and tell me why Claude never uses it.
+    expected: skill-reviewer
+- description: activates skill-reviewer (2)
+  vars:
+    request: Lint my agent skill folder before I publish it.
+    expected: skill-reviewer
+- description: activates instruction-auditor (1)
+  vars:
+    request: Our AGENTS.md has grown to 900 lines. Audit it and tell me what to cut.
+    expected: instruction-auditor
+- description: activates instruction-auditor (2)
+  vars:
+    request: Check my system prompt for contradictory rules.
+    expected: instruction-auditor
+- description: activates retrieval-advisor (1)
+  vars:
+    request: Do we really need a vector database for our 40-page FAQ, or can we just put it in the prompt?
+    expected: retrieval-advisor
+- description: activates retrieval-advisor (2)
+  vars:
+    request: Our RAG chatbot keeps returning irrelevant chunks. Review the chunking and retrieval.
+    expected: retrieval-advisor
+- description: activates tool-reviewer (1)
+  vars:
+    request: Review the function definitions we pass to the model. It keeps calling the wrong one.
+    expected: tool-reviewer
+- description: activates tool-reviewer (2)
+  vars:
+    request: Here is our MCP server. Are the tool names and schemas good?
+    expected: tool-reviewer
+- description: activates memory-designer (1)
+  vars:
+    request: How should our assistant remember user preferences across sessions?
+    expected: memory-designer
+- description: activates memory-designer (2)
+  vars:
+    request: Our agent loses track of a multi-step checkout when the session drops. How should we store its progress?
+    expected: memory-designer
+- description: activates prompt-reviewer (1)
+  vars:
+    request: This few-shot classification prompt always returns the same label. What is wrong with it?
+    expected: prompt-reviewer
+- description: activates prompt-reviewer (2)
+  vars:
+    request: Review the prompt template we use to extract invoice fields.
+    expected: prompt-reviewer
+- description: activates token-budget-auditor (1)
+  vars:
+    request: Why does every call of our agent use 60,000 tokens? Show me what takes the space.
+    expected: token-budget-auditor
+- description: activates token-budget-auditor (2)
+  vars:
+    request: We need to cut the context of our support bot to fit an 8k token budget.
+    expected: token-budget-auditor
+- description: activates eval-builder (1)
+  vars:
+    request: Write evaluation test cases for our summarization prompt.
+    expected: eval-builder
+- description: activates eval-builder (2)
+  vars:
+    request: Create a Promptfoo test set with adversarial cases for this chatbot spec.
+    expected: eval-builder
+- description: activates governance-check (1)
+  vars:
+    request: Is our email-reading agent safe to deploy? Check it for prompt injection.
+    expected: governance-check
+- description: activates governance-check (2)
+  vars:
+    request: Review the tools and logging of our agent for privacy and security risks before launch.
+    expected: governance-check
+- description: activates nothing (1)
+  vars:
+    request: Write a haiku about autumn.
+    expected: none
+- description: activates nothing (2)
+  vars:
+    request: Fix the null pointer exception in UserService.java.
+    expected: none
+- description: activates nothing (3)
+  vars:
+    request: Translate this paragraph to Spanish.
+    expected: none
+- description: activates nothing (4)
+  vars:
+    request: Summarize this meeting transcript in five bullets.
+    expected: none

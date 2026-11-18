@@ -1,0 +1,18 @@
+- description: instruction-auditor flags the flawed AGENTS.md
+  vars:
+    skill: instruction-auditor
+    artifacts: AGENTS.md
+    request: Audit the AGENTS.md file of this repository and tell me what to fix.
+    required:
+      - keywords: [tab, space]
+      - keywords: [clean|quality, vague|specific|measurable|concrete|check]
+      - keywords: [release, skill|script]
+      - keywords: [mistake]
+    forbidden:
+      - keywords: [""]
+        location: Build commands
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report identifies the tabs versus 2-space indentation contradiction and recommends moving the release procedure out of AGENTS.md into a skill or a script.

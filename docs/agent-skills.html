@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Boni Garcia" />
+  <meta name="description" content="Installable agent skills that apply the methods of the book Context Engineering to your own agents." />
+  <title>Context Engineering | Agent skills</title>
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="resources-page">
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Context Engineering</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="ai-ecosystem.html">AI ecosystem</a>
+        <a href="context-aware-prompt-builder.html">Prompt builder</a>
+        <a href="sdlc_prompt_library.html">SDLC library</a>
+        <a href="context-engineering-radar.html">Radar</a>
+        <a href="agent-skills.html" style="color: var(--accent);">Agent skills</a>
+        <a href="references.html">Further reading</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="docs-container resources-shell">
+    <section class="page-hero">
+      <h1>Agent skills</h1>
+      <p class="page-intro">
+        Installable skills that apply the methods of the book to your own agents. Each skill reviews one artifact you already have,
+        such as an AGENTS.md file, a set of tool definitions, or a RAG pipeline, and returns a report of findings linked to the
+        book chapter that explains them. The skills are open source and complement
+        <a href="https://hubs.la/Q04ksQ8J0">Context Engineering</a> (Manning).
+      </p>
+    </section>
+
+    <section id="pageFallback" class="resources-fallback" hidden>
+      <h2>Interactive catalog fallback</h2>
+      <p>
+        If the catalog does not load, browse the skills on
+        <a href="https://github.com/bonigarcia/context-engineering/tree/main/skills">GitHub</a> or the raw data in
+        <a href="skills.json">skills.json</a>.
+      </p>
+    </section>
+
+    <noscript>
+      <section class="resources-fallback resources-fallback-noscript">
+        <h2>JavaScript is unavailable</h2>
+        <p>
+          Browse the skills on <a href="https://github.com/bonigarcia/context-engineering/tree/main/skills">GitHub</a>
+          or the raw data in <a href="skills.json">skills.json</a>.
+        </p>
+      </section>
+    </noscript>
+
+    <section class="resources-panel skills-install" aria-label="Installation">
+      <h2>Install all skills as a plugin</h2>
+      <p>In Claude Code, run:</p>
+      <div class="skill-command">
+        <code id="pluginCommand">/plugin marketplace add bonigarcia/context-engineering
+/plugin install context-engineering-skills@context-engineering</code>
+        <button type="button" class="reset-button copy-button" data-copy-target="pluginCommand">Copy</button>
+      </div>
+      <p>
+        The repository is also a Codex plugin. To install a single skill by hand, clone the repository and use the commands on each card.
+        See the <a href="https://github.com/bonigarcia/context-engineering/tree/main/skills#installation">installation guide</a> for details.
+      </p>
+    </section>
+
+    <section class="resources-panel" aria-label="Skill catalog controls">
+      <label class="field">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="Search by name, chapter, or what the skill reviews" />
+      </label>
+    </section>
+
+    <p id="resultsSummary" class="resources-summary" aria-live="polite">Loading skills...</p>
+
+    <section>
+      <div id="skillGrid" class="grid skills-grid"></div>
+      <div id="emptyState" class="resources-empty" hidden>
+        <h2>No matching skills</h2>
+        <p>Try a different search term.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      Context Engineering · © <a href="https://bonigarcia.dev/">Boni García</a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/skills-page.mjs"></script>
+</body>
+</html>

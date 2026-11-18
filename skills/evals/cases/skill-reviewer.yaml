@@ -1,0 +1,19 @@
+- description: skill-reviewer flags the flawed pdf_helper skill
+  vars:
+    skill: skill-reviewer
+    artifacts: pdf_helper
+    request: "Review the skill in the pdf_helper folder. I ran scripts/validate_frontmatter.py on it and it printed:\nERROR: name 'PDF Helper' must use only lowercase letters, digits, and single hyphens, and must not start or end with a hyphen\nERROR: name 'PDF Helper' does not match directory 'pdf_helper'"
+    required:
+      - keywords: [name]
+      - keywords: [description, when]
+      - keywords: [checksum, script]
+      - keywords: [output|format]
+    forbidden:
+      - keywords: [broken link|broken reference|does not exist]
+    extra:
+      frontmatter_valid: false
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report says the description does not tell the agent when to use the skill, and that the SHA-256 checksum must be computed by a script instead of by the model.

@@ -1,0 +1,16 @@
+- description: memory-designer separates preferences, transcripts, and booking state
+  vars:
+    skill: memory-designer
+    artifacts: travel-agent.md
+    request: Our trip planner forgets user preferences and loses bookings when a session drops. Review how it handles memory and state.
+    required:
+      - keywords: [transcript]
+      - keywords: [booking|progress, state]
+      - keywords: [preference|seat]
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: python
+      value: file://assertions.py:check_design
+    - type: llm-rubric
+      value: The report proposes storing distilled user preferences in long-term memory instead of full transcripts, and keeping booking progress as persisted workflow state.

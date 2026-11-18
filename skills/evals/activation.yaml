@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: Activation tests for the context engineering skills (description field)
+
+prompts:
+  - file://prompt.py:build_activation_prompt
+
+providers:
+  - id: openrouter:openai/gpt-6-luna
+    config:
+      temperature: 0
+
+defaultTest:
+  assert:
+    - type: python
+      value: file://assertions.py:check_activation
+
+tests: file://activation-cases.yaml

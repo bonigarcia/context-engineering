@@ -1,0 +1,14 @@
+- description: prompt-reviewer flags unbalanced and inconsistent few-shot examples
+  vars:
+    skill: prompt-reviewer
+    artifacts: classify-ticket.txt
+    request: This prompt classifies our support tickets, but almost everything comes back as billing. Review it.
+    required:
+      - keywords: [billing|imbalanc|unbalanc|same categor|one categor]
+      - keywords: [format, inconsistent|different|mixed|two]
+      - keywords: [output]
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report explains that all few-shot examples are billing tickets and that the examples use two different formats, and it includes a revised prompt with examples for every category.

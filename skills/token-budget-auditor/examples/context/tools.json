@@ -1,0 +1,278 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_customer",
+      "description": "Use this tool to get customer. Call it when the customer message requires you to get customer. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to get customer."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_order",
+      "description": "Use this tool to get order. Call it when the customer message requires you to get order. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to get order."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "list_orders",
+      "description": "Use this tool to list orders. Call it when the customer message requires you to list orders. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to list orders."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "track_shipment",
+      "description": "Use this tool to track shipment. Call it when the customer message requires you to track shipment. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to track shipment."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_refund",
+      "description": "Use this tool to create refund. Call it when the customer message requires you to create refund. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to create refund."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "cancel_order",
+      "description": "Use this tool to cancel order. Call it when the customer message requires you to cancel order. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to cancel order."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "update_address",
+      "description": "Use this tool to update address. Call it when the customer message requires you to update address. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to update address."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "list_products",
+      "description": "Use this tool to list products. Call it when the customer message requires you to list products. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to list products."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_product",
+      "description": "Use this tool to get product. Call it when the customer message requires you to get product. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to get product."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "check_stock",
+      "description": "Use this tool to check stock. Call it when the customer message requires you to check stock. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to check stock."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_ticket",
+      "description": "Use this tool to create ticket. Call it when the customer message requires you to create ticket. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to create ticket."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "add_ticket_note",
+      "description": "Use this tool to add ticket note. Call it when the customer message requires you to add ticket note. Returns a JSON object with the result of the operation, or an error message if the operation fails.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the record used to add ticket note."
+          },
+          "details": {
+            "type": "string",
+            "description": "Optional extra details for the operation, as free text."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    }
+  }
+]

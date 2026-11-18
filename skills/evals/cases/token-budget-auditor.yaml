@@ -1,0 +1,14 @@
+- description: token-budget-auditor finds duplicate chunks and uncompressed history
+  vars:
+    skill: token-budget-auditor
+    artifacts: context
+    request: "Audit the context of our support assistant. The token budget per call is 6000 tokens. Files map to sources as follows: system-prompt.md is instructions, tools.json is tools, retrieved.md is knowledge, history.md is memory. I already ran scripts/count_tokens.py for you and it printed this output:\n{\"method\": \"estimate:chars/4\", \"budget\": 6000, \"sources\": [{\"source\": \"instructions\", \"files\": 1, \"tokens\": 2722}, {\"source\": \"tools\", \"files\": 1, \"tokens\": 2198}, {\"source\": \"knowledge\", \"files\": 1, \"tokens\": 451}, {\"source\": \"memory\", \"files\": 1, \"tokens\": 2020}], \"total\": 7391, \"over_budget\": true}"
+    required:
+      - keywords: [duplicate|repeated|identical|three times, retriev|knowledge|excerpt]
+      - keywords: [history|conversation, compress|summar|trim|truncat]
+      - keywords: [budget]
+  assert:
+    - type: python
+      value: file://assertions.py:check_report
+    - type: llm-rubric
+      value: The report states that the context is over the 6000-token budget, and recommends removing the duplicated retrieved excerpts and summarizing the conversation history.

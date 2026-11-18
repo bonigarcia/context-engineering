@@ -1,0 +1,20 @@
+Classify the following support ticket into one of these categories: billing, shipping, technical, account.
+
+Examples:
+
+Ticket: I was charged twice for my last order.
+Category: billing
+
+Ticket: My invoice shows the wrong VAT number.
+Category: billing
+
+Input: "Why was my card charged before the order shipped?"
+Output -> BILLING
+
+Ticket: I want a refund for the subscription I cancelled.
+Category: billing
+
+Input: "The discount code was not applied to my total."
+Output -> BILLING
+
+Ticket: {{ticket}}

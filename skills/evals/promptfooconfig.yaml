@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: Behavior tests for the context engineering skills
+
+prompts:
+  - file://prompt.py:build_prompt
+
+providers:
+  - &model
+    id: openrouter:openai/gpt-6-luna
+    config:
+      temperature: 0
+
+defaultTest:
+  options:
+    provider: *model
+
+tests: file://cases/*.yaml

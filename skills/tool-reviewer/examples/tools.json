@@ -1,0 +1,111 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_customer",
+      "description": "Get the profile of one customer by id. Use when you need the customer's name, email, or account status. Do not use to list a customer's orders. Returns a JSON object with id, name, email, and status, or an error message if the id does not exist.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer id, for example C-10293.",
+            "pattern": "^C-[0-9]+$"
+          }
+        },
+        "required": [
+          "customer_id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_data",
+      "description": "Gets data.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_orders",
+      "description": "Search the orders of a customer.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Customer id."
+          },
+          "status": {
+            "type": "string",
+            "description": "Order status."
+          }
+        },
+        "required": [
+          "customer_id"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "find_orders",
+      "description": "Find orders for a client.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "client": {
+            "type": "string",
+            "description": "The client."
+          },
+          "state": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "client"
+        ]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_refund",
+      "description": "Create a refund for an order.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "description": "Order id."
+          },
+          "amount": {
+            "type": "number",
+            "description": "Amount to refund."
+          },
+          "date": {
+            "type": "string",
+            "description": "When the refund happens."
+          }
+        },
+        "required": [
+          "order_id",
+          "amount",
+          "date"
+        ]
+      }
+    }
+  }
+]

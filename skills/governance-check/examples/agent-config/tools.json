@@ -1,0 +1,45 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "read_url",
+      "description": "Fetch any web page and return its full text content.",
+      "parameters": {
+        "type": "object",
+        "properties": { "url": { "type": "string", "description": "The URL to fetch." } },
+        "required": ["url"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "send_email",
+      "description": "Send an email from support@acme.example.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "to": { "type": "string", "description": "Recipient email address." },
+          "subject": { "type": "string" },
+          "body": { "type": "string" }
+        },
+        "required": ["to", "subject", "body"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "issue_refund",
+      "description": "Refund an order to the original payment method. Takes effect immediately.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "order_id": { "type": "string" },
+          "amount_eur": { "type": "number" }
+        },
+        "required": ["order_id", "amount_eur"]
+      }
+    }
+  }
+]
