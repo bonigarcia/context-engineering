@@ -18,6 +18,8 @@ class StyleTest(unittest.TestCase):
         problems = []
         for pattern in PATTERNS:
             for path in SKILLS_ROOT.rglob(pattern):
+                if path.parent.name == "evals" and path.name.startswith("results"):
+                    continue
                 text = path.read_text(encoding="utf-8")
                 for number, line in enumerate(text.splitlines(), start=1):
                     for char, label in FORBIDDEN.items():

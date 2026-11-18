@@ -1,13 +1,13 @@
 # AGENTS.md
 
-Guidance for coding agents working on the Acme storefront, a Node.js web application.
+Guidance for coding agents working on the Acme storefront, a Node.js web application. Run every command from the repository root.
 
 ## Build commands
 
 - Install dependencies: `npm ci`
 - Run the development server: `npm run dev` (serves on http://localhost:3000)
 - Run the unit tests: `npm test`
-- Run the end-to-end tests: `npm run test:e2e` (requires the development server)
+- Run the end-to-end tests: start the development server with `npm run dev` in another terminal, then run `npm run test:e2e`
 
 ## Project layout
 
@@ -40,7 +40,7 @@ Guidance for coding agents working on the Acme storefront, a Node.js web applica
 2. Pull the latest changes with `git pull`.
 3. Run `npm ci`.
 4. Run `npm test` and stop if any test fails.
-5. Run `npm run test:e2e` and stop if any test fails.
+5. Start the development server with `npm run dev`, run `npm run test:e2e`, and stop if any test fails.
 6. Open `CHANGELOG.md`.
 7. Move the entries under "Unreleased" to a new section named after the version.
 8. Add today's date to the new section.

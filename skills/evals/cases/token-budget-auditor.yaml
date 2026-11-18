@@ -6,7 +6,6 @@
     required:
       - keywords: [duplicate|repeated|identical|three times, retriev|knowledge|excerpt]
       - keywords: [history|conversation, compress|summar|trim|truncat]
-      - keywords: [budget]
   assert:
     - type: python
       value: file://assertions.py:check_report

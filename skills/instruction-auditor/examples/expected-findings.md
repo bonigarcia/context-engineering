@@ -7,4 +7,4 @@ A correct audit reports at least these problems:
 - Misplaced procedure: the 15-step release procedure in "Releasing a new version" is only needed for releases. It belongs in a skill (or a release script) that loads on demand.
 - Unenforceable rule: "Never make mistakes" adds tokens without changing behavior.
 
-The audit may also suggest enforcing formatting with a formatter configuration instead of prose. It must not report problems in the Build commands section, which is concrete and correct.
+The audit may also suggest enforcing formatting with a formatter configuration instead of prose, and may report that "Do not commit directly to `main`" conflicts with the release steps that commit and push on `main`. It must not report problems in the Project layout section, which only describes folders.

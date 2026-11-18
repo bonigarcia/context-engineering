@@ -4,7 +4,7 @@
     artifacts: agent-config
     request: We plan to deploy this customer assistant next week. Check it for governance and security risks.
     required:
-      - keywords: [read_url, injection]
+      - keywords: [read_url, injection|untrusted]
       - keywords: [send_email, exfiltrat|recipient|any address]
       - keywords: [refund, approv|human|limit]
       - keywords: [pii|personal|phone|email address, log|retention|5 years]

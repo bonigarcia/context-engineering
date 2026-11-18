@@ -10,7 +10,7 @@
       - keywords: [mistake]
     forbidden:
       - keywords: [""]
-        location: Build commands
+        location: Project layout
   assert:
     - type: python
       value: file://assertions.py:check_report
