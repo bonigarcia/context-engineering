@@ -8,6 +8,6 @@
     "start": "node google-gemini-basic.js"
   },
   "dependencies": {
-    "@google/genai": "^3.3.0"
+    "@google/genai": "^3.4.0"
   }
 }
