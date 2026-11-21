@@ -22,7 +22,7 @@ jobs:
           max_retries=10
           retry_count=0
           sleep_duration=1
-          while ! gh pr merge "$PR_URL" --auto --squash --body="Co-authored-by: Boni Garcia <boni.garcia@uc3m.es>"; do
+          while ! gh pr merge "$PR_URL" --auto --squash; do
               retry_count=$((retry_count+1))
               if [ $retry_count -ge $max_retries ]; then
                   echo "Command failed after $retry_count attempts."
