@@ -8,6 +8,6 @@
     "start": "node prompt-chaining-support-reply.js"
   },
   "dependencies": {
-    "openai": "^7.57.0"
+    "openai": "^7.62.0"
   }
 }
